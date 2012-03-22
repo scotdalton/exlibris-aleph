@@ -40,6 +40,12 @@ module Exlibris
         return @response
       end
 
+      def get_address()
+        @response = self.class.get(self.uri+ "/patronInformation/address")
+        return nil unless error.nil?
+        return @response
+      end
+
       def loans()
         @response = self.class.get(@uri+ "/circulationActions/loans?view=full")
         raise "Error getting loans through Aleph REST APIs. #{error}" unless error.nil?
