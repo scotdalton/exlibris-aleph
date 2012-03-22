@@ -2,6 +2,8 @@ PATH
   remote: .
   specs:
     exlibris-aleph (0.0.1)
+      httparty
+      nokogiri
       rails (~> 3.2.0)
 
 GEM
@@ -98,7 +100,5 @@ PLATFORMS
 
 DEPENDENCIES
   exlibris-aleph!
-  httparty
   jquery-rails
-  nokogiri
   sqlite3

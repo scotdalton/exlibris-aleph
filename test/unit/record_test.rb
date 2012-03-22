@@ -9,7 +9,7 @@ class RecordTest < ActiveSupport::TestCase
 
   # Test exception handling for bogus url
   test "bogus_response" do
-    aleph_record = ExlibrisAleph::Record.new(@aleph_doc_library, @aleph_doc_number, @bogus_url)
+    aleph_record = Exlibris::Aleph::Record.new(@aleph_doc_library, @aleph_doc_number, @bogus_url)
     assert_raise(RuntimeError) { aleph_record.bib }
     assert_raise(RuntimeError) { aleph_record.holdings }
     assert_raise(MultiXml::ParseError) { aleph_record.items }
@@ -17,7 +17,7 @@ class RecordTest < ActiveSupport::TestCase
 
   # Test record.
   test "record" do
-    aleph_record = ExlibrisAleph::Record.new(@aleph_doc_library, @aleph_doc_number, @rest_url)
+    aleph_record = Exlibris::Aleph::Record.new(@aleph_doc_library, @aleph_doc_number, @rest_url)
     bib = aleph_record.bib
     assert_nil(aleph_record.error, "Failure in #{aleph_record.class} while calling bib: #{aleph_record.error}")
     holdings = aleph_record.holdings

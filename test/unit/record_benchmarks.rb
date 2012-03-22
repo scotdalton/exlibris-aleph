@@ -13,11 +13,11 @@ class RecordBenchmarks < ActiveSupport::TestCase
     # Display performance benchmarks.
     time = Benchmark.bmbm do |results|
       results.report("Aleph items:") { @TESTS.times { 
-        aleph_record = ExlibrisAleph::Record.new(@aleph_doc_library, @aleph_doc_number, @rest_url)
+        aleph_record = Exlibris::Aleph::Record.new(@aleph_doc_library, @aleph_doc_number, @rest_url)
         items = aleph_record.items 
       } }    
       results.report("Aleph bib and holdings:") { @TESTS.times { 
-        aleph_record = ExlibrisAleph::Record.new(@aleph_doc_library, @aleph_doc_number, @rest_url)
+        aleph_record = Exlibris::Aleph::Record.new(@aleph_doc_library, @aleph_doc_number, @rest_url)
         items = aleph_record.bib 
         items = aleph_record.holdings 
       } }    

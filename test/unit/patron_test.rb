@@ -14,7 +14,7 @@ class PatronTest < ActiveSupport::TestCase
 
   # Test exception handling for bogus response.
   test "test_bogus_response" do
-    patron = ExlibrisAleph::Patron.new(@nyuidn, @bogus_url)
+    patron = Exlibris::Aleph::Patron.new(@nyuidn, @bogus_url)
     assert_raise(MultiXml::ParseError) { patron.loans }
     assert_raise(MultiXml::ParseError) { patron.renew_loans() }
     assert_raise(MultiXml::ParseError) { patron.renew_loans(@aleph_renew_item_id) }
@@ -23,7 +23,7 @@ class PatronTest < ActiveSupport::TestCase
 
   # Test patron
   test "test_patron" do
-    patron = ExlibrisAleph::Patron.new(@nyuidn, @rest_url)
+    patron = Exlibris::Aleph::Patron.new(@nyuidn, @rest_url)
     loans = patron.loans
     assert_nil(patron.error, "Failure in #{patron.class} while getting loans: #{patron.error}")
     #renew_loans = patron.renew_loans()
