@@ -3,20 +3,30 @@ module Exlibris
   module Aleph
     require 'singleton'
     require 'yaml'
-    require 'rails'
     class TabHelper
       include Singleton
-      attr_reader :sub_libraries, :patrons, :patron_permissions, :items, 
-        :item_permissions_by_item_status, :item_permissions_by_item_process_status, 
-          :collections, :pickup_locations, :updated_at
+      attr_reader :sub_libraries, :updated_at
+      @@tabs = { 
+        :patrons => :PcTabExpFieldExtended, 
+        :patron_permissions => :Tab31, 
+        :items => :TabWwwItemDesc, 
+        :item_permissions_by_item_status => :Tab15ByItemStatus, 
+        :item_permissions_by_item_process_status => :Tab15ByItemProcessStatus, 
+        :collections => :Tab40, 
+        :pickup_locations =>  :Tab37}
       @@adms = []
       @@tab_path = nil
-      @@rails_root = (Rails.root.nil?) ? '.' : Rails.root
-      @@log_path = @@rails_root + "/log"
+      @@yml_path = nil
+      @@log_path = nil
 
-      def self.init(tab_path, adms=[])
+      def self.init(tab_path, yml_path, log_path, adms)
         @@tab_path = tab_path
         @@adms = adms
+        @@yml_path = yml_path
+        @@log_path = log_path
+        Dir.mkdir(yml_path) unless Dir.exist?(yml_path)
+        @@adms.each { |adm| Dir.mkdir(File.join(yml_path, adm)) unless Dir.exist?(File.join(yml_path, adm)) }
+        Dir.mkdir(log_path) unless Dir.exist?(log_path)
         # Make readers for each class variable
         class_variables.each do |class_variable|
           define_method "#{class_variable}".sub('@@', '') do
@@ -25,10 +35,26 @@ module Exlibris
         end
       end
       
+      def self.refresh_yml
+        tab = Exlibris::Aleph::Config::TabSubLibrary.new({
+          :aleph_library => "ALEPHE", :aleph_mnt_path => @@tab_path}).to_h
+        File.open(File.join(@@yml_path, "#{:sub_libraries}.yml"), 'w') { |out| YAML.dump( tab, out ) } unless tab.empty?
+        @@tabs.each do |tab_name, tab_class|
+          @@adms.each do |adm|
+            tab = Exlibris::Aleph::Config.const_get(tab_class).new({
+              :aleph_library => adm, :aleph_mnt_path => @@tab_path}).to_h
+            File.open( File.join(@@yml_path, adm, "#{tab_name}.yml"), 'w' ) { |out| YAML.dump( tab, out ) } unless tab.empty?
+          end
+        end
+      end
+      
       def initialize
         raise ArgumentError.new("No tab path was specified.") if @@tab_path.nil?
+        raise ArgumentError.new("No yml path was specified.") if @@yml_path.nil?
+        raise ArgumentError.new("No log path was specified.") if @@log_path.nil?
         raise ArgumentError.new("No ADMs were specified.") if @@adms.empty?
-        @helper_log = Logger.new(File.join(@@log_path, "aleph_helper.log"))
+        self.class.refresh_yml
+        @helper_log = Logger.new(File.join(@@log_path, "tab_helper.log"))
         @helper_log.level = Logger::WARN
         @patrons = {}
         @patron_permissions = {}
@@ -38,6 +64,7 @@ module Exlibris
         @collections = {}
         @pickup_locations = {}
         @sub_libraries = {}
+        @@tabs.each_key { |tab| self.class.send(:attr_reader, tab) }
         refresh
       end
   
@@ -200,33 +227,19 @@ module Exlibris
         return {}
       end
   
+      def refresh?
+        return true if (@updated_at.nil? or @updated_at < 1.day.ago)
+      end  
+
       def refresh
         @updated_at = Time.now()
-        @sub_libraries = 
-          Exlibris::Aleph::Config::TabSubLibrary.new({
-            :aleph_library => "ALEPHE", :aleph_mnt_path => @@tab_path}).to_h
-        @@adms.each do |adm|
-          @patrons[adm] = 
-            Exlibris::Aleph::Config::PcTabExpFieldExtended.new({
-              :aleph_library => adm, :aleph_mnt_path => @@tab_path}).to_h
-          @patron_permissions[adm] = 
-            Exlibris::Aleph::Config::Tab31.new({
-              :aleph_library => adm, :aleph_mnt_path => @@tab_path}).to_h
-          @items[adm] = 
-            Exlibris::Aleph::Config::TabWwwItemDesc.new({
-              :aleph_library => adm, :aleph_mnt_path => @@tab_path}).to_h
-          @item_permissions_by_item_status[adm] = 
-            Exlibris::Aleph::Config::Tab15ByItemStatus.new({
-              :aleph_library => adm, :aleph_mnt_path => @@tab_path}).to_h
-          @item_permissions_by_item_process_status[adm] = 
-            Exlibris::Aleph::Config::Tab15ByItemProcessStatus.new({
-              :aleph_library => adm, :aleph_mnt_path => @@tab_path}).to_h
-          @collections[adm] = 
-            Exlibris::Aleph::Config::Tab40.new({
-              :aleph_library => adm, :aleph_mnt_path => @@tab_path}).to_h
-          @pickup_locations[adm] = 
-            Exlibris::Aleph::Config::Tab37.new({
-              :aleph_library => adm, :aleph_mnt_path => @@tab_path}).to_h
+        @sub_libraries = YAML.load_file(File.join(@@yml_path, "#{:sub_libraries}.yml"))
+        @@tabs.each_key do |tab_name|
+          @@adms.each do |adm|
+            tab = instance_variable_get("@#{tab_name}".to_sym)
+            tab[adm] = YAML.load_file(File.join(@@yml_path, adm, "#{tab_name}.yml"))
+            instance_variable_set("@#{tab_name}".to_sym, tab)
+          end
         end
       end
 

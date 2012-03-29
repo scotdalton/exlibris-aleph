@@ -12,6 +12,9 @@ class ConfigHelperTest < ActiveSupport::TestCase
     end
     @adms = ["NYU50", "NYU51"]
     @tab_path = "/mnt/aleph_tab"
+    dummy_path = "#{File.dirname(__FILE__)}/../dummy"
+    @yml_path = File.join(dummy_path, "config/aleph")
+    @log_path = File.join(dummy_path, "log/aleph")
   end
 
   test "instance_with_no_init" do
@@ -19,19 +22,19 @@ class ConfigHelperTest < ActiveSupport::TestCase
   end
 
   test "init" do
-    Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
+    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
     helper = Exlibris::Aleph::TabHelper.instance
     assert_equal(@adms, helper.adms)
   end
 
   test "instance" do
-    Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
+    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
     assert_nothing_raised() { Exlibris::Aleph::TabHelper.send(:new) }
     assert_same(Exlibris::Aleph::TabHelper.instance, Exlibris::Aleph::TabHelper.instance)
   end
   
   test "sub_libraries" do
-    Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
+    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
     helper = Exlibris::Aleph::TabHelper.instance
     assert_equal("BOBST", helper.sub_libraries["BOBST"][:code])
     assert_equal("NYU Bobst", helper.sub_libraries["BOBST"][:text])
@@ -39,14 +42,14 @@ class ConfigHelperTest < ActiveSupport::TestCase
   end
   
   test "patrons" do
-    Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
+    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
     helper = Exlibris::Aleph::TabHelper.instance
     assert_equal("51", helper.patrons["nyu50"]["51"][:code])
     assert_equal("NYU Administrator", helper.patrons["nyu50"]["51"][:text])
   end
   
   test "patron_permissions" do
-    Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
+    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
     helper = Exlibris::Aleph::TabHelper.instance
     assert_equal("BOBST", helper.patron_permissions["nyu50"]["BOBST"]["51"][:sub_library])
     assert_equal("51", helper.patron_permissions["nyu50"]["BOBST"]["51"][:patron_status])
@@ -66,7 +69,7 @@ class ConfigHelperTest < ActiveSupport::TestCase
   end
   
   test "items" do
-    Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
+    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
     helper = Exlibris::Aleph::TabHelper.instance
     assert_equal("ITEM-STATUS", helper.items["nyu50"]["Billed as lost"][:code])
     assert_equal("Billed as lost", helper.items["nyu50"]["Billed as lost"][:original_text])
@@ -74,7 +77,7 @@ class ConfigHelperTest < ActiveSupport::TestCase
   end
   
   test "item_permissions_by_item_status" do
-    Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
+    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
     helper = Exlibris::Aleph::TabHelper.instance
     assert_equal("BOBST", helper.item_permissions_by_item_status["nyu50"]["BOBST"]["01"][:sub_library])
     assert_equal("01", helper.item_permissions_by_item_status["nyu50"]["BOBST"]["01"][:item_status])
@@ -94,7 +97,7 @@ class ConfigHelperTest < ActiveSupport::TestCase
   end
   
   test "item_permissions_by_item_process_status" do
-    Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
+    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
     helper = Exlibris::Aleph::TabHelper.instance
     assert_equal("BOBST", helper.item_permissions_by_item_process_status["nyu50"]["BOBST"]["AC"][:sub_library])
     assert_equal("AC", helper.item_permissions_by_item_process_status["nyu50"]["BOBST"]["AC"][:item_process_status])
@@ -114,7 +117,7 @@ class ConfigHelperTest < ActiveSupport::TestCase
   end
   
   test "collections" do
-    Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
+    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
     helper = Exlibris::Aleph::TabHelper.instance
     assert_equal("BOBST", helper.collections["nyu50"]["BOBST"]["MAIN"][:sub_library])
     assert_equal("MAIN", helper.collections["nyu50"]["BOBST"]["MAIN"][:collection_code])
@@ -122,7 +125,7 @@ class ConfigHelperTest < ActiveSupport::TestCase
   end
   
   test "pickup_locations" do
-    Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
+    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
     helper = Exlibris::Aleph::TabHelper.instance
     assert_equal("BOBST", helper.pickup_locations["nyu50"]["BOBST"]["##"]["DP"]["51"]["Y"][:sub_library])
     assert_equal("##", helper.pickup_locations["nyu50"]["BOBST"]["##"]["DP"]["51"]["Y"][:item_status])
@@ -132,8 +135,8 @@ class ConfigHelperTest < ActiveSupport::TestCase
     assert_equal(["BOBST", "NCOUR", "NIFA", "NISAW", "NREI", "NPOLY", "NYUAB", "NYUSE", "NYUSS"], helper.pickup_locations["nyu50"]["BOBST"]["##"]["DP"]["51"]["Y"][:pickup_locations])
   end
   
-  test "refresh" do
-    Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
+  test "refresh_yml" do
+    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
     helper = Exlibris::Aleph::TabHelper.instance
     assert_nil(helper.sub_libraries["NEW__"])
     sub_library_file = "/mnt/aleph_tab/alephe/tab/tab_sub_library.eng"
@@ -142,6 +145,7 @@ class ConfigHelperTest < ActiveSupport::TestCase
     file.close
     # Update the file.
     File.open(sub_library_file, 'a') {|f| f.puts "NEW__ 1 NYU50 L NYU TEST                       BOBST BOBST BOBST BOBST NYU50 ALEPH" }
+    Exlibris::Aleph::TabHelper.refresh_yml
     helper.refresh
     assert_not_nil(helper.sub_libraries["NEW__"])
     assert_equal("NEW__", helper.sub_libraries["NEW__"][:code])
@@ -152,4 +156,25 @@ class ConfigHelperTest < ActiveSupport::TestCase
     file.truncate(old_size)
     file.close
   end
+  
+  # test "refresh" do
+  #   Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
+  #   helper = Exlibris::Aleph::TabHelper.instance
+  #   assert_nil(helper.sub_libraries["NEW__"])
+  #   sub_library_file = "/mnt/aleph_tab/alephe/tab/tab_sub_library.eng"
+  #   file = File.open(sub_library_file, 'r')
+  #   old_size = file.size
+  #   file.close
+  #   # Update the file.
+  #   File.open(sub_library_file, 'a') {|f| f.puts "NEW__ 1 NYU50 L NYU TEST                       BOBST BOBST BOBST BOBST NYU50 ALEPH" }
+  #   helper.refresh
+  #   assert_not_nil(helper.sub_libraries["NEW__"])
+  #   assert_equal("NEW__", helper.sub_libraries["NEW__"][:code])
+  #   assert_equal("NYU TEST", helper.sub_libraries["NEW__"][:text])
+  #   assert_equal("NYU50", helper.sub_libraries["NEW__"][:library])
+  #   # Revert the file to what it was
+  #   file = File.open(sub_library_file, 'r+')
+  #   file.truncate(old_size)
+  #   file.close
+  # end
 end
