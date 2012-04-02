@@ -212,10 +212,10 @@ module Exlibris
   
       # Returns web display text for the given params.
       # Available param keys are:
-      #   :adm_library_code, :item_status, :item_process_status
+      #   :adm_library_code, :sub_library_code, :item_status_code, :item_process_status_code, :item_status, :item_process_status
       def item_web_text(params)
         adm = items[params[:adm_library_code]]
-        item = (adm[params[:item_process_status]].nil?) ? adm[params[:item_status]] : adm[params[:item_process_status]] unless (params[:item_status].nil? and params[:item_process_status]) or adm.nil?
+        item = (adm[params[:item_process_status]].nil?) ? adm[params[:item_status]] : adm[params[:item_process_status]] unless (params[:item_status].nil? and params[:item_process_status].nil?) or adm.nil?
         permissions = item_permissions(params) if item.nil?
         item = adm[permissions[:text]] unless permissions.nil? or adm.nil?
         return item[:web_text] unless item.nil?

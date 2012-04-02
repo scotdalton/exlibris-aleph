@@ -70,6 +70,25 @@ class ConfigHelperTest < ActiveSupport::TestCase
       helper.item_pickup_locations({:adm_library_code => "nyu50", :sub_library_code => "BOBST", :bor_status => "51"}))
   end
   
+  test "collection_text" do
+    Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
+    helper = Exlibris::Aleph::TabHelper.instance
+    assert_equal(
+      "Main Collection",
+      helper.collection_text({:adm_library_code => "nyu50", :sub_library_code => "BOBST", :collection_code => "MAIN"}))
+  end
+  
+  test "item_web_text" do
+    Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
+    helper = Exlibris::Aleph::TabHelper.instance
+    assert_equal(
+      "Offsite Available",
+      helper.item_web_text({:adm_library_code => "nyu50", :item_process_status => "Depository"}))
+    assert_equal(
+      "Offsite Available",
+      helper.item_web_text({:adm_library_code => "nyu50", :sub_library_code => "BOBST", :item_process_status_code => "DP"}))
+  end
+  
   test "sub_libraries" do
     Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
     helper = Exlibris::Aleph::TabHelper.instance
