@@ -1,8 +1,11 @@
 module Exlibris
   module Aleph
+    # ==Overview
+    # Provides access to the Aleph Patron REST API.
     class Patron < Rest
-      attr_accessor :patron_id
-
+      attr_reader :patron_id
+      
+      # Creates an instance of Exlibris::Aleph::Patron for the given :patron_id
       def initialize(patron_id, uri)
         @patron_id = patron_id
         raise "Initialization error in #{self.class}. Missing patron id." if @patron_id.nil?
@@ -11,7 +14,8 @@ module Exlibris
       end
 
       # Place a hold on the specificed item.
-      # Raises errors if 
+      # Raises an error if there was a problem placing the hold.
+      # Returns a HTTParty::Response.
       def place_hold(adm_library, bib_library, bib_id, item_id, params)
         pickup_location = params[:pickup_location]
         raise "Error in place hold.  Missing pickup location." if pickup_location.nil?
@@ -40,29 +44,38 @@ module Exlibris
         return @response
       end
 
+      # Call the patronInformation/address Aleph Patron REST API
+      # Returns a HTTParty::Response.
       def get_address()
         @response = self.class.get(self.uri+ "/patronInformation/address")
         return nil unless error.nil?
         return @response
       end
 
+      # Call the circulationActions/loans Aleph Patron REST API
+      # Returns a HTTParty::Response.
       def loans()
         @response = self.class.get(@uri+ "/circulationActions/loans?view=full")
         raise "Error getting loans through Aleph REST APIs. #{error}" unless error.nil?
         return @response
       end
 
+      # Renew the specified item.
+      # Will renew all if item not specified.
+      # Returns a HTTParty::Response.
       def renew_loans(item_id="")
-        # Will renew all if specific item not specified
         @response = self.class.post(@uri+ "/circulationActions/loans/#{item_id}")
         raise "Error renewing loan(s) through Aleph REST APIs. #{error}" unless error.nil?
         return @response
       end
-
+      
+      # Returns the note associated with the request.
       def note
         return (not @response.first.last.kind_of?(Hash) or @response.first.last["create_hold"].nil?) ? "" : ": #{@response.first.last["create_hold"]["note"]}" if @response.instance_of?(Hash)
       end
-
+      
+      # Returns the error associated with the request.
+      # Returns nil if no error.
       def error
         return nil if reply_code == "0000"
         return "#{reply_text}#{note}"

@@ -2,8 +2,12 @@ module Exlibris
   module Aleph
     require 'open-uri'
     require 'nokogiri'
+    # ==Overview
+    # Exlibris::Aleph::BorAuth provides access to the BorAuth Aleph XService.
     class BorAuth
       attr_reader :response, :error, :session_id
+      
+      # Creates an instance of Exlibris::Aleph::BorAuth based on the input parameters.
       def initialize(aleph_url, library, sub_library, translate, bor_id, bor_verification)
         url = "#{aleph_url}/X?"
         url += "op=bor-auth&library=#{library}&"
@@ -13,7 +17,8 @@ module Exlibris
         @session_id = @response.at("//session-id").inner_text unless @response.at("//session-id").nil?
         @error = @response.at("//error").inner_text unless @response.at("//error").nil?
       end
-    
+      
+      # Returns a Hash of permissions for the Aleph sub library passed into the constructor.
       def permissions
         rv = {}
         return rv unless @response and self.error.nil?

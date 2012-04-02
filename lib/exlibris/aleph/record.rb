@@ -1,6 +1,11 @@
 module Exlibris
   module Aleph
+    # ==Overview
+    # Provides access to the Aleph Record REST API.
     class Record < Rest
+      attr_reader :bib_library, :record_id
+
+      # Creates an instance of Exlibris::Aleph::Record for the given :bib_library and :record_id
       def initialize(bib_library, record_id, uri)
         @record_id = record_id
         raise "Initialization error in #{self.class}. Missing record id." if @record_id.nil?
@@ -18,6 +23,7 @@ module Exlibris
       # Returns an XML string representation of a bib.  
       # Every method call refreshes the data from the underlying API.
       # Raises and exception if there are errors.
+      # Returns a HTTParty::Response.
       def bib
         @response = self.class.get(@uri+ "?view=full")
         raise "Error getting bib from Aleph REST APIs. #{error}" unless error.nil?
@@ -27,6 +33,7 @@ module Exlibris
       # Returns an array of items. Each item is represented as an HTTParty hash. 
       # Every method call refreshes the data from the underlying API.
       # Raises an exception if the response is not valid XML or there are errors.
+      # Returns a HTTParty::Response.
       def items
         @items = []
         self.class.format :xml
@@ -46,6 +53,7 @@ module Exlibris
       # Returns an XML string representation of holdings 
       # Every method call refreshes the data from the underlying API.
       # Raises and exception if there are errors.
+      # Returns a HTTParty::Response.
       def holdings
         @response = self.class.get(@uri+ "/holdings?view=full")
         raise "Error getting holdings from Aleph REST APIs. #{error}" unless error.nil?

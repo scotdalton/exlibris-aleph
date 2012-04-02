@@ -1,3 +1,16 @@
 = Exlibris::Aleph
 
-This project rocks and uses MIT-LICENSE.
+Exlibris::Primo offers a set of libraries for interacting with the ExLibris Aleph ILS.
+
+== Exlibris::Aleph::Patron
+
+=== Example of Exlibris::Aleph::Patron in action
+
+== Exlibris::Aleph::Record
+
+=== Example of Exlibris::Aleph::Record in action
+
+== Exlibris::Aleph::TabHelper
+
+=== Example of Exlibris::Aleph::TabHelper in action
+
