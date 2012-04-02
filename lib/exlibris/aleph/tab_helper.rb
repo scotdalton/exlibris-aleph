@@ -35,14 +35,14 @@ module Exlibris
       # Initialize TabHelper based on path to tabs, path to store yml configs,
       # path for log file, and the ADMs for the Aleph implementation
       #   Exlibris::Aleph::TabHelper.init("/mnt/aleph_tab", File.join(Rails.root, "config/aleph"), File.join(Rails.root, "log"), ["ADM50", "ADM51"])
-      def self.init(tab_path, yml_path, log_path, adms)
-        @@tab_path = tab_path
-        @@adms = adms
-        @@yml_path = yml_path
-        @@log_path = log_path
-        Dir.mkdir(yml_path) unless Dir.exist?(yml_path)
-        @@adms.each { |adm| Dir.mkdir(File.join(yml_path, adm)) unless Dir.exist?(File.join(yml_path, adm)) }
-        Dir.mkdir(log_path) unless Dir.exist?(log_path)
+      def self.init(tab_path, yml_path, log_path, adms, refresh_time = ->{1.day.ago})
+        @@tab_path, @@adms, @@yml_path, @@log_path, @@refresh_time = tab_path, adms, yml_path, log_path, refresh_time
+        Dir.mkdir(@@yml_path) unless @@yml_path.nil? or Dir.exist?(@@yml_path) 
+        Dir.mkdir(File.join(@@yml_path, "alephe")) unless @@yml_path.nil? or Dir.exist?(File.join(@@yml_path, "alephe"))
+        @@adms.each { |adm| 
+          Dir.mkdir(File.join(yml_path, adm)) unless @@yml_path.nil? or Dir.exist?(File.join(@@yml_path, adm)) 
+        } unless @@adms.nil?
+        Dir.mkdir(@@log_path) unless @@log_path.nil? or Dir.exist?(@@log_path)
         # Make readers for each class variable
         class_variables.each do |class_variable|
           define_method "#{class_variable}".sub('@@', '') do
@@ -72,25 +72,21 @@ module Exlibris
         raise ArgumentError.new("No tab path was specified.") if @@tab_path.nil?
         raise ArgumentError.new("No yml path was specified.") if @@yml_path.nil?
         raise ArgumentError.new("No log path was specified.") if @@log_path.nil?
-        raise ArgumentError.new("No ADMs were specified.") if @@adms.empty?
+        raise ArgumentError.new("No ADMs were specified.") if @@adms.nil? or @@adms.empty?
+        raise ArgumentError.new("No refresh time was specified.") if @@refresh_time.nil?
         self.class.refresh_yml
         @helper_log = Logger.new(File.join(@@log_path, "tab_helper.log"))
         @helper_log.level = Logger::WARN
         @@tabs.each { |tab|
           # Default to empty hash
           instance_variable_set("@#{tab}".to_sym, {})
-          # Define method w/ refresh
-          define_method tab do
+          # Define reader w/ refresh
+          self.class.send(:define_method, tab) {
             return instance_variable_get("@#{tab}".to_sym) unless refresh?
             refresh and return instance_variable_get("@#{tab}".to_sym)
-          end
+          }
         }
         refresh
-      end
-
-      def sub_libraries
-        return @sub_libraries unless refresh?
-        refresh and return @sub_libraries
       end
 
       # Returns the sub library display text for the given sub library code
@@ -258,13 +254,10 @@ module Exlibris
   
       private
       def refresh?
-        return true if (@updated_at.nil? or @updated_at < 1.day.ago)
+        return (@updated_at.nil? or @updated_at < @@refresh_time.call)
       end  
 
       def refresh
-        @updated_at = Time.now()
-        @@adm_tabs.each_key do |key|
-        @sub_libraries = YAML.load_file(File.join(@@yml_path, "#{:sub_libraries}.yml"))
         @@alephe_tabs.each_key do |key|
           instance_variable_set("@#{key}".to_sym, YAML.load_file(File.join(@@yml_path, "alephe", "#{key}.yml")))
         end
@@ -275,6 +268,7 @@ module Exlibris
             instance_variable_set("@#{key}".to_sym, tab)
           end
         end
+        @updated_at = Time.now()
       end
 
       def raise_required_parameter_error(parameter)

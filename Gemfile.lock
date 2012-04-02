@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    exlibris-aleph (0.0.2)
+    exlibris-aleph (0.1.0)
       httparty
       nokogiri
       rails (~> 3.2.0)

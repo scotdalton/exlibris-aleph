@@ -2,14 +2,7 @@ require 'test_helper'
 class ConfigHelperTest < ActiveSupport::TestCase
   def setup
     Exlibris::Aleph::TabHelper.class_variable_set(:@@adms, [])
-    [ :@@patrons_path,
-      :@@items_path,
-      :@@item_permissions_by_item_status_path,
-      :@@item_permissions_by_item_process_status_path,
-      :@@collections_path,
-      :@@pickup_locations_path ].each do |class_variable|
-        Exlibris::Aleph::TabHelper.class_variable_set(class_variable, {})
-    end
+    Exlibris::Aleph::TabHelper.class_variable_set(:@@refresh_time, ->{1.day.ago})
     @adms = ["NYU50", "NYU51"]
     @tab_path = "/mnt/aleph_tab"
     dummy_path = "#{File.dirname(__FILE__)}/../dummy"
@@ -18,6 +11,19 @@ class ConfigHelperTest < ActiveSupport::TestCase
   end
 
   test "instance_with_no_init" do
+    assert_raise(ArgumentError) { Exlibris::Aleph::TabHelper.send(:new) }
+  end
+
+  test "instance_with_wrong_init" do
+    Exlibris::Aleph::TabHelper.init(@tab_path, nil, nil, nil)
+    assert_raise(ArgumentError) { Exlibris::Aleph::TabHelper.send(:new) }
+    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, nil, nil)
+    assert_raise(ArgumentError) { Exlibris::Aleph::TabHelper.send(:new) }
+    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, nil)
+    assert_raise(ArgumentError) { Exlibris::Aleph::TabHelper.send(:new) }
+    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, [])
+    assert_raise(ArgumentError) { Exlibris::Aleph::TabHelper.send(:new) }
+    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms, nil)
     assert_raise(ArgumentError) { Exlibris::Aleph::TabHelper.send(:new) }
   end
 
@@ -31,6 +37,19 @@ class ConfigHelperTest < ActiveSupport::TestCase
     Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
     assert_nothing_raised() { Exlibris::Aleph::TabHelper.send(:new) }
     assert_same(Exlibris::Aleph::TabHelper.instance, Exlibris::Aleph::TabHelper.instance)
+  end
+  
+  test "refresh" do
+    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms, ->{1.second.ago})
+    helper = Exlibris::Aleph::TabHelper.instance
+    helper.sub_libraries
+    updated_at_1 = helper.updated_at
+    helper.sub_libraries
+    updated_at_2 = helper.updated_at
+    assert_equal(updated_at_1, updated_at_2)
+    sleep 1
+    helper.sub_libraries
+    assert_not_equal(updated_at_1, helper.updated_at)
   end
   
   test "sub_library_text" do
@@ -164,7 +183,7 @@ class ConfigHelperTest < ActiveSupport::TestCase
     # Update the file.
     File.open(sub_library_file, 'a') {|f| f.puts "NEW__ 1 NYU50 L NYU TEST                       BOBST BOBST BOBST BOBST NYU50 ALEPH" }
     Exlibris::Aleph::TabHelper.refresh_yml
-    helper.refresh
+    helper.send(:refresh)
     assert_not_nil(helper.sub_libraries["NEW__"])
     assert_equal("NEW__", helper.sub_libraries["NEW__"][:code])
     assert_equal("NYU TEST", helper.sub_libraries["NEW__"][:text])
@@ -174,25 +193,4 @@ class ConfigHelperTest < ActiveSupport::TestCase
     file.truncate(old_size)
     file.close
   end
-  
-  # test "refresh" do
-  #   Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
-  #   helper = Exlibris::Aleph::TabHelper.instance
-  #   assert_nil(helper.sub_libraries["NEW__"])
-  #   sub_library_file = "/mnt/aleph_tab/alephe/tab/tab_sub_library.eng"
-  #   file = File.open(sub_library_file, 'r')
-  #   old_size = file.size
-  #   file.close
-  #   # Update the file.
-  #   File.open(sub_library_file, 'a') {|f| f.puts "NEW__ 1 NYU50 L NYU TEST                       BOBST BOBST BOBST BOBST NYU50 ALEPH" }
-  #   helper.refresh
-  #   assert_not_nil(helper.sub_libraries["NEW__"])
-  #   assert_equal("NEW__", helper.sub_libraries["NEW__"][:code])
-  #   assert_equal("NYU TEST", helper.sub_libraries["NEW__"][:text])
-  #   assert_equal("NYU50", helper.sub_libraries["NEW__"][:library])
-  #   # Revert the file to what it was
-  #   file = File.open(sub_library_file, 'r+')
-  #   file.truncate(old_size)
-  #   file.close
-  # end
 end
