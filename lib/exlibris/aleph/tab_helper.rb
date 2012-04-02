@@ -43,7 +43,7 @@ module Exlibris
         Dir.mkdir(@@yml_path) unless @@yml_path.nil? or Dir.exist?(@@yml_path) 
         Dir.mkdir(File.join(@@yml_path, "alephe")) unless @@yml_path.nil? or Dir.exist?(File.join(@@yml_path, "alephe"))
         @@adms.each { |adm| 
-          Dir.mkdir(File.join(yml_path, adm)) unless @@yml_path.nil? or Dir.exist?(File.join(@@yml_path, adm)) 
+          Dir.mkdir(File.join(@@yml_path, adm)) unless @@yml_path.nil? or Dir.exist?(File.join(@@yml_path, adm)) 
         } unless @@adms.nil?
         Dir.mkdir(@@log_path) unless @@log_path.nil? or Dir.exist?(@@log_path)
         # Make readers for each class variable
