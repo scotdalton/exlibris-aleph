@@ -33,7 +33,7 @@ Exlibris::Aleph::TabHelperprovides a way to access the various tab settings for 
   # Placed this in an initializer.
   Exlibris::Aleph::TabHelper.init("/mnt/aleph_tab", ["ADM50", "ADM50"])
 
-  # Rake task included
+  # Rake task to refresh the config yml files
   rake exlibris:aleph:refresh
 
   # Get an instance of TabHelper
