@@ -33,6 +33,24 @@ class ConfigHelperTest < ActiveSupport::TestCase
     assert_same(Exlibris::Aleph::TabHelper.instance, Exlibris::Aleph::TabHelper.instance)
   end
   
+  test "sub_library_text" do
+    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
+    helper = Exlibris::Aleph::TabHelper.instance
+    assert_equal("NYU Bobst", helper.sub_library_text("BOBST"))
+  end
+  
+  test "sub_library_adm" do
+    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
+    helper = Exlibris::Aleph::TabHelper.instance
+    assert_equal("NYU50", helper.sub_library_adm("BOBST"))
+  end
+  
+  test "item_pickup_locations" do
+    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
+    helper = Exlibris::Aleph::TabHelper.instance
+    puts helper.item_pickup_locations({:adm_library_code => "nyu50", :sub_library_code => "BOBST", :bor_status => "51"}).inspect
+  end
+  
   test "sub_libraries" do
     Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
     helper = Exlibris::Aleph::TabHelper.instance

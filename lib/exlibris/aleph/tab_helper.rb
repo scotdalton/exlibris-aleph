@@ -1,24 +1,40 @@
-# This guy is a singleton, get one with Exlibris::Aleph::TabHelper.instance
 module Exlibris
   module Aleph
     require 'singleton'
     require 'yaml'
+    # ==Overview
+    # Exlibris::Aleph::TabHelper assumes a mount of Aleph tab files and provides
+    # a way to access the various tab settings for patrons, patron_permissions,
+    # items, item_permission (both by item status and by item processing status), 
+    # collections and pickup locations.
+    # It also provides convenience methods for common tasks like getting the 
+    # pickup location for a given combination of item status, item process status
+    # and borrower status or getting an item's web text.
+    # To initialize Exlibris::Aleph::TabHelper call Exlibris::Aleph::TabHelper.init
+    # in an initializer.
     class TabHelper
       include Singleton
-      attr_reader :sub_libraries, :updated_at
-      @@tabs = { 
+      attr_reader :updated_at
+      @@alephe_tabs = {
+        :sub_libraries => :TabSubLibrary
+      }
+      @@adm_tabs = { 
         :patrons => :PcTabExpFieldExtended, 
         :patron_permissions => :Tab31, 
         :items => :TabWwwItemDesc, 
         :item_permissions_by_item_status => :Tab15ByItemStatus, 
         :item_permissions_by_item_process_status => :Tab15ByItemProcessStatus, 
         :collections => :Tab40, 
-        :pickup_locations =>  :Tab37}
+        :pickup_locations => :Tab37 }
+      @@tabs = @@alephe_tabs.keys + @@adm_tabs.keys
       @@adms = []
       @@tab_path = nil
       @@yml_path = nil
       @@log_path = nil
-
+      
+      # Initialize TabHelper based on path to tabs, path to store yml configs,
+      # path for log file, and the ADMs for the Aleph implementation
+      #   Exlibris::Aleph::TabHelper.init("/mnt/aleph_tab", File.join(Rails.root, "config/aleph"), File.join(Rails.root, "log"), ["ADM50", "ADM51"])
       def self.init(tab_path, yml_path, log_path, adms)
         @@tab_path = tab_path
         @@adms = adms
@@ -35,19 +51,23 @@ module Exlibris
         end
       end
       
+      # Refreshes the yml files that are used to parse the tables.
       def self.refresh_yml
-        tab = Exlibris::Aleph::Config::TabSubLibrary.new({
-          :aleph_library => "ALEPHE", :aleph_mnt_path => @@tab_path}).to_h
-        File.open(File.join(@@yml_path, "#{:sub_libraries}.yml"), 'w') { |out| YAML.dump( tab, out ) } unless tab.empty?
-        @@tabs.each do |tab_name, tab_class|
+        @@alephe_tabs.each do |key, klass|
+          tab = Exlibris::Aleph::Config.const_get(klass).new({
+            :aleph_library => "ALEPHE", :aleph_mnt_path => @@tab_path}).to_h
+          File.open( File.join(@@yml_path, "alephe", "#{key}.yml"), 'w' ) { |out| YAML.dump( tab, out ) } unless tab.empty?
+        end
+        @@adm_tabs.each do |key, klass|
           @@adms.each do |adm|
-            tab = Exlibris::Aleph::Config.const_get(tab_class).new({
+            tab = Exlibris::Aleph::Config.const_get(klass).new({
               :aleph_library => adm, :aleph_mnt_path => @@tab_path}).to_h
-            File.open( File.join(@@yml_path, adm, "#{tab_name}.yml"), 'w' ) { |out| YAML.dump( tab, out ) } unless tab.empty?
+            File.open( File.join(@@yml_path, adm, "#{key}.yml"), 'w' ) { |out| YAML.dump( tab, out ) } unless tab.empty?
           end
         end
       end
       
+      # Private initialzize method for the singleton.
       def initialize
         raise ArgumentError.new("No tab path was specified.") if @@tab_path.nil?
         raise ArgumentError.new("No yml path was specified.") if @@yml_path.nil?
@@ -56,37 +76,40 @@ module Exlibris
         self.class.refresh_yml
         @helper_log = Logger.new(File.join(@@log_path, "tab_helper.log"))
         @helper_log.level = Logger::WARN
-        @patrons = {}
-        @patron_permissions = {}
-        @items = {}
-        @item_permissions_by_item_status = {}
-        @item_permissions_by_item_process_status = {}
-        @collections = {}
-        @pickup_locations = {}
-        @sub_libraries = {}
-        @@tabs.each_key { |tab| self.class.send(:attr_reader, tab) }
+        @@tabs.each { |tab|
+          # Default to empty hash
+          instance_variable_set("@#{tab}".to_sym, {})
+          # Define method w/ refresh
+          define_method tab do
+            return instance_variable_get("@#{tab}".to_sym) unless refresh?
+            refresh and return instance_variable_get("@#{tab}".to_sym)
+          end
+        }
         refresh
       end
-  
-      def sub_library_text(params)
-        # raise_required_parameter_error :sub_library_code if params[:sub_library_code].nil?
-        sub_library = @sub_libraries[params[:sub_library_code]]
+
+      def sub_libraries
+        return @sub_libraries unless refresh?
+        refresh and return @sub_libraries
+      end
+
+      # Returns the sub library display text for the given sub library code
+      def sub_library_text(code)
+        sub_library = @sub_libraries[code]
         return sub_library[:text] unless sub_library.nil?
       end
   
-      def sub_library_adm(params)
-        # raise_required_parameter_error :sub_library_code if params[:sub_library_code].nil?
-        sub_library = @sub_libraries[params[:sub_library_code]]
+      # Returns the ADM associated with the given sub library code
+      def sub_library_adm(code)
+        sub_library = @sub_libraries[code]
         return sub_library[:library] unless sub_library.nil?
       end
   
+      # Returns an array of pickup locations based on the given params.
+      # Available param keys are:
+      #   :adm_library_code, :sub_library_code, :item_status_code,
+      #   :item_process_status_code, :bor_status, :availability_status
       def item_pickup_locations(params)
-        # raise_required_parameter_error :adm_library_code if params[:adm_library_code].nil?
-        # raise_required_parameter_error :sub_library_code if params[:sub_library_code].nil?
-        # raise_required_parameter_error :item_status_code if params[:item_status_code].nil?
-        # raise_required_parameter_error :item_process_status_code if params[:item_process_status_code].nil?
-        # raise_required_parameter_error :bor_status if params[:bor_status].nil?
-        # raise_required_parameter_error :availability_status if params[:availability_status].nil?
         adm_locations = pickup_locations[params[:adm_library_code]]
         sub_locations = adm_locations[params[:sub_library_code]] unless adm_locations.nil?
 
@@ -178,16 +201,19 @@ module Exlibris
           return [params[:sub_library_code]]
       end
   
+      # Returns collection text for the given params.
+      # Available param keys are:
+      #   :adm_library_code, :sub_library_code, :collection_code
       def collection_text(params)
-        # raise_required_parameter_error :adm_library_code if params[:adm_library_code].nil?
-        # raise_required_parameter_error :sub_library_code if params[:sub_library_code].nil?
-        # raise_required_parameter_error :collection_code if params[:collection_code].nil?
         adm = collections[params[:adm_library_code]]
         sub = adm[params[:sub_library_code]] unless adm.nil?
         coll = sub[params[:collection_code]] unless sub.nil?
         return coll[:text] unless coll.nil?
       end
   
+      # Returns web display text for the given params.
+      # Available param keys are:
+      #   :adm_library_code, :item_status, :item_process_status
       def item_web_text(params)
         adm = items[params[:adm_library_code]]
         item = (adm[params[:item_process_status]].nil?) ? adm[params[:item_status]] : adm[params[:item_process_status]] unless (params[:item_status].nil? and params[:item_process_status]) or adm.nil?
@@ -197,6 +223,9 @@ module Exlibris
         return permissions[:text] unless permissions.nil?
       end
   
+      # Returns item permissions for the given params.
+      # Available param keys are:
+      #   :adm_library_code, :sub_library_code, :item_status_code, :item_process_status_code
       def item_permissions(params)
         unless params[:item_process_status_code].nil?
           adm_permissions = 
@@ -227,23 +256,27 @@ module Exlibris
         return {}
       end
   
+      private
       def refresh?
         return true if (@updated_at.nil? or @updated_at < 1.day.ago)
       end  
 
       def refresh
         @updated_at = Time.now()
+        @@adm_tabs.each_key do |key|
         @sub_libraries = YAML.load_file(File.join(@@yml_path, "#{:sub_libraries}.yml"))
-        @@tabs.each_key do |tab_name|
+        @@alephe_tabs.each_key do |key|
+          instance_variable_set("@#{key}".to_sym, YAML.load_file(File.join(@@yml_path, "alephe", "#{key}.yml")))
+        end
+        @@adm_tabs.each_key do |key|
           @@adms.each do |adm|
-            tab = instance_variable_get("@#{tab_name}".to_sym)
-            tab[adm] = YAML.load_file(File.join(@@yml_path, adm, "#{tab_name}.yml"))
-            instance_variable_set("@#{tab_name}".to_sym, tab)
+            tab = instance_variable_get("@#{key}".to_sym)
+            tab[adm] = YAML.load_file(File.join(@@yml_path, adm, "#{key}.yml"))
+            instance_variable_set("@#{key}".to_sym, tab)
           end
         end
       end
 
-      private
       def raise_required_parameter_error(parameter)
         raise "Initialization error in #{self.class}. Missing required parameter: #{parameter}."
       end
