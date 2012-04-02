@@ -3,7 +3,7 @@ namespace :exlibris do
     desc "Initialize rake environment"
     task :initialize do
       Dir.glob("config/initializers/*.rb").each do |initializer|
-          require File.expand_path(initializer, __FILE__)
+          require File.expand_path(File.join(Rails.root, initializer), __FILE__)
       end
     end
 
