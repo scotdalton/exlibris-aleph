@@ -52,5 +52,5 @@ Exlibris::Aleph::BorAuth provides access to the BorAuth Aleph XService.
   bor_auth = 
     Exlibris::Aleph::BorAuth.
       new("http://aleph.institution.edu", "ADM50", "SBLIB", "N", "S0M31D", "V3R1F1C@T10N")
-  permissions = bor_auth.permissions
+  permissions = bor_auth.permissions # Return a Hash of permissions based on the Exlibris::Aleph::BorAuth instance
 
