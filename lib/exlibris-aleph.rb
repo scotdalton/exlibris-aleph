@@ -17,5 +17,5 @@ PATH = File.dirname(__FILE__) + "/exlibris/aleph/"
   'bor_auth',
   'railtie'
 ].each do |library|
-  require PATH + library
+  require PATH + library if defined?(Rails)
 end

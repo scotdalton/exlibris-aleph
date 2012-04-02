@@ -15,14 +15,14 @@ class TabHelperBenchmarks < ActiveSupport::TestCase
     # Display performance benchmarks.
     time = Benchmark.bmbm do |results|
       results.report("TabHelper init:") { @TESTS.times { 
-        Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
+        Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
       } }
     end
   end
 
   # Get benchmarks for the Aleph TabHelper
   test "benchmarks_refresh_yml" do
-    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
+    Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
     # Display performance benchmarks.
     time = Benchmark.bmbm do |results|
       results.report("TabHelper refresh_yml:") { @TESTS.times { 
@@ -33,7 +33,7 @@ class TabHelperBenchmarks < ActiveSupport::TestCase
 
   # Get benchmarks for the Aleph TabHelper
   test "benchmarks_new" do
-    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
+    Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
     # Display performance benchmarks.
     time = Benchmark.bmbm do |results|
       results.report("TabHelper new:") { @TESTS.times { 
@@ -44,7 +44,7 @@ class TabHelperBenchmarks < ActiveSupport::TestCase
 
   # Get benchmarks for the Aleph TabHelper
   test "benchmarks_instance" do
-    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
+    Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
     Exlibris::Aleph::TabHelper.send(:new)
     # Display performance benchmarks.
     time = Benchmark.bmbm do |results|
@@ -56,7 +56,7 @@ class TabHelperBenchmarks < ActiveSupport::TestCase
 
   # Get benchmarks for the Aleph TabHelper
   test "benchmarks_refresh" do
-    Exlibris::Aleph::TabHelper.init(@tab_path, @yml_path, @log_path, @adms)
+    Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
     helper = Exlibris::Aleph::TabHelper.instance
     # Display performance benchmarks.
     time = Benchmark.bmbm do |results|

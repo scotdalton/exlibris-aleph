@@ -2,6 +2,7 @@ module Exlibris
   module Aleph
     require 'singleton'
     require 'yaml'
+    require 'rails'
     # ==Overview
     # Exlibris::Aleph::TabHelper assumes a mount of Aleph tab files and provides
     # a way to access the various tab settings for patrons, patron_permissions,
@@ -34,9 +35,11 @@ module Exlibris
       
       # Initialize TabHelper based on path to tabs, path to store yml configs,
       # path for log file, and the ADMs for the Aleph implementation
-      #   Exlibris::Aleph::TabHelper.init("/mnt/aleph_tab", File.join(Rails.root, "config/aleph"), File.join(Rails.root, "log"), ["ADM50", "ADM51"])
-      def self.init(tab_path, yml_path, log_path, adms, refresh_time = ->{1.day.ago})
-        @@tab_path, @@adms, @@yml_path, @@log_path, @@refresh_time = tab_path, adms, yml_path, log_path, refresh_time
+      #   Exlibris::Aleph::TabHelper.init("/mnt/aleph_tab", ["ADM50", "ADM51"])
+      def self.init(tab_path, adms, refresh_time = ->{1.day.ago})
+        @@tab_path, @@adms, @@refresh_time = tab_path, adms, refresh_time
+        # Set yml path and log path and make directories.
+        @@yml_path, @@log_path = File.join(Rails.root, "config/aleph"), File.join(Rails.root, "log")
         Dir.mkdir(@@yml_path) unless @@yml_path.nil? or Dir.exist?(@@yml_path) 
         Dir.mkdir(File.join(@@yml_path, "alephe")) unless @@yml_path.nil? or Dir.exist?(File.join(@@yml_path, "alephe"))
         @@adms.each { |adm| 
