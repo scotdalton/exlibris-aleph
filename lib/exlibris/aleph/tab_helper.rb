@@ -57,14 +57,12 @@ module Exlibris
       # Refreshes the yml files that are used to parse the tables.
       def self.refresh_yml
         @@alephe_tabs.each do |key, klass|
-          tab = Exlibris::Aleph::Config.const_get(klass).new({
-            :aleph_library => "ALEPHE", :aleph_mnt_path => @@tab_path}).to_h
+          tab = Exlibris::Aleph::Config.const_get(klass).new(:aleph_library => "ALEPHE", :aleph_mnt_path => @@tab_path).to_h
           File.open( File.join(@@yml_path, "alephe", "#{key}.yml"), 'w' ) { |out| YAML.dump( tab, out ) } unless tab.empty?
         end
         @@adm_tabs.each do |key, klass|
           @@adms.each do |adm|
-            tab = Exlibris::Aleph::Config.const_get(klass).new({
-              :aleph_library => adm, :aleph_mnt_path => @@tab_path}).to_h
+            tab = Exlibris::Aleph::Config.const_get(klass).new(:aleph_library => adm, :aleph_mnt_path => @@tab_path).to_h
             File.open( File.join(@@yml_path, adm, "#{key}.yml"), 'w' ) { |out| YAML.dump( tab, out ) } unless tab.empty?
           end
         end

@@ -191,6 +191,13 @@ class ConfigHelperTest < ActiveSupport::TestCase
     assert_equal(["BOBST", "NCOUR", "NIFA", "NISAW", "NREI", "NPOLY", "NYUAB", "NYUSE", "NYUSS"], helper.pickup_locations["nyu50"]["BOBST"]["##"]["DP"]["51"]["Y"][:pickup_locations])
   end
   
+  test "pickup_locations on multiple lines" do
+    Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
+    helper = Exlibris::Aleph::TabHelper.instance
+    assert_equal(["BOBST", "NCOUR", "NIFA","NISAW","NREI","NPOLY","NYUAB","NBERL",
+      "NFLOR","NLOND","NPRAG","NWADC"], helper.pickup_locations["nyu50"]["BOBST"]["##"]["##"]["89"]["#"][:pickup_locations])
+  end
+  
   test "refresh_yml" do
     Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
     helper = Exlibris::Aleph::TabHelper.instance

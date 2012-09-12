@@ -46,7 +46,7 @@ module Exlibris
         item_list = @response["get_item_list"]["items"]["item"]
         @items.push(item_list) if item_list.instance_of?(Hash)
         item_list.each {|item|@items.push(item)} if item_list.instance_of?(Array)
-        Rails.logger.warn("No items returned from Aleph in #{self.class}.") if @items.empty?
+        # Rails.logger.warn("No items returned from Aleph in #{self.class}.") if @items.empty?
         return @items
       end
 
