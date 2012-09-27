@@ -284,7 +284,7 @@ module Exlibris
           end
         end
         # Delete irrelevant sub libraries from @sub_library
-        @sub_library.delete_if {|key,value| @@irrelevant_sub_libraries.include? key }
+        @sub_libraries.delete_if {|key,value| @@irrelevant_sub_libraries.include? key }
         @updated_at = Time.now()
       end
 
