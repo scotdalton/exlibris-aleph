@@ -64,8 +64,9 @@ module Exlibris
       end
       
       # Sets class variable of irrelevant sub libraries to be ignored when building sub_libraries YAML
-      def self.set_irrelevant_sub_libraries(irrelevant_sub_libraries)
-        @@irrelevant_sub_libraries = irrelevant_sub_libraries
+      def self.set_irrelevant_sub_libraries(irrelevant_sub_libraries, replace = true)
+        @@irrelevant_sub_libraries |= irrelevant_sub_libraries if replace
+        @@irrelevant_sub_libraries = irrelevant_sub_libraries unless replace
       end
       
       # Refreshes the yml files that are used to parse the tables.

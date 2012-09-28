@@ -49,7 +49,9 @@ Exlibris::Aleph::TabHelper provides a way to access the various tab settings for
 To configure the gem to ignore sub libraries pulled from Aleph but not relevant to working with permissions call the following setter with an array of sub library Aleph codes.
 
   # Place this in an initializer.
-  Exlibris::Aleph::TabHelper.set_irrelevant_sub_libraries(["IRRLIB1", "IRRLIB1"])
+  Exlibris::Aleph::TabHelper.set_irrelevant_sub_libraries(["IRRLIB1", "IRRLIB1"], replace = false)
+
+If the boolean variable _replace_ is true the array passed in will replace the defaults. If it is false the array passed in will merge with the results. The default value is true.
   
 == Exlibris::Aleph::BorAuth
 Exlibris::Aleph::BorAuth provides access to the BorAuth Aleph XService.
