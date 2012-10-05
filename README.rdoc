@@ -1,4 +1,7 @@
 = Exlibris::Aleph
+{<img src="https://secure.travis-ci.org/scotdalton/exlibris-aleph.png" alt="Build Status" />}[https://secure.travis-ci.org/scotdalton/exlibris-aleph]
+{<img src="https://gemnasium.com/scotdalton/exlibris-aleph.png" alt="Dependency Status" />}[https://gemnasium.com/scotdalton/exlibris-aleph]
+{<img src="https://codeclimate.com/badge.png" />}[https://codeclimate.com/github/scotdalton/exlibris-aleph]
 
 Exlibris::Primo offers a set of libraries for interacting with the ExLibris Aleph ILS.
 
