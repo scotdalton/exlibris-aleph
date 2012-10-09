@@ -1,8 +1,8 @@
 require 'test_helper'
 class ConfigHelperTest < ActiveSupport::TestCase
   def setup
-    Exlibris::Aleph::TabHelper.class_variable_set(:@@adms, [])
-    Exlibris::Aleph::TabHelper.class_variable_set(:@@refresh_time, lambda{1.day.ago})
+    Exlibris::Aleph::TabHelper.send(:class_variable_set, :@@adms, [])
+    Exlibris::Aleph::TabHelper.send(:class_variable_set, :@@refresh_time, lambda{1.day.ago})
     @adms = ["NYU50", "NYU51"]
     @tab_path = "/mnt/aleph_tab"
     dummy_path = "#{File.dirname(__FILE__)}/../dummy"
@@ -204,7 +204,7 @@ class ConfigHelperTest < ActiveSupport::TestCase
     assert_nil(helper.sub_libraries["NEW__"])
     sub_library_file = "/mnt/aleph_tab/alephe/tab/tab_sub_library.eng"
     file = File.open(sub_library_file, 'r')
-    old_size = file.size
+    old_size = File.size(sub_library_file)
     file.close
     # Update the file.
     File.open(sub_library_file, 'a') {|f| f.puts "NEW__ 1 NYU50 L NYU TEST                       BOBST BOBST BOBST BOBST NYU50 ALEPH" }

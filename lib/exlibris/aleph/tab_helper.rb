@@ -58,7 +58,7 @@ module Exlibris
         # Make readers for each class variable
         class_variables.each do |class_variable|
           define_method "#{class_variable}".sub('@@', '') do
-            self.class.class_variable_get "#{class_variable}"
+            self.class.send(:class_variable_get, "#{class_variable}")
           end 
         end
       end
