@@ -1,0 +1,178 @@
+!
+! NOTE - 1) do not edit this header section
+!      - 2) this header is created from the template located
+!        in $aleph_headers (sub-folders)
+!      - 3) to add remarks within the table,
+!        start the line with !rem or !*
+!      - 4) to mark a line as non-used (but restorable)
+!        add ! at start of line, retaining column structure
+!        displaced by one position to the right
+!      - 5) all internal codes must be Latin characters A-Z,0-9
+!
+!==============================================================================
+!       pc_tab_exp_field_extended.eng
+!Definition of GUI drop-down menus 
+!==============================================================================
+! Last header change: 10/07/2008
+!
+! TABLE_KEY 1,4,5
+! HELP
+! This table contains entries that were moved from pc_tab_exp_field.eng
+! in order to allow for sublibrary sensitivity
+! Only the fields with the following internal strings can be used with
+! pc_tab_exp_field_extended.eng:
+! BOR-STATUS
+! BOR-TYPE
+! INVENTORY-NUMBER
+! ITEM-LOCATION
+! ITEM-LOCATION-2
+! LOCATION-GR
+! LOCATION-USIG
+! LOCATION-PREFIX
+! LOCATION-SOURCE
+! LOCATION-SUFFIX
+! ITEM-PART-1    
+!
+! END_HELP
+!
+! COL  1.  20; TEXT, UPPER; ;
+!             Internal command;
+!             Internal command;
+! COL  2.  5; ALPHA_NUM, UPPER; #;
+!            Sublibrary;
+!            Sublibrary;        
+! COL  3.  1; ALPHA {L}, UPPER; ;
+!            ALPHA;
+!            ALPHA;        
+! COL  4.  50; TEXT; ;
+!             Description;
+!             Description;
+! COL  5.  100; TEXT; ;
+!             Code;
+!             Code:
+!             Up to 100 characters;
+!
+!        1             2   3                               4                    !                    5
+!!!!!!!!!!!!!!!!!!!!-!!!!!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!>
+BOR-STATUS           ##### L Palmer Faculty                                     03
+BOR-STATUS           ##### L Palmer Student                                     04
+BOR-STATUS           ##### L Hebrew Union Faculty                               05
+BOR-STATUS           ##### L Hebrew Union PhD Student                           06
+BOR-STATUS           ##### L Hebrew Union Masters/UG Student                    07
+BOR-STATUS           ##### L Cooper Union Full Time Faculty                     10
+BOR-STATUS           ##### L Cooper Union Administrator                         11
+BOR-STATUS           ##### L Cooper Union Adjunct Faculty                       12
+BOR-STATUS           ##### L Cooper Union Graduate Student                      15
+BOR-STATUS           ##### L Cooper Union Staff                                 16
+BOR-STATUS           ##### L Cooper Union Undergraduate Student                 17
+BOR-STATUS           ##### L New School Faculty                                 30
+BOR-STATUS           ##### L New School Administrator                           31
+BOR-STATUS           ##### L New School Part-Time Faculty                       32
+BOR-STATUS           ##### L New School Visiting Scholar                        33
+BOR-STATUS           ##### L New School PhD Student                             34
+BOR-STATUS           ##### L New School Graduate Student                        35
+BOR-STATUS           ##### L New School Staff                                   36
+BOR-STATUS           ##### L New School Undergraduate Student                   37
+BOR-STATUS           ##### L New School Special Patron                          38
+BOR-STATUS           ##### L New School Friend of Library                       39
+BOR-STATUS           ##### L New School Non-Matriculating Faculty               40
+BOR-STATUS           ##### L New School Non-Matriculating Student               41
+BOR-STATUS           ##### L New School Interlibrary Loan                       42
+BOR-STATUS           ##### L New School Alumni                                  43
+BOR-STATUS           ##### L NYU Full Time Faculty                              50
+BOR-STATUS           ##### L NYU Administrator                                  51
+BOR-STATUS           ##### L NYU Adjunct Faculty                                52
+BOR-STATUS           ##### L NYU Visiting Faculty                               53
+BOR-STATUS           ##### L NYU PhD student                                    54
+BOR-STATUS           ##### L NYU Master.s Student                               55
+BOR-STATUS           ##### L NYU Staff                                          56
+BOR-STATUS           ##### L NYU Undergraduate Student                          57
+BOR-STATUS           ##### L NYU Faculty Resource Network                       58
+BOR-STATUS           ##### L Courant Collaborator                               59
+BOR-STATUS           ##### L NYU Guest Borrower                                 60
+BOR-STATUS           ##### L NYU TA                                             61
+BOR-STATUS           ##### L NYU Research Faculty                               62
+BOR-STATUS           ##### L Non-Degree Faculty                                 63
+BOR-STATUS           ##### L Non-Degree Student                                 64
+BOR-STATUS           ##### L NYU Employee Family                                65
+BOR-STATUS           ##### L NYU Post Doc                                       66
+BOR-STATUS           ##### L Bobst ILL                                          67
+BOR-STATUS           ##### L NYU International ILL                              68
+BOR-STATUS           ##### L Friends of Bobst Library                           69
+BOR-STATUS           ##### L NYU Poly Faculty                                   70
+BOR-STATUS           ##### L NYU Poly Grad Students                             72
+BOR-STATUS           ##### L NYU Poly PHD Students                              74
+BOR-STATUS           ##### L NYU Poly Staff                                     76
+BOR-STATUS           ##### L NYU Poly Undergrad                                 77
+BOR-STATUS           ##### L AD Faculty Admin                                   80
+BOR-STATUS           ##### L AD Staff                                           81
+BOR-STATUS           ##### L AD Undergraduate                                   82
+BOR-STATUS           ##### L NYU GRI Fellow                                     89
+BOR-STATUS           ##### L NYSID Faculty                                      90
+BOR-STATUS           ##### L NYSID Graduate Student                             95
+BOR-STATUS           ##### L NYSID Staff                                        96
+BOR-STATUS           ##### L NYSID Undergraduate Student                        97
+BOR-STATUS           ##### L DUMMY Patron for "In transit" func.                88
+BOR-STATUS           ALEPH L NYU Full Time Faculty                              50
+
+
+BOR-TYPE             ##### L Arts and Sciences                                  AS
+BOR-TYPE             ##### L Business School (student or employee)              BK
+BOR-TYPE             ##### L Central Administration (student or employee)       CA
+BOR-TYPE             ##### L College Library reserves                           CL
+BOR-TYPE             ##### L Cataloging and processing                          CP
+BOR-TYPE             ##### L Cross registered students                          CR
+BOR-TYPE             ##### L Dental School (student or employee)                DM
+BOR-TYPE             ##### L Design School reserves                             DR
+BOR-TYPE             ##### L Education                                          ED
+BOR-TYPE             ##### L Extension School reserves                          ER
+BOR-TYPE             ##### L Fine Arts reserves                                 FR
+BOR-TYPE             ##### L Student spouse                                     HW
+BOR-TYPE             ##### L Interlibrary Loan                                  IL
+BOR-TYPE             ##### L Government (student or employee)                   KS
+BOR-TYPE             ##### L Law School (student or employee)                   LA
+BOR-TYPE             ##### L Medical School (student or employee)               MD
+BOR-TYPE             ##### L Officer dependent, spouse, widow/er                OD
+BOR-TYPE             ##### L Officer                                            OF
+BOR-TYPE             ##### L No fee special borrower                            OO
+BOR-TYPE             ##### L Proxy patron                                       PX
+BOR-TYPE             ##### L Special borrower                                   SB
+BOR-TYPE             ##### L Special program                                    SP
+BOR-TYPE             ##### L Summer school (student or faculty)                 SS
+BOR-TYPE             ##### L Non-college library reserves                       UL
+BOR-TYPE             ##### L Visiting scholar                                   VS
+!*
+INVENTORY-NUMBER     ##### L Primary                                            ?inventory-number
+INVENTORY-NUMBER     ##### L Secondary                                          ?inventory-number-2
+!*
+!ITEM-LOCATION        ##### L Close Stacks                                       ?closed stacks
+!ITEM-LOCATION        ##### L Call number                                        ?call-number
+!ITEM-LOCATION        ##### L Store Room                                         ?test-shelf
+!ITEM-LOCATION        ##### L location-dem-abc                                   ?loc-1
+!ITEM-LOCATION        ##### L 1st-floor-compactus                                loc-2
+!ITEM-LOCATION        ##### L Special Akosiwa Collection                         cat
+!ITEM-LOCATION        ##### L Linguistics                                        Linguistics
+!ITEM-LOCATION        ##### L History                                            History
+!ITEM-LOCATION        ##### L Biology                                            Biology
+!*
+ITEM-LOCATION-2      ##### L Closed Stacks                                      ?closed stacks
+ITEM-LOCATION-2      ##### L Call number                                        ?call-no.
+ITEM-LOCATION-2      ##### L Store Room                                         test-shelf
+!*
+LOCATION-GR          ##### L Folio                                              2
+LOCATION-GR          ##### L Quarto                                             4
+LOCATION-GR          ##### L Octavo                                             8
+!*
+LOCATION-PREFIX      ##### L Oversize                                           X2
+LOCATION-PREFIX      ##### L Undersize                                          X0
+!*
+LOCATION-SUFFIX      ##### L Vault                                              Vault
+LOCATION-SUFFIX      ##### L Bottom shelf                                       Bottom shelf
+!*
+LOCATION-SOURCE      ##### L padocs                                             padocs
+LOCATION-SOURCE      ##### L American Mathematics Society                       AMS
+!*
+!LOCATION-USIG        ##### L 19.G.P.,Beil.,III,1                                19.G.P.,Beil.,III1                                                              ?USIG
+LOCATION-USIG        ##### L USIG                                               ?location-usig
+!LOCATION-USIG        ##### L Math.-nat.KI.,1.202.1995                           Math.-nat.KI.,1.202.1995   ?USIG
+!*

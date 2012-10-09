@@ -1,0 +1,335 @@
+!
+! NOTE - 1) do not edit this header section
+!      - 2) this header is created from the template located
+!        in $aleph_headers (sub-folders)
+!      - 3) to add remarks within the table,
+!        start the line with !rem or !*
+!      - 4) to mark a line as non-used (but restorable)
+!        add ! at start of line, retaining column structure
+!        displaced by one position to the right
+!      - 5) all internal codes must be Latin characters A-Z,0-9
+!
+!====================================
+!       tab40 - collection definition
+!====================================
+! Last header change: 04/03/2003
+!
+! HELP
+! This table defines the expansion of the collection code as entered in
+! the Z30-COLLECTION FIELD in items, to the expanded form to be displayed
+! in the OPAC.
+! END_HELP
+!
+! TABLE_KEY 1,2,3 
+!
+! COL 1. 5; ALPHA_NUM, UPPER; ;
+!        Code;
+!        Collection code;
+! COL 2. 5; ALPHA_NUM, UPPER; #;
+!          Sublibrary;
+!          Sublibrary;
+! COL 3. 1; ALPHA, UPPER {L}; ;
+!          Alpha;
+!          Character set;
+! COL 4. 80; TEXT; ;
+!          Name;
+!          Collection name
+!          up to 80 characters;
+!
+! 1     2   3     4
+!!!!!-!!!!!-!-!!!!!!!!!!!!!!!!!!!!!!!>
+AFC   BAFC  L Main Collection
+AFCR  BAFC  L Reference
+ARES  BAFC  L Reserve
+AV    BAFC  L Main Collection
+BIMC  BAFC  L Main Collection
+CLSTX BAFC  L Closed Stacks
+MULTI BAFC  L Main Collection
+FADKN BFALE L Adkins
+FALEF BFALE L Fales
+FALES BFALE L SpecCol
+FBER  BFALE L Berol
+FDOWN BFALE L Downtown
+FKAPP BFALE L Kapp
+FMDT  BFALE L Downtown - Media
+FMFA  BFALE L Fales - Media
+FMEDI BFALE L SpecCol - Media
+FREF  BFALE L Reference
+FREMA BFALE L Remarque / Goddard Papers
+FTSD  BFALE L Technical Services
+MAIN  BLCC  L Computer Center
+BLEIS BOBST L Leisure Collection
+ALEV  BOBST L LL2
+ALEVI BOBST L LL2 - Index
+ARCH  BOBST L University Archives
+BEARF BOBST L East Asian Reference
+ATRIU BOBST L 1st Floor Reference Atrium Temp Collection
+BCIRC BOBST L ILL
+CLOSS BOBST L Closed Stack
+EASIA BOBST L East Asian
+!EGYPT BOBST L Egyptian under Bobst
+ETC   BOBST L Electronic Text Center
+MAIN  BOBST L Main Collection
+MFORM BOBST L Microform
+MREF  BOBST L Music Reference
+MUSIC BOBST L Music
+PARL7 BOBST L NE Wing 7 - Parm papers
+PARL8 BOBST L 8th floor lounge
+PERIO BOBST L Periodicals
+PRES  BOBST L Preservation OffSite Storage
+READ4 BOBST L Reading Room 4
+READ8 BOBST L Reading Room 8
+REF1  BOBST L 1st Floor Reference
+REF1B BOBST L 1st Floor Reference - Books in Print
+REF1C BOBST L 1st Floor Reference - Career section
+REF1D BOBST L 1st Floor Reference - Desk Reference
+REF1E BOBST L 1st Floor Reference - Etext (Studio)
+REF1I BOBST L 1st Floor Reference - Index
+REF1N BOBST L 1st Floor Reference - International Documents
+REF1S BOBST L 1st Floor Reference - Study
+REF5  BOBST L 5th Floor Reference
+REF9  BOBST L 9th Floor Reference
+RR4CL BOBST L 7th Floor South - Children's Literature
+RR4PP BOBST L 4th Floor East - Parliamentary Papers
+STORE BOBST L Storage
+STUDI BOBST L Studio
+TSD   BOBST L Technical Services
+RF6   BREF6 L Main Collection
+RF6DR BREF6 L Desk Reference
+RF6I  BREF6 L Index
+RF6IC BREF6 L Investment Collection
+RF6ID BREF6 L International Documents - Desk
+RF6II BREF6 L International Documents - Index
+RF6IN BREF6 L International Documents
+RF6IR BREF6 L International Reference
+!RF6IU BREF6 L International Documents - UN
+RF6ND BREF6 L NYPL Dictionary Catalog
+RF6NU BREF6 L National Union Catalog
+RF6UD BREF6 L United States Documents - Desk
+RF6UN BREF6 L United Nations Documents
+RF6US BREF6 L United States Documents
+BRES  BRES  L Reserve Collection
+TAM   BTAM  L Main Collection
+TAMR  BTAM  L Reference
+TTSD  BTAM  L Technical Services
+TAMVF BTAM  L Vertical File
+TAMW  BTAM  L Wagner
+BNYUI BWEB  L Internet Resources
+!BNYUS BWEB  L Internet Resources - US Documents
+ARCH  CU    L Archives
+ATLAS CU    L Atlas
+!CDROM CU    L CD-ROM
+CLOSP CU    L Closed Periodical Stacks
+CLOSS CU    L Closed Stack
+CRES  CU    L Reserve Collection
+DIGTL CU    L Digital Media
+INDEX CU    L Index
+LSTAF CU    L Library Staff
+MAIN  CU    L Main Collection
+MEZZ  CU    L Mezzanine
+MEZZP CU    L Mezzanine Periodicals
+MICRO CU    L Microform
+MICRP CU    L Microform Periodicals
+NET   CU    L Restricted Internet Resources
+PERIO CU    L Periodicals
+REF   CU    L Reference
+!SOFT  CU    L Software
+VIDEO CU    L Video
+ARMS  KBHS  L Archives - Manuscripts
+ARTIF KBHS  L Art - Artifacts
+ATLAS KBHS  L Atlas
+CBDSK KBHS  L Conservation / Bindery - Desk
+CBIND KBHS  L Conservation / Bindery
+CSTAC KBHS  L Closed Stacks
+FOLIO KBHS  L Folio
+IMAGE KBHS  L Images
+MAIN  KBHS  L Main Collection
+FLMAP KBHS  L Flat Maps
+FDMAP KBHS  L Folded Maps
+MFORM KBHS  L Microform
+REF   KBHS  L Reference
+REFD  KBHS  L Reference - Desk
+SPCL  KBHS  L Special Collections
+STAFR KBHS  L Staff Reference
+ACF   MISC  L Academic Computing
+BCRES MISC  L CRES under Bobst
+BEGYP MISC  L Egyption under Bobst
+BLANK MISC  L No Bobst Fields to map
+BLDVD MISC  L No Bobst Fields DVD
+BLVF  MISC  L No Bobst Fields Vertical File
+BOBI  MISC  L International Docs Bobst
+BOBVF MISC  L Vertical File Bobst
+CBRES MISC  L BRES under Courant
+GLIS  MISC  L GMA Errors
+GREY  MISC  L Grey
+GREYA MISC  L Grey
+NCRES MISC  L CRES under New School
+NYAA  MISC  L New York Academy of Art
+NYUIM MISC  L NYU Restricted Internet Resources - Microform??
+RENOV MISC  L Bobst Renovation Storage
+RENSC MISC  L Bobst Renovation Storage - Special Collections
+TWJ   MISC  L Bill Jones Test Records
+ARCHR NCOUR L Archives Reserve
+MAIN  NCOUR L Main Collection
+MICRO NCOUR L Microform
+MRES  NCOUR L Reserves
+PERIO NCOUR L Periodicals
+REF   NCOUR L Reference
+SEM   NCOUR L Seminaire
+SPCL  NCOUR L SpecCol
+STOR  NCOUR L Storage
+TABLE NCOUR L Tables
+TECHR NCOUR L Technical Reports
+VIDEO NCOUR L Video
+ASIAN NIFA  L Asian
+ASIAP NIFA  L Asian Periodicals
+ASIAR NIFA  L Asian Reference
+CLASS NIFA  L Classical
+EGYPT NIFA  L Egyptian
+FRES  NIFA  L Reserves
+GUIDE NIFA  L Guides
+MAIN  NIFA  L Main Collection
+MICRO NIFA  L Microform
+OFFSI NIFA  L Offsite
+PERIO NIFA  L Periodicals
+REF   NIFA  L Reference
+SPCL  NIFA  L SpecCol
+SPCLF NIFA  L SpecCol Friedlaender collection
+TECH  NIFA  L Techincal Services
+VIS   NIFA  L Visual Resources
+MAIN  NIFAC L Main Collection
+MICRO NIFAC L Microform
+PERIO NIFAC L Periodicals
+REF   NIFAC L Reference
+SPCL  NIFAC L SpecCol
+AWRES NISAW L Reserves
+FOLIO NISAW L Folio Collection
+LARGE NISAW L Large Collection
+MAIN  NISAW L Main Collection
+OAK   NISAW L Oak Collection
+OVERZ NISAW L Oversize Collection
+REF3  NISAW L Reference 3 Collection
+REF4  NISAW L Reference 4 Collection
+REF5  NISAW L Reference 5 Collection
+SMALL NISAW L Small Collection
+MAIN  NKEV  L Main Collection
+MAIN  NLAPI L Main Collection
+MICRO NLAPI L Microform
+SOPRA NLAPI L Upper
+SPCL  NLAPI L Special Collections
+STDLO NLAPI L Studiolo
+VILLA NLAPI L Villa Ulivi
+MAIN  NOFFS L Main Collection
+MICRO NOFFS L Microform
+OSARC NOFFS L Archives
+OSINT NOFFS L International Documents
+OSREF NOFFS L Reference
+OSSDT NOFFS L SpecCol Downtown
+OSSPA NOFFS L SpecCol Adkins
+OSSPC NOFFS L SpecCol
+OSSPF NOFFS L SpecCol Fales
+OSTAM NOFFS L Tamiment
+OSTS  NOFFS L Technical Services
+MAIN  NREI  L Main Collection
+PERIO NREI  L Periodicals
+REF   NREI  L Reference
+VIDEO NREI  L Video
+ADMIN NYHS  L AdminOffice
+ALMA  NYHS  L Almanacs
+ARCH  NYHS  L Archives
+ARCHI NYHS  L Architecture
+BEEK  NYHS  L Beekman Collection
+BLAB  NYHS  L Book Lab
+BROAD NYHS  L Broadsides
+CIRCU NYHS  L Circus
+DIR   NYHS  L Directories
+GREEN NYHS  L Greenwood Collection
+HAWKS NYHS  L Hawks-Niblo Collection
+INDEX NYHS  L Index
+KING  NYHS  L King Library
+LANDA NYHS  L Landauer
+LIND  NYHS  L Lind
+LIVI  NYHS  L Livingston
+MAIN  NYHS  L Main Collection
+MAPS  NYHS  L Maps
+MICRO NYHS  L Microform
+MORS  NYHS  L Morris Collection
+MSCL  NYHS  L Mss Collection
+MSREF NYHS  L MssRef
+MUS   NYHS  L Museum Collection
+MUSIC NYHS  L Music
+NET   NYHS  L Internet Resources
+NEWSP NYHS  L Newspaper Collection
+PAMPH NYHS  L Pamphlets
+PERIO NYHS  L Periodicals
+PRARE NYHS  L Print Room Rare
+PREF  NYHS  L Print Room Reference
+PRNTS NYHS  L Print Room
+REF   NYHS  L Reference
+REFA  NYHS  L Art Reference
+SPCL  NYHS  L SpecCol
+TECH  NYHS  L Technical Services
+AUCT  NYSID L Auction Catalogs
+AV    NYSID L Audiovisual
+CLOSS NYSID L Closed Stacks
+IRES  NYSID L Reserves
+MAIN  NYSID L Main Collection
+MATRC NYSID L Materials Resourc Center
+NET   NYSID L Internet Resource
+NETMU NYSID L Internet Resource
+NETSU NYSID L Internet Resource
+PERIO NYSID L Periodicals
+REF   NYSID L Reference
+SPCL  NYSID L SpecCol
+VIDEO NYSID L Audiovisual
+ARCH  TNSFO L Archives
+ATLAS TNSFO L Reference
+AV    TNSFO L Audio Visual
+CATM  TNSFO L Catalog Maintenance
+CLOSP TNSFO L Closed Stack
+CLOSS TNSFO L Closed Stack
+INDEX TNSFO L Reference
+MAIN  TNSFO L Main Collection
+MICRO TNSFO L Microform
+MIG   TNSFO L Migration Center
+NRES  TNSFO L Newschool Reserve
+PERIO TNSFO L Periodicals
+REF   TNSFO L Reference
+REFD  TNSFO L Reference - Desk
+REFI  TNSFO L Reference - Index
+STOR  TNSFO L Storage
+TECH  TNSFO L Tech Center
+TESOL TNSFO L TESOL
+THES  TNSFO L Thesis
+!ANNEX TNSGI L Annex
+!ANNSC TNSGI L Annex - Special Collections
+AV    TNSGI L Audio Visual
+MAIN  TNSGI L Main Collection
+PERIO TNSGI L Periodicals
+PRES  TNSGI L Reserve Collection
+REF   TNSGI L Reference
+!REFA  TNSGI L Reference
+!SLIDE TNSGI L Slide
+SPCL  TNSGI L SpecCol
+SPCLP TNSGI L SpecCol Periodicals
+ARCH  TNSKE L Main Collection
+!MAIN  TNSOS L Main Collection
+ANNEX TNSSC L Annex
+AV    TNSSC L Audio Visual
+CIRC  TNSSC L Circ Desk
+MAIN  TNSSC L Main Collection
+MINI  TNSSC L Miniature Scores
+MUREF TNSSC L Music Reference
+MUSIC TNSSC L Music
+OFFIC TNSSC L Office
+PERIO TNSSC L Periodicals
+REF   TNSSC L Reference
+SCORE TNSSC L Full Score
+SPCL  TNSSC L SpecCol
+SRES  TNSSC L Reserve Collection
+BPLUS WEB   L Internet Resources - BobCat Plus
+GENI  WEB   L Internet Resources
+GENIU WEB   L Internet Resources - US Documents
+TNSI  TWEB  L Internet Resources
+TNSIM TWEB  L Internet Resources
+TNSIS TWEB  L Internet Resources

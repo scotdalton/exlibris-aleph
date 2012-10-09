@@ -1,0 +1,405 @@
+!
+! NOTE - 1) do not edit this header section
+!      - 2) this header is created from the template located
+!        in $aleph_headers (sub-folders)
+!      - 3) to add remarks within the table,
+!        start the line with !rem or !*
+!      - 4) to mark a line as non-used (but restorable)
+!        add ! at start of line, retaining column structure
+!        displaced by one position to the right
+!      - 5) all internal codes must be Latin characters A-Z,0-9
+!
+!============================================================================
+!          tab37 - Hold Requests Pick-up List Configuration
+!============================================================================
+! Last header change: 27/10/2002
+!
+! TABLE_KEY 1,2,3,4,5
+! HELP
+!  
+! tab37 defines one aspect of hold requests:
+! - the drop-down list of pickup and delivery locations for hold requests
+!   (dependent on item status, item process status, patron status and
+!   sublibrary of item).
+! 
+! If the item sublibrary, item status, item process status, patron status
+! and pickup location are not defined in this table, the item cannot be
+! requested.
+!
+! 
+! If you are using a specific item status in col.2 (i.e. not ##), make
+! sure that the specific lines come before the general lines, since
+! the table is read from top to bottom, and the first match is always taken.
+! The same holds true for col.3 (item process status) and col.4 (patron 
+! status).
+!
+! All item statuses are matched on ## in the first line, and the second line
+! will never be used.
+!
+! Example of correct setup:
+! ULINC 14 ## ## # UEDUC
+! ULINC ## ## ## # UEDUC
+!
+! Example of incorrect setup:
+! ULINC ## ## ## # UEDUC
+! ULINC 14 ## ## # UEDUC
+!
+! If you have a combination of one specific item status with all patron 
+! statuses and a combination of all item statuses with a specific patron
+! status, define these lines first. 
+!
+! For example:
+! You want all items with item status 14 except those requested by a patron 
+! with patron status 05 to be ready for pickup at UEDUC, and all items
+! requested by a patron with patron status 05 to be ready for pickup at
+! UHLTH. In order to achieve this specify lines for the
+! combination of the two specific statuses (see example below).
+! Example of correct setup: 
+!
+! ULINC 14 ## 05 # UHLTH
+! ULINC 14 ## ## # UEDUC
+! ULINC ## ## 05 # UHLTH
+! ULINC ## ## ## # ULINC
+!
+! You can define up to 1000 different pickup locations for 
+! each combination. Up to ten different locations can be entered on each line.
+! If there is more than one line per combination (to allow for more than ten
+! pickup locations), leave columns 1-5 empty in the other lines.
+! 
+! For example :
+!
+! UHLTH ## ## ## # XXX01 XXX02 XXX03 XXX04 XXX05 XXX06 XXX07 XXX08 XXX09 XXX10
+!                  XXX11 XXX12 XXX13 XXX14 XXX15 XXX16 XXX17 XXX18 XXX19 XXX20
+!                  XXX21 XXX22 XXX23
+!
+! -----------------------------------------------
+! Display of the pickup sublibrary drop-down list
+! -----------------------------------------------
+!
+! Only a specific line matching sublibrary/item-status/item-process-
+! status is taken for the dropdown list (i.e. although ## lines would match
+! they are not included in the dropdown list if a more specific line is 
+! found). 
+!
+! Column 5 (Availability of item) can be used to filter out a sublibrary from
+! the drop-down list of pickup locations. If column 5 is set to "N", the 
+! pickup location will display only if the item is not available (i.e. the item
+! is on loan or on the hold shelf).
+! 
+! There are two correct ways to use this:
+! 1) by exclusion:
+! UHLTH ## ## ## N HOME
+! UHLTH ## ## ## # UHLTH UEDUC
+!
+! 2) by inclusion:
+! UHLTH ## ## ## Y UHLTH UEDUC
+! UHLTH ## ## ## N UHLTH UEDUC HOME
+!
+! END_HELP
+!
+! COL  1.  5; ALPHA_NUM, UPPER; #; 
+!           Sublibrary;
+!           Sublibrary of the item;    
+! COL  2.  2; NUM {00-99}; #;
+!           Item status; 
+!           Status of item being requested;
+! COL  3.  2; ALPHA_NUM; #;  
+!           Item process status; 
+!           Process Status of item being requested;
+! COL  4.  2; ALPHA_NUM; #;  
+!           Patron status;
+!           Status of the patron;   
+! COL  5.  1; ALPHA {Y,N,#, }, UPPER; #;
+!           Availability of item;
+!           If "Y" this line only applies to available items (i.e. on the
+!           shelf). If "N" this line only applies to unavailable items (i.e. on
+!           loan, hold waiting to be picked up or in transit). Use # to indicate
+!           that the line is insensitive to availability of the item;
+! COL  6.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! COL  7.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! COL  8.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! COL  9.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! COL 10.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! COL 11.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! COL 12.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! COL 13.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! COL 14.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! COL 15.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! 1   2  3  4  5   6     7     8     9    10    11    12    13    14    15
+!!!!!-!!-!!-!!-!-!!!!!-!!!!!-!!!!!-!!!!!-!!!!!-!!!!!-!!!!!-!!!!!-!!!!!-!!!!!
+BAFC  ## ## 50 # BAFC  NYUAB NYUSE NYUSS
+BAFC  ## ## 51 # BAFC  NYUAB NYUSE NYUSS
+BAFC  ## ## 52 # BAFC  NYUAB NYUSE NYUSS
+BAFC  ## ## 53 # BAFC  NYUAB NYUSE NYUSS
+BAFC  ## ## 54 # BAFC  
+BAFC  ## ## 61 # BAFC  
+BAFC  ## ## 62 # BAFC  NYUAB NYUSE NYUSS
+BAFC  ## ## 70 # BAFC  NYUAB NYUSE NYUSS
+BAFC  ## ## 74 # BAFC
+BAFC  ## ## 80 # BAFC  NYUAB NYUSE NYUSS
+BAFC  ## ## 88 # BAFC  NYUAB NYUSE NYUSS
+BAFC  ## ## 89 # BAFC  NYUAB NYUSE NYUSS
+BAFC  ## AC ## Y BAFC
+BAFC  ## DP ## Y BAFC
+BAFC  ## ## ## N BAFC
+BLCC  ## RP ## Y BLCC
+BLCC  ## ## ## N BLCC
+BOBST ## ## 50 # BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS 
+BOBST ## ## 51 # BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS  
+BOBST ## ## 52 # BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS  
+BOBST ## ## 53 # BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS
+BOBST ## ## 54 # BOBST NCOUR NIFA  NISAW NREI  NPOLY 
+BOBST ## ## 61 # BOBST NCOUR NIFA  NISAW NREI  NPOLY 
+BOBST ## ## 62 # BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS 
+BOBST ## ## 70 # BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS
+BOBST ## ## 74 # BOBST NCOUR NIFA  NISAW NREI  NPOLY 
+BOBST ## ## 80 # BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS 
+BOBST ## ## 81 # BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS 
+BOBST ## ## 82 # BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB
+BOBST ## ## 88 # BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS 
+BOBST ## ## 89 # BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NBERL NFLOR NLOND
+                 NPRAG NWADC
+BOBST ## DP 50 Y BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS 
+BOBST ## DP 51 Y BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS 
+BOBST ## DP 52 Y BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS 
+BOBST ## DP 53 Y BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS
+BOBST ## DP 54 Y BOBST NCOUR NIFA  NISAW NREI  NPOLY 
+BOBST ## DP 61 Y BOBST NCOUR NIFA  NISAW NREI  NPOLY 
+BOBST ## DP 62 Y BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS 
+BOBST ## DP 70 Y BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS
+BOBST ## DP 74 Y BOBST NCOUR NIFA  NISAW NREI  NPOLY  
+BOBST ## DP 80 Y BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS 
+BOBST ## DP 81 Y BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS 
+BOBST ## DP 82 Y BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB   
+BOBST ## DP 88 Y BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS
+BOBST ## DP 89 Y BOBST NCOUR NIFA  NISAW NREI  NPOLY NYUAB NBERL NFLOR NLOND
+                 NPRAG NWADC
+BOBST ## DP ## Y BOBST
+BOBST ## AC ## Y BOBST
+BOBST ## BD ## Y BOBST
+BOBST ## CB ## Y BOBST
+BOBST ## CT ## Y BOBST
+BOBST ## CU ## Y BOBST
+BOBST ## HC ## Y BOBST
+BOBST ## HN ## Y BOBST
+BOBST ## HP ## Y BOBST
+BOBST ## IT ## Y BOBST
+BOBST ## LB ## Y BOBST
+BOBST ## MQ ## Y BOBST
+BOBST ## OR ## Y BOBST
+BOBST ## PH ## Y BOBST
+BOBST ## PP ## Y BOBST
+BOBST ## PT ## Y BOBST
+BOBST ## RN ## Y BOBST
+BOBST ## RO ## Y BOBST
+BOBST ## XD ## N BOBST
+BOBST ## RP ## Y BOBST
+BOBST ## VI ## Y BOBST
+BOBST ## TS ## Y BOBST
+BOBST ## ## ## N BOBST
+BREF6 ## DP ## Y BOBST
+BREF6 ## BD ## Y BOBST
+BREF6 ## CT ## Y BOBST
+BREF6 ## CU ## Y BOBST
+BREF6 ## HC ## Y BOBST
+BREF6 ## HR ## Y BOBST
+BREF6 ## LB ## Y BOBST
+BREF6 ## OR ## Y BOBST
+BREF6 ## PP ## Y BOBST
+BREF6 ## ## ## N BOBST
+BRES  ## CT ## Y BRES
+BRES  ## DP ## Y BRES
+BRES  ## OR ## N BRES
+BRES  ## ## ## N BRES
+CU    ## CU ## Y CU
+CU    ## DP ## Y CU
+CU    ## IT ## Y CU
+CU    ## PP ## Y CU
+CU    ## ## ## N CU
+NCOUR ## ## 50 # NCOUR BOBST NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS
+NCOUR ## ## 51 # NCOUR BOBST NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS
+NCOUR ## ## 52 # NCOUR BOBST NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS
+NCOUR ## ## 53 # NCOUR BOBST NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS
+NCOUR ## ## 54 # NCOUR BOBST NIFA  NISAW NREI  NPOLY
+NCOUR ## ## 61 # NCOUR BOBST NIFA  NISAW NREI  NPOLY
+NCOUR ## ## 62 # NCOUR BOBST NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS
+NCOUR ## ## 70 # NCOUR BOBST NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS
+NCOUR ## ## 74 # NCOUR BOBST NIFA  NISAW NREI  NPOLY
+NCOUR ## ## 80 # NCOUR BOBST NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS
+NCOUR ## ## 81 # NCOUR BOBST NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS
+NCOUR ## ## 82 # NCOUR BOBST NIFA  NISAW NREI  NPOLY NYUAB 
+NCOUR ## ## 88 # NCOUR BOBST NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS
+NCOUR ## ## 89 # NCOUR BOBST NIFA  NISAW NREI  NPOLY NYUAB NYUSE NYUSS
+NCOUR ## BD ## Y NCOUR
+NCOUR ## CU ## Y NCOUR
+NCOUR ## DP ## Y NCOUR
+NCOUR ## IT ## Y NCOUR
+NCOUR ## LB ## Y NCOUR
+NCOUR ## OR ## Y NCOUR
+NCOUR ## PP ## Y NCOUR
+NCOUR ## RP ## Y NCOUR
+NCOUR ## XC ## Y NCOUR
+NCOUR ## ## ## N NCOUR
+NIFA  ## DP ## Y NIFA
+NIFA  ## BD ## Y NIFA
+NIFA  ## CB ## Y NIFA
+NIFA  ## CT ## Y NIFA
+NIFA  ## CU ## Y NIFA
+NIFA  ## LB ## Y NIFA
+NIFA  ## OR ## Y NIFA
+NIFA  ## PH ## Y NIFA
+NIFA  ## PP ## Y NIFA
+NIFA  ## RP ## Y NIFA
+NIFA  ## XH ## Y NIFA
+NIFA  ## ## ## N NIFA
+NIFAC ## DP ## Y NIFAC
+NIFAC ## BD ## Y NIFAC
+NIFAC ## CB ## Y NIFAC
+NIFAC ## CT ## Y NIFAC
+NIFAC ## CU ## Y NIFAC
+NIFAC ## LB ## Y NIFAC
+NIFAC ## OR ## Y NIFAC
+NIFAC ## PH ## Y NIFAC
+NIFAC ## PP ## Y NIFAC
+NIFAC ## RP ## Y NIFAC
+NIFAC ## XH ## Y NIFAC
+NIFAC ## ## ## N NIFAC
+
+NREI  ## ## 50 # NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB NYUSE NYUSS
+NREI  ## ## 51 # NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB NYUSE NYUSS
+NREI  ## ## 52 # NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB NYUSE NYUSS
+NREI  ## ## 53 # NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB NYUSE NYUSS
+NREI  ## ## 54 # NREI  BOBST NCOUR NIFA  NISAW NPOLY
+NREI  ## ## 61 # NREI  BOBST NCOUR NIFA  NISAW NPOLY
+NREI  ## ## 62 # NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB NYUSE NYUSS
+NREI  ## ## 70 # NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB NYUSE NYUSS
+NREI  ## ## 74 # NREI  BOBST NCOUR NIFA  NISAW NPOLY
+NREI  ## ## 80 # NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB NYUSE NYUSS
+NREI  ## ## 81 # NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB NYUSE NYUSS
+NREI  ## ## 82 # NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB
+NREI  ## ## 88 # NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB NYUSE NYUSS
+NREI  ## ## 89 # NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB
+NREI  ## DP 50 Y NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB NYUSE NYUSS
+NREI  ## DP 51 Y NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB NYUSE NYUSS
+NREI  ## DP 52 Y NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB NYUSE NYUSS
+NREI  ## DP 53 Y NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB NYUSE NYUSS
+NREI  ## DP 54 Y NREI  BOBST NCOUR NIFA  NISAW NPOLY
+NREI  ## DP 61 Y NREI  BOBST NCOUR NIFA  NISAW NPOLY
+NREI  ## DP 62 Y NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB NYUSE NYUSS
+NREI  ## DP 70 Y NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB NYUSE NYUSS
+NREI  ## DP 74 Y NREI  BOBST NCOUR NIFA  NISAW NPOLY
+NREI  ## DP 80 Y NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB NYUSE NYUSS
+NREI  ## DP 81 Y NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB NYUSE NYUSS
+NREI  ## DP 82 Y NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB
+NREI  ## DP 88 Y NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB NYUSE NYUSS
+NREI  ## DP 89 Y NREI  BOBST NCOUR NIFA  NISAW NPOLY NYUAB
+NREI  ## DP ## Y NREI
+NREI  ## AC ## Y NREI
+NREI  ## BD ## Y NREI
+NREI  ## CB ## Y NREI
+NREI  ## CT ## Y NREI
+NREI  ## CU ## Y NREI
+NREI  ## HC ## Y NREI
+NREI  ## HN ## Y NREI
+NREI  ## HP ## Y NREI
+NREI  ## IT ## Y NREI
+NREI  ## LB ## Y NREI
+NREI  ## MQ ## Y NREI
+NREI  ## OR ## Y NREI
+NREI  ## PH ## Y NREI
+NREI  ## PP ## Y NREI
+NREI  ## PT ## Y NREI
+NREI  ## RN ## Y NREI
+NREI  ## RO ## Y NREI
+NREI  ## XD ## N NREI
+NREI  ## RP ## Y NREI
+NREI  ## VI ## Y NREI
+NREI  ## TS ## Y NREI
+NREI  ## ## ## N NREI
+
+NYSID ## BD ## Y NYSID
+NYSID ## CU ## Y NYSID
+NYSID ## DP ## Y NYSID
+NYSID ## LB ## Y NYSID
+NYSID ## PH ## Y NYSID
+NYSID ## RP ## Y NYSID
+NYSID ## XH ## Y NYSID
+NYSID ## ## ## N NYSID
+
+TNSFO ## ## 30 # TNSFO TNSGI TNSSC
+TNSFO ## ## 31 # TNSFO TNSGI TNSSC
+TNSFO ## ## 32 # TNSFO TNSGI TNSSC
+TNSFO ## ## 33 # TNSFO TNSGI TNSSC
+TNSFO ## ## 34 # TNSFO TNSGI TNSSC
+TNSFO ## DP ## Y TNSFO
+TNSFO ## BD ## Y TNSFO
+TNSFO ## CT ## Y TNSFO
+TNSFO ## CU ## Y TNSFO
+TNSFO ## LB ## Y TNSFO
+TNSFO ## OR ## Y TNSFO
+TNSFO ## OS ## Y TNSFO
+TNSFO ## PP ## Y TNSFO
+TNSFO ## RP ## Y TNSFO
+TNSFO ## ## ## N TNSFO 
+TNSGI ## ## 30 # TNSFO TNSGI TNSSC
+TNSGI ## ## 31 # TNSFO TNSGI TNSSC
+TNSGI ## ## 32 # TNSFO TNSGI TNSSC
+TNSGI ## ## 33 # TNSFO TNSGI TNSSC
+TNSGI ## ## 34 # TNSFO TNSGI TNSSC
+TNSGI ## DP ## Y TNSGI
+TNSGI ## AC ## Y TNSGI
+TNSGI ## BD ## Y TNSGI
+TNSGI ## CT ## Y TNSGI
+TNSGI ## CU ## Y TNSGI
+TNSGI ## LB ## Y TNSGI
+TNSGI ## OR ## Y TNSGI
+TNSGI ## OS ## Y TNSGI
+TNSGI ## PP ## Y TNSGI
+TNSGI ## ## ## N TNSGI
+TNSKE ## ## ## N TNSKE
+TNSSC ## ## 30 # TNSFO TNSGI TNSSC
+TNSSC ## ## 31 # TNSFO TNSGI TNSSC
+TNSSC ## ## 32 # TNSFO TNSGI TNSSC
+TNSSC ## ## 33 # TNSFO TNSGI TNSSC
+TNSSC ## ## 34 # TNSFO TNSGI TNSSC
+TNSSC ## DP ## Y TNSSC
+TNSSC ## BD ## Y TNSSC
+TNSSC ## CT ## Y TNSSC
+TNSSC ## CU ## Y TNSSC
+TNSSC ## LB ## Y TNSSC
+TNSSC ## OR ## Y TNSSC
+TNSSC ## OS ## Y TNSSC
+TNSSC ## PP ## Y TNSSC
+TNSSC ## RP ## Y TNSSC
+TNSSC ## ## ## N TNSSC
+TNSOS ## ## ## N TNSFO

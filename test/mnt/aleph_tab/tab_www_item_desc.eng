@@ -1,0 +1,208 @@
+!
+! NOTE - 1) do not edit this header section
+!      - 2) this header is created from the template located
+!        in $aleph_headers (sub-folders)
+!      - 3) to add remarks within the table,
+!        start the line with !rem or !*
+!      - 4) to mark a line as non-used (but restorable)
+!        add ! at start of line, retaining column structure
+!        displaced by one position to the right
+!      - 5) all internal codes must be Latin characters A-Z,0-9
+!
+!================================================================
+!                       tab_www_item_desc.eng
+!             This table defines display text for Web OPAC.
+!================================================================
+! Last header change: 18/06/2008
+!  
+!
+! HELP
+! .
+! This table defines alternative display text for Web OPAC.
+! Currently only available for tab15.lng, tab40.lng and 
+! tab_sub_library.lng.
+! . 
+! Please add translation text for the original text in tables 
+! tab15.lng, tab40.lng or tab_sub_library.lng.
+! .
+! If the alternative display is not defined in this table, then 
+! the text from the original table will be displayed. 
+! .
+! Please note that one-to-many translation is not allowed in this
+! table: the same text may appear only once in Col.2 of the table.
+! .
+! END_HELP
+!
+! COL  1.  15; ALPHA_NUM, UPPER; ;
+!             Code;
+!             Code for original table: 
+!             ITEM-STATUS for tab15.lng
+!             COLLECTION for tab40.lng
+!             SUB-LIBRARY for tab_sub_library.lng;
+! COL  2.  80; TEXT; ;
+!             Original text;
+!             Original text;
+! COL  3.  80; TEXT; ;
+!             Web text;  
+!             Text to be displayed in Web OPAC:
+!             Up to 30 characters for SUB-LIBRARY and ITEM-STATUS
+!             Up to 80 characters for COLLECTION;
+!
+!         1                2    3
+!!!!!!!!!!!!!!!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+CHARACTER_CONVERSION=8859_8_TO_UTF
+ITEM-STATUS     AFC-Post cataloging                                                              In Processing
+ITEM-STATUS     NYU AFC Offsite mediated avail                                                   Ask at Avery Fisher Center
+ITEM-STATUS     NYU AFC Offsite mediated proce                                                   Ask at Avery Fisher Center
+ITEM-STATUS     BREF6 Offsite mediated                                                           Ask at Documents Center
+ITEM-STATUS     Received                                                                         Available
+ITEM-STATUS     At Bindery                                                                       In Processing
+ITEM-STATUS     At Bindery - CU                                                                  At Bindery
+ITEM-STATUS     Billed as lost - AFC                                                             Unavailable
+ITEM-STATUS     Billed as lost                                                                   Request ILL
+ITEM-STATUS     Bindery prep                                                                     Request ILL
+ITEM-STATUS     Bindery prep - CU                                                                At Bindery
+ITEM-STATUS     Bindery prep - TSD                                                               Request ILL
+ITEM-STATUS     Bindery prep for offsite                                                         Request ILL
+ITEM-STATUS     Conservation for Offsite                                                         Request ILL
+ITEM-STATUS     Circulation Bindery Shelves                                                      In Processing
+ITEM-STATUS     Cataloging claim- Bobst REF6 G                                                   Request ILL
+ITEM-STATUS     Claimed                                                                          Request ILL
+ITEM-STATUS     Bindery Prep Conservation Lab                                                    Request ILL
+ITEM-STATUS     BHS Conservation                                                                 Request ILL
+ITEM-STATUS     Commercial Bindery                                                               Request ILL
+ITEM-STATUS     Commercial Bindery - CU                                                          At Bindery
+ITEM-STATUS     Claimed Returned                                                                 Request ILL
+ITEM-STATUS     Claimed Returned/Search                                                          Request ILL
+ITEM-STATUS     Out to Cat                                                                       In Processing
+ITEM-STATUS     In Cataloging                                                                    In Processing
+ITEM-STATUS     Depository                                                                       Offsite Available
+ITEM-STATUS     Out to DLTS for digitization                                                     Request ILL
+ITEM-STATUS     Out to vendor for digitization                                                   Request ILL
+ITEM-STATUS     Cataloging Hold - Avery Fisher                                                   Ask at Avery Fisher Center
+ITEM-STATUS     Cataloging Hold                                                                  In Processing
+ITEM-STATUS     Cataloging Hold - Non-Roman                                                      In Processing
+ITEM-STATUS     Cataloging Hold - TechPro                                                        In Processing
+ITEM-STATUS     Cataloging Hold - Bobst REF6 G                                                   In Processing
+ITEM-STATUS     Cataloging Hold - Tamiment                                                       In Processing
+ITEM-STATUS     Offsite Discard                                                                  Available via JSTOR
+ITEM-STATUS     Item due                                                                         Request ILL
+ITEM-STATUS     Offsite Prep GSA IFA                                                             In Processing
+ITEM-STATUS     Offsite prep IFA                                                                 In Processing
+ITEM-STATUS     Offsite return IFA                                                               Available
+ITEM-STATUS     NYUArchives Offsite accessioni                                                   In Processing
+ITEM-STATUS     NYUArchives Offsite mediated a                                                   Ask at NYU Archives
+ITEM-STATUS     NYUTamiment Offsite mediated a                                                   Ask at Tamiment
+ITEM-STATUS     NYUTamiment Offsite accessioni                                                   In Processing
+ITEM-STATUS     Labeling                                                                         In Processing
+ITEM-STATUS     Post-TSD In transit                                                              In Processing
+ITEM-STATUS     Lost/Claimed                                                                     Request ILL
+ITEM-STATUS     Lost and Paid                                                                    Request ILL
+ITEM-STATUS     Lost/Reorder Review                                                              Request ILL
+ITEM-STATUS     Mass deacidification                                                             Request ILL
+ITEM-STATUS     Missing                                                                          Request ILL
+ITEM-STATUS     QueuedMicro                                                                      Request ILL
+ITEM-STATUS     Expected                                                                         Request ILL
+ITEM-STATUS     Not Expected                                                                     Request ILL
+ITEM-STATUS     Offsite Prep GSA NSSR                                                            In Processing
+ITEM-STATUS     Not Pub'd                                                                        Request ILL
+ITEM-STATUS     Offsite prep NSSR                                                                In Processing
+ITEM-STATUS     NSSR offsite prep                                                                In Processing
+ITEM-STATUS     Offsite return NSSR                                                              Available
+ITEM-STATUS     Offsite NOT available (NSSR)                                                     Request ILL
+ITEM-STATUS     Offsite accessioning                                                             In Processing
+ITEM-STATUS     Offsite mediated available                                                       Ask at Fales
+ITEM-STATUS     NYU offsite mediated processin                                                   Request ILL
+ITEM-STATUS     NYU offsite mediated proc                                                        Ask at NYU Archives
+ITEM-STATUS     AFC offsite mediated proc                                                        Ask at Avery Fisher Center
+ITEM-STATUS     Fales offsite mediated proc                                                      Ask at Fales
+ITEM-STATUS     Tamwag offsite mediated proc                                                     Ask at Tamiment 
+ITEM-STATUS     NYU offsite prep                                                                 Request ILL
+ITEM-STATUS     On Search                                                                        Request ILL
+ITEM-STATUS     Bobst pre-bindery                                                                Request ILL
+ITEM-STATUS     Pub. Delay                                                                       Request ILL
+ITEM-STATUS     Pres Photocopy                                                                   Request ILL
+ITEM-STATUS     In processing                                                                    In Processing
+ITEM-STATUS     Out of Prt                                                                       Request ILL
+ITEM-STATUS     Monographic Replacements-1                                                       Request ILL
+ITEM-STATUS     Monographic Replacements-2                                                       Request ILL
+ITEM-STATUS     Monographic Replacements-3                                                       Request ILL
+ITEM-STATUS     Monographic Replacements-4                                                       Request ILL
+ITEM-STATUS     Monographic Replacements-5                                                       Request ILL
+ITEM-STATUS     Monographic Replacements-6                                                       Request ILL
+ITEM-STATUS     Monographic Replacements-7                                                       Request ILL
+ITEM-STATUS     Monographic Replacements-8                                                       Request ILL
+ITEM-STATUS     Monographic Replacements-9                                                       Request ILL
+ITEM-STATUS     Monographic Replacements-10                                                      Request ILL
+ITEM-STATUS     Monographic Replacements-11                                                      Request ILL
+ITEM-STATUS     Rpl. Order                                                                       Request ILL
+ITEM-STATUS     Offsite return                                                                   In Processing
+ITEM-STATUS     On Route                                                                         In Transit
+ITEM-STATUS     Post-TSD In transit                                                              In Transit
+ITEM-STATUS     Being Repaired                                                                   In Processing
+ITEM-STATUS     Being Repaired - CU                                                              At Bindery
+ITEM-STATUS     Returned                                                                         Request ILL
+ITEM-STATUS     Search/collection Services                                                       Request ILL
+ITEM-STATUS     Suspended                                                                        Request ILL
+ITEM-STATUS     Shrink wrap for Offsite                                                          Request ILL
+ITEM-STATUS     Trace completed                                                                  Request ILL
+ITEM-STATUS     Trace/Search                                                                     Request ILL
+ITEM-STATUS     HICUP Search-1                                                                   Request ILL
+ITEM-STATUS     Search & Review Preservation                                                     Request ILL
+ITEM-STATUS     S&R Msg Pgs                                                                      Request ILL
+ITEM-STATUS     Search/Review Pres Microfilm                                                     Request ILL
+ITEM-STATUS     SOSSC                                                                            Available
+ITEM-STATUS     SOSS                                                                             Available
+ITEM-STATUS     SOSS-Bind                                                                        Available
+ITEM-STATUS     Withdrawn                                                                        Request ILL
+ITEM-STATUS     July0426OSS                                                                      In Processing
+ITEM-STATUS     MBU                                                                              Request ILL
+ITEM-STATUS     OSS NOS                                                                          Request ILL
+ITEM-STATUS     Out of collection temporarily                                                    Request ILL
+ITEM-STATUS     Out of collection AFC                                                            Unavailable
+ITEM-STATUS     SEARCH SNAG                                                                      Request ILL
+ITEM-STATUS     TechPro                                                                          In Processing
+ITEM-STATUS     Special Collection Conservatio                                                   Request ILL
+ITEM-STATUS     Brittle Books-1                                                                  Request ILL
+ITEM-STATUS     Brittle Books-2                                                                  Request ILL
+ITEM-STATUS     Brittle Books-3                                                                  Request ILL
+ITEM-STATUS     Brittle Books-4                                                                  Request ILL
+ITEM-STATUS     Brittle Books-5                                                                  Request ILL
+ITEM-STATUS     Brittle Books-6                                                                  Request ILL
+ITEM-STATUS     Brittle Books-7                                                                  Request ILL
+ITEM-STATUS     Brittle Books-8                                                                  Request ILL
+ITEM-STATUS     Brittle Books-9                                                                  Request ILL
+ITEM-STATUS     Brittle Books-10                                                                 Request ILL
+ITEM-STATUS     Brittle Books-11                                                                 Request ILL
+ITEM-STATUS     Brittle Books-12                                                                 Request ILL
+ITEM-STATUS     Brittle Books-13                                                                 Request ILL
+ITEM-STATUS     Brittle Books-14                                                                 Request ILL
+ITEM-STATUS     Brittle Books-15                                                                 Request ILL
+ITEM-STATUS     Brittle Books-16                                                                 Request ILL
+ITEM-STATUS     Brittle Books-17                                                                 Request ILL
+ITEM-STATUS     Brittle Books-18                                                                 Request ILL
+ITEM-STATUS     Brittle Books-19                                                                 Request ILL
+ITEM-STATUS     Brittle Books-20                                                                 Request ILL
+ITEM-STATUS     Brittle Books-21                                                                 Request ILL
+ITEM-STATUS     Brittle Books-22                                                                 Request ILL
+ITEM-STATUS     Brittle Books-23                                                                 Request ILL
+ITEM-STATUS     Brittle Books-24                                                                 Request ILL
+ITEM-STATUS     Brittle Books-25                                                                 Request ILL
+ITEM-STATUS     Brittle Books-26                                                                 Request ILL
+ITEM-STATUS     Brittle Books-27                                                                 Request ILL
+ITEM-STATUS     Brittle Books-28                                                                 Request ILL
+ITEM-STATUS     Brittle Books-29                                                                 Request ILL
+ITEM-STATUS     Brittle Books-30                                                                 Request ILL
+ITEM-STATUS     Brittle Books-31                                                                 Request ILL
+ITEM-STATUS     Brittle Books-32                                                                 Request ILL
+ITEM-STATUS     Brittle Books-33                                                                 Request ILL
+ITEM-STATUS     Brittle Books-34                                                                 Request ILL
+ITEM-STATUS     Brittle Books-35                                                                 Request ILL
+ITEM-STATUS     Brittle Books-36                                                                 Request ILL
+ITEM-STATUS     Brittle Books-37                                                                 Request ILL
+ITEM-STATUS     Brittle Books-38                                                                 Request ILL
+ITEM-STATUS     Brittle Books-39                                                                 Request ILL
+ITEM-STATUS     Brittle Books-40                                                                 Request ILL
+ITEM-STATUS     Ref Offsite mediated available                                                   Ask at Reference
+ITEM-STATUS     Ref offsite prep                                                                 Ask at Reference
+ITEM-STATUS     BAFC Closed Stacks                                                               AFisher Center Closed Stacks

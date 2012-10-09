@@ -1,0 +1,378 @@
+!
+! NOTE - 1) do not edit this header sectionB
+!      - 2) this header is created from the template located
+!        in $aleph_headers (sub-folders)
+!      - 3) to add remarks within the table,
+!        start the line with !rem or !*
+!      - 4) to mark a line as non-used (but restorable)
+!        add ! at start of line, retaining column structure
+!        displaced by one position to the right
+!      - 5) all internal codes must be Latin characters A-Z,0-9
+!
+!=============================================================================
+!                       tab_sub_library.eng
+!             List of libraries and their sublibraries
+!=============================================================================
+! Last header change: 29/02/2004
+!
+! HELP
+! .
+! This table defines the sublibraries of all the ADM libraries 
+! on the server. In the list of items display in the ALEPH WEB 
+! OPAC, it is possible to "gather together" all the sublibraries
+! in one list, regardless of the connection to separate ADM libraries.
+! For all other ALEPH functions (USER, CIRC, ITEMS, SERIALS, ILL, 
+! ACQ) it is required that the operater "connects" to a specific ADM 
+! library (e.g. USM50).
+! The number of sublibraries in the table is not limited. However,
+! there are places in the system where the total number of
+! sublibraries relevant to the situation cannot surpass 200.
+! For example, when sorting a list of items or list holding
+! libraries for a single bibliographic record.
+! "Connect" in GUI updating modules is to an ADM library (which is  
+! a group of sublibraries). This is a physical group, and one 
+! sublibrary can be assigned to one ADM library ONLY. Each 
+! sublibrary code must be unique in this table (unless a special
+! setup for testing conversions has been installed by Ex Libris).
+! .
+! Library names (col.5):
+! Names of the sub_libraries display in WEB OPAC and GUI modules.
+! For libraries who use more than one language interface, each
+! language is a separate tab_sub_library.<lng> table. All rows
+! and columns should be exactly the same, except for column 5
+! (library name). 
+! Note! In order to define library names for the WEB Opac use table
+! tab_www_item_desc.eng.
+! .
+! Library types (col.2):
+! In addition to actual sub_libraries (library type 1), some of
+! the sub_libraries are defined for local patron records (type 2,
+! in which case the code can be ALEPH or the ADM library code),
+! for delivery of requested material (type 3, must be coordinated
+! with tab27, tab37 and tab38), and for transfer of material to a reading
+! room (type 4, must be coordinated with tab27). You may define
+! administrative units for acquisitions orders activities (type 5 -
+! Ordering Unit).
+! .
+! link to tab15 (col.6):
+! The code registered in this column identifies the lines in 
+! tab15 (Item statuses) that are relevant for this sublibrary.  
+! The code here must match the code in column 1 of tab15.
+! This allows you to define statuses in tab15 that are used 
+! in common by a number of sublibraries.
+! .
+! link to tab16 (col.7):
+! The code registered in this column identifies the lines in
+! tab16 (Fines, due dates and loan limits) that are relevant 
+! for this sublibrary.
+! The code here must match the code in column 1 of tab16.
+! This allows you to define lines in tab16 that are used
+! in common by a number of sublibraries.
+! .
+! link to tab17 (col.8):
+! The code registered in this column identifies the lines in
+! tab17 (Library hours) that are relevant for this sublibrary.
+! The code here must match the code in column 1 of tab17.
+! This allows you to define lines in tab17 that are used
+! in common by a number of sublibraries that share a set of
+! open/close hours.
+! .
+! link to patron record (col.9-13):
+! Columns 9 through 13 are used to define the preferred 
+! local patron record, when matching the patron and the 
+! item to a line in tab16 (loan due dates, loan, request and
+! renew limits, etc.). The five columns are alternatives, and
+! the system checks one after the other, in an attempt to
+! find a matching local patron record. For example, if the
+! first of these 5 columns has sublibrary XYZAB, but
+! the patron does not have an XYZAB local patron record, the
+! next of the 5 columns will be consulted, and so on.
+! If, in the end, no matching local patron record is found
+! the patron does not have privileges for this item, and he
+! cannot take it on loan.
+! Therefore, at least one sublibrary code is mandatory for 
+! sublibraries type 1, and sublibrary type 2 must have one
+! sublibrary code.
+!  For example, for library type 1:
+!  ULINC USM50 ALEPH 
+!   - checks for ULINC local patron record, if not found checks for
+!     USM50 (general library patron) and lastly checks for
+!     ALEPH (general ALEPH patron)
+!  UHLTH 
+!   - patron can loan items from UHLTH library only
+!  For example, for library type 2:
+!  ALEPH
+!   - the system uses the patron status in the ALEPH 
+!     local patron record in order to find the matching line in 
+!     tab16 for global loan and hold limits. 
+! END_HELP
+! COL  1.  5; ALPHA_NUM, UPPER; ;
+!            Sublibrary;
+!            Sublibrary;
+! COL  2.  1; NUM {1,2,3,4,5,6}; ;
+!            Type;
+!            Sublibrary Type:
+!            1 - full sublibrary (patron and items)
+!            2 - patron sublibrary only (no items)
+!            3 - pickup location that is not a library
+!            4 - reading room sublibrary (1 + special request handling)
+!            5 - Ordering unit
+! COL  3.  5; ALPHA_NUM, UPPER; ;
+!            ADM code;
+!            ADM library code;
+! COL  4.  1; ALPHA {L,H,A,R,S}, UPPER; ;
+!            Alpha;
+!            Alpha;
+! COL  5.  30; TEXT; ;
+!             Name;
+!             Sublibrary name;
+! COL  6.  5; ALPHA_NUM, UPPER; ;
+!            tab15;
+!            Group ID for tab15:
+!            Only for Item sublibraries;
+! COL  7.  5; ALPHA_NUM, UPPER; ;
+!            tab16;
+!            Group ID for tab16; 
+! COL  8.  5; ALPHA_NUM, UPPER; ;
+!            tab17;
+!            Group ID for tab17:
+!            Only for Item sublibraries;
+! COL  9.  5; ALPHA_NUM, UPPER; ;
+!            Local patron record;
+!            First choice for local patron privileges record;
+! COL  10.  5; ALPHA_NUM, UPPER; ;
+!            Local patron record;
+!            Second choice for local patron privileges record;
+! COL  11.  5; ALPHA_NUM, UPPER; ;
+!            Local patron record;
+!            Third choice for local patron privileges record;
+! COL  12.  5; ALPHA_NUM, UPPER; ;
+!            Local patron record;
+!            Fourth choice for local patron privileges record;
+! COL  13.  5; ALPHA_NUM, UPPER; ;
+!            Local patron record;
+!            Fifth choice for local patron privileges record;
+!
+!  NOTE!!!!!!
+!
+!  Add demo sublibraries here
+!  Add customer sublibraries below
+!
+! 1   2   3   4             5                    6     7     8     9    10   11 !    12   13            
+!!!!!-!-!!!!!-!-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-!!!!!-!!!!!-!!!!!-!!!!!-!!!!!-!!!!!-!!!!!-!!!!!
+USR00 2       L USR00 Library                        ALEPH       ALEPH
+!*
+HOME  3       L Home address
+!*
+BOX   3       L In-house mailbox
+!*
+ILLDT 3       L ILL Department                       ALEPH       ALEPH
+
+!*===========================================================================
+!* NYU Libraries
+!*===========================================================================
+!NYU50 2 NYU50 L NYU Library                                      NYU50 ALEPH
+BOBST 1 NYU50 L NYU Bobst                      BOBST BOBST BOBST BOBST NYU50 ALEPH
+BAFC  1 NYU50 L NYU Bobst Avery Fisher Center  BAFC  BAFC  BAFC  BAFC  NYU50 ALEPH
+BFALE 1 NYU50 L NYU Bobst Special Collections  BFALE BFALE BFALE BFALE NYU50 ALEPH
+BLCC  1 NYU50 L NYU Bobst Library Computer Ctr BLCC  BLCC  BLCC  BLCC  NYU50 ALEPH
+!BLEIS 1 NYU50 L NYU Bobst Library Leisure      BLEIS BLEIS BLEIS BLEIS NYU50 ALEPH
+BREF6 1 NYU50 L NYU Bobst 6th Floor Reference  BREF6 BREF6 BREF6 BREF6 NYU50 ALEPH
+BRES  1 NYU50 L NYU Bobst Reserve Collection   BRES  BRES  BRES  BRES  NYU50 ALEPH
+BTAM  1 NYU50 L NYU Bobst Tamiment             BTAM  BTAM  BTAM  BTAM  NYU50 ALEPH
+BWEB  1 NYU50 L NYU Restricted                 BWEB  BWEB  BWEB  BWEB  NYU50 ALEPH
+CU    1 NYU50 L Cooper Union Library           CU    CU    CU    CU    NYU50 ALEPH
+KBHS  1 NYU50 L Brooklyn Historical Society    KBHS  KBHS  KBHS  KBHS  NYU50 ALEPH
+MISC  1 NYU50 L Miscellaneous for cleanup      MISC  MISC  MISC  MISC  NYU50 ALEPH
+!NABUD 1 NYU50 L NYU Abu Dhabi Library (UAE)    NABUD NABUD NABUD NABUD NYU50 ALEPH
+NBERL 3 NYU50 L NYU Berlin (Germany)
+NCOUR 1 NYU50 L NYU Courant                    NCOUR NCOUR NCOUR NCOUR NYU50 ALEPH
+NFLOR 3 NYU50 L NYU Florence (Italy)
+NIFA  1 NYU50 L NYU Institute of Fine Arts     NIFA  NIFA  NIFA  NIFA  NYU50 ALEPH
+NIFAC 1 NYU50 L NYU IFA Conservation Center    NIFAC NIFAC NIFAC NIFAC NYU50 ALEPH
+NISAW 1 NYU50 L NYU Inst Study Ancient World   NISAW NISAW NISAW NISAW NYU50 ALEPH
+NKEV  1 NYU50 L NYU Kevorkian                  NKEV  NKEV  NKEV  NKEV  NYU50 ALEPH
+NLAPI 1 NYU50 L NYU La Pietra Library (Italy)  NLAPI NLAPI NLAPI NLAPI NYU50 ALEPH
+NLOND 3 NYU50 L NYU London (England) 
+NOFFS 1 NYU50 L NYU Offsite Storage            NOFFS NOFFS NOFFS NOFFS NYU50 ALEPH
+NPOLY 1 NYU50 L NYU Poly                       BOBST BOBST NPOLY BOBST NYU50 ALEPH
+NPRAG 3 NYU50 L NYU Prague (Czech Republic)
+NREI  1 NYU50 L NYU Jack Brause                NREI  NREI  NREI  NREI  NYU50 ALEPH
+NSHEQ 1 NYU52 L NYU Shanghai Library Equipment NSHEQ NSHEQ NSHEQ NSHEQ NYU52 ALEPH
+NSHNG 1 NYU52 L NYU Shanghai Library (China)   NSHNG NSHNG NSHNG NSHNG NYU52 ALEPH
+NWADC 3 NYU50 L NYU Washington, D.C.
+NYHS  1 NYU50 L New-York Historical Society    NYHS  NYHS  NYHS  NYHS  NYU50 ALEPH
+NYSID 1 NYU50 L New York School of Int Des     NYSID NYSID NYSID NYSID NYU50 ALEPH
+NYUAB 3 NYU50 L NYU Abu Dhabi Library (UAE)                           
+NYUSS 3 NYU50 L NYUAD Sama Fac Offices (UAE)
+NYUSE 3 NYU50 L NYUAD Ctr for Sci & Eng (UAE) 
+SWEB  1 NYU52 L NYU NSHNG Restricted EResouces SWEB  SWEB  SWEB  SWEB  NYU52 ALEPH
+TNSFO 1 NYU50 L New School Fogelman Library    TNSFO TNSFO TNSFO TNSFO NYU50 ALEPH
+TNSGI 1 NYU50 L New School Gimbel Library      TNSGI TNSGI TNSGI TNSGI NYU50 ALEPH
+TNSKE 1 NYU50 L New School Kellen Archives     TNSKE TNSKE TNSKE TNSKE NYU50 ALEPH
+TNSOS 1 NYU50 L New School Offsite Storage     TNSOS TNSOS TNSOS TNSOS NYU50 ALEPH
+TNSSC 1 NYU50 L New School Scherman Library    TNSSC TNSSC TNSSC TNSSC NYU50 ALEPH
+TWEB  1 NYU50 L New School Restricted          TWEB  TWEB  TWEB  TWEB  NYU50 ALEPH
+WEB   1 NYU50 L Unrestricted                   WEB   WEB   WEB   WEB   NYU50 ALEPH
+NYU50 2 NYU50 L NYU50                                            NYU50 ALEPH
+NYUAB 3 NYU50 L NYU Abu Dhabi Library (UAE)
+
+!*============================
+!* NYU Ordering Units
+!*============================
+AFC   5 NYU50 L Avery Fisher Center
+BOBA  5 NYU50 L Bobst Acquisitions
+BOBS  5 NYU50 L Bobst Serials
+BOBE  5 NYU50 L Bobst Electronic
+NCOU1 5 NYU50 L NYU Courant
+CU1   5 NYU50 L Cooper Union
+BFAL1 5 NYU50 L Fales Library
+NIF1  5 NYU50 L Institute of Fine Arts
+NIF2  5 NYU50 L Inst of Fine Arts Conserv
+NISA1 5 NYU50 L Inst for Study of Anc World
+TNSF1 5 NYU50 L New School Fogelman Library
+TNSG1 5 NYU50 L New School Gimbel Library
+TNSS1 5 NYU50 L New School Scherman Library
+NEWA  5 NYU50 L New School University, Acq
+NEWS  5 NYU50 L New School University, Ser
+NYUSH 5 NYU52 L NYU Shanghai Library (China)
+NYSI1 5 NYU50 L NY School of Interior Design
+REI   5 NYU50 L Real Estate Institute
+BTA1  5 NYU50 L Tamiment Library
+REF6  5 NYU50 L NYU Bobst Library 6th Fl
+
+!*===========================================================================
+!* NYU Libraries for NYU51
+!*===========================================================================
+NABUD 1 NYU51 L NYU Abu Dhabi Library (UAE)    NABUD NABUD NABUD NABUD NYU51 ALEPH
+NADEQ 1 NYU51 L NYU Abu Dhabi Equipment        NADEQ NADEQ NADEQ NADEQ NYU51 ALEPH
+NADEX 1 NYU51 L NYU Abu Dhabi (UAE) Annex      NABUD NABUD NABUD NADEX NYU51 ALEPH
+NADSS 3 NYU51 L NYUAD Sama Fac Offices (UAE)
+NADSE 3 NYU51 L NYUAD Ctr for Sci & Eng (UAE)
+NWEB  1 NYU51 L Restricted Electronic ResourcesNWEB  NWEB  NWEB  NWEB  NYU51 ALEPH
+NAFC  1 NYU51 L NYU Abu Dhabi Media in NY      NAFC  NAFC  NAFC  NAFC  NYU51 ALEPH
+NYUAD 5 NYU51 L NYU Abu Dhabi Library (UAE)
+NYU51 2 NYU51 L NYU51                                            NYU51 ALEPH
+ALEPH 2       L General Patron                       ALEPH       ALEPH
+
+!*===========================================================================
+!* USM Demo Libraries
+!*===========================================================================
+USM50 2 USM50 L Exlibris Demo Libraries              USM50       USM50 ALEPH
+MED   1 USM50 L Medicine Library               15H   CHE   17A   MED   ALEPH
+HYL   1 USM50 L East Asian Library             HYL   HYL   17A   HYL   ALEPH
+HIL   1 USM50 L Humanities Library             HIL   HIL   17A   HIL   ALEPH
+LAM   1 USM50 L Main Undergraduate             LAM   LAM   17A   LAM   ALEPH
+LAW   1 USM50 L Law Library                    LAW   LAW   17A   LAW   ALEPH
+LIT   1 USM50 L Economics Library              LIT   LIT   17A   LIT   ALEPH
+MUS   1 USM50 L Music Library                  MUS   MUS   17A   MUS   ALEPH
+WID   1 USM50 L Main Library                   WID   WID   WID   WID   ALEPH
+EXL   1 USM50 L PLIF Library                   EXL   EXL   EXL   EXL   ALEPH
+CIRC  1 USM50 L PLIF ILL Library               CIRC  CIRC  CIRC  CIRC  ALEPH
+HILR  4 USM50 L Humanities Reading Room        HIL   HIL   17A   HIL   ALEPH
+!*============================
+!* USM50 Ordering Units
+!*============================
+HIL01 5 USM50 L Humanities (Ordering Unit)
+HYL01 5 USM50 L East Asian (Chinese)
+HYL02 5 USM50 L East Asian (Japanese)
+HYL03 5 USM50 L East Asian (Korean)
+HYL04 5 USM50 L East Asian (Vietnamese)
+HYL05 5 USM50 L East Asian (Western)
+HYL06 5 USM50 L East Asian (Serials)
+LAM01 5 USM50 L Undergraduate (Monographs)
+LAM02 5 USM50 L Undergraduate (Serials)
+LAM03 5 USM50 L Undergraduate (Standing Orders )
+LAW01 5 USM50 L Law
+LAW02 5 USM50 L Law (East Asian Acquisitions)
+LAW03 5 USM50 L Law (Islamic Acquisitions)
+LIT01 5 USM50 L Economics (Monograph)
+LIT02 5 USM50 L Economics (Serials)
+MED01 5 USM50 L Medicine (Unit 1)
+MED02 5 USM50 L Medicine (Unit 2)
+MUS01 5 USM50 L Music (Unit 1)
+MUS02 5 USM50 L Music (Unit 2)
+WID01 5 USM50 L Main Library (General)
+WID02 5 USM50 L Main Library (Serial)
+WID03 5 USM50 L Main Library (Slavic)
+WID04 5 USM50 L Main Library (Judaica)
+WID05 5 USM50 L Main Library (Middle East)
+!*============================
+!* USM50 ILL Units
+!*============================
+U60WD 6 USM50 L ILL unit-WID                                     ALEPH
+U60HL 6 USM50 L ILL unit-HYL                                     ALEPH
+U60LA 6 USM50 L ILL unit-LAW                                     ALEPH
+U70WD 6 USM50 L ILL unit-WID 17                                  ALEPH
+!*============================================================================
+!* PICA test
+!*============================================================================
+CBAB  1 USM50 L CBAB                           15H   16H   17A   CBAB  ALEPH
+BCU   1 USM50 L BCU                            15H   16H   17A   BCU   ALEPH
+MBAZU 1 USM50 L MBAZU                          15H   16H   17A   MBAZU ALEPH
+!*============================================================================
+!* USM51 Demo Libraries
+!*============================================================================
+USM51 2 USM51 L USM51 Demo Libraries                 USM51       USM51 ALEPH
+ELEC5 1 USM51 L Electronic Resources 51        15A   16A   17A   ELEC5 ALEPH
+GDOC5 1 USM51 L Government Documents 51        15A   16A   17A   GDOC5 ALEPH
+EDUC5 1 USM51 L Education Library 51           15A   16A   17A   EDUC5 ALEPH
+LINC5 1 USM51 L Lincoln Library 51             15A   16A   17A   LINC5 ALEPH
+RRLIN 4 USM51 L LINC5 Reading Room 51          15A   16A   17A   RRLIN ALEPH
+!*============================
+!* USM51 Ordering Units
+!*============================
+OU511 5 USM51 L Ordering Unit 1 usm51
+OR512 5 USM51 L Ordering Unit 2 usm51
+OR513 5 USM51 L Ordering Unit 3 usm51
+OR514 5 USM51 L Ordering Unit 4 usm51
+OR515 5 USM51 L Ordering Unit 5 usm51
+!*============================
+!* USM51 ILL Units
+!*============================
+U61ED 6 USM51 L ILL unit-EDUC5
+U61EL 6 USM51 L ILL unit-ELEC5
+U61LN 6 USM51 L ILL unit-LINC5
+S61GD 6 USM51 L ILL unit-GDOC5 SMTP
+!*============================================================================
+!* USM53 Demo Libraries
+!*============================================================================
+USM53 2 USM53 L USM53 Demo Libraries                 USM53       USM53 ALEPH
+ELEC7 1 USM53 L Electronic Resources 53        15A   16A   17A   ELEC7 ALEPH
+GDOC7 1 USM53 L Government Documents 53        15A   16A   17A   GDOC7 ALEPH
+EDUC7 1 USM53 L Education Library 53           15A   16A   17A   EDUC7 ALEPH
+LINC7 1 USM53 L Lincoln Library 53             15A   16A   17A   LINC7 ALEPH
+!*============================================================================
+!* USM54 Demo Libraries
+!*============================================================================
+USM54 2 USM54 L USM54 Demo Libraries                 USM54       USM54 ALEPH
+ELEC4 1 USM54 L Electronic Resources 54        15A   16A   17A   ELEC4 ALEPH
+!*============================================================================
+!* USM55 Demo Libraries
+!*============================================================================
+USM55 2 USM55 L USM55 Demo Libraries                 USM55       USM55 ALEPH
+ELEC5 1 USM55 L Electronic Resources 55        15A   16A   17A   ELEC5 ALEPH
+!*============================================================================
+!* CUN50
+!*============================================================================
+CUN50 2 CUN50 L CUN50 Demo Libraries                 CUN50       CUN50 ALEPH
+CLEC5 1 CUN50 L Electronic Resources           15A   16A   17A   CLEC5 ALEPH
+CDOC5 1 CUN50 L Government Documents           15A   16A   17A   CDOC5 ALEPH
+CDUC5 1 CUN50 L Education Library              15A   16A   17A   CDUC5 ALEPH
+CINC5 1 CUN50 L Lincoln Library                15A   16A   17A   CINC5 ALEPH
+!*============================================================================
+!* UNI Demo Libraries
+!*===========================================================================
+UNI50 2 UNI50 L Exlibris UNIMARC Libraries           UNI50       UNI50 ALEPH
+NARCV 1 UNI50 L Archives Library               15A   NARCV UARCV UARCV
+NELEC 1 UNI50 L Electronic Resources           15A   NELEC NELEC NELEC
+NRLEC 4 UNI50 L NELEC Reading Room             15A   NELEC NELEC NELEC
+NGDOC 1 UNI50 L Government Documents           15A   NGDOC 17A   NGDOC
+NRDOC 4 UNI50 L NGDOC Reading Room             15A   NGDOC 17A   NGDOC
+NEDUC 1 UNI50 L Education Library              15A   16A   17A   NEDUC ALEPH
+NHLTH 1 UNI50 L Health Library                 15A   16A   17A   NHLTH ALEPH
+NLINC 1 UNI50 L Lincoln Library                15A   16A   17A   NLINC ALEPH
+NLAW  1 UNI50 L Law Library                    15A   16A   17A   NLAW  ALEPH
+NMUSI 1 UNI50 L Music Library                  15A   16A   17A   NMUSI ALEPH
+NSCI  1 UNI50 L Science Library                15A   16A   17A   NSCI  ALEPH
+NUPTN 1 UNI50 L Uptown Branch                  15B   NUPTN NUPTN NUPTN ALEPH

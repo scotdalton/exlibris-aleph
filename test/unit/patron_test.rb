@@ -14,24 +14,28 @@ class PatronTest < ActiveSupport::TestCase
 
   # Test exception handling for bogus response.
   test "test_bogus_response" do
-    patron = Exlibris::Aleph::Patron.new(@nyuidn, @bogus_url)
-    assert_raise(MultiXml::ParseError) { patron.loans }
-    assert_raise(MultiXml::ParseError) { patron.renew_loans() }
-    assert_raise(MultiXml::ParseError) { patron.renew_loans(@aleph_renew_item_id) }
-    assert_raise(MultiXml::ParseError) { patron.place_hold(@aleph_adm_library, @aleph_doc_library, @aleph_doc_number, @aleph_item_id, {:pickup_location => @pickup_location}) }
+    VCR.turned_off do
+      patron = Exlibris::Aleph::Patron.new(@nyuidn, @bogus_url)
+      assert_raise(MultiXml::ParseError) { patron.loans }
+      assert_raise(MultiXml::ParseError) { patron.renew_loans() }
+      assert_raise(MultiXml::ParseError) { patron.renew_loans(@aleph_renew_item_id) }
+      assert_raise(MultiXml::ParseError) { patron.place_hold(@aleph_adm_library, @aleph_doc_library, @aleph_doc_number, @aleph_item_id, {:pickup_location => @pickup_location}) }
+    end
   end
 
   # Test patron
   test "test_patron" do
-    patron = Exlibris::Aleph::Patron.new(@nyuidn, @rest_url)
-    loans = patron.loans
-    assert_nil(patron.error, "Failure in #{patron.class} while getting loans: #{patron.error}")
-    #renew_loans = patron.renew_loans()
-    #assert_nil(patron.error, "Failure in #{patron.class} while renewing all loans: #{patron.error}")
-    #renew_loans = patron.renew_loans(@aleph_renew_item_id)
-    #assert_nil(patron.error, "Failure in #{patron.class} while renewing loan #{@aleph_renew_item_id}: #{patron.error}")
-    assert_raise(RuntimeError) { patron.place_hold(@aleph_adm_library, @aleph_doc_library, @aleph_doc_number, @aleph_item_id, {}) }
-    place_hold = patron.place_hold(@aleph_adm_library, @aleph_doc_library, @aleph_doc_number, @aleph_item_id, {:pickup_location => @pickup_location})
-    assert_nil(patron.error, "Failure in #{patron.class} while placing hold: #{patron.error}")
+    VCR.use_cassette('patron') do
+      patron = Exlibris::Aleph::Patron.new(@nyuidn, @rest_url)
+      loans = patron.loans
+      assert_nil(patron.error, "Failure in #{patron.class} while getting loans: #{patron.error}")
+      #renew_loans = patron.renew_loans()
+      #assert_nil(patron.error, "Failure in #{patron.class} while renewing all loans: #{patron.error}")
+      #renew_loans = patron.renew_loans(@aleph_renew_item_id)
+      #assert_nil(patron.error, "Failure in #{patron.class} while renewing loan #{@aleph_renew_item_id}: #{patron.error}")
+      assert_raise(RuntimeError) { patron.place_hold(@aleph_adm_library, @aleph_doc_library, @aleph_doc_number, @aleph_item_id, {}) }
+      place_hold = patron.place_hold(@aleph_adm_library, @aleph_doc_library, @aleph_doc_number, @aleph_item_id, {:pickup_location => @pickup_location})
+      assert_nil(patron.error, "Failure in #{patron.class} while placing hold: #{patron.error}")
+    end
   end
 end

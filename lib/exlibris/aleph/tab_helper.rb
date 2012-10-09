@@ -45,7 +45,7 @@ module Exlibris
       # Initialize TabHelper based on path to tabs, path to store yml configs,
       # path for log file, and the ADMs for the Aleph implementation
       #   Exlibris::Aleph::TabHelper.init("/mnt/aleph_tab", ["ADM50", "ADM51"])
-      def self.init(tab_path, adms, refresh_time = ->{1.day.ago})
+      def self.init(tab_path, adms, refresh_time = lambda{1.day.ago})
         @@tab_path, @@adms, @@refresh_time = tab_path, adms, refresh_time
         # Set yml path and log path and make directories.
         @@yml_path, @@log_path = File.join(Rails.root, "config/aleph"), File.join(Rails.root, "log")
