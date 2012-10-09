@@ -2,7 +2,7 @@ require 'test_helper'
 class ConfigHelperTest < ActiveSupport::TestCase
   def setup
     Exlibris::Aleph::TabHelper.class_variable_set(:@@adms, [])
-    Exlibris::Aleph::TabHelper.class_variable_set(:@@refresh_time, ->{1.day.ago})
+    Exlibris::Aleph::TabHelper.class_variable_set(:@@refresh_time, lambda{1.day.ago})
     @adms = ["NYU50", "NYU51"]
     @tab_path = "/mnt/aleph_tab"
     dummy_path = "#{File.dirname(__FILE__)}/../dummy"
@@ -38,7 +38,7 @@ class ConfigHelperTest < ActiveSupport::TestCase
   end
   
   test "refresh" do
-    Exlibris::Aleph::TabHelper.init(@tab_path, @adms, ->{1.second.ago})
+    Exlibris::Aleph::TabHelper.init(@tab_path, @adms, lambda{1.second.ago})
     helper = Exlibris::Aleph::TabHelper.instance
     helper.sub_libraries
     updated_at_1 = helper.updated_at
