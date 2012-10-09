@@ -49,12 +49,12 @@ module Exlibris
         @@tab_path, @@adms, @@refresh_time = tab_path, adms, refresh_time
         # Set yml path and log path and make directories.
         @@yml_path, @@log_path = File.join(Rails.root, "config/aleph"), File.join(Rails.root, "log")
-        Dir.mkdir(@@yml_path) unless @@yml_path.nil? or Dir.exist?(@@yml_path) 
-        Dir.mkdir(File.join(@@yml_path, "alephe")) unless @@yml_path.nil? or Dir.exist?(File.join(@@yml_path, "alephe"))
+        Dir.mkdir(@@yml_path) unless @@yml_path.nil? or File.directory?(@@yml_path) 
+        Dir.mkdir(File.join(@@yml_path, "alephe")) unless @@yml_path.nil? or File.directory?(File.join(@@yml_path, "alephe"))
         @@adms.each { |adm| 
-          Dir.mkdir(File.join(@@yml_path, adm)) unless @@yml_path.nil? or Dir.exist?(File.join(@@yml_path, adm)) 
+          Dir.mkdir(File.join(@@yml_path, adm)) unless @@yml_path.nil? or File.directory?(File.join(@@yml_path, adm)) 
         } unless @@adms.nil?
-        Dir.mkdir(@@log_path) unless @@log_path.nil? or Dir.exist?(@@log_path)
+        Dir.mkdir(@@log_path) unless @@log_path.nil? or File.directory?(@@log_path)
         # Make readers for each class variable
         class_variables.each do |class_variable|
           define_method "#{class_variable}".sub('@@', '') do

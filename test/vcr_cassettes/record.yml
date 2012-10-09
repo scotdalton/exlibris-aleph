@@ -1,0 +1,145 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://aleph.library.nyu.edu:1891/rest-dlf/record/NYU01000062856?view=full
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Powered-By:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 09 Oct 2012 17:51:38 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-record><reply-text>ok</reply-text><reply-code>0000</reply-code><record><info
+        type="Items" href="http://aleph.library.nyu.edu:1891/rest-dlf/record/NYU01000062856/items"></info><info
+        type="Holdings" href="http://aleph.library.nyu.edu:1891/rest-dlf/record/NYU01000062856/holdings"></info><info
+        type="Filters" href="http://aleph.library.nyu.edu:1891/rest-dlf/record/NYU01000062856/filters"></info><leader>     cam
+        a2200361 a 45M</leader><controlfield tag="001">000062856</controlfield><controlfield
+        tag="003">NNU</controlfield><controlfield tag="005">20050509153705.0</controlfield><controlfield
+        tag="008">041119r20041969nyu      b    000 1 eng</controlfield><datafield
+        tag="010" ind1=" " ind2=" "><subfield code="a">2004559272</subfield></datafield><datafield
+        tag="020" ind1=" " ind2=" "><subfield code="a">0143039008</subfield></datafield><datafield
+        tag="035" ind1="9" ind2=" "><subfield code="a">NYUb13030858</subfield></datafield><datafield
+        tag="035" ind1=" " ind2=" "><subfield code="a">(NYU)NYUb13030858</subfield></datafield><datafield
+        tag="035" ind1=" " ind2=" "><subfield code="a">(OCoLC)ocm56781200</subfield></datafield><datafield
+        tag="040" ind1=" " ind2=" "><subfield code="a">DLC</subfield><subfield code="c">DLC</subfield></datafield><datafield
+        tag="043" ind1=" " ind2=" "><subfield code="a">e------</subfield></datafield><datafield
+        tag="050" ind1="0" ind2="0"><subfield code="a">PR6013.R44</subfield><subfield
+        code="b">T7 2004</subfield></datafield><datafield tag="082" ind1="0" ind2="0"><subfield
+        code="a">823/.912</subfield><subfield code="2">19</subfield></datafield><datafield
+        tag="100" ind1="1" ind2=" "><subfield code="a">Greene, Graham,</subfield><subfield
+        code="d">1904-1991.</subfield></datafield><datafield tag="245" ind1="1" ind2="0"><subfield
+        code="a">Travels with my aunt /</subfield><subfield code="c">Graham Greene
+        ; introduction by Gloria Emerson.</subfield></datafield><datafield tag="250"
+        ind1=" " ind2=" "><subfield code="a">Deluxe ed.</subfield></datafield><datafield
+        tag="260" ind1=" " ind2=" "><subfield code="a">New York :</subfield><subfield
+        code="b">Penguin Books,</subfield><subfield code="c">2004.</subfield></datafield><datafield
+        tag="300" ind1=" " ind2=" "><subfield code="a">xvi, 254 p. ;</subfield><subfield
+        code="c">22 cm.</subfield></datafield><datafield tag="490" ind1="1" ind2="
+        "><subfield code="a">Penguin classics</subfield></datafield><datafield tag="500"
+        ind1=" " ind2=" "><subfield code="a">&quot;Graham Greene centennial, 1904-2004&quot;--Cover.</subfield></datafield><datafield
+        tag="504" ind1=" " ind2=" "><subfield code="a">Includes bibliographical references
+        (p. xv-xvi).</subfield></datafield><datafield tag="650" ind1=" " ind2="0"><subfield
+        code="a">British</subfield><subfield code="z">Foreign countries</subfield><subfield
+        code="v">Fiction.</subfield></datafield><datafield tag="650" ind1=" " ind2="0"><subfield
+        code="a">Women travelers</subfield><subfield code="v">Fiction.</subfield></datafield><datafield
+        tag="650" ind1=" " ind2="0"><subfield code="a">Older women</subfield><subfield
+        code="v">Fiction.</subfield></datafield><datafield tag="650" ind1=" " ind2="0"><subfield
+        code="a">Travelers</subfield><subfield code="v">Fiction.</subfield></datafield><datafield
+        tag="650" ind1=" " ind2="0"><subfield code="a">Retirees</subfield><subfield
+        code="v">Fiction.</subfield></datafield><datafield tag="650" ind1=" " ind2="0"><subfield
+        code="a">Aunts</subfield><subfield code="v">Fiction.</subfield></datafield><datafield
+        tag="655" ind1=" " ind2="0"><subfield code="a">Humorous stories.</subfield></datafield><datafield
+        tag="830" ind1=" " ind2="0"><subfield code="a">Penguin classics</subfield></datafield></record></get-record> '
+    http_version: 
+  recorded_at: Tue, 09 Oct 2012 17:51:39 GMT
+- request:
+    method: get
+    uri: http://aleph.library.nyu.edu:1891/rest-dlf/record/NYU01000062856/holdings?view=full
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Powered-By:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 09 Oct 2012 17:51:38 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-hol-list><reply-text>ok</reply-text><reply-code>0000</reply-code><holdings><holding
+        href="http://aleph.library.nyu.edu:1891/rest-dlf/record/NYU01000062856/holdings/NYU60002992203"><leader>     cxH
+        a22001092  4500</leader><controlfield tag="001">002992203</controlfield><controlfield
+        tag="004">NYUb13030858</controlfield><controlfield tag="005">20080531134517.0</controlfield><controlfield
+        tag="008">0505030|||||8   |001|||||0050503</controlfield><datafield tag="010"
+        ind1=" " ind2=" "><subfield code="a">2004559272</subfield></datafield><datafield
+        tag="020" ind1=" " ind2=" "><subfield code="a">0143039008</subfield></datafield><datafield
+        tag="035" ind1="9" ind2=" "><subfield code="a">NYUH13030858/13663094</subfield></datafield><datafield
+        tag="852" ind1="0" ind2=" "><subfield code="a">NNU</subfield><subfield code="b">BOBST</subfield><subfield
+        code="c">MAIN</subfield><subfield code="h">PR6013.R44</subfield><subfield
+        code="i">T7 2004</subfield><subfield code="p">31142041146104</subfield><subfield
+        code="7">13663094</subfield></datafield></holding></holdings></get-hol-list> '
+    http_version: 
+  recorded_at: Tue, 09 Oct 2012 17:51:39 GMT
+- request:
+    method: get
+    uri: http://aleph.library.nyu.edu:1891/rest-dlf/record/NYU01000062856/items?view=full
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Powered-By:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 09 Oct 2012 17:51:38 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-list><reply-text>ok</reply-text><reply-code>0000</reply-code><items><item
+        href="http://aleph.library.nyu.edu:1891/rest-dlf/record/NYU01000062856/items/NYU50000062856000010"><z30-sub-library-code>BOBST</z30-sub-library-code><z30-item-process-status-code></z30-item-process-status-code><z30-item-status-code>01</z30-item-status-code><z30-collection-code>MAIN</z30-collection-code><queue>1
+        request(s) of 1 items.</queue><z30><translate-change-active-library>NYU50</translate-change-active-library><z30-doc-number>000062856</z30-doc-number><z30-item-sequence>    1.0</z30-item-sequence><z30-barcode>31142041146104</z30-barcode><z30-sub-library>NYU
+        Bobst</z30-sub-library><z30-material>Books</z30-material><z30-item-status>Regular
+        loan</z30-item-status><z30-open-date>20050503</z30-open-date><z30-update-date>20120809</z30-update-date><z30-cataloger>HORNICKA</z30-cataloger><z30-date-last-return>20120924</z30-date-last-return><z30-hour-last-return>1845</z30-hour-last-return><z30-ip-last-return>128.122.88.169</z30-ip-last-return><z30-no-loans>002</z30-no-loans><z30-alpha>L</z30-alpha><z30-collection>Main
+        Collection</z30-collection><z30-call-no-type>0</z30-call-no-type><z30-call-no>PR6013.R44
+        T7 2004</z30-call-no><z30-call-no-key>0 pr#6013 r44 t7 2004</z30-call-no-key><z30-call-no-2-type></z30-call-no-2-type><z30-call-no-2></z30-call-no-2><z30-call-no-2-key></z30-call-no-2-key><z30-description></z30-description><z30-note-opac></z30-note-opac><z30-note-circulation></z30-note-circulation><z30-note-internal></z30-note-internal><z30-order-number></z30-order-number><z30-inventory-number></z30-inventory-number><z30-inventory-number-date>00000000</z30-inventory-number-date><z30-last-shelf-report-date>00000000</z30-last-shelf-report-date><z30-price></z30-price><z30-shelf-report-number></z30-shelf-report-number><z30-on-shelf-date>00000000</z30-on-shelf-date><z30-on-shelf-seq>000000</z30-on-shelf-seq><z30-doc-number-2>000000000</z30-doc-number-2><z30-schedule-sequence-2>00000</z30-schedule-sequence-2><z30-copy-sequence-2>00000</z30-copy-sequence-2><z30-vendor-code></z30-vendor-code><z30-invoice-number></z30-invoice-number><z30-line-number>00000</z30-line-number><z30-pages></z30-pages><z30-issue-date>00000000</z30-issue-date><z30-expected-arrival-date>00000000</z30-expected-arrival-date><z30-arrival-date>00000000</z30-arrival-date><z30-item-statistic></z30-item-statistic><z30-item-process-status>Not
+        in Process</z30-item-process-status><z30-copy-id></z30-copy-id><z30-hol-doc-number>002992203</z30-hol-doc-number><z30-temp-location>No</z30-temp-location><z30-enumeration-a></z30-enumeration-a><z30-enumeration-b></z30-enumeration-b><z30-enumeration-c></z30-enumeration-c><z30-enumeration-d></z30-enumeration-d><z30-enumeration-e></z30-enumeration-e><z30-enumeration-f></z30-enumeration-f><z30-enumeration-g></z30-enumeration-g><z30-enumeration-h></z30-enumeration-h><z30-chronological-i></z30-chronological-i><z30-chronological-j></z30-chronological-j><z30-chronological-k></z30-chronological-k><z30-chronological-l></z30-chronological-l><z30-chronological-m></z30-chronological-m><z30-supp-index-o></z30-supp-index-o><z30-85x-type></z30-85x-type><z30-depository-id></z30-depository-id><z30-linking-number>000000000</z30-linking-number><z30-gap-indicator></z30-gap-indicator><z30-maintenance-count>001</z30-maintenance-count><z30-process-status-date>20120809</z30-process-status-date></z30><z13><translate-change-active-library>NYU50</translate-change-active-library><z13-doc-number>000062856</z13-doc-number><z13-year>2004</z13-year><z13-open-date>20080618</z13-open-date><z13-update-date>20120415</z13-update-date><z13-call-no-key></z13-call-no-key><z13-call-no-code>LOC0</z13-call-no-code><z13-call-no>PR6013.R44</z13-call-no><z13-author-code>1001</z13-author-code><z13-author>Greene,
+        Graham, 1904-1991.</z13-author><z13-title-code>24510</z13-title-code><z13-title>Travels
+        with my aunt /</z13-title><z13-imprint-code>260</z13-imprint-code><z13-imprint>New
+        York : Penguin Books, 2004.</z13-imprint><z13-isbn-issn-code>020</z13-isbn-issn-code><z13-isbn-issn>0143039008</z13-isbn-issn></z13><status>Requested</status></item></items></get-item-list> '
+    http_version: 
+  recorded_at: Tue, 09 Oct 2012 17:51:39 GMT
+recorded_with: VCR 2.2.5
