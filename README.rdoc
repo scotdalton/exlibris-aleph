@@ -3,7 +3,7 @@
 {<img src="https://gemnasium.com/scotdalton/exlibris-aleph.png" alt="Dependency Status" />}[https://gemnasium.com/scotdalton/exlibris-aleph]
 {<img src="https://codeclimate.com/badge.png" />}[https://codeclimate.com/github/scotdalton/exlibris-aleph]
 
-Exlibris::Primo offers a set of libraries for interacting with the ExLibris Aleph ILS.
+Exlibris::Aleph offers a set of libraries for interacting with the ExLibris Aleph ILS.
 
 == Exlibris::Aleph::Patron
 Exlibris::Aleph::Patron provides access to the Aleph Patron REST API.
