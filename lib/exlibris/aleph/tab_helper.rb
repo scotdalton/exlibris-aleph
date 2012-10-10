@@ -46,13 +46,14 @@ module Exlibris
       # path for log file, and the ADMs for the Aleph implementation
       #   Exlibris::Aleph::TabHelper.init("/mnt/aleph_tab", ["ADM50", "ADM51"])
       def self.init(tab_path, adms, refresh_time = lambda{1.day.ago})
-        @@tab_path, @@adms, @@refresh_time = tab_path, adms, refresh_time
+        @@tab_path, @@refresh_time = tab_path, refresh_time
+        @@adms = adms.collect{|adm| adm.downcase} unless adms.nil?
         # Set yml path and log path and make directories.
         @@yml_path, @@log_path = File.join(Rails.root, "config/aleph"), File.join(Rails.root, "log")
         Dir.mkdir(@@yml_path) unless @@yml_path.nil? or File.directory?(@@yml_path) 
         Dir.mkdir(File.join(@@yml_path, "alephe")) unless @@yml_path.nil? or File.directory?(File.join(@@yml_path, "alephe"))
         @@adms.each { |adm| 
-          Dir.mkdir(File.join(@@yml_path, adm)) unless @@yml_path.nil? or File.directory?(File.join(@@yml_path, adm.downcase)) 
+          Dir.mkdir(File.join(@@yml_path, adm)) unless @@yml_path.nil? or File.directory?(File.join(@@yml_path, adm)) 
         } unless @@adms.nil?
         Dir.mkdir(@@log_path) unless @@log_path.nil? or File.directory?(@@log_path)
         # Make readers for each class variable

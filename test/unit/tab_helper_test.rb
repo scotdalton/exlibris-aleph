@@ -28,7 +28,7 @@ class ConfigHelperTest < ActiveSupport::TestCase
   test "init" do
     Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
     helper = Exlibris::Aleph::TabHelper.instance
-    assert_equal(@adms, helper.adms)
+    assert_equal(["nyu50", "nyu51"], helper.adms)
   end
 
   test "instance" do
