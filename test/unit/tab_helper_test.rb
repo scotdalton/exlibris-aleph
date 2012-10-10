@@ -4,7 +4,7 @@ class ConfigHelperTest < ActiveSupport::TestCase
     Exlibris::Aleph::TabHelper.send(:class_variable_set, :@@adms, [])
     Exlibris::Aleph::TabHelper.send(:class_variable_set, :@@refresh_time, lambda{1.day.ago})
     @adms = ["NYU50", "NYU51"]
-    @tab_path = "/mnt/aleph_tab"
+    @tab_path = "#{Rails.root}/../mnt/aleph_tab"
     dummy_path = "#{File.dirname(__FILE__)}/../dummy"
     @yml_path = File.join(dummy_path, "config/aleph")
     @log_path = File.join(dummy_path, "log/aleph")
@@ -202,7 +202,7 @@ class ConfigHelperTest < ActiveSupport::TestCase
     Exlibris::Aleph::TabHelper.init(@tab_path, @adms)
     helper = Exlibris::Aleph::TabHelper.instance
     assert_nil(helper.sub_libraries["NEW__"])
-    sub_library_file = "/mnt/aleph_tab/alephe/tab/tab_sub_library.eng"
+    sub_library_file = "#{Rails.root}/../mnt/aleph_tab/alephe/tab/tab_sub_library.eng"
     file = File.open(sub_library_file, 'r')
     old_size = File.size(sub_library_file)
     file.close

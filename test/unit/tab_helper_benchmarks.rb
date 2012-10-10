@@ -2,7 +2,7 @@ require 'test_helper'
 class TabHelperBenchmarks < ActiveSupport::TestCase
   def setup
     @adms = ["NYU50", "NYU51"]
-    @tab_path = "/mnt/aleph_tab"
+    @tab_path = "#{Rails.root}/../mnt/aleph_tab"
     dummy_path = "#{File.dirname(__FILE__)}/../dummy"
     @yml_path = File.join(dummy_path, "config/aleph")
     @log_path = File.join(dummy_path, "log/aleph")
