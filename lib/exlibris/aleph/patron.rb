@@ -47,8 +47,8 @@ module Exlibris
       # Call the patronInformation/address Aleph Patron REST API
       # Returns a HTTParty::Response.
       def address()
-        @response = self.class.get(self.uri+ "/patronInformation/address")
-        return nil unless error.nil?
+        @response = self.class.get(@uri+ "/patronInformation/address")
+        return "Error getting patron's address through Aleph REST APIs. #{error}" unless error.nil?
         return @response
       end
 
