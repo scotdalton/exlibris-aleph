@@ -71,7 +71,7 @@ module Exlibris
       
       # Returns the note associated with the request.
       def note
-        return (not @response.first.last.kind_of?(Hash) or @response.first.last["create_hold"].nil?) ? "" : ": #{@response.first.last["create_hold"]["note"]}" if @response.instance_of?(Hash)
+        return (not @response.first.last.kind_of?(Hash) or @response.first.last["create_hold"].nil?) ? "" : ": #{@response.first.last["create_hold"]["note"]["__content__"]}" if @response.instance_of?(Hash)
       end
       
       # Returns the error associated with the request.
