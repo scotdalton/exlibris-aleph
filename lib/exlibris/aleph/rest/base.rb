@@ -15,7 +15,8 @@ module Exlibris
         self.format :xml
         self.abstract = true
 
-        attr_accessor :rest_url, :response
+        attr_writer :rest_url
+        attr_accessor :response
         protected :response=
 
         # Returns the error associated with the request.

@@ -29,4 +29,20 @@ class RecordTest < ActiveSupport::TestCase
       assert_nil(aleph_record.error, "Failure in #{aleph_record.class} while calling items: #{aleph_record.error}")
     end
   end
+
+  # Test record.
+  test "record with global config" do
+    Exlibris::Aleph.configure do |c|
+      c.base_url = "http://aleph.library.edu"
+    end
+    VCR.use_cassette('record') do
+      aleph_record = Exlibris::Aleph::Rest::Record.new(bib_library: @aleph_doc_library, record_id: @aleph_doc_number, rest_url: @rest_url)
+      bib = aleph_record.bib
+      assert_nil(aleph_record.error, "Failure in #{aleph_record.class} while calling bib: #{aleph_record.error}")
+      holdings = aleph_record.holdings
+      assert_nil(aleph_record.error, "Failure in #{aleph_record.class} while calling holdings: #{aleph_record.error}")
+      items = aleph_record.items
+      assert_nil(aleph_record.error, "Failure in #{aleph_record.class} while calling items: #{aleph_record.error}")
+    end
+  end
 end

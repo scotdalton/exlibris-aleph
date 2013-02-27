@@ -32,7 +32,7 @@ module Exlibris
 
         # Aleph rest url
         def rest_url
-          @rest_url ||= (String.new(config.rest_url.to_s) || "#{base_url}:1891/rest-dlf")
+          @rest_url ||= (config.rest_url) ? String.new(config.rest_url.to_s) : "#{base_url}:1891/rest-dlf"
         end
 
         # Refresh time for TabHelper
