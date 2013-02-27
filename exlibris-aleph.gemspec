@@ -13,13 +13,16 @@ Gem::Specification.new do |s|
   s.summary     = "Library to work with Exlibris' Aleph ILS."
   s.description = "Library to handle Exlibris' Aleph ILS."
 
-  s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["lib/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  s.add_dependency "rails", "~> 3.2.0"
-  s.add_dependency "nokogiri"
-  s.add_dependency "httparty"
+  s.add_dependency "require_all", "~> 1.2.1"
+  s.add_dependency "nokogiri", "~> 1.5.6"
+  s.add_dependency "httparty", "~> 0.10.2"
+  # Leverage ActiveSupport core extensions.
+  s.add_dependency "activesupport", "~> 3.2.12"
 
-  s.add_development_dependency "vcr"
-  s.add_development_dependency "webmock"
+  s.add_development_dependency "vcr", "~> 2.4.0"
+  s.add_development_dependency "webmock", "~> 1.9.0"
+  s.add_development_dependency "simplecov", "~> 0.7.1"
 end

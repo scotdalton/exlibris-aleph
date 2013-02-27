@@ -1,12 +1,7 @@
 .bundle/
 log/*.log
 pkg/
-test/dummy/db/*.sqlite3
-test/dummy/log/*.log
-test/dummy/log/aleph/*.log
-test/dummy/tmp/
-test/dummy/.sass-cache
 Gemfile.lock
 exlibris-aleph-*.gem
-test/dummy/config/aleph
-
+config/aleph
+coverage

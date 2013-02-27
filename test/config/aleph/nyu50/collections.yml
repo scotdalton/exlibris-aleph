@@ -1,0 +1,1168 @@
+---
+BAFC:
+  AFC:
+    :collection_code: AFC
+    :sub_library: BAFC
+    :text: Main Collection
+  AFCR:
+    :collection_code: AFCR
+    :sub_library: BAFC
+    :text: Reference
+  ARES:
+    :collection_code: ARES
+    :sub_library: BAFC
+    :text: Reserve
+  AV:
+    :collection_code: AV
+    :sub_library: BAFC
+    :text: Main Collection
+  BIMC:
+    :collection_code: BIMC
+    :sub_library: BAFC
+    :text: Main Collection
+  CLSTX:
+    :collection_code: CLSTX
+    :sub_library: BAFC
+    :text: Closed Stacks
+  MULTI:
+    :collection_code: MULTI
+    :sub_library: BAFC
+    :text: Main Collection
+BFALE:
+  FADKN:
+    :collection_code: FADKN
+    :sub_library: BFALE
+    :text: Adkins
+  FALEF:
+    :collection_code: FALEF
+    :sub_library: BFALE
+    :text: Fales
+  FALES:
+    :collection_code: FALES
+    :sub_library: BFALE
+    :text: SpecCol
+  FBER:
+    :collection_code: FBER
+    :sub_library: BFALE
+    :text: Berol
+  FDOWN:
+    :collection_code: FDOWN
+    :sub_library: BFALE
+    :text: Downtown
+  FKAPP:
+    :collection_code: FKAPP
+    :sub_library: BFALE
+    :text: Kapp
+  FMDT:
+    :collection_code: FMDT
+    :sub_library: BFALE
+    :text: Downtown - Media
+  FMFA:
+    :collection_code: FMFA
+    :sub_library: BFALE
+    :text: Fales - Media
+  FMEDI:
+    :collection_code: FMEDI
+    :sub_library: BFALE
+    :text: SpecCol - Media
+  FREF:
+    :collection_code: FREF
+    :sub_library: BFALE
+    :text: Reference
+  FREMA:
+    :collection_code: FREMA
+    :sub_library: BFALE
+    :text: Remarque / Goddard Papers
+  FTSD:
+    :collection_code: FTSD
+    :sub_library: BFALE
+    :text: Technical Services
+BLCC:
+  MAIN:
+    :collection_code: MAIN
+    :sub_library: BLCC
+    :text: Computer Center
+BOBST:
+  BLEIS:
+    :collection_code: BLEIS
+    :sub_library: BOBST
+    :text: Leisure Collection
+  ALEV:
+    :collection_code: ALEV
+    :sub_library: BOBST
+    :text: LL2
+  ALEVI:
+    :collection_code: ALEVI
+    :sub_library: BOBST
+    :text: LL2 - Index
+  ARCH:
+    :collection_code: ARCH
+    :sub_library: BOBST
+    :text: University Archives
+  BEARF:
+    :collection_code: BEARF
+    :sub_library: BOBST
+    :text: East Asian Reference
+  ATRIU:
+    :collection_code: ATRIU
+    :sub_library: BOBST
+    :text: 1st Floor Reference Atrium Temp Collection
+  BCIRC:
+    :collection_code: BCIRC
+    :sub_library: BOBST
+    :text: ILL
+  CLOSS:
+    :collection_code: CLOSS
+    :sub_library: BOBST
+    :text: Closed Stack
+  EASIA:
+    :collection_code: EASIA
+    :sub_library: BOBST
+    :text: East Asian
+  ETC:
+    :collection_code: ETC
+    :sub_library: BOBST
+    :text: Electronic Text Center
+  MAIN:
+    :collection_code: MAIN
+    :sub_library: BOBST
+    :text: Main Collection
+  MFORM:
+    :collection_code: MFORM
+    :sub_library: BOBST
+    :text: Microform
+  MREF:
+    :collection_code: MREF
+    :sub_library: BOBST
+    :text: Music Reference
+  MUSIC:
+    :collection_code: MUSIC
+    :sub_library: BOBST
+    :text: Music
+  PARL7:
+    :collection_code: PARL7
+    :sub_library: BOBST
+    :text: NE Wing 7 - Parm papers
+  PARL8:
+    :collection_code: PARL8
+    :sub_library: BOBST
+    :text: 8th floor lounge
+  PERIO:
+    :collection_code: PERIO
+    :sub_library: BOBST
+    :text: Periodicals
+  PRES:
+    :collection_code: PRES
+    :sub_library: BOBST
+    :text: Preservation OffSite Storage
+  READ4:
+    :collection_code: READ4
+    :sub_library: BOBST
+    :text: Reading Room 4
+  READ8:
+    :collection_code: READ8
+    :sub_library: BOBST
+    :text: Reading Room 8
+  REF1:
+    :collection_code: REF1
+    :sub_library: BOBST
+    :text: 1st Floor Reference
+  REF1B:
+    :collection_code: REF1B
+    :sub_library: BOBST
+    :text: 1st Floor Reference - Books in Print
+  REF1C:
+    :collection_code: REF1C
+    :sub_library: BOBST
+    :text: 1st Floor Reference - Career section
+  REF1D:
+    :collection_code: REF1D
+    :sub_library: BOBST
+    :text: 1st Floor Reference - Desk Reference
+  REF1E:
+    :collection_code: REF1E
+    :sub_library: BOBST
+    :text: 1st Floor Reference - Etext (Studio)
+  REF1I:
+    :collection_code: REF1I
+    :sub_library: BOBST
+    :text: 1st Floor Reference - Index
+  REF1N:
+    :collection_code: REF1N
+    :sub_library: BOBST
+    :text: 1st Floor Reference - International Documents
+  REF1S:
+    :collection_code: REF1S
+    :sub_library: BOBST
+    :text: 1st Floor Reference - Study
+  REF5:
+    :collection_code: REF5
+    :sub_library: BOBST
+    :text: 5th Floor Reference
+  REF9:
+    :collection_code: REF9
+    :sub_library: BOBST
+    :text: 9th Floor Reference
+  RR4CL:
+    :collection_code: RR4CL
+    :sub_library: BOBST
+    :text: 7th Floor South - Children's Literature
+  RR4PP:
+    :collection_code: RR4PP
+    :sub_library: BOBST
+    :text: 4th Floor East - Parliamentary Papers
+  STORE:
+    :collection_code: STORE
+    :sub_library: BOBST
+    :text: Storage
+  STUDI:
+    :collection_code: STUDI
+    :sub_library: BOBST
+    :text: Studio
+  TSD:
+    :collection_code: TSD
+    :sub_library: BOBST
+    :text: Technical Services
+BREF6:
+  RF6:
+    :collection_code: RF6
+    :sub_library: BREF6
+    :text: Main Collection
+  RF6DR:
+    :collection_code: RF6DR
+    :sub_library: BREF6
+    :text: Desk Reference
+  RF6I:
+    :collection_code: RF6I
+    :sub_library: BREF6
+    :text: Index
+  RF6IC:
+    :collection_code: RF6IC
+    :sub_library: BREF6
+    :text: Investment Collection
+  RF6ID:
+    :collection_code: RF6ID
+    :sub_library: BREF6
+    :text: International Documents - Desk
+  RF6II:
+    :collection_code: RF6II
+    :sub_library: BREF6
+    :text: International Documents - Index
+  RF6IN:
+    :collection_code: RF6IN
+    :sub_library: BREF6
+    :text: International Documents
+  RF6IR:
+    :collection_code: RF6IR
+    :sub_library: BREF6
+    :text: International Reference
+  RF6ND:
+    :collection_code: RF6ND
+    :sub_library: BREF6
+    :text: NYPL Dictionary Catalog
+  RF6NU:
+    :collection_code: RF6NU
+    :sub_library: BREF6
+    :text: National Union Catalog
+  RF6UD:
+    :collection_code: RF6UD
+    :sub_library: BREF6
+    :text: United States Documents - Desk
+  RF6UN:
+    :collection_code: RF6UN
+    :sub_library: BREF6
+    :text: United Nations Documents
+  RF6US:
+    :collection_code: RF6US
+    :sub_library: BREF6
+    :text: United States Documents
+BRES:
+  BRES:
+    :collection_code: BRES
+    :sub_library: BRES
+    :text: Reserve Collection
+BTAM:
+  TAM:
+    :collection_code: TAM
+    :sub_library: BTAM
+    :text: Main Collection
+  TAMR:
+    :collection_code: TAMR
+    :sub_library: BTAM
+    :text: Reference
+  TTSD:
+    :collection_code: TTSD
+    :sub_library: BTAM
+    :text: Technical Services
+  TAMVF:
+    :collection_code: TAMVF
+    :sub_library: BTAM
+    :text: Vertical File
+  TAMW:
+    :collection_code: TAMW
+    :sub_library: BTAM
+    :text: Wagner
+BWEB:
+  BNYUI:
+    :collection_code: BNYUI
+    :sub_library: BWEB
+    :text: Internet Resources
+CU:
+  ARCH:
+    :collection_code: ARCH
+    :sub_library: CU
+    :text: Archives
+  ATLAS:
+    :collection_code: ATLAS
+    :sub_library: CU
+    :text: Atlas
+  CLOSP:
+    :collection_code: CLOSP
+    :sub_library: CU
+    :text: Closed Periodical Stacks
+  CLOSS:
+    :collection_code: CLOSS
+    :sub_library: CU
+    :text: Closed Stack
+  CRES:
+    :collection_code: CRES
+    :sub_library: CU
+    :text: Reserve Collection
+  DIGTL:
+    :collection_code: DIGTL
+    :sub_library: CU
+    :text: Digital Media
+  INDEX:
+    :collection_code: INDEX
+    :sub_library: CU
+    :text: Index
+  LSTAF:
+    :collection_code: LSTAF
+    :sub_library: CU
+    :text: Library Staff
+  MAIN:
+    :collection_code: MAIN
+    :sub_library: CU
+    :text: Main Collection
+  MEZZ:
+    :collection_code: MEZZ
+    :sub_library: CU
+    :text: Mezzanine
+  MEZZP:
+    :collection_code: MEZZP
+    :sub_library: CU
+    :text: Mezzanine Periodicals
+  MICRO:
+    :collection_code: MICRO
+    :sub_library: CU
+    :text: Microform
+  MICRP:
+    :collection_code: MICRP
+    :sub_library: CU
+    :text: Microform Periodicals
+  NET:
+    :collection_code: NET
+    :sub_library: CU
+    :text: Restricted Internet Resources
+  PERIO:
+    :collection_code: PERIO
+    :sub_library: CU
+    :text: Periodicals
+  REF:
+    :collection_code: REF
+    :sub_library: CU
+    :text: Reference
+  VIDEO:
+    :collection_code: VIDEO
+    :sub_library: CU
+    :text: Video
+KBHS:
+  ARMS:
+    :collection_code: ARMS
+    :sub_library: KBHS
+    :text: Archives - Manuscripts
+  ARTIF:
+    :collection_code: ARTIF
+    :sub_library: KBHS
+    :text: Art - Artifacts
+  ATLAS:
+    :collection_code: ATLAS
+    :sub_library: KBHS
+    :text: Atlas
+  CBDSK:
+    :collection_code: CBDSK
+    :sub_library: KBHS
+    :text: Conservation / Bindery - Desk
+  CBIND:
+    :collection_code: CBIND
+    :sub_library: KBHS
+    :text: Conservation / Bindery
+  CSTAC:
+    :collection_code: CSTAC
+    :sub_library: KBHS
+    :text: Closed Stacks
+  FOLIO:
+    :collection_code: FOLIO
+    :sub_library: KBHS
+    :text: Folio
+  IMAGE:
+    :collection_code: IMAGE
+    :sub_library: KBHS
+    :text: Images
+  MAIN:
+    :collection_code: MAIN
+    :sub_library: KBHS
+    :text: Main Collection
+  FLMAP:
+    :collection_code: FLMAP
+    :sub_library: KBHS
+    :text: Flat Maps
+  FDMAP:
+    :collection_code: FDMAP
+    :sub_library: KBHS
+    :text: Folded Maps
+  MFORM:
+    :collection_code: MFORM
+    :sub_library: KBHS
+    :text: Microform
+  REF:
+    :collection_code: REF
+    :sub_library: KBHS
+    :text: Reference
+  REFD:
+    :collection_code: REFD
+    :sub_library: KBHS
+    :text: Reference - Desk
+  SPCL:
+    :collection_code: SPCL
+    :sub_library: KBHS
+    :text: Special Collections
+  STAFR:
+    :collection_code: STAFR
+    :sub_library: KBHS
+    :text: Staff Reference
+MISC:
+  ACF:
+    :collection_code: ACF
+    :sub_library: MISC
+    :text: Academic Computing
+  BCRES:
+    :collection_code: BCRES
+    :sub_library: MISC
+    :text: CRES under Bobst
+  BEGYP:
+    :collection_code: BEGYP
+    :sub_library: MISC
+    :text: Egyption under Bobst
+  BLANK:
+    :collection_code: BLANK
+    :sub_library: MISC
+    :text: No Bobst Fields to map
+  BLDVD:
+    :collection_code: BLDVD
+    :sub_library: MISC
+    :text: No Bobst Fields DVD
+  BLVF:
+    :collection_code: BLVF
+    :sub_library: MISC
+    :text: No Bobst Fields Vertical File
+  BOBI:
+    :collection_code: BOBI
+    :sub_library: MISC
+    :text: International Docs Bobst
+  BOBVF:
+    :collection_code: BOBVF
+    :sub_library: MISC
+    :text: Vertical File Bobst
+  CBRES:
+    :collection_code: CBRES
+    :sub_library: MISC
+    :text: BRES under Courant
+  GLIS:
+    :collection_code: GLIS
+    :sub_library: MISC
+    :text: GMA Errors
+  GREY:
+    :collection_code: GREY
+    :sub_library: MISC
+    :text: Grey
+  GREYA:
+    :collection_code: GREYA
+    :sub_library: MISC
+    :text: Grey
+  NCRES:
+    :collection_code: NCRES
+    :sub_library: MISC
+    :text: CRES under New School
+  NYAA:
+    :collection_code: NYAA
+    :sub_library: MISC
+    :text: New York Academy of Art
+  NYUIM:
+    :collection_code: NYUIM
+    :sub_library: MISC
+    :text: NYU Restricted Internet Resources - Microform??
+  RENOV:
+    :collection_code: RENOV
+    :sub_library: MISC
+    :text: Bobst Renovation Storage
+  RENSC:
+    :collection_code: RENSC
+    :sub_library: MISC
+    :text: Bobst Renovation Storage - Special Collections
+  TWJ:
+    :collection_code: TWJ
+    :sub_library: MISC
+    :text: Bill Jones Test Records
+NCOUR:
+  ARCHR:
+    :collection_code: ARCHR
+    :sub_library: NCOUR
+    :text: Archives Reserve
+  MAIN:
+    :collection_code: MAIN
+    :sub_library: NCOUR
+    :text: Main Collection
+  MICRO:
+    :collection_code: MICRO
+    :sub_library: NCOUR
+    :text: Microform
+  MRES:
+    :collection_code: MRES
+    :sub_library: NCOUR
+    :text: Reserves
+  PERIO:
+    :collection_code: PERIO
+    :sub_library: NCOUR
+    :text: Periodicals
+  REF:
+    :collection_code: REF
+    :sub_library: NCOUR
+    :text: Reference
+  SEM:
+    :collection_code: SEM
+    :sub_library: NCOUR
+    :text: Seminaire
+  SPCL:
+    :collection_code: SPCL
+    :sub_library: NCOUR
+    :text: SpecCol
+  STOR:
+    :collection_code: STOR
+    :sub_library: NCOUR
+    :text: Storage
+  TABLE:
+    :collection_code: TABLE
+    :sub_library: NCOUR
+    :text: Tables
+  TECHR:
+    :collection_code: TECHR
+    :sub_library: NCOUR
+    :text: Technical Reports
+  VIDEO:
+    :collection_code: VIDEO
+    :sub_library: NCOUR
+    :text: Video
+NIFA:
+  ASIAN:
+    :collection_code: ASIAN
+    :sub_library: NIFA
+    :text: Asian
+  ASIAP:
+    :collection_code: ASIAP
+    :sub_library: NIFA
+    :text: Asian Periodicals
+  ASIAR:
+    :collection_code: ASIAR
+    :sub_library: NIFA
+    :text: Asian Reference
+  CLASS:
+    :collection_code: CLASS
+    :sub_library: NIFA
+    :text: Classical
+  EGYPT:
+    :collection_code: EGYPT
+    :sub_library: NIFA
+    :text: Egyptian
+  FRES:
+    :collection_code: FRES
+    :sub_library: NIFA
+    :text: Reserves
+  GUIDE:
+    :collection_code: GUIDE
+    :sub_library: NIFA
+    :text: Guides
+  MAIN:
+    :collection_code: MAIN
+    :sub_library: NIFA
+    :text: Main Collection
+  MICRO:
+    :collection_code: MICRO
+    :sub_library: NIFA
+    :text: Microform
+  OFFSI:
+    :collection_code: OFFSI
+    :sub_library: NIFA
+    :text: Offsite
+  PERIO:
+    :collection_code: PERIO
+    :sub_library: NIFA
+    :text: Periodicals
+  REF:
+    :collection_code: REF
+    :sub_library: NIFA
+    :text: Reference
+  SPCL:
+    :collection_code: SPCL
+    :sub_library: NIFA
+    :text: SpecCol
+  SPCLF:
+    :collection_code: SPCLF
+    :sub_library: NIFA
+    :text: SpecCol Friedlaender collection
+  TECH:
+    :collection_code: TECH
+    :sub_library: NIFA
+    :text: Techincal Services
+  VIS:
+    :collection_code: VIS
+    :sub_library: NIFA
+    :text: Visual Resources
+NIFAC:
+  MAIN:
+    :collection_code: MAIN
+    :sub_library: NIFAC
+    :text: Main Collection
+  MICRO:
+    :collection_code: MICRO
+    :sub_library: NIFAC
+    :text: Microform
+  PERIO:
+    :collection_code: PERIO
+    :sub_library: NIFAC
+    :text: Periodicals
+  REF:
+    :collection_code: REF
+    :sub_library: NIFAC
+    :text: Reference
+  SPCL:
+    :collection_code: SPCL
+    :sub_library: NIFAC
+    :text: SpecCol
+NISAW:
+  AWRES:
+    :collection_code: AWRES
+    :sub_library: NISAW
+    :text: Reserves
+  FOLIO:
+    :collection_code: FOLIO
+    :sub_library: NISAW
+    :text: Folio Collection
+  LARGE:
+    :collection_code: LARGE
+    :sub_library: NISAW
+    :text: Large Collection
+  MAIN:
+    :collection_code: MAIN
+    :sub_library: NISAW
+    :text: Main Collection
+  OAK:
+    :collection_code: OAK
+    :sub_library: NISAW
+    :text: Oak Collection
+  OVERZ:
+    :collection_code: OVERZ
+    :sub_library: NISAW
+    :text: Oversize Collection
+  REF3:
+    :collection_code: REF3
+    :sub_library: NISAW
+    :text: Reference 3 Collection
+  REF4:
+    :collection_code: REF4
+    :sub_library: NISAW
+    :text: Reference 4 Collection
+  REF5:
+    :collection_code: REF5
+    :sub_library: NISAW
+    :text: Reference 5 Collection
+  SMALL:
+    :collection_code: SMALL
+    :sub_library: NISAW
+    :text: Small Collection
+NKEV:
+  MAIN:
+    :collection_code: MAIN
+    :sub_library: NKEV
+    :text: Main Collection
+NLAPI:
+  MAIN:
+    :collection_code: MAIN
+    :sub_library: NLAPI
+    :text: Main Collection
+  MICRO:
+    :collection_code: MICRO
+    :sub_library: NLAPI
+    :text: Microform
+  SOPRA:
+    :collection_code: SOPRA
+    :sub_library: NLAPI
+    :text: Upper
+  SPCL:
+    :collection_code: SPCL
+    :sub_library: NLAPI
+    :text: Special Collections
+  STDLO:
+    :collection_code: STDLO
+    :sub_library: NLAPI
+    :text: Studiolo
+  VILLA:
+    :collection_code: VILLA
+    :sub_library: NLAPI
+    :text: Villa Ulivi
+NOFFS:
+  MAIN:
+    :collection_code: MAIN
+    :sub_library: NOFFS
+    :text: Main Collection
+  MICRO:
+    :collection_code: MICRO
+    :sub_library: NOFFS
+    :text: Microform
+  OSARC:
+    :collection_code: OSARC
+    :sub_library: NOFFS
+    :text: Archives
+  OSINT:
+    :collection_code: OSINT
+    :sub_library: NOFFS
+    :text: International Documents
+  OSREF:
+    :collection_code: OSREF
+    :sub_library: NOFFS
+    :text: Reference
+  OSSDT:
+    :collection_code: OSSDT
+    :sub_library: NOFFS
+    :text: SpecCol Downtown
+  OSSPA:
+    :collection_code: OSSPA
+    :sub_library: NOFFS
+    :text: SpecCol Adkins
+  OSSPC:
+    :collection_code: OSSPC
+    :sub_library: NOFFS
+    :text: SpecCol
+  OSSPF:
+    :collection_code: OSSPF
+    :sub_library: NOFFS
+    :text: SpecCol Fales
+  OSTAM:
+    :collection_code: OSTAM
+    :sub_library: NOFFS
+    :text: Tamiment
+  OSTS:
+    :collection_code: OSTS
+    :sub_library: NOFFS
+    :text: Technical Services
+NREI:
+  MAIN:
+    :collection_code: MAIN
+    :sub_library: NREI
+    :text: Main Collection
+  PERIO:
+    :collection_code: PERIO
+    :sub_library: NREI
+    :text: Periodicals
+  REF:
+    :collection_code: REF
+    :sub_library: NREI
+    :text: Reference
+  VIDEO:
+    :collection_code: VIDEO
+    :sub_library: NREI
+    :text: Video
+NYHS:
+  ADMIN:
+    :collection_code: ADMIN
+    :sub_library: NYHS
+    :text: AdminOffice
+  ALMA:
+    :collection_code: ALMA
+    :sub_library: NYHS
+    :text: Almanacs
+  ARCH:
+    :collection_code: ARCH
+    :sub_library: NYHS
+    :text: Archives
+  ARCHI:
+    :collection_code: ARCHI
+    :sub_library: NYHS
+    :text: Architecture
+  BEEK:
+    :collection_code: BEEK
+    :sub_library: NYHS
+    :text: Beekman Collection
+  BLAB:
+    :collection_code: BLAB
+    :sub_library: NYHS
+    :text: Book Lab
+  BROAD:
+    :collection_code: BROAD
+    :sub_library: NYHS
+    :text: Broadsides
+  CIRCU:
+    :collection_code: CIRCU
+    :sub_library: NYHS
+    :text: Circus
+  DIR:
+    :collection_code: DIR
+    :sub_library: NYHS
+    :text: Directories
+  GREEN:
+    :collection_code: GREEN
+    :sub_library: NYHS
+    :text: Greenwood Collection
+  HAWKS:
+    :collection_code: HAWKS
+    :sub_library: NYHS
+    :text: Hawks-Niblo Collection
+  INDEX:
+    :collection_code: INDEX
+    :sub_library: NYHS
+    :text: Index
+  KING:
+    :collection_code: KING
+    :sub_library: NYHS
+    :text: King Library
+  LANDA:
+    :collection_code: LANDA
+    :sub_library: NYHS
+    :text: Landauer
+  LIND:
+    :collection_code: LIND
+    :sub_library: NYHS
+    :text: Lind
+  LIVI:
+    :collection_code: LIVI
+    :sub_library: NYHS
+    :text: Livingston
+  MAIN:
+    :collection_code: MAIN
+    :sub_library: NYHS
+    :text: Main Collection
+  MAPS:
+    :collection_code: MAPS
+    :sub_library: NYHS
+    :text: Maps
+  MICRO:
+    :collection_code: MICRO
+    :sub_library: NYHS
+    :text: Microform
+  MORS:
+    :collection_code: MORS
+    :sub_library: NYHS
+    :text: Morris Collection
+  MSCL:
+    :collection_code: MSCL
+    :sub_library: NYHS
+    :text: Mss Collection
+  MSREF:
+    :collection_code: MSREF
+    :sub_library: NYHS
+    :text: MssRef
+  MUS:
+    :collection_code: MUS
+    :sub_library: NYHS
+    :text: Museum Collection
+  MUSIC:
+    :collection_code: MUSIC
+    :sub_library: NYHS
+    :text: Music
+  NET:
+    :collection_code: NET
+    :sub_library: NYHS
+    :text: Internet Resources
+  NEWSP:
+    :collection_code: NEWSP
+    :sub_library: NYHS
+    :text: Newspaper Collection
+  PAMPH:
+    :collection_code: PAMPH
+    :sub_library: NYHS
+    :text: Pamphlets
+  PERIO:
+    :collection_code: PERIO
+    :sub_library: NYHS
+    :text: Periodicals
+  PRARE:
+    :collection_code: PRARE
+    :sub_library: NYHS
+    :text: Print Room Rare
+  PREF:
+    :collection_code: PREF
+    :sub_library: NYHS
+    :text: Print Room Reference
+  PRNTS:
+    :collection_code: PRNTS
+    :sub_library: NYHS
+    :text: Print Room
+  REF:
+    :collection_code: REF
+    :sub_library: NYHS
+    :text: Reference
+  REFA:
+    :collection_code: REFA
+    :sub_library: NYHS
+    :text: Art Reference
+  SPCL:
+    :collection_code: SPCL
+    :sub_library: NYHS
+    :text: SpecCol
+  TECH:
+    :collection_code: TECH
+    :sub_library: NYHS
+    :text: Technical Services
+NYSID:
+  AUCT:
+    :collection_code: AUCT
+    :sub_library: NYSID
+    :text: Auction Catalogs
+  AV:
+    :collection_code: AV
+    :sub_library: NYSID
+    :text: Audiovisual
+  CLOSS:
+    :collection_code: CLOSS
+    :sub_library: NYSID
+    :text: Closed Stacks
+  IRES:
+    :collection_code: IRES
+    :sub_library: NYSID
+    :text: Reserves
+  MAIN:
+    :collection_code: MAIN
+    :sub_library: NYSID
+    :text: Main Collection
+  MATRC:
+    :collection_code: MATRC
+    :sub_library: NYSID
+    :text: Materials Resourc Center
+  NET:
+    :collection_code: NET
+    :sub_library: NYSID
+    :text: Internet Resource
+  NETMU:
+    :collection_code: NETMU
+    :sub_library: NYSID
+    :text: Internet Resource
+  NETSU:
+    :collection_code: NETSU
+    :sub_library: NYSID
+    :text: Internet Resource
+  PERIO:
+    :collection_code: PERIO
+    :sub_library: NYSID
+    :text: Periodicals
+  REF:
+    :collection_code: REF
+    :sub_library: NYSID
+    :text: Reference
+  SPCL:
+    :collection_code: SPCL
+    :sub_library: NYSID
+    :text: SpecCol
+  VIDEO:
+    :collection_code: VIDEO
+    :sub_library: NYSID
+    :text: Audiovisual
+TNSFO:
+  ARCH:
+    :collection_code: ARCH
+    :sub_library: TNSFO
+    :text: Archives
+  ATLAS:
+    :collection_code: ATLAS
+    :sub_library: TNSFO
+    :text: Reference
+  AV:
+    :collection_code: AV
+    :sub_library: TNSFO
+    :text: Audio Visual
+  CATM:
+    :collection_code: CATM
+    :sub_library: TNSFO
+    :text: Catalog Maintenance
+  CLOSP:
+    :collection_code: CLOSP
+    :sub_library: TNSFO
+    :text: Closed Stack
+  CLOSS:
+    :collection_code: CLOSS
+    :sub_library: TNSFO
+    :text: Closed Stack
+  INDEX:
+    :collection_code: INDEX
+    :sub_library: TNSFO
+    :text: Reference
+  MAIN:
+    :collection_code: MAIN
+    :sub_library: TNSFO
+    :text: Main Collection
+  MICRO:
+    :collection_code: MICRO
+    :sub_library: TNSFO
+    :text: Microform
+  MIG:
+    :collection_code: MIG
+    :sub_library: TNSFO
+    :text: Migration Center
+  NRES:
+    :collection_code: NRES
+    :sub_library: TNSFO
+    :text: Newschool Reserve
+  PERIO:
+    :collection_code: PERIO
+    :sub_library: TNSFO
+    :text: Periodicals
+  REF:
+    :collection_code: REF
+    :sub_library: TNSFO
+    :text: Reference
+  REFD:
+    :collection_code: REFD
+    :sub_library: TNSFO
+    :text: Reference - Desk
+  REFI:
+    :collection_code: REFI
+    :sub_library: TNSFO
+    :text: Reference - Index
+  STOR:
+    :collection_code: STOR
+    :sub_library: TNSFO
+    :text: Storage
+  TECH:
+    :collection_code: TECH
+    :sub_library: TNSFO
+    :text: Tech Center
+  TESOL:
+    :collection_code: TESOL
+    :sub_library: TNSFO
+    :text: TESOL
+  THES:
+    :collection_code: THES
+    :sub_library: TNSFO
+    :text: Thesis
+TNSGI:
+  AV:
+    :collection_code: AV
+    :sub_library: TNSGI
+    :text: Audio Visual
+  MAIN:
+    :collection_code: MAIN
+    :sub_library: TNSGI
+    :text: Main Collection
+  PERIO:
+    :collection_code: PERIO
+    :sub_library: TNSGI
+    :text: Periodicals
+  PRES:
+    :collection_code: PRES
+    :sub_library: TNSGI
+    :text: Reserve Collection
+  REF:
+    :collection_code: REF
+    :sub_library: TNSGI
+    :text: Reference
+  SPCL:
+    :collection_code: SPCL
+    :sub_library: TNSGI
+    :text: SpecCol
+  SPCLP:
+    :collection_code: SPCLP
+    :sub_library: TNSGI
+    :text: SpecCol Periodicals
+TNSKE:
+  ARCH:
+    :collection_code: ARCH
+    :sub_library: TNSKE
+    :text: Main Collection
+TNSSC:
+  ANNEX:
+    :collection_code: ANNEX
+    :sub_library: TNSSC
+    :text: Annex
+  AV:
+    :collection_code: AV
+    :sub_library: TNSSC
+    :text: Audio Visual
+  CIRC:
+    :collection_code: CIRC
+    :sub_library: TNSSC
+    :text: Circ Desk
+  MAIN:
+    :collection_code: MAIN
+    :sub_library: TNSSC
+    :text: Main Collection
+  MINI:
+    :collection_code: MINI
+    :sub_library: TNSSC
+    :text: Miniature Scores
+  MUREF:
+    :collection_code: MUREF
+    :sub_library: TNSSC
+    :text: Music Reference
+  MUSIC:
+    :collection_code: MUSIC
+    :sub_library: TNSSC
+    :text: Music
+  OFFIC:
+    :collection_code: OFFIC
+    :sub_library: TNSSC
+    :text: Office
+  PERIO:
+    :collection_code: PERIO
+    :sub_library: TNSSC
+    :text: Periodicals
+  REF:
+    :collection_code: REF
+    :sub_library: TNSSC
+    :text: Reference
+  SCORE:
+    :collection_code: SCORE
+    :sub_library: TNSSC
+    :text: Full Score
+  SPCL:
+    :collection_code: SPCL
+    :sub_library: TNSSC
+    :text: SpecCol
+  SRES:
+    :collection_code: SRES
+    :sub_library: TNSSC
+    :text: Reserve Collection
+WEB:
+  BPLUS:
+    :collection_code: BPLUS
+    :sub_library: WEB
+    :text: Internet Resources - BobCat Plus
+  GENI:
+    :collection_code: GENI
+    :sub_library: WEB
+    :text: Internet Resources
+  GENIU:
+    :collection_code: GENIU
+    :sub_library: WEB
+    :text: Internet Resources - US Documents
+TWEB:
+  TNSI:
+    :collection_code: TNSI
+    :sub_library: TWEB
+    :text: Internet Resources
+  TNSIM:
+    :collection_code: TNSIM
+    :sub_library: TWEB
+    :text: Internet Resources
+  TNSIS:
+    :collection_code: TNSIS
+    :sub_library: TWEB
+    :text: Internet Resources

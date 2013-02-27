@@ -1,10 +1,10 @@
-# Configure Rails Environment
-ENV["RAILS_ENV"] = "test"
-
-require File.expand_path("../dummy/config/environment.rb",  __FILE__)
-require "rails/test_help"
-
-Rails.backtrace_cleaner.remove_silencers!
+# Ignore simplecov when running on travis.
+unless ENV['CI']
+  require 'simplecov'
+  SimpleCov.start
+end
+require 'test/unit'
+require File.expand_path("../../lib/exlibris-aleph.rb",  __FILE__)
 
 # VCR is used to 'record' HTTP interactions with
 # third party services used in tests, and play em
@@ -15,28 +15,27 @@ Rails.backtrace_cleaner.remove_silencers!
 require 'vcr'
 require 'webmock'
 
-# To allow us to do real HTTP requests in a VCR.turned_off, we
-# have to tell webmock to let us. 
-WebMock.allow_net_connect!(:net_http_connect_on_start => true)
-
-without_ctx_tim = VCR.request_matchers.uri_without_param(:ctx_tim)
 VCR.configure do |c|
   c.cassette_library_dir = 'test/vcr_cassettes'
   # webmock needed for HTTPClient testing
   c.hook_into :webmock 
-  c.register_request_matcher(:uri_without_ctx_tim, &without_ctx_tim)
   # c.debug_logger = $stderr
-  c.filter_sensitive_data('VERIFICATION') { 'd4465aacaa645f2164908cd4184c09f0' }
 end
 
-# Silly way to not have to rewrite all our tests if we
-# temporarily disable VCR, make VCR.use_cassette a no-op
-# instead of no-such-method. 
-if ! defined? VCR
-  module VCR
-    def self.use_cassette(*args)
-      yield
+class Test::Unit::TestCase
+
+  def yaml_aleph_configuration
+    Exlibris::Aleph.configure do |config|
+      config.load_yaml File.expand_path("../support/config.yml",  __FILE__)
     end
   end
-end
+  protected :yaml_aleph_configuration
 
+  def reset_aleph_configuration
+    Exlibris::Aleph.configure do |config|
+      config.base_url = nil
+      config.rest_url = nil
+    end
+  end
+  protected :reset_aleph_configuration
+end
