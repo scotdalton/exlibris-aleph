@@ -2,7 +2,6 @@ module Exlibris
   module Aleph
     require 'singleton'
     require 'yaml'
-    require 'rails'
     # ==Overview
     # Exlibris::Aleph::TabHelper assumes a mount of Aleph tab files and provides
     # a way to access the various tab settings for patrons, patron_permissions,
