@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary     = "Library to work with Exlibris' Aleph ILS."
   s.description = "Library to handle Exlibris' Aleph ILS."
 
-  s.files = Dir["lib/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["lib/**/*"] + ["MIT-LICENSE", "Rakefile", "README.md"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "require_all", "~> 1.2.1"
