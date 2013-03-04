@@ -1,7 +1,8 @@
 # Exlibris::Aleph
-[![Build Status](https://api.travis-ci.org/scotdalton/exlibris-aleph.png?branch=master)](https://travis-ci.org/scotdalton/exlibris-aleph)
+[![Build Status](https://api.travis-ci.org/scotdalton/exlibris-aleph.png?branch=development)](https://travis-ci.org/scotdalton/exlibris-aleph)
 [![Dependency Status](https://gemnasium.com/scotdalton/exlibris-aleph.png)](https://gemnasium.com/scotdalton/exlibris-aleph)
 [![Code Climate](https://codeclimate.com/github/scotdalton/exlibris-aleph.png)](https://codeclimate.com/github/scotdalton/exlibris-aleph)
+[![Coverage Status](https://coveralls.io/repos/scotdalton/exlibris-aleph/badge.png?branch=development)](https://coveralls.io/r/scotdalton/exlibris-aleph)
 
 Exlibris::Aleph offers a set of libraries for interacting with the ExLibris Aleph ILS.
 
@@ -30,7 +31,7 @@ Provides access to the Aleph Record REST API.
     record.items # Returns HTTParty::Response of record's items
 
 ## Exlibris::Aleph::TabHelper
-Exlibris::Aleph::TabHelper provides a way to access the various tab settings for patrons, patron_permissions, items, item_permission (both by item status and by item processing status), collections and pickup locations. It also provides convenience methods for common tasks like getting the pickup location for a given combination of item status, item process status and borrower status or getting an item's web text.  Support a 
+Exlibris::Aleph::TabHelper provides a way to access the various tab settings for patrons, patron\_permissions, items, item_permission (both by item status and by item processing status), collections and pickup locations. It also provides convenience methods for common tasks like getting the pickup location for a given combination of item status, item process status and borrower status or getting an item's web text.  Support a 
 
 ### Example of Exlibris::Aleph::TabHelper in action
     # Placed this in an initializer.

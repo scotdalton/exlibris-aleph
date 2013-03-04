@@ -22,8 +22,6 @@ Gem::Specification.new do |s|
   s.add_dependency "httparty", "~> 0.10.2"
   # Leverage ActiveSupport core extensions.
   s.add_dependency "activesupport", "~> 3.2.12"
-
   s.add_development_dependency "vcr", "~> 2.4.0"
   s.add_development_dependency "webmock", "~> 1.9.0"
-  s.add_development_dependency "simplecov", "~> 0.7.1"
 end

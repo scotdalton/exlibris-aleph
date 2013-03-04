@@ -1,8 +1,5 @@
-# Ignore simplecov when running on travis.
-unless ENV['CI']
-  require 'simplecov'
-  SimpleCov.start
-end
+require 'coveralls'
+Coveralls.wear!
 require 'test/unit'
 require File.expand_path("../../lib/exlibris-aleph.rb",  __FILE__)
 
@@ -20,6 +17,7 @@ VCR.configure do |c|
   # webmock needed for HTTPClient testing
   c.hook_into :webmock 
   # c.debug_logger = $stderr
+  c.filter_sensitive_data("library.edu") { "library.nyu.edu" }
 end
 
 class Test::Unit::TestCase

@@ -1,7 +1,7 @@
 require 'test_helper'
 class PatronTest < ActiveSupport::TestCase
   setup do
-    @rest_url = "http://aleph.library.edu:1891/rest-dlf"
+    @rest_url = "http://aleph.library.nyu.edu:1891/rest-dlf"
     @aleph_doc_library = "NYU01"
     @aleph_doc_number = "000062856"
     @nyuidn = "BOR_ID"
@@ -9,7 +9,7 @@ class PatronTest < ActiveSupport::TestCase
     @aleph_item_id = "NYU50000062856000010"
     @aleph_renew_item_id = "NYU50000647049"
     @pickup_location = "BOBST"
-    @bogus_url = "http://library.edu/bogus"
+    @bogus_url = "http://library.nyu.edu/bogus"
   end
 
   # Test exception handling for bogus response.
@@ -42,7 +42,7 @@ class PatronTest < ActiveSupport::TestCase
   # Test patron with URL set via config
   test "test patron with global config" do
     Exlibris::Aleph.configure do |c|
-      c.base_url = "http://aleph.library.edu"
+      c.base_url = "http://aleph.library.nyu.edu"
     end
     VCR.use_cassette('patron') do
       patron = Exlibris::Aleph::Rest::Patron.new(patron_id: @nyuidn)

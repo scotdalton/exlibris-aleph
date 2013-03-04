@@ -1,10 +1,10 @@
 require 'test_helper'
 class RecordTest < ActiveSupport::TestCase
   def setup
-    @rest_url = "http://aleph.library.edu:1891/rest-dlf"
+    @rest_url = "http://aleph.library.nyu.edu:1891/rest-dlf"
     @aleph_doc_library = "NYU01"
     @aleph_doc_number = "000062856"
-    @bogus_url = "http://library.edu/bogus"
+    @bogus_url = "http://library.nyu.edu/bogus"
   end
 
   # Test exception handling for bogus url
@@ -33,10 +33,10 @@ class RecordTest < ActiveSupport::TestCase
   # Test record.
   test "record with global config" do
     Exlibris::Aleph.configure do |c|
-      c.base_url = "http://aleph.library.edu"
+      c.base_url = "http://aleph.library.nyu.edu"
     end
     VCR.use_cassette('record') do
-      aleph_record = Exlibris::Aleph::Rest::Record.new(bib_library: @aleph_doc_library, record_id: @aleph_doc_number, rest_url: @rest_url)
+      aleph_record = Exlibris::Aleph::Rest::Record.new(bib_library: @aleph_doc_library, record_id: @aleph_doc_number)
       bib = aleph_record.bib
       assert_nil(aleph_record.error, "Failure in #{aleph_record.class} while calling bib: #{aleph_record.error}")
       holdings = aleph_record.holdings

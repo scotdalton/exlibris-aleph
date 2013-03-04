@@ -13,7 +13,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Wed, 27 Feb 2013 20:23:13 GMT
+      - Mon, 04 Mar 2013 18:09:42 GMT
       Server:
       - Apache
       X-Powered-By:
@@ -223,12 +223,12 @@ http_interactions:
         us:</li>\n\t<li><a id=\"footerSocialFacebook\" href=\"http://www.facebook.com/NYULibraries\"
         target=\"_blank\">&nbsp;</a></li>\n\t<li><a id=\"footerSocialTwitter\" href=\"http://www.twitter.com/nyulibraries\"
         target=\"_blank\">&nbsp;</a></li>\n</ul> \n</div>\n\n<div id=\"copyright\">\n&#169;
-        Copyright February, 2013 New York University\n</div>\n</div>\n     \n    </div>\n
+        Copyright March, 2013 New York University\n</div>\n</div>\n     \n    </div>\n
         \ <!-- com.omniupdate.button --><a class=\"cmslink\" href=\"http://cms.library.edu/oucampus/de.jsp?user=mainsite&amp;site=library.edu&amp;path=%2Fcommon%2Ferror.php\"><img
         src=\"http://library.edu/images/transparent.gif\" alt=\"Log In to OmniUpdate\"
         width=\"20\" height=\"20\" /></a><!-- /com.omniupdate.button --></body>\n</html>\n\n"
     http_version: 
-  recorded_at: Wed, 27 Feb 2013 20:23:13 GMT
+  recorded_at: Mon, 04 Mar 2013 18:09:42 GMT
 - request:
     method: get
     uri: http://library.edu/bogus/record/NYU01000062856/holdings?view=full
@@ -242,7 +242,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Wed, 27 Feb 2013 20:23:14 GMT
+      - Mon, 04 Mar 2013 18:09:42 GMT
       Server:
       - Apache
       X-Powered-By:
@@ -452,12 +452,12 @@ http_interactions:
         us:</li>\n\t<li><a id=\"footerSocialFacebook\" href=\"http://www.facebook.com/NYULibraries\"
         target=\"_blank\">&nbsp;</a></li>\n\t<li><a id=\"footerSocialTwitter\" href=\"http://www.twitter.com/nyulibraries\"
         target=\"_blank\">&nbsp;</a></li>\n</ul> \n</div>\n\n<div id=\"copyright\">\n&#169;
-        Copyright February, 2013 New York University\n</div>\n</div>\n     \n    </div>\n
+        Copyright March, 2013 New York University\n</div>\n</div>\n     \n    </div>\n
         \ <!-- com.omniupdate.button --><a class=\"cmslink\" href=\"http://cms.library.edu/oucampus/de.jsp?user=mainsite&amp;site=library.edu&amp;path=%2Fcommon%2Ferror.php\"><img
         src=\"http://library.edu/images/transparent.gif\" alt=\"Log In to OmniUpdate\"
         width=\"20\" height=\"20\" /></a><!-- /com.omniupdate.button --></body>\n</html>\n\n"
     http_version: 
-  recorded_at: Wed, 27 Feb 2013 20:23:14 GMT
+  recorded_at: Mon, 04 Mar 2013 18:09:42 GMT
 - request:
     method: get
     uri: http://library.edu/bogus/record/NYU01000062856/items?view=full
@@ -471,7 +471,7 @@ http_interactions:
       message: Not Found
     headers:
       Date:
-      - Wed, 27 Feb 2013 20:23:14 GMT
+      - Mon, 04 Mar 2013 18:09:42 GMT
       Server:
       - Apache
       X-Powered-By:
@@ -681,10 +681,10 @@ http_interactions:
         us:</li>\n\t<li><a id=\"footerSocialFacebook\" href=\"http://www.facebook.com/NYULibraries\"
         target=\"_blank\">&nbsp;</a></li>\n\t<li><a id=\"footerSocialTwitter\" href=\"http://www.twitter.com/nyulibraries\"
         target=\"_blank\">&nbsp;</a></li>\n</ul> \n</div>\n\n<div id=\"copyright\">\n&#169;
-        Copyright February, 2013 New York University\n</div>\n</div>\n     \n    </div>\n
+        Copyright March, 2013 New York University\n</div>\n</div>\n     \n    </div>\n
         \ <!-- com.omniupdate.button --><a class=\"cmslink\" href=\"http://cms.library.edu/oucampus/de.jsp?user=mainsite&amp;site=library.edu&amp;path=%2Fcommon%2Ferror.php\"><img
         src=\"http://library.edu/images/transparent.gif\" alt=\"Log In to OmniUpdate\"
         width=\"20\" height=\"20\" /></a><!-- /com.omniupdate.button --></body>\n</html>\n\n"
     http_version: 
-  recorded_at: Wed, 27 Feb 2013 20:23:14 GMT
+  recorded_at: Mon, 04 Mar 2013 18:09:42 GMT
 recorded_with: VCR 2.4.0
