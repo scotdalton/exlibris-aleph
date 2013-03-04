@@ -26,11 +26,11 @@ class RecordTest < ActiveSupport::TestCase
       assert_nil(aleph_record.error, "Failure in #{aleph_record.class} while calling bib: #{aleph_record.error}")
       holdings = aleph_record.holdings
       assert_kind_of Array, holdings
-      holdings.each { |holding| assert_kind_of String, holding }
+      holdings.each { |holding| assert_kind_of Hash, holding }
       assert_nil(aleph_record.error, "Failure in #{aleph_record.class} while calling holdings: #{aleph_record.error}")
       items = aleph_record.items
       assert_kind_of Array, items
-      items.each { |item| assert_kind_of String, item }
+      items.each { |item| assert_kind_of Hash, item }
       assert_nil(aleph_record.error, "Failure in #{aleph_record.class} while calling items: #{aleph_record.error}")
     end
   end
@@ -47,11 +47,11 @@ class RecordTest < ActiveSupport::TestCase
       assert_nil(aleph_record.error, "Failure in #{aleph_record.class} while calling bib: #{aleph_record.error}")
       holdings = aleph_record.holdings
       assert_kind_of Array, holdings
-      holdings.each { |holding| assert_kind_of String, holding }
+      holdings.each { |holding| assert_kind_of Hash, holding }
       assert_nil(aleph_record.error, "Failure in #{aleph_record.class} while calling holdings: #{aleph_record.error}")
       items = aleph_record.items
       assert_kind_of Array, items
-      items.each { |item| assert_kind_of String, item }
+      items.each { |item| assert_kind_of Hash, item }
       assert_nil(aleph_record.error, "Failure in #{aleph_record.class} while calling items: #{aleph_record.error}")
     end
   end
