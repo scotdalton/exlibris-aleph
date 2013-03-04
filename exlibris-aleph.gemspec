@@ -20,8 +20,11 @@ Gem::Specification.new do |s|
   s.add_dependency "require_all", "~> 1.2.1"
   s.add_dependency "nokogiri", "~> 1.5.6"
   s.add_dependency "httparty", "~> 0.10.2"
-  # Leverage ActiveSupport core extensions.
+  # Leverage ActiveSupport core extensions
   s.add_dependency "activesupport", "~> 3.2.12"
+  # ActiveSupport core extensions use Builder
+  s.add_dependency "builder", "~> 3.2.0"
+  s.add_dependency "marc", "~> 0.5.0"
   s.add_development_dependency "vcr", "~> 2.4.0"
   s.add_development_dependency "webmock", "~> 1.9.0"
 end

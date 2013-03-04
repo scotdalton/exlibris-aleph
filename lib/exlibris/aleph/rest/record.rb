@@ -1,6 +1,7 @@
 module Exlibris
   module Aleph
     module Rest
+      require 'marc'
       # ==Overview
       # Provides access to the Aleph Record REST API.
       class Record < Base
@@ -10,15 +11,15 @@ module Exlibris
           super
         end
 
-        # Returns an XML string representation of a bib.  
+        # Returns a MARC::Record that contains the bib data
         # Every method call refreshes the data from the underlying API.
         # Raises and exception if there are errors.
         def bib
-          self.class.format :html
           self.response = self.class.get("#{record_url}?view=full")
-          self.class.format :xml
-          raise_error_if "Error getting bib from Aleph REST APIs."
-          response.to_s
+          raise_error_if("Error getting bib from Aleph REST APIs.") {
+            (response.parsed_response["get_record"].nil? or response.parsed_response["get_record"]["record"].nil?)
+          }
+          MARC::XMLReader.new(StringIO.new(xml(xml: response.body).at_xpath("get-record/record").to_xml(xml_options).strip)).first
         end
 
         # Returns an array of items. Each item is represented as an HTTParty Hash.
@@ -34,7 +35,7 @@ module Exlibris
           [response.parsed_response["get_item_list"]["items"]["item"]].flatten
         end
 
-        # Returns an array of holdings. Each holding is represented as an HTTParty Hash.
+        # Returns an array of holdings. Each holding is represented as a MARC::Record.
         # Every method call refreshes the data from the underlying API.
         # Raises and exception if there are errors.
         def holdings
@@ -42,7 +43,11 @@ module Exlibris
           raise_error_if("Error getting holdings from Aleph REST APIs.") {
             (response.parsed_response["get_hol_list"].nil? or response.parsed_response["get_hol_list"]["holdings"].nil?)
           }
-          [response.parsed_response["get_hol_list"]["holdings"]["holding"]].flatten
+          xml(xml: response.body).xpath("get-hol-list/holdings/holding").collect{ |holding|
+            # Change the tag name to record so that the MARC::XMLReader can parse it.
+            holding.name = "record"
+            MARC::XMLReader.new(StringIO.new(holding.to_xml(xml_options).strip)).first
+          }
         end
 
         def record_url
