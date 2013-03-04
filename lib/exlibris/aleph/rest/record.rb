@@ -14,7 +14,9 @@ module Exlibris
         # Every method call refreshes the data from the underlying API.
         # Raises and exception if there are errors.
         def bib
+          self.class.format :html
           self.response = self.class.get("#{record_url}?view=full")
+          self.class.format :xml
           raise_error_if "Error getting bib from Aleph REST APIs."
           response.to_s
         end
