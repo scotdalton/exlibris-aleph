@@ -11,7 +11,7 @@ class RecordTest < ActiveSupport::TestCase
   test "bogus_response" do
     VCR.use_cassette('record bogus url') do
       aleph_record = Exlibris::Aleph::Rest::Record.new(bib_library: @aleph_doc_library, record_id: @aleph_doc_number, rest_url: @bogus_url)
-      assert_raise(MultiXml::ParseError) { aleph_record.bib }
+      assert_raise(RuntimeError) { aleph_record.bib }
       assert_raise(MultiXml::ParseError) { aleph_record.holdings }
       assert_raise(MultiXml::ParseError) { aleph_record.items }
     end
