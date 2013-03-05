@@ -33,6 +33,13 @@ class Test::Unit::TestCase
     Exlibris::Aleph.configure do |config|
       config.base_url = nil
       config.rest_url = nil
+      config.adms = nil
+      config.refresh_time = nil
+      config.tab_path = nil
+      config.yml_path = nil
+      config.logger = nil
+      config.irrelevant_sub_libraries = nil
+      config.load_time = nil
     end
   end
   protected :reset_aleph_configuration
