@@ -38,7 +38,7 @@ Exlibris::Aleph can be configured at startup in an initializer.
     Exlibris::Aleph.configure { |c|
       c.base_url = "http://aleph.institution.edu"
       c.tab_path = "/mnt/aleph_tab"
-      c.adms = ["ADM50", "ADM50"]
+      c.adms = ["ADM50", "ADM51"]
     }
 
 It can also read from a yaml file.
@@ -55,7 +55,7 @@ Exlibris::Aleph::TabHelper provides a way to access the various tab settings for
     # Placed this in an initializer.
     Exlibris::Aleph.configure { |c|
       c.tab_path = "/mnt/aleph_tab"
-      c.adms = ["ADM50", "ADM50"]
+      c.adms = ["ADM50", "ADM51"]
     }
 
     # Rake task to refresh the config yml files
