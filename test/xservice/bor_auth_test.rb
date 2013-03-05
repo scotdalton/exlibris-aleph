@@ -7,7 +7,7 @@ class BorAuthTest < ActiveSupport::TestCase
   test "new" do
     VCR.use_cassette('bor auth') do
       bor_auth = 
-        Exlibris::Aleph::BorAuth.new(
+        Exlibris::Aleph::Xservice::BorAuth.new(
           "http://aleph.library.nyu.edu", "NYU50", "BOBST", "N", 
           "BOR_ID", "VERIFICATION")
       assert_nil(bor_auth.error, "Error is not nil.")
@@ -17,7 +17,7 @@ class BorAuthTest < ActiveSupport::TestCase
   test "permissions" do
     VCR.use_cassette('bor auth') do
       bor_auth = 
-        Exlibris::Aleph::BorAuth.new(
+        Exlibris::Aleph::Xservice::BorAuth.new(
           "http://aleph.library.nyu.edu", "NYU50", "BOBST", "N", 
           "BOR_ID", "VERIFICATION")
       assert_equal("51", bor_auth.permissions[:bor_status])
