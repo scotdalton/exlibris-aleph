@@ -31,6 +31,23 @@ Provides access to the Aleph Record REST API.
     record.holdings # Returns and Array of MARC::Records respresenting the record's holdings
     record.items # Returns and Array of Hashes representing the record's items
 
+## Exlibris::Aleph.configure
+Exlibris::Aleph can be configured at startup in an initializer.
+
+    # Placed this in an initializer.
+    Exlibris::Aleph.configure { |c|
+      c.base_url = "http://aleph.institution.edu"
+      c.tab_path = "/mnt/aleph_tab"
+      c.adms = ["ADM50", "ADM50"]
+    }
+
+It can also read from a yaml file.
+
+    # Placed this in an initializer.
+    Exlibris::Aleph.configure { |c|
+      config.load_yaml File.expand_path("#{File.dirname(__FILE__)}/../config/aleph.yml",  __FILE__)
+    }
+
 ## Exlibris::Aleph::TabHelper
 Exlibris::Aleph::TabHelper provides a way to access the various tab settings for patrons, patron\_permissions, items, item_permission (both by item status and by item processing status), collections and pickup locations. It also provides convenience methods for common tasks like getting the pickup location for a given combination of item status, item process status and borrower status or getting an item's web text.  Support a 
 
