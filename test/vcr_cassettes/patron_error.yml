@@ -1,0 +1,93 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/record/NYU01000062856/items/NYU50000062856000010/hold
+    body:
+      encoding: US-ASCII
+      string: post_xml=<hold-request-parameters><pickup-location></pickup-location><last-interest-date></last-interest-date><start-interest-date></start-interest-date><sub-author></sub-author><sub-title></sub-title><pages></pages><note-1></note-1><note-2></note-2><rush>N</rush></hold-request-parameters>
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Powered-By:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Mon, 04 Mar 2013 18:09:41 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><put-item-hold><create-hold><note
+        type="error">pickup location is not valid</note></create-hold><reply-text>Failed
+        to create request</reply-text><reply-code>0025</reply-code></put-item-hold> '
+    http_version: 
+  recorded_at: Mon, 04 Mar 2013 18:09:41 GMT
+- request:
+    method: post
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/circulationActions/loans/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Powered-By:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 05 Mar 2013 15:13:04 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><renew-loan><reply-text>Renew
+        Failed</reply-text><reply-code>0028</reply-code><renewals><institution code="NYU50"><inst-name>NYU50</inst-name><inst-status
+        code="0000">OK</inst-status><loan id="NYU50003034208"><new-due-date>20130531</new-due-date><new-due-hour>1900</new-due-hour><status>Due
+        date cannot be extended</status></loan><loan id="NYU50003034207"><new-due-date>20130531</new-due-date><new-due-hour>1900</new-due-hour><status>Due
+        date cannot be extended</status></loan></institution></renewals></renew-loan> '
+    http_version: 
+  recorded_at: Tue, 05 Mar 2013 15:13:04 GMT
+- request:
+    method: post
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/circulationActions/loans/NYU50003034208
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Apache-Coyote/1.1
+      X-Powered-By:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 05 Mar 2013 15:14:39 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><renew-loan><reply-text>Renew
+        Failed</reply-text><reply-code>0028</reply-code><renewals><institution code="NYU50"><inst-name>NYU50</inst-name><inst-status
+        code="0000">OK</inst-status><loan id="NYU50003034208"><new-due-date>20130531</new-due-date><new-due-hour>1900</new-due-hour><status>Due
+        date cannot be extended</status></loan></institution></renewals></renew-loan> '
+    http_version: 
+  recorded_at: Tue, 05 Mar 2013 15:14:39 GMT
+recorded_with: VCR 2.4.0
