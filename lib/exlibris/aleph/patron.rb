@@ -2,23 +2,76 @@ module Exlibris
   module Aleph
     # ==Overview
     # Provides access to the Aleph Patron REST API.
-    class Patron < Rest
-      attr_reader :patron_id
-      
-      # Creates an instance of Exlibris::Aleph::Patron for the given :patron_id
-      def initialize(patron_id, uri)
-        @patron_id = patron_id
-        raise "Initialization error in #{self.class}. Missing patron id." if @patron_id.nil?
-        super(uri)
-        @uri = @uri+ "/patron/#{patron_id}"
-      end
+    class Patron < Rest::Base
+      attr_accessor :patron_id
 
       # Place a hold on the specificed item.
-      # Raises an error if there was a problem placing the hold.
-      # Returns a HTTParty::Response.
+      # Returns a Hash, including the "note" returned from the underlying API.
+      # Raises an exception if the response is not valid XML or there are errors.
       def place_hold(adm_library, bib_library, bib_id, item_id, params)
+        options = { :body => "post_xml=#{place_hold_xml(params)}"}
+        self.response = self.class.put("#{patron_url}/record/#{bib_library}#{bib_id}/items/#{item_id}/hold", options)
+        raise_error_if("Error placing hold through Aleph REST APIs. #{error}") {
+          (response.parsed_response["put_item_hold"].nil? or response.parsed_response["put_item_hold"]["create_hold"].nil?)
+        }
+        response.parsed_response["put_item_hold"]["create_hold"]
+      end
+
+      # Returns a Hash representing the patron's address information.
+      # Every method call refreshes the data from the underlying API.
+      # Raises an exception if the response is not valid XML or there are errors.
+      def address
+        self.response = self.class.get("#{patron_url}/patronInformation/address")
+        raise_error_if("Error getting patron address through Aleph REST APIs.") {
+          (response.parsed_response["get_pat_adrs"].nil? or response.parsed_response["get_pat_adrs"]["address_information"].nil?)
+        }
+        response.parsed_response["get_pat_adrs"]["address_information"]
+      end
+
+      # Returns an Array of institutions. 
+      # Each institution is a Hash containing an array of loans for that institution.
+      # Every method call refreshes the data from the underlying API.
+      # Raises an exception if the response is not valid XML or there are errors.
+      def loans
+        self.response = self.class.get("#{patron_url}/circulationActions/loans?view=full")
+        raise_error_if("Error getting loans through Aleph REST APIs.") {
+          (response.parsed_response["pat_loan_list"].nil? or response.parsed_response["pat_loan_list"]["loans"].nil?)
+        }
+        [response.parsed_response["pat_loan_list"]["loans"]["institution"]].flatten
+      end
+
+      # Renew the specified item.
+      # Will renew all if item not specified.
+      # Returns an Array of institutions. 
+      # Each institution is a Hash containing an array of loan renewals for that institution.
+      # Raises an exception if the response is not valid XML or there are errors.
+      def renew_loans(item_id="")
+        self.response = self.class.post("#{patron_url}/circulationActions/loans/#{item_id}")
+        raise_error_if("Error renewing loans through Aleph REST APIs.") {
+          (response.parsed_response["renew_loan"].nil? or response.parsed_response["renew_loan"]["renewals"].nil?)
+        }
+        [response.parsed_response["renew_loan"]["renewals"]["institution"]].flatten
+      end
+
+      # Returns the note associated with the request.
+      def note
+        return (not response.first.last.kind_of?(Hash) or response.first.last["create_hold"].nil?) ? "" : ": #{response.first.last["create_hold"]["note"]["__content__"]}" if response.instance_of?(Hash)
+      end
+
+      # Returns the error associated with the request.
+      # Returns nil if no error.
+      def error
+        return nil if reply_code == "0000"
+        return "#{reply_text}#{note}"
+      end
+
+      def patron_url
+        @patron_url ||= "#{rest_url}/patron/#{patron_id}"
+      end
+      private :patron_url
+
+      def place_hold_xml(params)
         pickup_location = params[:pickup_location]
-        raise "Error in place hold.  Missing pickup location." if pickup_location.nil?
         last_interest_date = params.fetch(:last_interest_date, "")
         start_interest_date = params.fetch(:start_interest_date, "")
         sub_author = params.fetch(:sub_author, "")
@@ -27,59 +80,21 @@ module Exlibris
         note_1 = params.fetch(:note_1, "")
         note_2 = params.fetch(:note_2, "")
         rush = params.fetch(:rush, "N")
-        body_str = "<hold-request-parameters>"
-        body_str << "<pickup-location>#{pickup_location}</pickup-location>"
-        body_str << "<last-interest-date>#{last_interest_date}</last-interest-date>"
-        body_str << "<start-interest-date>#{start_interest_date}</start-interest-date>"
-        body_str << "<sub-author>#{sub_author}</sub-author>"
-        body_str << "<sub-title>#{sub_title}</sub-title>"
-        body_str << "<pages>#{pages}</pages>"
-        body_str << "<note-1>#{note_1}</note-1>"
-        body_str << "<note-2>#{note_2}</note-2>"
-        body_str << "<rush>#{rush}</rush>"
-        body_str << "</hold-request-parameters>"
-        options = { :body => "post_xml=#{body_str}"}
-        @response = self.class.put(@uri+ "/record/#{bib_library}#{bib_id}/items/#{item_id}/hold", options)
-        raise "Error placing hold through Aleph REST APIs. #{error}" unless error.nil?
-        return @response
+        build_xml { |xml|
+          xml.send(:"hold-request-parameters") {
+            xml.send :"pickup-location", pickup_location
+            xml.send :"last-interest-date", last_interest_date
+            xml.send :"start-interest-date", start_interest_date
+            xml.send :"sub-author", sub_author
+            xml.send :"sub-title", sub_title
+            xml.send :"pages", pages
+            xml.send :"note-1", note_1
+            xml.send :"note-2", note_2
+            xml.send :"rush", rush
+          }
+        }
       end
-
-      # Call the patronInformation/address Aleph Patron REST API
-      # Returns a HTTParty::Response.
-      def address()
-        @response = self.class.get(@uri+ "/patronInformation/address")
-        return "Error getting patron's address through Aleph REST APIs. #{error}" unless error.nil?
-        return @response
-      end
-
-      # Call the circulationActions/loans Aleph Patron REST API
-      # Returns a HTTParty::Response.
-      def loans()
-        @response = self.class.get(@uri+ "/circulationActions/loans?view=full")
-        raise "Error getting loans through Aleph REST APIs. #{error}" unless error.nil?
-        return @response
-      end
-
-      # Renew the specified item.
-      # Will renew all if item not specified.
-      # Returns a HTTParty::Response.
-      def renew_loans(item_id="")
-        @response = self.class.post(@uri+ "/circulationActions/loans/#{item_id}")
-        raise "Error renewing loan(s) through Aleph REST APIs. #{error}" unless error.nil?
-        return @response
-      end
-      
-      # Returns the note associated with the request.
-      def note
-        return (not @response.first.last.kind_of?(Hash) or @response.first.last["create_hold"].nil?) ? "" : ": #{@response.first.last["create_hold"]["note"]["__content__"]}" if @response.instance_of?(Hash)
-      end
-      
-      # Returns the error associated with the request.
-      # Returns nil if no error.
-      def error
-        return nil if reply_code == "0000"
-        return "#{reply_text}#{note}"
-      end
+      private :place_hold_xml
     end
   end
 end

@@ -1,1 +1,0 @@
-Exlibris::Aleph::TabHelper.init("#{Rails.root}/../mnt/aleph_tab", ["NYU50", "NYU51"])
