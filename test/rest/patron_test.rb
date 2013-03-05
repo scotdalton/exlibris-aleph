@@ -7,7 +7,7 @@ class PatronTest < ActiveSupport::TestCase
     @nyuidn = "BOR_ID"
     @aleph_adm_library = "NYU50"
     @aleph_item_id = "NYU50000062856000010"
-    @aleph_renew_item_id = "NYU50000647049"
+    @aleph_renew_item_id = "NYU50003034208"
     @pickup_location = "BOBST"
     @bogus_url = "http://library.nyu.edu/bogus"
   end
@@ -28,14 +28,43 @@ class PatronTest < ActiveSupport::TestCase
     VCR.use_cassette('patron') do
       patron = Exlibris::Aleph::Rest::Patron.new(patron_id: @nyuidn, rest_url: @rest_url)
       loans = patron.loans
+      assert_kind_of Array, loans
+      assert((not loans.empty?), "Loans empty.")
+      loans.each { |loan| assert_kind_of Hash, loan }
       assert_nil(patron.error, "Failure in #{patron.class} while getting loans: #{patron.error}")
-      #renew_loans = patron.renew_loans()
-      #assert_nil(patron.error, "Failure in #{patron.class} while renewing all loans: #{patron.error}")
-      #renew_loans = patron.renew_loans(@aleph_renew_item_id)
-      #assert_nil(patron.error, "Failure in #{patron.class} while renewing loan #{@aleph_renew_item_id}: #{patron.error}")
-      assert_raise(RuntimeError) { patron.place_hold(@aleph_adm_library, @aleph_doc_library, @aleph_doc_number, @aleph_item_id, {}) }
+      renew_all_loans = patron.renew_loans()
+      assert_kind_of Array, renew_all_loans
+      assert((not renew_all_loans.empty?), "Renew all loans empty.")
+      renew_all_loans.each { |renew_all_loan| assert_kind_of Hash, renew_all_loan }
+      assert_nil(patron.error, "Failure in #{patron.class} while renewing all loans: #{patron.error}")
+      renew_loans = patron.renew_loans(@aleph_renew_item_id)
+      assert_kind_of Array, renew_loans
+      assert((not renew_loans.empty?), "Renew loans empty.")
+      renew_loans.each { |renew_loan| assert_kind_of Hash, renew_loan }
+      assert_nil(patron.error, "Failure in #{patron.class} while renewing loan #{@aleph_renew_item_id}: #{patron.error}")
       place_hold = patron.place_hold(@aleph_adm_library, @aleph_doc_library, @aleph_doc_number, @aleph_item_id, {:pickup_location => @pickup_location})
+      assert_kind_of Hash, place_hold
       assert_nil(patron.error, "Failure in #{patron.class} while placing hold: #{patron.error}")
+    end
+  end
+
+  # Test patron
+  test "test patron address" do
+    VCR.use_cassette('patron address') do
+      patron = Exlibris::Aleph::Rest::Patron.new(patron_id: @nyuidn, rest_url: @rest_url)
+      address = patron.address
+      assert_kind_of Hash, address
+      assert_nil(patron.error, "Failure in #{patron.class} while getting address: #{patron.error}")
+    end
+  end
+
+  # Test patron
+  test "test patron error" do
+    VCR.use_cassette('patron error') do
+      patron = Exlibris::Aleph::Rest::Patron.new(patron_id: @nyuidn, rest_url: @rest_url)
+      assert_raise(RuntimeError) { patron.place_hold(@aleph_adm_library, @aleph_doc_library, @aleph_doc_number, @aleph_item_id, {}) }
+      assert_raise(RuntimeError) { patron.renew_loans() }
+      assert_raise(RuntimeError) { patron.renew_loans(@aleph_renew_item_id) }
     end
   end
 
@@ -47,13 +76,22 @@ class PatronTest < ActiveSupport::TestCase
     VCR.use_cassette('patron') do
       patron = Exlibris::Aleph::Rest::Patron.new(patron_id: @nyuidn)
       loans = patron.loans
+      assert_kind_of Array, loans
+      assert((not loans.empty?), "Loans empty.")
+      loans.each { |loan| assert_kind_of Hash, loan }
       assert_nil(patron.error, "Failure in #{patron.class} while getting loans: #{patron.error}")
-      #renew_loans = patron.renew_loans()
-      #assert_nil(patron.error, "Failure in #{patron.class} while renewing all loans: #{patron.error}")
-      #renew_loans = patron.renew_loans(@aleph_renew_item_id)
-      #assert_nil(patron.error, "Failure in #{patron.class} while renewing loan #{@aleph_renew_item_id}: #{patron.error}")
-      assert_raise(RuntimeError) { patron.place_hold(@aleph_adm_library, @aleph_doc_library, @aleph_doc_number, @aleph_item_id, {}) }
+      renew_all_loans = patron.renew_loans()
+      assert_kind_of Array, renew_all_loans
+      assert((not renew_all_loans.empty?), "Renew all loans empty.")
+      renew_all_loans.each { |renew_all_loan| assert_kind_of Hash, renew_all_loan }
+      assert_nil(patron.error, "Failure in #{patron.class} while renewing all loans: #{patron.error}")
+      renew_loans = patron.renew_loans(@aleph_renew_item_id)
+      assert_kind_of Array, renew_loans
+      assert((not renew_loans.empty?), "Renew loans empty.")
+      renew_loans.each { |renew_loan| assert_kind_of Hash, renew_loan }
+      assert_nil(patron.error, "Failure in #{patron.class} while renewing loan #{@aleph_renew_item_id}: #{patron.error}")
       place_hold = patron.place_hold(@aleph_adm_library, @aleph_doc_library, @aleph_doc_number, @aleph_item_id, {:pickup_location => @pickup_location})
+      assert_kind_of Hash, place_hold
       assert_nil(patron.error, "Failure in #{patron.class} while placing hold: #{patron.error}")
     end
   end

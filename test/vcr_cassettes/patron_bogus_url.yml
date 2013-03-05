@@ -460,7 +460,7 @@ http_interactions:
   recorded_at: Mon, 04 Mar 2013 18:09:41 GMT
 - request:
     method: post
-    uri: http://library.edu/bogus/patron/BOR_ID/circulationActions/loans/NYU50000647049
+    uri: http://library.edu/bogus/patron/BOR_ID/circulationActions/loans/NYU50003034208
     body:
       encoding: US-ASCII
       string: ''

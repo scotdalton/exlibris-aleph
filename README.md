@@ -1,4 +1,5 @@
 # Exlibris::Aleph
+[![Gem Version](https://badge.fury.io/rb/exlibris-aleph.png)](http://badge.fury.io/rb/exlibris-aleph)
 [![Build Status](https://api.travis-ci.org/scotdalton/exlibris-aleph.png?branch=development)](https://travis-ci.org/scotdalton/exlibris-aleph)
 [![Dependency Status](https://gemnasium.com/scotdalton/exlibris-aleph.png)](https://gemnasium.com/scotdalton/exlibris-aleph)
 [![Code Climate](https://codeclimate.com/github/scotdalton/exlibris-aleph.png)](https://codeclimate.com/github/scotdalton/exlibris-aleph)
@@ -13,8 +14,8 @@ Exlibris::Aleph::Patron provides access to the Aleph Patron REST API.
     patron = 
       Exlibris::Aleph::Patron.
         new(patron_id: "S0M31D", rest_url: "http://aleph.institution.edu")
-    patron.address # Returns HTTParty::Response of patron's address
-    patron.loans # Returns HTTParty::Response patron's loan
+    patron.address # Returns a Hash of the of patron's address
+    patron.loans # Returns an Array of institution Hashes, each containing an Array of the patron's loans for that institution
     patron.renew_loans # Renews all loans
     patron.renew_loans("ADM5000000001") # Renews loan of item 00000001 in ADM50
     patron.place_hold("ADM50", "SBLIB", "00000001", "00000001", {:pickup_location => "SBLIB"}) # Places hold on the specified item for pickup at SBLIB
@@ -26,9 +27,9 @@ Provides access to the Aleph Record REST API.
     record = 
       Exlibris::Aleph::Record.
         new(bib_library: "ADM50", record_id: "00000001", rest_url: "http://aleph.institution.edu")
-    record.bib # Returns HTTParty::Response of record's bibliographic metadata
-    record.holdings # Returns HTTParty::Response of record's holdings
-    record.items # Returns HTTParty::Response of record's items
+    record.bib # Returns a MARC::Record with bibliographic metadata
+    record.holdings # Returns and Array of MARC::Records respresenting the record's holdings
+    record.items # Returns and Array of Hashes representing the record's items
 
 ## Exlibris::Aleph::TabHelper
 Exlibris::Aleph::TabHelper provides a way to access the various tab settings for patrons, patron\_permissions, items, item_permission (both by item status and by item processing status), collections and pickup locations. It also provides convenience methods for common tasks like getting the pickup location for a given combination of item status, item process status and borrower status or getting an item's web text.  Support a 

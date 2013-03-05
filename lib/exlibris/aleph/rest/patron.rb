@@ -7,38 +7,51 @@ module Exlibris
         attr_accessor :patron_id
 
         # Place a hold on the specificed item.
-        # Raises an error if there was a problem placing the hold.
-        # Returns a HTTParty::Response.
+        # Returns a Hash, including the "note" returned from the underlying API.
+        # Raises an exception if the response is not valid XML or there are errors.
         def place_hold(adm_library, bib_library, bib_id, item_id, params)
           options = { :body => "post_xml=#{place_hold_xml(params)}"}
           self.response = self.class.put("#{patron_url}/record/#{bib_library}#{bib_id}/items/#{item_id}/hold", options)
-          raise_error_if "Error placing hold through Aleph REST APIs. #{error}"
-          return response
+          raise_error_if("Error placing hold through Aleph REST APIs. #{error}") {
+            (response.parsed_response["put_item_hold"].nil? or response.parsed_response["put_item_hold"]["create_hold"].nil?)
+          }
+          response.parsed_response["put_item_hold"]["create_hold"]
         end
 
-        # Call the patronInformation/address Aleph Patron REST API
-        # Returns a HTTParty::Response.
-        def address()
+        # Returns a Hash representing the patron's address information.
+        # Every method call refreshes the data from the underlying API.
+        # Raises an exception if the response is not valid XML or there are errors.
+        def address
           self.response = self.class.get("#{patron_url}/patronInformation/address")
-          raise_error_if "Error getting patron's address through Aleph REST APIs."
-          return response
+          raise_error_if("Error getting patron address through Aleph REST APIs.") {
+            (response.parsed_response["get_pat_adrs"].nil? or response.parsed_response["get_pat_adrs"]["address_information"].nil?)
+          }
+          response.parsed_response["get_pat_adrs"]["address_information"]
         end
 
-        # Call the circulationActions/loans Aleph Patron REST API
-        # Returns a HTTParty::Response.
-        def loans()
+        # Returns an Array of institutions. 
+        # Each institution is a Hash containing an array of loans for that institution.
+        # Every method call refreshes the data from the underlying API.
+        # Raises an exception if the response is not valid XML or there are errors.
+        def loans
           self.response = self.class.get("#{patron_url}/circulationActions/loans?view=full")
-          raise_error_if "Error getting loans through Aleph REST APIs."
-          return response
+          raise_error_if("Error getting loans through Aleph REST APIs.") {
+            (response.parsed_response["pat_loan_list"].nil? or response.parsed_response["pat_loan_list"]["loans"].nil?)
+          }
+          [response.parsed_response["pat_loan_list"]["loans"]["institution"]].flatten
         end
 
         # Renew the specified item.
         # Will renew all if item not specified.
-        # Returns a HTTParty::Response.
+        # Returns an Array of institutions. 
+        # Each institution is a Hash containing an array of loan renewals for that institution.
+        # Raises an exception if the response is not valid XML or there are errors.
         def renew_loans(item_id="")
           self.response = self.class.post("#{patron_url}/circulationActions/loans/#{item_id}")
-          raise_error_if "Error renewing loan(s) through Aleph REST APIs."
-          return response
+          raise_error_if("Error renewing loans through Aleph REST APIs.") {
+            (response.parsed_response["renew_loan"].nil? or response.parsed_response["renew_loan"]["renewals"].nil?)
+          }
+          [response.parsed_response["renew_loan"]["renewals"]["institution"]].flatten
         end
 
         # Returns the note associated with the request.
@@ -82,6 +95,7 @@ module Exlibris
             }
           }
         end
+        private :place_hold_xml
       end
     end
   end

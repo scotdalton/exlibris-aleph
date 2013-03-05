@@ -13,7 +13,7 @@ module Exlibris
 
         # Returns a MARC::Record that contains the bib data
         # Every method call refreshes the data from the underlying API.
-        # Raises and exception if there are errors.
+        # Raises an exception if the response is not valid XML or there are errors.
         def bib
           self.response = self.class.get("#{record_url}?view=full")
           raise_error_if("Error getting bib from Aleph REST APIs.") {
@@ -22,7 +22,7 @@ module Exlibris
           MARC::XMLReader.new(StringIO.new(xml(xml: response.body).at_xpath("get-record/record").to_xml(xml_options).strip)).first
         end
 
-        # Returns an array of items. Each item is represented as an HTTParty Hash.
+        # Returns an array of items. Each item is represented as a Hash.
         # Every method call refreshes the data from the underlying API.
         # Raises an exception if the response is not valid XML or there are errors.
         def items
@@ -37,7 +37,7 @@ module Exlibris
 
         # Returns an array of holdings. Each holding is represented as a MARC::Record.
         # Every method call refreshes the data from the underlying API.
-        # Raises and exception if there are errors.
+        # Raises an exception if there are errors.
         def holdings
           self.response = self.class.get("#{record_url}/holdings?view=full")
           raise_error_if("Error getting holdings from Aleph REST APIs.") {
