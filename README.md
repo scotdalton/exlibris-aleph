@@ -78,6 +78,10 @@ To configure the gem to ignore sub libraries pulled from Aleph but not relevant 
       c.irrelevant_sub_libraries = ["IRRLIB1", "IRRLIB2"]
     }
 
+## Rake task
+Exlibris::Aleph has a rake task that refreshes the mounted tables.  Outside of Rails add `require 'exlibris-aleph'` to your Rakefile.
+Inside of Rails it should just work.
+
 ## Exlibris::Aleph::BorAuth
 Exlibris::Aleph::BorAuth provides access to the BorAuth Aleph XService.
 

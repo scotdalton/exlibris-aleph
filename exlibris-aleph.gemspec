@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   # Leverage ActiveSupport core extensions
   s.add_dependency "activesupport", "~> 3.2.12"
   # ActiveSupport core extensions use Builder
-  s.add_dependency "builder", "~> 3.2.0"
+  s.add_dependency "builder", "~> 3.0.0"
   s.add_dependency "marc", "~> 0.5.0"
   s.add_development_dependency "vcr", "~> 2.4.0"
   s.add_development_dependency "webmock", "~> 1.9.0"
