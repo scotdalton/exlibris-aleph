@@ -5,7 +5,7 @@ namespace :exlibris do
       args.with_defaults(:config_file => '', :tab_path => '', :adms => [])
       # If we're in the Rails environment, use Rails initializers
       if defined?(::Rails) && ::Rails.version >= '3.1.0'
-        Rake::Task['exlibris:aleph:initialize_via_rails_initializers'].invoke
+        Rake::Task[:environment].invoke
       elsif (not args[:config_file].empty?)
         Rake::Task['exlibris:aleph:initialize_via_config_file'].invoke(args[:config_file])
       elsif (not args[:tab_path].empty?) and (not args[:adms].empty?)
@@ -37,13 +37,6 @@ namespace :exlibris do
         config.tab_path = tab_path
         config.yml_path = yml_path
         config.adms = adms
-      end
-    end
-
-    desc "Initialize the Exlibris::Aleph environment via the Rails initializers"
-    task :initialize_via_rails_initializers do
-      Dir.glob("config/initializers/*.rb").each do |initializer|
-          require File.join(Rails.root, initializer)
       end
     end
 
