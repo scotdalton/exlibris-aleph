@@ -44,7 +44,7 @@ namespace :exlibris do
     end
 
     desc "Refresh the Exlibris::Aleph tables"
-    task :refresh, :config_file, :tab_path, :yaml_path, :adms, :needs => :initialize do
+    task :refresh, [:config_file, :tab_path, :yaml_path, :adms] => :initialize do
       Exlibris::Aleph::TabHelper.refresh_yml
     end
   end
