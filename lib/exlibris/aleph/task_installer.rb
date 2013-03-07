@@ -18,6 +18,8 @@ module Exlibris
           end
         end
       end
+      # Install tasks
+      Exlibris::Aleph::TaskInstaller.install_tasks
     end
   end
 end

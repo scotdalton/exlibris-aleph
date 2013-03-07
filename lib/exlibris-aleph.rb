@@ -4,5 +4,3 @@ require 'active_support/builder'
 require 'marc'
 require "require_all"
 require_all "#{File.dirname(__FILE__)}/exlibris/"
-# Install tasks
-Exlibris::Aleph::TaskInstaller.install_tasks
