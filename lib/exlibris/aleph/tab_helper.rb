@@ -204,24 +204,25 @@ module Exlibris
       # Available param keys are:
       #   :adm_library_code, :sub_library_code, :item_status_code, :item_process_status_code
       def item_permissions(params)
-        unless params[:item_process_status_code].nil?
+        item_permissions = {}
+        # Item process statuses take precedent in Aleph, same here.
+        if item_permissions.empty? and params[:item_process_status_code]
           adm_permissions =
             item_permissions_by_item_process_status[params[:adm_library_code]]
-          (logger.warn("Unexpected return value. item_permissions_by_item_process_status is a #{item_permissions_by_item_process_status.class.name}") and return {}) unless adm_permissions.is_a? Hash
           sublibrary_permissions =
             adm_permissions[params[:sub_library_code]] unless adm_permissions.nil?
-          item_process_status_permissions =
+          item_permissions =
             sublibrary_permissions[params[:item_process_status_code]] unless sublibrary_permissions.nil?
-          return item_process_status_permissions unless item_process_status_permissions.nil?
         end
-        unless params[:item_status_code].nil?
+        # If we didn't find anything with the item process status, try the item status
+        if item_permissions.empty? and params[:item_status_code]
           adm_permissions = item_permissions_by_item_status[params[:adm_library_code]]
           sublibrary_permissions =
             adm_permissions[params[:sub_library_code]] unless adm_permissions.nil?
-          item_status_permissions =
+          item_permissions =
             sublibrary_permissions[params[:item_status_code]] unless sublibrary_permissions.nil?
-          return item_status_permissions unless item_status_permissions.nil?
         end
+      rescue => e
         logger.warn(
             "Warning in #{self.class}. "+
             "Item permissions not found. "+
@@ -231,7 +232,11 @@ module Exlibris
             "\tItem status: #{params[:item_status_code]}\n"+
             "\tItem process status: #{params[:item_process_status_code]}"
           )
-        return {}
+        logger.error("Error: \n\t#{e}")
+        logger.error("\titem_permissions_by_item_process_status is #{item_permissions_by_item_process_status.inspect}")
+        logger.error("\titem_permissions_by_item_status is #{item_permissions_by_item_process_status.inspect}")
+      ensure
+        return item_permissions
       end
 
       def refresh?
