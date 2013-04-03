@@ -223,18 +223,15 @@ module Exlibris
             sublibrary_permissions[params[:item_status_code]] unless sublibrary_permissions.nil?
         end
       rescue => e
-        logger.warn(
-            "Warning in #{self.class}. "+
-            "Item permissions not found. "+
-            "Additional parameters:\n"+
-            "\tADM library: #{params[:adm_library_code]}\n"+
-            "\tSub library: #{params[:sub_library_code]}\n"+
-            "\tItem status: #{params[:item_status_code]}\n"+
-            "\tItem process status: #{params[:item_process_status_code]}"
-          )
+        logger.error(%Q{
+          Error in #{self.class}.
+          Returning empty item permissions.
+          Parameters:
+            ADM library: #{params[:adm_library_code]}
+            Sub library: #{params[:sub_library_code]}
+            Item status: #{params[:item_status_code]}
+            Item process status: #{params[:item_process_status_code]}}.strip)
         logger.error("Error: \n\t#{e}")
-        logger.error("\titem_permissions_by_item_process_status is #{item_permissions_by_item_process_status.inspect}")
-        logger.error("\titem_permissions_by_item_status is #{item_permissions_by_item_process_status.inspect}")
       ensure
         return item_permissions
       end
