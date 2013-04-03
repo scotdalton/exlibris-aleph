@@ -63,8 +63,8 @@ module Exlibris
           instance_variable_set("@#{tab}".to_sym, {})
           # Define reader w/ refresh
           self.class.send(:define_method, tab) {
-            return instance_variable_get("@#{tab}".to_sym) unless refresh?
-            refresh and return instance_variable_get("@#{tab}".to_sym)
+            refresh if refresh?
+            instance_variable_get("@#{tab}".to_sym)
           }
         }
         refresh
@@ -242,21 +242,38 @@ module Exlibris
       private :refresh?
 
       def refresh
-        @@alephe_tabs.each_key do |key|
-          instance_variable_set("@#{key}".to_sym, YAML.load_file(File.join(yml_path, "alephe", "#{key}.yml")))
+        @@alephe_tabs.each_key do |tab|
+          instance_variable_set("@#{tab}".to_sym, YAML.load_file(File.join(yml_path, "alephe", "#{tab}.yml")))
         end
-        @@adm_tabs.each_key do |key|
+        @@adm_tabs.each_key do |tab|
           adms.each do |adm|
-            tab = instance_variable_get("@#{key}".to_sym)
-            tab[adm] = YAML.load_file(File.join(yml_path, adm, "#{key}.yml"))
-            instance_variable_set("@#{key}".to_sym, tab)
+            instance_variable_get("@#{tab}".to_sym)[adm] = 
+              YAML.load_file(File.join(yml_path, adm, "#{tab}.yml"))
           end
         end
         # Delete irrelevant sub libraries from @sub_library
         @sub_libraries.delete_if {|key,value| irrelevant_sub_libraries.include? key }
-        @updated_at = Time.now()
+        # Since we update the YAML files in a separate process, don't overwrite
+        # unless everything got some valid data.
+        @updated_at = Time.now() if successful_refresh?
       end
-      private :refresh?
+      private :refresh
+
+      # Did the refresh actually work?
+      def successful_refresh?
+        # No "false" entries in alephe tab variables
+        (@@alephe_tabs.keys.find { |tab| (not instance_variable_get("@#{tab}".to_sym))}.nil? and
+          # AND no "false" entries in adm tab variables
+          @@adm_tabs.keys.find{ |tab| adms.find { |adm| (not (instance_variable_get("@#{tab}".to_sym)[adm])) }}.nil?)
+      end
+      private :successful_refresh?
+
+      # Since we update the YAML files in a separate process, we need to 
+      # wait until we actually get some YAML to load it into the hash.
+      def hash_from_yaml_file(file)
+        yaml = YAML.load_file(file)
+      end
+      private :hash_from_yaml_file
 
       def adms
         @adms ||= self.class.adms

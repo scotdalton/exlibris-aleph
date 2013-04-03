@@ -36,6 +36,15 @@ class TabHelperTest < ActiveSupport::TestCase
     @helper.instance_variable_set(:@refresh_time, @helper.class.refresh_time)
   end
 
+  test "successful refresh?" do
+    @helper.send(:refresh)
+    assert @helper.send(:successful_refresh?)
+    @helper.instance_variable_get(:@patrons)["nyu50"] = false
+    assert((not @helper.send(:successful_refresh?)))
+    @helper.send(:refresh)
+    assert @helper.send(:successful_refresh?)
+  end
+
   test "sub_library_text" do
     assert_equal("NYU Bobst", @helper.sub_library_text("BOBST"))
   end
