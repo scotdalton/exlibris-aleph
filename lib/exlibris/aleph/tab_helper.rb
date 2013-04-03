@@ -207,6 +207,7 @@ module Exlibris
         unless params[:item_process_status_code].nil?
           adm_permissions =
             item_permissions_by_item_process_status[params[:adm_library_code]]
+          (logger.warn("Unexpected return value. item_permissions_by_item_process_status is a #{item_permissions_by_item_process_status.class.name}") and return {}) unless adm_permissions.is_a? Hash
           sublibrary_permissions =
             adm_permissions[params[:sub_library_code]] unless adm_permissions.nil?
           item_process_status_permissions =
