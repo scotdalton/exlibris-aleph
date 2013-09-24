@@ -1,10 +1,10 @@
-# Exlibris::Aleph
 [![Gem Version](https://badge.fury.io/rb/exlibris-aleph.png)](http://badge.fury.io/rb/exlibris-aleph)
 [![Build Status](https://api.travis-ci.org/scotdalton/exlibris-aleph.png?branch=master)](https://travis-ci.org/scotdalton/exlibris-aleph)
 [![Dependency Status](https://gemnasium.com/scotdalton/exlibris-aleph.png)](https://gemnasium.com/scotdalton/exlibris-aleph)
 [![Code Climate](https://codeclimate.com/github/scotdalton/exlibris-aleph.png)](https://codeclimate.com/github/scotdalton/exlibris-aleph)
 [![Coverage Status](https://coveralls.io/repos/scotdalton/exlibris-aleph/badge.png?branch=master)](https://coveralls.io/r/scotdalton/exlibris-aleph)
 
+# Exlibris::Aleph
 Exlibris::Aleph offers a set of libraries for interacting with the ExLibris Aleph ILS.
 
 ## Exlibris::Aleph::Patron
