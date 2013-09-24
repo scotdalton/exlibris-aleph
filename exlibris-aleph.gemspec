@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rake", "~> 10.1.0"
+  s.add_dependency "rdoc", "~> 4.0.1"
   s.add_dependency "require_all", "~> 1.3.1"
   s.add_dependency "nokogiri", "~> 1.6.0"
   s.add_dependency "httparty", "~> 0.11.0"
