@@ -1,0 +1,630 @@
+!
+! NOTE - 1) do not edit this header section
+!      - 2) this header is created from the template located
+!        in $aleph_headers (sub-folders)
+!      - 3) to add remarks within the table,
+!        start the line with !rem or !*
+!      - 4) to mark a line as non-used (but restorable)
+!        add ! at start of line, retaining column structure
+!        displaced by one position to the right
+!      - 5) all internal codes must be Latin characters A-Z,0-9
+!
+!============================================================================
+!          tab16 - Due dates, fines & limits
+!============================================================================
+! Last header change: 03/04/2003
+!
+!  TABLE_KEY 1,2,3,4
+!
+!  HELP
+!  
+!   Item status 99 and 98. 
+!    These statuses define limits for the total number 
+!    of loans/holds/bookings, with no item status check.
+!    You can use ## in col.4 (patron status) to denote all patron statuses
+!    or enter a specific patron status in col.4 (patron status) if you 
+!    want to define the global loan/hold/booking limit per patron status.
+!
+!    Where 99 is used the total check is for every sublibrary that relates 
+!    to the group ID. The limit that is set in the 99 line means that a single 
+!    library that belongs to that group may not have more than that number or 
+!    loans/holds/bookings.
+!    Where 98 is used the total check is for the entire group that relates 
+!    to the group ID. The limit that is set in the 98 line means that the total number
+!    of loans/holds/bookings in the entire group may not exceed this limit.
+!
+!    It is possible to define a total check for the entire ADM library. 
+!    Define a separate line with a different group ID for the ADM library and use the 99
+!    item status. 
+!    Enter this group ID in column 7 in tab_sub_library.lng in the line that
+!    defines the ADM library. 
+!    This must be the LAST line in every group ID.
+!  . 
+!  Hourly and daily fines.
+!   Hours are rounded to a single hour, days are rounded to a
+!   single day. 
+!  . 
+!  If no parameters are defined for cols. 15-18, then the
+!  regular date/hour parameters are used (cols. 5-6, 8-9)
+!  .
+!  Z301 
+!   After changing parameters that affect due date/time, you 
+!   must either wait one day, or drop Z301 in order for the 
+!   changes to take effect.
+!
+!  NOTE: A maximum of 500 lines may be defined for each ID group.
+!  END_HELP
+!
+!  COL  1. 5; ALPHA_NUM, UPPER; ;
+!          Group ID;
+!          Group ID for group of definitions as defined in tab_sub_library
+!          ($alephe_tab);
+!  COL  2. 2; NUM; #;
+!          Item status;
+!          Item status. Use ## to denote any (all) item status;
+!  COL  3. 2; ALPHA, UPPER; #;
+!          Item process status;
+!          Item Process status. Use ## to denote any (all) process status.
+!          The item process status is not taken into consideration when 
+!          creating due dates and due hours (cols. 6, 9, 16 and 18) but is 
+!          taken into consideration for all other columns. Due dates (Z301) 
+!          will only be built from tab16 lines which have "##" in the item 
+!          process status column.;
+!  COL  4. 2; NUM; #;
+!          Patron status;
+!          Patron status. Use ## to denote any (all) patron status;
+!  COL  5. 1; TEXT {+,A}, UPPER; ;
+!          Date operator;
+!          Date operator:
+!          + = add to current date
+!          A = actual date;
+!  COL  6. 8; NUM; ;
+!          Date parameter;
+!          Date parameter:
+!          + in Column 5 = no.of days to add
+!          A in Column 5 = actual date
+!          The maximum number of days to be added is 999;
+!  COL  7. 2; NUM; ;
+!          Grace days;
+!          Grace days:
+!          no. of days within which a late return is "forgiven";
+!  COL  8. 1; TEXT {+,A}, UPPER; ;
+!          Hour operator;
+!          Hour operator:
+!          + = add to current time
+!          A = actual time;
+!  COL  9. 4; NUM; ;
+!          Hour parameter;
+!          Hour parameter:
+!          + in Column 8 = no.of hours/minutes to add
+!          A in Column 8 = actual time;
+!  COL 10. 4; NUM; ;
+!          Grace Hours;
+!          Grace Hours:
+!          no. of hours and minutes within which a late return is "forgiven";
+!  COL 11. 5; FLOAT_NO_DOT {3,2}; ;
+!          Fine multiple;
+!          Fine multiple (3 digits + 2 decimal):
+!          The sum refers to a full day. In order for it to refer to an hour,
+!          take the hourly amount that you want, multiply it by 24, and place
+!          the resulting sum in this column.
+!          In addition, in alephe/aleph_start you can set a multiplication 
+!          factor and rounding parameter(Y/N);
+!  COL 12. 3; NUM; ;
+!          Max no. of loans;
+!          Max number of loans
+!          The maximum number of loans a patron is allowed to 
+!          have of a specific item status or of all item statuses
+!          when relating to the 99 line.
+!          It is not possible to set to unlimited number of loans. If you
+!          have a patron status that you want to set up to allow an 
+!          unlimited number of loans, set "check loan" (col.7) in tab31
+!          to N (z305_loan_check=N ). This should be used for institutional 
+!          patrons, like ILL departments.;
+!  COL 13. 3; NUM; ;
+!          Max no. hold requests;
+!          Max number of hold requests
+!          The maximum number of hold requests a patron is allowed 
+!          to have of a specific item status or of all item statuses
+!          when relating to the 99 line;
+!  COL 14. 1; ALPHA_NUM, UPPER; #;
+!          Fine method;
+!          fine methods 
+!           0 - no fines charged
+!           A - open minutes
+!           1 - open hours 
+!           2 - open days
+!           B - total minutes
+!           3 - total hours
+!           4 - total days
+!           5 - overlapping block date
+!           6 - cumulative block date  
+!	    C - include recall  - behaves like type 1 (open-hours)
+!	    D - include recall  - behaves like type 2 (open-days)
+!	    E - include recall  - behaves like type 3 (total-hours)
+!    	    7 - include recall  - behaves like type 4 (total days)
+!	    R - fixed 1st day   - behaves like type 2 (open-days)
+!           F - total days by intervals (using tab_late_return)
+!           8 - overlapping block date + fine calculated according to total days
+!           9 - cumulative block date + fine calculated according to total days
+!           Y - special for ICL
+!           Z - special for ICL;
+!
+!           Fine method 5 - overlapping block date 
+!           .
+!           A patron who returns one item late is blocked from borrowing
+!           items or renewing loans (this depends on the setup of 
+!           tab_check_circ) for a period equal to the number of days the 
+!           item was overdue. 
+!           A patron who returns two or more items late is blocked from  
+!           from borrowing items or renewing loans for a period equal to
+!           the highest number of days an item was overdue.
+!           Example, a patron who returns two items late, one 5 days overdue
+!           and the other 10 days overdue is blocked from borrowing items
+!           for 10 days.
+!           .
+!           Fine method 6 - cumulative block date 
+!           .
+!           A patron who returns one item late is blocked from borrowing
+!           items or renewing loans (this depends on the setup of
+!           tab_check_circ) for a period equal to the number of days the
+!           item was overdue.
+!           A patron who returns two or more items late is blocked from
+!           from borrowing items or renewing loans for a period equal to
+!           the sum of the number of days each item was overdue.
+!           Example, a patron who returns two items late, one 5 days overdue
+!           and the other 10 days overdue is blocked from borrowing items
+!           for 15 days.
+!           .
+!           Fine method R - First day fixed, then open days
+!           .
+!           The fine for the first overdue day is a fixed sum of 2.00 
+!           (hardcoded). No other fines are added for the first day. 
+!           From the second day onward the calculation is 
+!           like fine method 2 (open days).;
+!  COL 15. 1; TEXT {+,A}, UPPER; ;
+!          Date operator (request);
+!          Date operator for loan of items with holds:
+!          (+ or A as in column 5);
+!  COL 16. 8; NUM; ;
+!          Date parameter (request);
+!          Date parameter for loan of items with holds:
+!          The value entered here is either an offset or an actual date 
+!          depending on the value of column 15;
+!  COL 17. 1; TEXT {+,A}, UPPER; ;
+!          Hour operator (request);
+!          Hour operator for loan of items with holds:
+!          (+ or A as in column 8);
+!  COL 18. 4;  NUM; ;
+!          Hour parameter (request);
+!          Hour parameter for loan of items with holds:
+!          The value entered here is either an offset or an actual hour  
+!          depending on the value of column 17  
+!          NOTE: if no parameters are defined for cols. 15-18, then the
+!                regular date/hour parameters are used (cols. 5-6, 8-9);
+!  COL 19. 3; NUM; ;
+!          No. of days for recall notice;
+!          Number of days from recall notice to the new due date for 
+!          the recalled item;
+!  COL 20. 3; NUM; ;
+!          Minimum guaranteed loan period;
+!          Number of days for minimum guaranteed loan period (when recalled);
+!  COL 21. 2; ALPHA_NUM {00-09}; ;
+!          Maximum renewals;
+!          Maximum number of renewals. Although you can enter two digits, the 
+!          definable limit is "09". For unlimited renewals, leave
+!          the column blank.;
+!  COL 22. 4; ALPHA_NUM, UPPER; ;
+!          Maximum renewal period ;
+!          Maximum renewal period: 
+!          D days/W weeks/M months 
+!          nnn - number of units
+!          Example:  D007 - renew up to a maximum of 7 days
+!                    W004 - renew up to 4 weeks;
+!  COL 23. 10; FLOAT_DOT {7,2}; ;
+!          Maximum fine;
+!          Maximum fine (up to 2 after the decimal) 
+!          - the field should be left-aligned;
+!  COL 24. 10; FLOAT_DOT {7,2}; ;
+!          Minimum fine;
+!          Minimum fine (up to 2 after the decimal) 
+!          fines below this amount will be treated as zero amount fines.
+!          - the field should be left-aligned;
+!  COL 25. 10; FLOAT_DOT {7,2}; ;
+!          Fixed Fine Addition;
+!          Fixed Fine Addition (up to 2 after the decimal) 
+!          Fixed amount to be added to any fine.
+!          - the field should be left-aligned;
+!
+!  COL 26. 3; NUM; ;
+!          Max no. booking requests;
+!          Max number of booking requests
+!          The maximum number of booking requests a patron is allowed
+!          to have.
+!          We use 999 to indicate unlimited number of requests.;
+!
+!  COL 27. 1; NUM; ;
+!          Adjust Due Date and Hour;
+!          Adjust Due Date and Hour
+!
+!          This column is sensitive to sublibrary and item status only.
+!          Therefore, use '##' for both item process status and patron
+!          status.
+!
+!          When calculating the due date: 
+!          0 - Adjust a due hour which is after closing time to the closing
+!              time (if the due date is an open day), or to the closing time
+!              of the NEXT open day (if the due date is a closed day).
+!          1 - Adjust a due hour which is after closing time to the closing
+!              time (if the due date is an open day), or to the closing time
+!              of the PREVIOUS open day (if the due date is a closed day).
+!              Note! When choosing '0' or '1', if the due hour is after
+!              closing and before 23:59:59, the due hour will change to the
+!              closing time of the same day. If the due hour is in the next day
+!              (after 00:00:01), the due hour will change to the opening
+!              time of the following day.
+!          2 - Do NOT adjust due hour if the due date is an open day. if
+!              the due date is a closed day, find the NEXT open day. This
+!              is the default value in case tab16 cannot be read or this 
+!              column has an invalid value (i.e. other than 0, 1, 2 or 3).
+!          3 - Adjust a due hour which is after closing time to the NEXT
+!              open day's opening hour.
+!
+!          In any setting, if the due hour is EARLIER than the opening hour,
+!          it is adjusted to the opening hour.;
+!
+!  COL 28. 2; NUM; ;
+!          Item requested threshold;
+!          If an item has this number of active hold requests
+!          it will be considered requested for the purpose of using 
+!          columns 15-18 for setting its due date.; 
+!
+!                                                      1 1          1   
+! 1   2  3  4  5    6     7  8  9    10   11   12  13  4 5    16    7  18   19  20 21  22       23        24        25       26 2728
+!!!!!-!!-!!-!!-!-!!!!!!!!-!!-!-!!!!-!!!!-!!!!!-!!!-!!!-!-!-!!!!!!!!-!-!!!!-!!!-!!!-!!-!!!!-!!!!!!!!!!-!!!!!!!!!!-!!!!!!!!!!-!!!-!-!!
+NABUD 01 ## 10 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 11 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 12 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 15 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 17 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 30 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 32 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 33 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 34 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 35 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 37 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 50 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 51 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 52 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 53 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 54 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 55 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 56 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 57 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 62 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 65 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 66 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 70 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 72 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 74 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 76 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 77 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 80 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 81 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 82 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 00      50.0000000 1.00000000            999 0 01
+NABUD 01 ## 88 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 89 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 90 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 95 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 01 ## 97 A 20121216 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+!
+NABUD 02 ## 10 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 11 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 12 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 15 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 17 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 30 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 32 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 33 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 34 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 35 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 50 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 51 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 52 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 53 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 54 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 55 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 56 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 57 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 62 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 65 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 66 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 70 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 72 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 74 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 76 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 77 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 80 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 81 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 82 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 88 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 89 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 90 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+NABUD 02 ## 95 + 00000007 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 01      50.0000000 1.00000000            999 0 01
+!
+NABUD 09 ## 10 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 11 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 12 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 15 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 17 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 30 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 32 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 33 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 34 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 35 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 50 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 51 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 52 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 53 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 54 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 55 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 56 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 57 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 62 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 65 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 66 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 70 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 72 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 74 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 76 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 77 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 80 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 81 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 82 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 00      50.0000000 1.00000000            999 0 01
+NABUD 09 ## 88 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 89 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 90 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 95 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 09 ## 97 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+!
+NABUD 11 ## 10 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 11 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 12 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 15 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 17 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 30 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 32 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 33 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 34 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 35 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 50 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 51 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 52 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 53 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 54 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 55 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 56 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 57 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 62 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 65 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 66 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 70 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 72 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 74 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 76 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 77 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 80 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 81 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 82 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007 00      50.0000000 1.00000000            999 0 01
+NABUD 11 ## 88 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 89 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 90 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 95 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+NABUD 11 ## 97 + 00000014 00 A 2400 0000 00000 999 200 0 + 00000007 A 2400 007 007         50.0000000 1.00000000            999 0 01
+!
+NABUD 21 ## 10 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 11 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 12 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 15 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 17 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 30 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 32 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 33 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 34 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 35 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 50 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 51 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 52 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 53 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 54 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 55 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 56 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 57 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 62 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 65 + 00000000 00 + 0300 0030 02000 000 000 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 66 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 70 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 72 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 74 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 76 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 77 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 80 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 81 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 82 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 88 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 89 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 90 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 95 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 21 ## 97 + 00000000 00 + 0300 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+!
+NABUD 27 ## 10 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 11 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 12 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 15 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 17 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 30 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 32 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 33 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 34 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 35 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 50 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 51 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 52 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 53 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 54 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 55 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 56 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 57 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 62 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 65 + 00000000 00 + 0500 0030 02000 000 000 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 66 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 70 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 72 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 74 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 76 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 77 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 80 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 81 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 82 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 88 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 89 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 90 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 95 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NABUD 27 ## 97 + 00000000 00 + 0500 0030 02000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+!
+NABUD 72 ## 10 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 11 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 12 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 15 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 17 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 30 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 32 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 33 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 34 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 35 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 50 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 51 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 52 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 53 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 54 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 55 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 56 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 57 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 62 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 65 + 00000003 00 A 2400 0200 02000 000 000 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 66 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 70 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 72 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 74 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 76 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 77 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 80 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 81 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 82 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 88 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 89 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 90 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 95 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+NABUD 72 ## 97 + 00000003 00 A 2400 0200 02000 001 999 1 + 00000000 A 0000 000 000 00      40.0000000 0.00000000            999 0 01
+!!!!!-!!-!!-!!-!-!!!!!!!!-!!-!-!!!!-!!!!-!!!!!-!!!-!!!-!-!-!!!!!!!!-!-!!!!-!!!-!!!-!!-!!!!-!!!!!!!!!!-!!!!!!!!!!-!!!!!!!!!!-!!!-!-!!
+NADEQ 27 ## 10 + 00000000 00 + 0500 0030 48000 002 999 A + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 11 + 00000000 00 + 0500 0030 48000 002 999 A + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 12 + 00000000 00 + 0500 0030 48000 002 999 A + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 15 + 00000000 00 + 0500 0030 48000 002 999 A + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 17 + 00000000 00 + 0500 0030 48000 002 999 A + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 30 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 32 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 33 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 34 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 35 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 50 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 51 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 52 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 53 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 54 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 55 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 56 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 57 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 62 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 66 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 70 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 72 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 74 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 76 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 77 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 80 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 81 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 82 + 00000000 00 + 0500 0000 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 88 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 89 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 90 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 95 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+NADEQ 27 ## 97 + 00000000 00 + 0500 0030 48000 002 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 3 01
+!
+NADEQ 48 ## 10 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 11 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 12 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 15 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 17 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 30 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 32 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 33 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 34 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 35 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 50 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 51 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 52 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 53 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 54 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 55 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 56 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 57 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 62 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 66 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 70 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 72 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 74 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 76 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 77 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 80 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 81 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 82 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 88 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 89 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 90 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 95 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 48 ## 97 + 00000007 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+!
+NADEQ 72 ## 10 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 11 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 12 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 15 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 17 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 30 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 32 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 33 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 34 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 35 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 50 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 51 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 52 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 53 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 54 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 55 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 56 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 57 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 62 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 66 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 70 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 72 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 74 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 76 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 77 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 80 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 81 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 82 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 88 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 89 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 90 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 95 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01
+NADEQ 72 ## 97 + 00000003 00 A 2400 0200 48000 001 999 1 + 00000000 A 0000 000 000 00      50.0000000 0.00000000            999 0 01

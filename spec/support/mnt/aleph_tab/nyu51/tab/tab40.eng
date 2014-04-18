@@ -1,0 +1,52 @@
+!
+! NOTE - 1) do not edit this header section
+!      - 2) this header is created from the template located
+!        in $aleph_headers (sub-folders)
+!      - 3) to add remarks within the table,
+!        start the line with !rem or !*
+!      - 4) to mark a line as non-used (but restorable)
+!        add ! at start of line, retaining column structure
+!        displaced by one position to the right
+!      - 5) all internal codes must be Latin characters A-Z,0-9
+!
+!====================================
+!       tab40 - collection definition
+!====================================
+! Last header change: 04/03/2003
+!
+! HELP
+! This table defines the expansion of the collection code as entered in
+! the Z30-COLLECTION FIELD in items, to the expanded form to be displayed
+! in the OPAC.
+! END_HELP
+!
+! TABLE_KEY 1,2,3 
+!
+! COL 1. 5; ALPHA_NUM, UPPER; ;
+!        Code;
+!        Collection code;
+! COL 2. 5; ALPHA_NUM, UPPER; #;
+!          Sublibrary;
+!          Sublibrary;
+! COL 3. 1; ALPHA, UPPER {L}; ;
+!          Alpha;
+!          Character set;
+! COL 4. 80; TEXT; ;
+!          Name;
+!          Collection name
+!          up to 80 characters;
+!
+! 1     2   3     4
+!!!!!-!!!!!-!-!!!!!!!!!!!!!!!!!!!!!!!>
+MAIN  NABUD L Main Collection
+LEIS  NABUD L Leisure Collection
+MEDIA NABUD L Media Center
+SPCL  NABUD L Special Collection
+ADRES NABUD L Reserves Collection
+LOEB  NABUD L Loeb Collection
+!*
+OFFAD NADEX L Annex Collection
+!*
+MAIN  NADEQ L Main Collection
+!*
+NNYUI NWEB  L Restricted Electronic Resources

@@ -5,3 +5,4 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 gem "coveralls", "~> 0.7.0", require: false, :group => :test
+gem 'pry'

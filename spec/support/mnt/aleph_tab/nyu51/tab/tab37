@@ -1,0 +1,202 @@
+!
+! NOTE - 1) do not edit this header section
+!      - 2) this header is created from the template located
+!        in $aleph_headers (sub-folders)
+!      - 3) to add remarks within the table,
+!        start the line with !rem or !*
+!      - 4) to mark a line as non-used (but restorable)
+!        add ! at start of line, retaining column structure
+!        displaced by one position to the right
+!      - 5) all internal codes must be Latin characters A-Z,0-9
+!
+!============================================================================
+!          tab37 - Hold Requests Pick-up List Configuration
+!============================================================================
+! Last header change: 27/10/2002
+!
+! TABLE_KEY 1,2,3,4,5
+! HELP
+!  
+! tab37 defines one aspect of hold requests:
+! - the drop-down list of pickup and delivery locations for hold requests
+!   (dependent on item status, item process status, patron status and
+!   sublibrary of item).
+! 
+! If the item sublibrary, item status, item process status, patron status
+! and pickup location are not defined in this table, the item cannot be
+! requested.
+!
+! 
+! If you are using a specific item status in col.2 (i.e. not ##), make
+! sure that the specific lines come before the general lines, since
+! the table is read from top to bottom, and the first match is always taken.
+! The same holds true for col.3 (item process status) and col.4 (patron 
+! status).
+!
+! All item statuses are matched on ## in the first line, and the second line
+! will never be used.
+!
+! Example of correct setup:
+! ULINC 14 ## ## # UEDUC
+! ULINC ## ## ## # UEDUC
+!
+! Example of incorrect setup:
+! ULINC ## ## ## # UEDUC
+! ULINC 14 ## ## # UEDUC
+!
+! If you have a combination of one specific item status with all patron 
+! statuses and a combination of all item statuses with a specific patron
+! status, define these lines first. 
+!
+! For example:
+! You want all items with item status 14 except those requested by a patron 
+! with patron status 05 to be ready for pickup at UEDUC, and all items
+! requested by a patron with patron status 05 to be ready for pickup at
+! UHLTH. In order to achieve this specify lines for the
+! combination of the two specific statuses (see example below).
+! Example of correct setup: 
+!
+! ULINC 14 ## 05 # UHLTH
+! ULINC 14 ## ## # UEDUC
+! ULINC ## ## 05 # UHLTH
+! ULINC ## ## ## # ULINC
+!
+! You can define up to 1000 different pickup locations for 
+! each combination. Up to ten different locations can be entered on each line.
+! If there is more than one line per combination (to allow for more than ten
+! pickup locations), leave columns 1-5 empty in the other lines.
+! 
+! For example :
+!
+! UHLTH ## ## ## # XXX01 XXX02 XXX03 XXX04 XXX05 XXX06 XXX07 XXX08 XXX09 XXX10
+!                  XXX11 XXX12 XXX13 XXX14 XXX15 XXX16 XXX17 XXX18 XXX19 XXX20
+!                  XXX21 XXX22 XXX23
+!
+! -----------------------------------------------
+! Display of the pickup sublibrary drop-down list
+! -----------------------------------------------
+!
+! Only a specific line matching sublibrary/item-status/item-process-
+! status is taken for the dropdown list (i.e. although ## lines would match
+! they are not included in the dropdown list if a more specific line is 
+! found). 
+!
+! Column 5 (Availability of item) can be used to filter out a sublibrary from
+! the drop-down list of pickup locations. If column 5 is set to "N", the 
+! pickup location will display only if the item is not available (i.e. the item
+! is on loan or on the hold shelf).
+! 
+! There are two correct ways to use this:
+! 1) by exclusion:
+! UHLTH ## ## ## N HOME
+! UHLTH ## ## ## # UHLTH UEDUC
+!
+! 2) by inclusion:
+! UHLTH ## ## ## Y UHLTH UEDUC
+! UHLTH ## ## ## N UHLTH UEDUC HOME
+!
+! END_HELP
+!
+! COL  1.  5; ALPHA_NUM, UPPER; #; 
+!           Sublibrary;
+!           Sublibrary of the item;    
+! COL  2.  2; NUM {00-99}; #;
+!           Item status; 
+!           Status of item being requested;
+! COL  3.  2; ALPHA_NUM; #;  
+!           Item process status; 
+!           Process Status of item being requested;
+! COL  4.  2; ALPHA_NUM; #;  
+!           Patron status;
+!           Status of the patron;   
+! COL  5.  1; ALPHA {Y,N,#, }, UPPER; #;
+!           Availability of item;
+!           If "Y" this line only applies to available items (i.e. on the
+!           shelf). If "N" this line only applies to unavailable items (i.e. on
+!           loan, hold waiting to be picked up or in transit). Use # to indicate
+!           that the line is insensitive to availability of the item;
+! COL  6.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! COL  7.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! COL  8.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! COL  9.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! COL 10.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! COL 11.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! COL 12.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! COL 13.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! COL 14.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! COL 15.  5; ALPHA_NUM, UPPER; ;
+!           Pickup location;
+!           location to which the item will be sent (either to be picked up by
+!           the patron, or actually sent to the patron);
+! 1   2  3  4  5   6     7     8     9    10    11    12    13    14    15
+!!!!!-!!-!!-!!-!-!!!!!-!!!!!-!!!!!-!!!!!-!!!!!-!!!!!-!!!!!-!!!!!-!!!!!-!!!!!
+NABUD ## ## 50 # NABUD NADSE NADSS
+NABUD ## ## 51 # NABUD NADSE NADSS
+NABUD ## ## 52 # NABUD NADSE NADSS
+NABUD ## ## 53 # NABUD NADSE NADSS
+NABUD ## ## 62 # NABUD NADSE NADSS
+NABUD ## ## 70 # NABUD NADSE NADSS
+NABUD ## ## 80 # NABUD NADSE NADSS
+NABUD ## ## 81 # NABUD NADSE NADSS
+NABUD ## ## 89 # NABUD NADSE NADSS
+NABUD ## AC ## Y NABUD
+NABUD ## BD ## Y NABUD
+NABUD ## CB ## Y NABUD
+NABUD ## CT ## Y NABUD
+NABUD ## CU ## Y NABUD
+NABUD ## DP ## Y NABUD
+NABUD ## HC ## Y NABUD
+NABUD ## HN ## Y NABUD
+NABUD ## HP ## Y NABUD
+NABUD ## IT ## Y NABUD
+NABUD ## LB ## Y NABUD
+NABUD ## MQ ## Y NABUD
+NABUD ## OR ## Y NABUD
+NABUD ## PH ## Y NABUD
+NABUD ## PP ## Y NABUD
+NABUD ## PT ## Y NABUD
+NABUD ## RN ## Y NABUD
+NABUD ## RO ## Y NABUD
+NABUD ## RP ## Y NABUD
+NABUD ## VH ## Y NABUD
+NABUD ## VI ## Y NABUD
+NABUD ## ## ## N NABUD
+NADEX ## ## 50 # NABUD NADSE NADSS
+NADEX ## ## 51 # NABUD NADSE NADSS
+NADEX ## ## 52 # NABUD NADSE NADSS
+NADEX ## ## 53 # NABUD NADSE NADSS
+NADEX ## ## 62 # NABUD NADSE NADSS
+NADEX ## ## 70 # NABUD NADSE NADSS
+NADEX ## ## 80 # NABUD NADSE NADSS
+NADEX ## ## 81 # NABUD NADSE NADSS
+NADEX ## ## 82 # NABUD
+NADEX ## ## 88 # NABUD NADSE NADSS
+NADEX ## ## 89 # NABUD NADSE NADSS
+NADEQ ## ## ## N NADEQ

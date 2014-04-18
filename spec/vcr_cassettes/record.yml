@@ -1,0 +1,273 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01000980206?view=full
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Fri, 18 Apr 2014 02:05:58 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-record><reply-text>ok</reply-text><reply-code>0000</reply-code><record><info
+        type="Items" href="http://aleph.library.edu:1891/rest-dlf/record/NYU01000980206/items"></info><info
+        type="Holdings" href="http://aleph.library.edu:1891/rest-dlf/record/NYU01000980206/holdings"></info><info
+        type="Filters" href="http://aleph.library.edu:1891/rest-dlf/record/NYU01000980206/filters"></info><leader>     pam
+        a22003254a 45M</leader><controlfield tag="001">000980206</controlfield><controlfield
+        tag="003">NNU</controlfield><controlfield tag="005">20031013102650.0</controlfield><controlfield
+        tag="008">030226s2003    dcu      b    001 0 eng</controlfield><datafield
+        tag="010" ind1=" " ind2=" "><subfield code="a">2003004571</subfield></datafield><datafield
+        tag="020" ind1=" " ind2=" "><subfield code="a">0878409998 (pbk. : alk. paper)</subfield></datafield><datafield
+        tag="035" ind1="9" ind2=" "><subfield code="a">NYUb12794701</subfield></datafield><datafield
+        tag="035" ind1=" " ind2=" "><subfield code="a">(DLC) 2003004571</subfield></datafield><datafield
+        tag="040" ind1=" " ind2=" "><subfield code="a">DLC</subfield><subfield code="c">DLC</subfield><subfield
+        code="d">DLC</subfield><subfield code="d">NhCcYBP</subfield></datafield><datafield
+        tag="042" ind1=" " ind2=" "><subfield code="a">pcc</subfield></datafield><datafield
+        tag="050" ind1="0" ind2="0"><subfield code="a">HN49.I56</subfield><subfield
+        code="b">M67 2003</subfield></datafield><datafield tag="082" ind1="0" ind2="0"><subfield
+        code="a">303.48/33</subfield><subfield code="2">21</subfield></datafield><datafield
+        tag="100" ind1="1" ind2=" "><subfield code="a">Mossberger, Karen.</subfield></datafield><datafield
+        tag="245" ind1="1" ind2="0"><subfield code="a">Virtual inequality :</subfield><subfield
+        code="b">beyond the digital divide /</subfield><subfield code="c">Karen Mossberger,
+        Caroline J. Tolbert, Mary Stansbury.</subfield></datafield><datafield tag="260"
+        ind1=" " ind2=" "><subfield code="a">Washington, D.C. :</subfield><subfield
+        code="b">Georgetown University Press,</subfield><subfield code="c">c2003.</subfield></datafield><datafield
+        tag="300" ind1=" " ind2=" "><subfield code="a">xvi, 192 p. ;</subfield><subfield
+        code="c">22 cm.</subfield></datafield><datafield tag="490" ind1="1" ind2="
+        "><subfield code="a">American governance and public policy series</subfield></datafield><datafield
+        tag="504" ind1=" " ind2=" "><subfield code="a">Includes bibliographical references
+        (p. [171]-183) and index.</subfield></datafield><datafield tag="650" ind1="
+        " ind2="0"><subfield code="a">Digital divide.</subfield></datafield><datafield
+        tag="700" ind1="1" ind2=" "><subfield code="a">Tolbert, Caroline J.</subfield></datafield><datafield
+        tag="700" ind1="1" ind2=" "><subfield code="a">Stansbury, Mary,</subfield><subfield
+        code="d">1957-</subfield></datafield><datafield tag="830" ind1=" " ind2="0"><subfield
+        code="a">American governance and public policy.</subfield></datafield><datafield
+        tag="961" ind1=" " ind2=" "><subfield code="c">BSTACK</subfield></datafield><datafield
+        tag="980" ind1=" " ind2=" "><subfield code="a">031008</subfield><subfield
+        code="b">19.95</subfield><subfield code="e">16.36</subfield><subfield code="f">273606</subfield><subfield
+        code="g">1</subfield></datafield><datafield tag="981" ind1=" " ind2=" "><subfield
+        code="b">BBXSOC</subfield></datafield><datafield tag="982" ind1=" " ind2="
+        "><subfield code="a">40009601292</subfield><subfield code="e">AMC</subfield></datafield></record></get-record> '
+    http_version: 
+  recorded_at: Fri, 18 Apr 2014 02:05:58 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01000980206/holdings?view=full
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Fri, 18 Apr 2014 03:05:30 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-hol-list><reply-text>ok</reply-text><reply-code>0000</reply-code><holdings><holding
+        href="http://aleph.library.edu:1891/rest-dlf/record/NYU01000980206/holdings/NYU60002945614"><leader>     cxH
+        a22001092  4500</leader><controlfield tag="001">002945614</controlfield><controlfield
+        tag="004">NYUb12794701</controlfield><controlfield tag="005">20080531134314.0</controlfield><controlfield
+        tag="008">0310130|||||8   |001|||||0031013</controlfield><datafield tag="010"
+        ind1=" " ind2=" "><subfield code="a">2003004571</subfield></datafield><datafield
+        tag="020" ind1=" " ind2=" "><subfield code="a">0878409998 (pbk. : alk. paper)</subfield></datafield><datafield
+        tag="035" ind1="9" ind2=" "><subfield code="a">NYUH12794701/13324543</subfield></datafield><datafield
+        tag="852" ind1="0" ind2=" "><subfield code="a">NNU</subfield><subfield code="b">BOBST</subfield><subfield
+        code="c">MAIN</subfield><subfield code="h">HN49.I56</subfield><subfield code="i">M67
+        2003</subfield><subfield code="p">31142036269960</subfield><subfield code="7">13324543</subfield></datafield></holding><holding
+        href="http://aleph.library.edu:1891/rest-dlf/record/NYU01000980206/holdings/NYU60002945615"><leader>     cxH
+        a22001092  4500</leader><controlfield tag="001">002945615</controlfield><controlfield
+        tag="004">NYUb12794701</controlfield><controlfield tag="005">20080531134314.0</controlfield><controlfield
+        tag="008">0401050|||||8   |001|||||004010</controlfield><datafield tag="010"
+        ind1=" " ind2=" "><subfield code="a">2003004571</subfield></datafield><datafield
+        tag="020" ind1=" " ind2=" "><subfield code="a">0878409998 (pbk. : alk. paper)</subfield></datafield><datafield
+        tag="035" ind1="9" ind2=" "><subfield code="a">NYUH12794701/13358796</subfield></datafield><datafield
+        tag="852" ind1="0" ind2=" "><subfield code="a">NNNS</subfield><subfield code="b">TNSFO</subfield><subfield
+        code="c">MAIN</subfield><subfield code="h">HN49.I56</subfield><subfield code="i">M67
+        2003</subfield><subfield code="p">31207039784289</subfield><subfield code="7">13358796</subfield></datafield></holding></holdings></get-hol-list> '
+    http_version: 
+  recorded_at: Fri, 18 Apr 2014 03:05:30 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01000980206/items?view=full
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Fri, 18 Apr 2014 03:05:30 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-list><reply-text>ok</reply-text><reply-code>0000</reply-code><items><item
+        href="http://aleph.library.edu:1891/rest-dlf/record/NYU01000980206/items/NYU50000980206000010"><z30-sub-library-code>BOBST</z30-sub-library-code><z30-item-process-status-code></z30-item-process-status-code><z30-item-status-code>01</z30-item-status-code><z30-collection-code>MAIN</z30-collection-code><queue></queue><z30><translate-change-active-library>NYU50</translate-change-active-library><z30-doc-number>000980206</z30-doc-number><z30-item-sequence>    1.0</z30-item-sequence><z30-barcode>31142036269960</z30-barcode><z30-sub-library>NYU
+        Bobst</z30-sub-library><z30-material>Books</z30-material><z30-item-status>Regular
+        loan</z30-item-status><z30-open-date>20031027</z30-open-date><z30-update-date>20031113</z30-update-date><z30-cataloger>FISHERC</z30-cataloger><z30-date-last-return>20131021</z30-date-last-return><z30-hour-last-return>2007</z30-hour-last-return><z30-ip-last-return>128.122.88.168</z30-ip-last-return><z30-no-loans>004</z30-no-loans><z30-alpha>L</z30-alpha><z30-collection>Main
+        Collection</z30-collection><z30-call-no-type>0</z30-call-no-type><z30-call-no>HN49.I56
+        M67 2003</z30-call-no><z30-call-no-key>0 hn!49 i56 m67 2003</z30-call-no-key><z30-call-no-2-type></z30-call-no-2-type><z30-call-no-2></z30-call-no-2><z30-call-no-2-key></z30-call-no-2-key><z30-description></z30-description><z30-note-opac></z30-note-opac><z30-note-circulation></z30-note-circulation><z30-note-internal></z30-note-internal><z30-order-number></z30-order-number><z30-inventory-number></z30-inventory-number><z30-inventory-number-date>00000000</z30-inventory-number-date><z30-last-shelf-report-date>00000000</z30-last-shelf-report-date><z30-price>16.36</z30-price><z30-shelf-report-number></z30-shelf-report-number><z30-on-shelf-date>00000000</z30-on-shelf-date><z30-on-shelf-seq>000000</z30-on-shelf-seq><z30-doc-number-2>000000000</z30-doc-number-2><z30-schedule-sequence-2>00000</z30-schedule-sequence-2><z30-copy-sequence-2>00000</z30-copy-sequence-2><z30-vendor-code></z30-vendor-code><z30-invoice-number></z30-invoice-number><z30-line-number>00000</z30-line-number><z30-pages></z30-pages><z30-issue-date>00000000</z30-issue-date><z30-expected-arrival-date>00000000</z30-expected-arrival-date><z30-arrival-date>00000000</z30-arrival-date><z30-item-statistic></z30-item-statistic><z30-item-process-status>Not
+        in Process</z30-item-process-status><z30-copy-id></z30-copy-id><z30-hol-doc-number>002945614</z30-hol-doc-number><z30-temp-location>No</z30-temp-location><z30-enumeration-a></z30-enumeration-a><z30-enumeration-b></z30-enumeration-b><z30-enumeration-c></z30-enumeration-c><z30-enumeration-d></z30-enumeration-d><z30-enumeration-e></z30-enumeration-e><z30-enumeration-f></z30-enumeration-f><z30-enumeration-g></z30-enumeration-g><z30-enumeration-h></z30-enumeration-h><z30-chronological-i></z30-chronological-i><z30-chronological-j></z30-chronological-j><z30-chronological-k></z30-chronological-k><z30-chronological-l></z30-chronological-l><z30-chronological-m></z30-chronological-m><z30-supp-index-o></z30-supp-index-o><z30-85x-type></z30-85x-type><z30-depository-id></z30-depository-id><z30-linking-number>000000000</z30-linking-number><z30-gap-indicator></z30-gap-indicator><z30-maintenance-count>003</z30-maintenance-count><z30-process-status-date>00000000</z30-process-status-date></z30><z13><translate-change-active-library>NYU50</translate-change-active-library><z13-doc-number>000980206</z13-doc-number><z13-year>2003</z13-year><z13-open-date>20080618</z13-open-date><z13-update-date>20080618</z13-update-date><z13-call-no-key></z13-call-no-key><z13-call-no-code>LOC0</z13-call-no-code><z13-call-no>HN49.I56</z13-call-no><z13-author-code>1001</z13-author-code><z13-author>Mossberger,
+        Karen.</z13-author><z13-title-code>24510</z13-title-code><z13-title>Virtual
+        inequality :</z13-title><z13-imprint-code>260</z13-imprint-code><z13-imprint>Washington,
+        D.C. : Georgetown University Press, c2003.</z13-imprint><z13-isbn-issn-code>020</z13-isbn-issn-code><z13-isbn-issn>0878409998
+        (pbk. : alk. paper)</z13-isbn-issn></z13><status>06/28/14</status></item><item
+        href="http://aleph.library.edu:1891/rest-dlf/record/NYU01000980206/items/NYU50000980206000020"><z30-sub-library-code>TNSFO</z30-sub-library-code><z30-item-process-status-code>DP</z30-item-process-status-code><z30-item-status-code>01</z30-item-status-code><z30-collection-code>MAIN</z30-collection-code><queue></queue><z30><translate-change-active-library>NYU50</translate-change-active-library><z30-doc-number>000980206</z30-doc-number><z30-item-sequence>    2.0</z30-item-sequence><z30-barcode>31207039784289</z30-barcode><z30-sub-library>New
+        School Fogelman Library</z30-sub-library><z30-material>Books</z30-material><z30-item-status>Offsite
+        Available</z30-item-status><z30-open-date>20040105</z30-open-date><z30-update-date>20080806</z30-update-date><z30-cataloger>TEREFENK</z30-cataloger><z30-date-last-return>20131219</z30-date-last-return><z30-hour-last-return>1203</z30-hour-last-return><z30-ip-last-return>149.31.15.79</z30-ip-last-return><z30-no-loans>008</z30-no-loans><z30-alpha>L</z30-alpha><z30-collection>Main
+        Collection</z30-collection><z30-call-no-type>0</z30-call-no-type><z30-call-no>HN49.I56
+        M67 2003</z30-call-no><z30-call-no-key>0 hn!49 i56 m67 2003</z30-call-no-key><z30-call-no-2-type></z30-call-no-2-type><z30-call-no-2></z30-call-no-2><z30-call-no-2-key></z30-call-no-2-key><z30-description></z30-description><z30-note-opac></z30-note-opac><z30-note-circulation></z30-note-circulation><z30-note-internal></z30-note-internal><z30-order-number></z30-order-number><z30-inventory-number></z30-inventory-number><z30-inventory-number-date>00000000</z30-inventory-number-date><z30-last-shelf-report-date>00000000</z30-last-shelf-report-date><z30-price></z30-price><z30-shelf-report-number></z30-shelf-report-number><z30-on-shelf-date>00000000</z30-on-shelf-date><z30-on-shelf-seq>000000</z30-on-shelf-seq><z30-doc-number-2>000000000</z30-doc-number-2><z30-schedule-sequence-2>00000</z30-schedule-sequence-2><z30-copy-sequence-2>00000</z30-copy-sequence-2><z30-vendor-code></z30-vendor-code><z30-invoice-number></z30-invoice-number><z30-line-number>00000</z30-line-number><z30-pages></z30-pages><z30-issue-date>00000000</z30-issue-date><z30-expected-arrival-date>00000000</z30-expected-arrival-date><z30-arrival-date>00000000</z30-arrival-date><z30-item-statistic></z30-item-statistic><z30-item-process-status>Depository</z30-item-process-status><z30-copy-id></z30-copy-id><z30-hol-doc-number>002945615</z30-hol-doc-number><z30-temp-location>No</z30-temp-location><z30-enumeration-a></z30-enumeration-a><z30-enumeration-b></z30-enumeration-b><z30-enumeration-c></z30-enumeration-c><z30-enumeration-d></z30-enumeration-d><z30-enumeration-e></z30-enumeration-e><z30-enumeration-f></z30-enumeration-f><z30-enumeration-g></z30-enumeration-g><z30-enumeration-h></z30-enumeration-h><z30-chronological-i></z30-chronological-i><z30-chronological-j></z30-chronological-j><z30-chronological-k></z30-chronological-k><z30-chronological-l></z30-chronological-l><z30-chronological-m></z30-chronological-m><z30-supp-index-o></z30-supp-index-o><z30-85x-type></z30-85x-type><z30-depository-id>TNSRS</z30-depository-id><z30-linking-number>000000000</z30-linking-number><z30-gap-indicator></z30-gap-indicator><z30-maintenance-count>001</z30-maintenance-count><z30-process-status-date>00000000</z30-process-status-date></z30><z13><translate-change-active-library>NYU50</translate-change-active-library><z13-doc-number>000980206</z13-doc-number><z13-year>2003</z13-year><z13-open-date>20080618</z13-open-date><z13-update-date>20080618</z13-update-date><z13-call-no-key></z13-call-no-key><z13-call-no-code>LOC0</z13-call-no-code><z13-call-no>HN49.I56</z13-call-no><z13-author-code>1001</z13-author-code><z13-author>Mossberger,
+        Karen.</z13-author><z13-title-code>24510</z13-title-code><z13-title>Virtual
+        inequality :</z13-title><z13-imprint-code>260</z13-imprint-code><z13-imprint>Washington,
+        D.C. : Georgetown University Press, c2003.</z13-imprint><z13-isbn-issn-code>020</z13-isbn-issn-code><z13-isbn-issn>0878409998
+        (pbk. : alk. paper)</z13-isbn-issn></z13><status>Billed as Lost</status></item></items></get-item-list> '
+    http_version: 
+  recorded_at: Fri, 18 Apr 2014 03:05:30 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01000980206/filters?view=full
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Fri, 18 Apr 2014 03:08:25 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-filters><reply-text>ok</reply-text><reply-code>0000</reply-code><record-filters><sub-libraries><sub-library><sublib-name>NYU
+        Bobst</sublib-name><sublib-code>BOBST</sublib-code></sub-library><sub-library><sublib-name>New
+        School Fogelman Library</sublib-name><sublib-code>TNSFO</sublib-code></sub-library></sub-libraries></record-filters></get-filters> '
+    http_version: 
+  recorded_at: Fri, 18 Apr 2014 03:08:25 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01000980206/items/NYU50001951476001220
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Fri, 18 Apr 2014 03:35:37 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item><reply-text>ok</reply-text><reply-code>0000</reply-code><item><z30-sub-library-code>TNSGI</z30-sub-library-code><z30-item-process-status-code>DM</z30-item-process-status-code><z30-item-status-code>04</z30-item-status-code><z30-collection-code>SPCLP</z30-collection-code><queue>1
+        request(s) of 1 items.</queue><z30><translate-change-active-library>NYU50</translate-change-active-library><z30-doc-number>001951476</z30-doc-number><z30-item-sequence>  122.0</z30-item-sequence><z30-barcode>31207026692263</z30-barcode><z30-sub-library>New
+        School University Center</z30-sub-library><z30-material>Issue (bound)</z30-material><z30-item-status>Ask
+        at Reference</z30-item-status><z30-open-date>20110510</z30-open-date><z30-update-date>20140317</z30-update-date><z30-cataloger>LOORC</z30-cataloger><z30-date-last-return>20140206</z30-date-last-return><z30-hour-last-return>1151</z30-hour-last-return><z30-ip-last-return>149.31.214.133</z30-ip-last-return><z30-no-loans>001</z30-no-loans><z30-alpha>L</z30-alpha><z30-collection>SpecCol
+        Periodicals</z30-collection><z30-call-no-type></z30-call-no-type><z30-call-no>Non-circulating</z30-call-no><z30-call-no-key>$$mnon-circulating</z30-call-no-key><z30-call-no-2-type></z30-call-no-2-type><z30-call-no-2></z30-call-no-2><z30-call-no-2-key></z30-call-no-2-key><z30-description>no.1(1991:spring)</z30-description><z30-note-opac>Spring</z30-note-opac><z30-note-circulation></z30-note-circulation><z30-note-internal>Numbered
+        limited edition /1000.</z30-note-internal><z30-order-number></z30-order-number><z30-inventory-number></z30-inventory-number><z30-inventory-number-date>00000000</z30-inventory-number-date><z30-last-shelf-report-date>00000000</z30-last-shelf-report-date><z30-price></z30-price><z30-shelf-report-number></z30-shelf-report-number><z30-on-shelf-date>00000000</z30-on-shelf-date><z30-on-shelf-seq>000000</z30-on-shelf-seq><z30-doc-number-2>000000000</z30-doc-number-2><z30-schedule-sequence-2>00000</z30-schedule-sequence-2><z30-copy-sequence-2>00000</z30-copy-sequence-2><z30-vendor-code></z30-vendor-code><z30-invoice-number></z30-invoice-number><z30-line-number>00000</z30-line-number><z30-pages></z30-pages><z30-issue-date>20110510</z30-issue-date><z30-expected-arrival-date>20110510</z30-expected-arrival-date><z30-arrival-date>20110510</z30-arrival-date><z30-item-statistic></z30-item-statistic><z30-item-process-status>Depository
+        mediated</z30-item-process-status><z30-copy-id></z30-copy-id><z30-hol-doc-number>000036718</z30-hol-doc-number><z30-temp-location>No</z30-temp-location><z30-enumeration-a>1</z30-enumeration-a><z30-enumeration-b></z30-enumeration-b><z30-enumeration-c></z30-enumeration-c><z30-enumeration-d></z30-enumeration-d><z30-enumeration-e></z30-enumeration-e><z30-enumeration-f></z30-enumeration-f><z30-enumeration-g></z30-enumeration-g><z30-enumeration-h></z30-enumeration-h><z30-chronological-i>1991</z30-chronological-i><z30-chronological-j>21</z30-chronological-j><z30-chronological-k></z30-chronological-k><z30-chronological-l></z30-chronological-l><z30-chronological-m></z30-chronological-m><z30-supp-index-o></z30-supp-index-o><z30-85x-type>3</z30-85x-type><z30-depository-id>TNSRS</z30-depository-id><z30-linking-number>000000001</z30-linking-number><z30-gap-indicator></z30-gap-indicator><z30-maintenance-count>000</z30-maintenance-count><z30-process-status-date>20140317</z30-process-status-date></z30><z13><translate-change-active-library>NYU50</translate-change-active-library><z13-doc-number>001951476</z13-doc-number><z13-year>1991</z13-year><z13-open-date>20080618</z13-open-date><z13-update-date>20140328</z13-update-date><z13-call-no-key></z13-call-no-key><z13-call-no-code>LOC</z13-call-no-code><z13-call-no></z13-call-no><z13-author-code></z13-author-code><z13-author></z13-author><z13-title-code>24500</z13-title-code><z13-title>Visionaire.</z13-title><z13-imprint-code>260</z13-imprint-code><z13-imprint>[New
+        York] : Visionaire Publishing, c1991-</z13-imprint><z13-isbn-issn-code></z13-isbn-issn-code><z13-isbn-issn></z13-isbn-issn></z13><status>On
+        Hold</status></item></get-item> '
+    http_version: 
+  recorded_at: Fri, 18 Apr 2014 03:35:37 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01000980206/holdings/NYU60002945614
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Fri, 18 Apr 2014 03:48:46 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-hol><reply-text>ok</reply-text><reply-code>0000</reply-code><holding><leader>     cxH
+        a22001092  4500</leader><controlfield tag="001">002945614</controlfield><controlfield
+        tag="004">NYUb12794701</controlfield><controlfield tag="005">20080531134314.0</controlfield><controlfield
+        tag="008">0310130|||||8   |001|||||0031013</controlfield><datafield tag="010"
+        ind1=" " ind2=" "><subfield code="a">2003004571</subfield></datafield><datafield
+        tag="020" ind1=" " ind2=" "><subfield code="a">0878409998 (pbk. : alk. paper)</subfield></datafield><datafield
+        tag="035" ind1="9" ind2=" "><subfield code="a">NYUH12794701/13324543</subfield></datafield><datafield
+        tag="852" ind1="0" ind2=" "><subfield code="a">NNU</subfield><subfield code="b">BOBST</subfield><subfield
+        code="c">MAIN</subfield><subfield code="h">HN49.I56</subfield><subfield code="i">M67
+        2003</subfield><subfield code="p">31142036269960</subfield><subfield code="7">13324543</subfield></datafield></holding></get-hol> '
+    http_version: 
+  recorded_at: Fri, 18 Apr 2014 03:48:46 GMT
+recorded_with: VCR 2.9.0
