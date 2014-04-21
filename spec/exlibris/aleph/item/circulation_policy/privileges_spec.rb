@@ -2,7 +2,7 @@ require 'spec_helper'
 module Exlibris
   module Aleph
     module Item
-      class CirculationType
+      class CirculationPolicy
         describe Privileges do
           let(:row) { double }
           let(:loanable) { 'Y' }

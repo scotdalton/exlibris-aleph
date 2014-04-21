@@ -2,7 +2,7 @@ require 'spec_helper'
 module Exlibris
   module Aleph
     module Item
-      class CirculationType
+      class CirculationPolicy
         describe Display do
           let(:value) { 'Display' }
           subject(:display) { Display.new(value) }

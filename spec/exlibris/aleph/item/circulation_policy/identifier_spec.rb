@@ -2,7 +2,7 @@ require 'spec_helper'
 module Exlibris
   module Aleph
     module Item
-      class CirculationType
+      class CirculationPolicy
         describe Identifier do
           let(:status_code) { '##' }
           let(:status) { Status.new(status_code) }
@@ -29,7 +29,7 @@ module Exlibris
           end
           describe '#==' do
             subject { identifier == other_object }
-            context 'when the other object is an Item::CirculationType::Identifier' do
+            context 'when the other object is an Item::CirculationPolicy::Identifier' do
               let(:other_status) { status }
               let(:other_processing_status) { processing_status }
               let(:other_sub_library) { sub_library }
@@ -54,14 +54,14 @@ module Exlibris
                 end
               end
             end
-            context 'when the other object is not an Item::CirculationType::Identifier' do
+            context 'when the other object is not an Item::CirculationPolicy::Identifier' do
               let(:other_object) { "invalid" }
               it { should be_false }
             end
           end
           describe '#===' do
             subject { identifier === other_object }
-            context 'when the other object is an Item::CirculationType::Identifier' do
+            context 'when the other object is an Item::CirculationPolicy::Identifier' do
               let(:other_status) { status }
               let(:other_processing_status) { processing_status }
               let(:other_sub_library) { sub_library }
@@ -86,14 +86,14 @@ module Exlibris
                 end
               end
             end
-            context 'when the other object is not an Item::CirculationType::Identifier' do
+            context 'when the other object is not an Item::CirculationPolicy::Identifier' do
               let(:other_object) { "invalid" }
               it { should be_false }
             end
           end
           describe '#eql?' do
             subject { identifier.eql?(other_object) }
-            context 'when the other object is an Item::CirculationType::Identifier' do
+            context 'when the other object is an Item::CirculationPolicy::Identifier' do
               let(:other_status) { status }
               let(:other_processing_status) { processing_status }
               let(:other_sub_library) { sub_library }
@@ -118,7 +118,7 @@ module Exlibris
                 end
               end
             end
-            context 'when the other object is not an Item::CirculationType::Identifier' do
+            context 'when the other object is not an Item::CirculationPolicy::Identifier' do
               let(:other_object) { "invalid" }
               it { should be_false }
             end

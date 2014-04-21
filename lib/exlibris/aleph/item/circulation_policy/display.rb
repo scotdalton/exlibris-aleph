@@ -1,7 +1,7 @@
 module Exlibris
   module Aleph
     module Item
-      class CirculationType
+      class CirculationPolicy
         class Display
           attr_reader :value
 

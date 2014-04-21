@@ -4,11 +4,11 @@ module Exlibris
   module Aleph
     module TableParser
       module Matcher
-        describe ItemCirculationTypes do
+        describe ItemCirculationPolicies do
           let(:string) { 'BOBST ## DP L Depository                     Y Y C N Y Y N Y N 00 N A' }
-          subject(:items) { ItemCirculationTypes.new(string) }
-          describe ItemCirculationTypes::REGEXP do
-            subject { ItemCirculationTypes::REGEXP }
+          subject(:items) { ItemCirculationPolicies.new(string) }
+          describe ItemCirculationPolicies::REGEXP do
+            subject { ItemCirculationPolicies::REGEXP }
             it { should eq /^(.{5})\s([0-9#]{2})\s([A-Z#]{2})\s(L)\s(.{30})\s([YN])\s([YN])\s([YNCT])\s([YN])\s([YN])\s([YN])\s([YN])\s([YN])\s([YN])\s([0-9]{2})\s([YNC])\s([AOC])/ }
           end
           describe '#regexp' do

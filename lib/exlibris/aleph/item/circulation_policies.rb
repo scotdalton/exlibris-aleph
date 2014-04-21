@@ -1,7 +1,7 @@
 module Exlibris
   module Aleph
     module Item
-      class CirculationTypes
+      class CirculationPolicies
         extend Forwardable
         def_delegators :all, :each
 
@@ -13,7 +13,7 @@ module Exlibris
           @all ||= begin
             Hash[
               admin_libraries.map do |admin_library|
-                [admin_library, TableParser::ItemCirculationTypes.new(admin_library).all]
+                [admin_library, TableParser::ItemCirculationPolicies.new(admin_library).all]
               end
             ]
           end

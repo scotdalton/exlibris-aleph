@@ -1,7 +1,7 @@
 module Exlibris
   module Aleph
     module Item
-      class CirculationType
+      class CirculationPolicy
         class Identifier
           attr_reader :status, :processing_status, :sub_library
 
