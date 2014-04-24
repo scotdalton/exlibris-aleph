@@ -71,12 +71,6 @@ module Exlibris
           it { should be_false }
         end
       end
-      context 'when initialized without an "admin_library" argument' do
-        subject { SubLibrary.new(code, display) }
-        it 'should raise an ArgumentError' do
-          expect { subject }.to raise_error ArgumentError
-        end
-      end
       context 'when initialized with an "admin_library" argument' do
         context 'but the "admin_library" argument is not an AdminLibrary' do
           let(:admin_library) { "invalid" }
