@@ -13,8 +13,8 @@ VCR.configure do |config|
   config.cassette_library_dir = 'spec/vcr_cassettes'
   config.configure_rspec_metadata!
   config.filter_sensitive_data("library.edu") { "library.nyu.edu" }
-  config.filter_sensitive_data("BOR_ID") { ENV['BOR_ID'] }
-  config.filter_sensitive_data("VERIFICATION") { ENV['VERIFICATION'] }
+  config.filter_sensitive_data('BOR_ID') { ENV['BOR_ID'] }
+  config.filter_sensitive_data('VERIFICATION') { ENV['VERIFICATION'] }
 end
 
 Exlibris::Aleph.configure do |config|
