@@ -3,10 +3,11 @@ module Exlibris
     module Item
       class CirculationPolicy
         class Display
-          attr_reader :value
+          attr_reader :value, :mask
 
-          def initialize(value)
+          def initialize(value, mask=nil)
             @value = value
+            @mask = (mask || value)
           end
         end
       end
