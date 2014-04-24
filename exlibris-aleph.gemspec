@@ -1,15 +1,15 @@
-$:.push File.expand_path("../lib", __FILE__)
+$:.push File.expand_path('../lib', __FILE__)
 
 # Maintain your gem's version:
-require "exlibris/aleph/version"
+require 'exlibris/aleph/version'
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "exlibris-aleph"
+  s.name        = 'exlibris-aleph'
   s.version     = Exlibris::Aleph::VERSION
-  s.authors     = ["Scot Dalton"]
-  s.email       = ["scotdalton@gmail.com"]
-  s.homepage    = "https://github.com/scotdalton/exlibris-aleph"
+  s.authors     = ['Scot Dalton']
+  s.email       = ['scotdalton@gmail.com']
+  s.homepage    = 'https://github.com/scotdalton/exlibris-aleph'
   s.summary     = "Library to work with Exlibris' Aleph ILS."
   s.description = "Library to handle Exlibris' Aleph ILS."
   s.license     = 'MIT'
