@@ -18,6 +18,10 @@ module Exlibris
         other_object.instance_of?(self.class) && code == other_object.code
       end
       alias_method :eql?, :==
+
+      def hash
+        code.hash
+      end
     end
   end
 end

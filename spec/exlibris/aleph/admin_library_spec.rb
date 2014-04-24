@@ -68,6 +68,10 @@ module Exlibris
           it { should be_false }
         end
       end
+      describe '#hash' do
+        subject { admin_library.hash }
+        it { should eq code.hash }
+      end
       context 'when initialized with a code argument that is not a String' do
         let(:code) { Hash.new }
         it 'should raise an ArgumentError' do
