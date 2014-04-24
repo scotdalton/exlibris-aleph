@@ -2,7 +2,7 @@ module Exlibris
   module Aleph
     class Collections
       extend Forwardable
-      def_delegators :all, :each
+      def_delegators :all, :each, :[]
 
       include Singleton
 

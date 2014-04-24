@@ -12,6 +12,11 @@ module Exlibris
         subject { collections.each }
         it { should be_an Enumerable }
       end
+      describe '#[]' do
+        let(:admin_library) { AdminLibrary.new('NYU50') }
+        subject { collections[admin_library] }
+        it { should be_an Array }
+      end
       describe '#equal?' do
         let(:other_instance) { Collections.instance }
         subject { collections.equal?(other_instance) }
