@@ -71,6 +71,10 @@ module Exlibris
           it { should be_false }
         end
       end
+      describe '#hash' do
+        subject { sub_library.hash }
+        it { should eq code.hash }
+      end
       context 'when initialized with an "admin_library" argument' do
         context 'but the "admin_library" argument is not an AdminLibrary' do
           let(:admin_library) { "invalid" }
