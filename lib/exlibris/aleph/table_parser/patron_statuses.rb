@@ -7,6 +7,10 @@ module Exlibris
         def initialize(admin_library)
           super(admin_library, FILENAME)
         end
+
+        def all
+          rows.map { |row| Patron::Status.new(row.code, row.display) }
+        end
       end
     end
   end
