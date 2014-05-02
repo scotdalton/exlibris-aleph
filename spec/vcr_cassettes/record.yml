@@ -270,4 +270,246 @@ http_interactions:
         2003</subfield><subfield code="p">31142036269960</subfield><subfield code="7">13324543</subfield></datafield></holding></get-hol> '
     http_version: 
   recorded_at: Fri, 18 Apr 2014 03:48:46 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01000864162?view=full
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 29 Apr 2014 18:40:02 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-record><reply-text>ok</reply-text><reply-code>0000</reply-code><record><info
+        type="Items" href="http://aleph.library.edu:1891/rest-dlf/record/NYU01000864162/items"></info><info
+        type="Holdings" href="http://aleph.library.edu:1891/rest-dlf/record/NYU01000864162/holdings"></info><info
+        type="Filters" href="http://aleph.library.edu:1891/rest-dlf/record/NYU01000864162/filters"></info><leader>     cam
+        a22003254a 45M</leader><controlfield tag="001">000864162</controlfield><controlfield
+        tag="003">NNU</controlfield><controlfield tag="005">20051017085135.0</controlfield><controlfield
+        tag="006">m        d</controlfield><controlfield tag="008">020730s2003    mdua     b    001
+        0 eng</controlfield><datafield tag="010" ind1=" " ind2=" "><subfield code="a">2002030296</subfield></datafield><datafield
+        tag="020" ind1=" " ind2=" "><subfield code="a">0810844915 (alk. paper)</subfield></datafield><datafield
+        tag="020" ind1=" " ind2=" "><subfield code="a">0810844923 (pbk. : alk. paper)</subfield></datafield><datafield
+        tag="035" ind1="9" ind2=" "><subfield code="a">NYUb12672786</subfield></datafield><datafield
+        tag="035" ind1=" " ind2=" "><subfield code="a">(DLC) 2002030296</subfield></datafield><datafield
+        tag="035" ind1=" " ind2=" "><subfield code="a">(NYU)NYUb12672786</subfield></datafield><datafield
+        tag="040" ind1=" " ind2=" "><subfield code="a">DLC</subfield><subfield code="c">DLC</subfield><subfield
+        code="d">DLC</subfield><subfield code="d">NhCcYBP</subfield><subfield code="d">NNU</subfield></datafield><datafield
+        tag="042" ind1=" " ind2=" "><subfield code="a">pcc</subfield></datafield><datafield
+        tag="043" ind1=" " ind2=" "><subfield code="a">n-us---</subfield></datafield><datafield
+        tag="050" ind1="0" ind2="0"><subfield code="a">HN90.I56</subfield><subfield
+        code="b">K888 2003</subfield></datafield><datafield tag="082" ind1="0" ind2="0"><subfield
+        code="a">303.48/33</subfield><subfield code="2">21</subfield></datafield><datafield
+        tag="100" ind1="1" ind2=" "><subfield code="a">Kuttan, Appu,</subfield><subfield
+        code="d">1941-</subfield></datafield><datafield tag="245" ind1="1" ind2="0"><subfield
+        code="a">From digital divide to digital opportunity /</subfield><subfield
+        code="c">Appu Kuttan and Laurence Peters.</subfield></datafield><datafield
+        tag="260" ind1=" " ind2=" "><subfield code="a">Lanham, Md. :</subfield><subfield
+        code="b">Scarecrow Press,</subfield><subfield code="c">2003.</subfield></datafield><datafield
+        tag="300" ind1=" " ind2=" "><subfield code="a">x, 190 p. :</subfield><subfield
+        code="b">ill. ;</subfield><subfield code="c">24 cm +</subfield><subfield code="e">1
+        computer optical disc (4 3/4 in.).</subfield></datafield><datafield tag="500"
+        ind1=" " ind2=" "><subfield code="a">CD-ROM in pocket.</subfield></datafield><datafield
+        tag="504" ind1=" " ind2=" "><subfield code="a">Includes bibliographical references
+        and index.</subfield></datafield><datafield tag="650" ind1=" " ind2="0"><subfield
+        code="a">Digital divide</subfield><subfield code="z">United States.</subfield></datafield><datafield
+        tag="650" ind1=" " ind2="0"><subfield code="a">Digital divide.</subfield></datafield><datafield
+        tag="650" ind1=" " ind2="0"><subfield code="a">Information technology</subfield><subfield
+        code="x">Social aspects</subfield><subfield code="z">United States.</subfield></datafield><datafield
+        tag="700" ind1="1" ind2=" "><subfield code="a">Peters, Laurence,</subfield><subfield
+        code="d">1952-</subfield></datafield></record></get-record> '
+    http_version: 
+  recorded_at: Tue, 29 Apr 2014 18:40:02 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01000864162/holdings/NYU60002367980
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Thu, 01 May 2014 19:25:50 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-hol><reply-text>ok</reply-text><reply-code>0000</reply-code><holding><leader>     cxH
+        a22001092  4500</leader><controlfield tag="001">002367980</controlfield><controlfield
+        tag="004">NYUb12672786</controlfield><controlfield tag="005">20080531131729.0</controlfield><controlfield
+        tag="008">0510170|||||8   |001|||||0051017</controlfield><datafield tag="010"
+        ind1=" " ind2=" "><subfield code="a">2002030296</subfield></datafield><datafield
+        tag="020" ind1=" " ind2=" "><subfield code="a">0810844915 (alk. paper)</subfield></datafield><datafield
+        tag="035" ind1="9" ind2=" "><subfield code="a">NYUH12672786/13890243</subfield></datafield><datafield
+        tag="852" ind1="0" ind2=" "><subfield code="a">NNCoo</subfield><subfield code="b">CU</subfield><subfield
+        code="c">MAIN</subfield><subfield code="h">HN90.I56</subfield><subfield code="i">K888
+        2003</subfield><subfield code="p">31206028778120</subfield><subfield code="7">13890243</subfield></datafield></holding></get-hol> '
+    http_version: 
+  recorded_at: Thu, 01 May 2014 19:25:50 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01000864162/items/NYU50000864162000010
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Thu, 01 May 2014 20:09:23 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item><reply-text>ok</reply-text><reply-code>0000</reply-code><item><z30-sub-library-code>BOBST</z30-sub-library-code><z30-item-process-status-code></z30-item-process-status-code><z30-item-status-code>01</z30-item-status-code><z30-collection-code>MAIN</z30-collection-code><queue></queue><z30><translate-change-active-library>NYU50</translate-change-active-library><z30-doc-number>000864162</z30-doc-number><z30-item-sequence>    1.0</z30-item-sequence><z30-barcode>31142033188791</z30-barcode><z30-sub-library>NYU
+        Bobst</z30-sub-library><z30-material>Books</z30-material><z30-item-status>Regular
+        loan</z30-item-status><z30-open-date>20030313</z30-open-date><z30-update-date>20051017</z30-update-date><z30-cataloger>BOWMANA</z30-cataloger><z30-date-last-return>20120502</z30-date-last-return><z30-hour-last-return>0836</z30-hour-last-return><z30-ip-last-return>128.122.88.89</z30-ip-last-return><z30-no-loans>003</z30-no-loans><z30-alpha>L</z30-alpha><z30-collection>Main
+        Collection</z30-collection><z30-call-no-type>0</z30-call-no-type><z30-call-no>HN90.I56
+        K888 2003</z30-call-no><z30-call-no-key>0 hn!90 i56 k888 2003</z30-call-no-key><z30-call-no-2-type></z30-call-no-2-type><z30-call-no-2></z30-call-no-2><z30-call-no-2-key></z30-call-no-2-key><z30-description></z30-description><z30-note-opac></z30-note-opac><z30-note-circulation></z30-note-circulation><z30-note-internal></z30-note-internal><z30-order-number></z30-order-number><z30-inventory-number></z30-inventory-number><z30-inventory-number-date>00000000</z30-inventory-number-date><z30-last-shelf-report-date>00000000</z30-last-shelf-report-date><z30-price>40.96</z30-price><z30-shelf-report-number></z30-shelf-report-number><z30-on-shelf-date>00000000</z30-on-shelf-date><z30-on-shelf-seq>000000</z30-on-shelf-seq><z30-doc-number-2>000000000</z30-doc-number-2><z30-schedule-sequence-2>00000</z30-schedule-sequence-2><z30-copy-sequence-2>00000</z30-copy-sequence-2><z30-vendor-code></z30-vendor-code><z30-invoice-number></z30-invoice-number><z30-line-number>00000</z30-line-number><z30-pages></z30-pages><z30-issue-date>00000000</z30-issue-date><z30-expected-arrival-date>00000000</z30-expected-arrival-date><z30-arrival-date>00000000</z30-arrival-date><z30-item-statistic></z30-item-statistic><z30-item-process-status>Not
+        in Process</z30-item-process-status><z30-copy-id></z30-copy-id><z30-hol-doc-number>002367979</z30-hol-doc-number><z30-temp-location>No</z30-temp-location><z30-enumeration-a></z30-enumeration-a><z30-enumeration-b></z30-enumeration-b><z30-enumeration-c></z30-enumeration-c><z30-enumeration-d></z30-enumeration-d><z30-enumeration-e></z30-enumeration-e><z30-enumeration-f></z30-enumeration-f><z30-enumeration-g></z30-enumeration-g><z30-enumeration-h></z30-enumeration-h><z30-chronological-i></z30-chronological-i><z30-chronological-j></z30-chronological-j><z30-chronological-k></z30-chronological-k><z30-chronological-l></z30-chronological-l><z30-chronological-m></z30-chronological-m><z30-supp-index-o></z30-supp-index-o><z30-85x-type></z30-85x-type><z30-depository-id></z30-depository-id><z30-linking-number>000000000</z30-linking-number><z30-gap-indicator></z30-gap-indicator><z30-maintenance-count>001</z30-maintenance-count><z30-process-status-date>00000000</z30-process-status-date></z30><z13><translate-change-active-library>NYU50</translate-change-active-library><z13-doc-number>000864162</z13-doc-number><z13-year>2003</z13-year><z13-open-date>20080618</z13-open-date><z13-update-date>20080618</z13-update-date><z13-call-no-key></z13-call-no-key><z13-call-no-code>LOC0</z13-call-no-code><z13-call-no>HN90.I56</z13-call-no><z13-author-code>1001</z13-author-code><z13-author>Kuttan,
+        Appu, 1941-</z13-author><z13-title-code>24510</z13-title-code><z13-title>From
+        digital divide to digital opportunity /</z13-title><z13-imprint-code>260</z13-imprint-code><z13-imprint>Lanham,
+        Md. : Scarecrow Press, 2003.</z13-imprint><z13-isbn-issn-code>020</z13-isbn-issn-code><z13-isbn-issn>0810844915
+        (alk. paper)</z13-isbn-issn></z13><status>On Shelf</status></item></get-item> '
+    http_version: 
+  recorded_at: Thu, 01 May 2014 20:09:23 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01000864162/items/NYU50000864162000020
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Thu, 01 May 2014 20:10:59 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item><reply-text>ok</reply-text><reply-code>0000</reply-code><item><z30-sub-library-code>CU</z30-sub-library-code><z30-item-process-status-code></z30-item-process-status-code><z30-item-status-code>01</z30-item-status-code><z30-collection-code>MAIN</z30-collection-code><queue></queue><z30><translate-change-active-library>NYU50</translate-change-active-library><z30-doc-number>000864162</z30-doc-number><z30-item-sequence>    2.0</z30-item-sequence><z30-barcode>31206028778120</z30-barcode><z30-sub-library>Cooper
+        Union Library</z30-sub-library><z30-material>Books</z30-material><z30-item-status>Regular
+        loan</z30-item-status><z30-open-date>20051017</z30-open-date><z30-update-date>20060109</z30-update-date><z30-cataloger>PERREAUD</z30-cataloger><z30-date-last-return>00000000</z30-date-last-return><z30-hour-last-return>0000</z30-hour-last-return><z30-ip-last-return></z30-ip-last-return><z30-no-loans>000</z30-no-loans><z30-alpha>L</z30-alpha><z30-collection>Main
+        Collection</z30-collection><z30-call-no-type>0</z30-call-no-type><z30-call-no>HN90.I56
+        K888 2003</z30-call-no><z30-call-no-key>0 hn!90 i56 k888 2003</z30-call-no-key><z30-call-no-2-type></z30-call-no-2-type><z30-call-no-2></z30-call-no-2><z30-call-no-2-key></z30-call-no-2-key><z30-description></z30-description><z30-note-opac></z30-note-opac><z30-note-circulation></z30-note-circulation><z30-note-internal></z30-note-internal><z30-order-number></z30-order-number><z30-inventory-number></z30-inventory-number><z30-inventory-number-date>00000000</z30-inventory-number-date><z30-last-shelf-report-date>00000000</z30-last-shelf-report-date><z30-price></z30-price><z30-shelf-report-number></z30-shelf-report-number><z30-on-shelf-date>00000000</z30-on-shelf-date><z30-on-shelf-seq>000000</z30-on-shelf-seq><z30-doc-number-2>000000000</z30-doc-number-2><z30-schedule-sequence-2>00000</z30-schedule-sequence-2><z30-copy-sequence-2>00000</z30-copy-sequence-2><z30-vendor-code></z30-vendor-code><z30-invoice-number></z30-invoice-number><z30-line-number>00000</z30-line-number><z30-pages></z30-pages><z30-issue-date>00000000</z30-issue-date><z30-expected-arrival-date>00000000</z30-expected-arrival-date><z30-arrival-date>00000000</z30-arrival-date><z30-item-statistic></z30-item-statistic><z30-item-process-status>Not
+        in Process</z30-item-process-status><z30-copy-id></z30-copy-id><z30-hol-doc-number>002367980</z30-hol-doc-number><z30-temp-location>No</z30-temp-location><z30-enumeration-a></z30-enumeration-a><z30-enumeration-b></z30-enumeration-b><z30-enumeration-c></z30-enumeration-c><z30-enumeration-d></z30-enumeration-d><z30-enumeration-e></z30-enumeration-e><z30-enumeration-f></z30-enumeration-f><z30-enumeration-g></z30-enumeration-g><z30-enumeration-h></z30-enumeration-h><z30-chronological-i></z30-chronological-i><z30-chronological-j></z30-chronological-j><z30-chronological-k></z30-chronological-k><z30-chronological-l></z30-chronological-l><z30-chronological-m></z30-chronological-m><z30-supp-index-o></z30-supp-index-o><z30-85x-type></z30-85x-type><z30-depository-id></z30-depository-id><z30-linking-number>000000000</z30-linking-number><z30-gap-indicator></z30-gap-indicator><z30-maintenance-count>000</z30-maintenance-count><z30-process-status-date>00000000</z30-process-status-date></z30><z13><translate-change-active-library>NYU50</translate-change-active-library><z13-doc-number>000864162</z13-doc-number><z13-year>2003</z13-year><z13-open-date>20080618</z13-open-date><z13-update-date>20080618</z13-update-date><z13-call-no-key></z13-call-no-key><z13-call-no-code>LOC0</z13-call-no-code><z13-call-no>HN90.I56</z13-call-no><z13-author-code>1001</z13-author-code><z13-author>Kuttan,
+        Appu, 1941-</z13-author><z13-title-code>24510</z13-title-code><z13-title>From
+        digital divide to digital opportunity /</z13-title><z13-imprint-code>260</z13-imprint-code><z13-imprint>Lanham,
+        Md. : Scarecrow Press, 2003.</z13-imprint><z13-isbn-issn-code>020</z13-isbn-issn-code><z13-isbn-issn>0810844915
+        (alk. paper)</z13-isbn-issn></z13><status>Reshelving</status></item></get-item> '
+    http_version: 
+  recorded_at: Thu, 01 May 2014 20:10:59 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01000864162/items
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Thu, 01 May 2014 20:22:58 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-list><reply-text>ok</reply-text><reply-code>0000</reply-code><items><item
+        href="http://aleph.library.edu:1891/rest-dlf/record/NYU01000864162/items/NYU50000864162000010"></item><item
+        href="http://aleph.library.edu:1891/rest-dlf/record/NYU01000864162/items/NYU50000864162000020"></item></items></get-item-list> '
+    http_version: 
+  recorded_at: Thu, 01 May 2014 20:22:58 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01000864162/holdings
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Thu, 01 May 2014 20:34:55 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-hol-list><reply-text>ok</reply-text><reply-code>0000</reply-code><holdings><holding
+        href="http://aleph.library.edu:1891/rest-dlf/record/NYU01000864162/holdings/NYU60002367980"></holding><holding
+        href="http://aleph.library.edu:1891/rest-dlf/record/NYU01000864162/holdings/NYU60002367979"></holding></holdings></get-hol-list> '
+    http_version: 
+  recorded_at: Thu, 01 May 2014 20:34:55 GMT
 recorded_with: VCR 2.9.0
