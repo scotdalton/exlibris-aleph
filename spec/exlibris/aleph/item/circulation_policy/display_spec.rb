@@ -1,7 +1,7 @@
 require 'spec_helper'
 module Exlibris
   module Aleph
-    module Item
+    class Item
       class CirculationPolicy
         describe Display do
           let(:value) { 'Display' }

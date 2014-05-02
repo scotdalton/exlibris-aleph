@@ -2,28 +2,23 @@ require 'spec_helper'
 module Exlibris
   module Aleph
     class Item
-      describe DisplayMask do
-        let(:value) { 'Display' }
-        let(:mask) { 'Display Mask' }
-        subject(:display_mask  ) { DisplayMask.new(value, mask) }
-        it { should be_a DisplayMask }
+      describe CirculationStatus do
+        let(:value) { "On Shelf" }
+        subject(:circulation_status) { CirculationStatus.new(value) }
+        it { should be_a CirculationStatus }
         describe '#value' do
-          subject { display_mask.value }
+          subject { circulation_status.value }
           it { should eq value }
         end
-        describe '#mask' do
-          subject { display_mask.mask }
-          it { should eq mask }
-        end
         describe '#==' do
-          subject { display_mask == other_object }
+          subject { circulation_status == other_object }
           context 'when the other object is an Exlibris::Aleph::Item::DisplayMask' do
             context 'and the value is the same' do
-              let(:other_object) { DisplayMask.new(value, mask) }
+              let(:other_object) { CirculationStatus.new(value) }
               it { should be_true }
             end
             context 'but the value is different' do
-              let(:other_object) { DisplayMask.new('Display 1', 'Display 1 Mask') }
+              let(:other_object) { CirculationStatus.new('Reshelving') }
               it { should be_false }
             end
           end
@@ -33,14 +28,14 @@ module Exlibris
           end
         end
         describe '#===' do
-          subject { display_mask === other_object }
+          subject { circulation_status === other_object }
           context 'when the other object is an Exlibris::Aleph::Item::DisplayMask' do
             context 'and the value is the same' do
-              let(:other_object) { DisplayMask.new(value, mask) }
+              let(:other_object) { CirculationStatus.new(value) }
               it { should be_true }
             end
             context 'but the value is different' do
-              let(:other_object) { DisplayMask.new('Display 1', 'Display 1 Mask') }
+              let(:other_object) { CirculationStatus.new('Reshelving') }
               it { should be_false }
             end
           end
@@ -50,14 +45,14 @@ module Exlibris
           end
         end
         describe '#eql?' do
-          subject { display_mask.eql?(other_object) }
+          subject { circulation_status.eql?(other_object) }
           context 'when the other object is an Exlibris::Aleph::Item::DisplayMask' do
             context 'and the value is the same' do
-              let(:other_object) { DisplayMask.new(value, mask) }
+              let(:other_object) { CirculationStatus.new(value) }
               it { should be_true }
             end
             context 'but the value is different' do
-              let(:other_object) { DisplayMask.new('Display 1', 'Display 1 Mask') }
+              let(:other_object) { CirculationStatus.new('Reshelving') }
               it { should be_false }
             end
           end

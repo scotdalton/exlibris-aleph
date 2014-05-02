@@ -1,12 +1,11 @@
 module Exlibris
   module Aleph
     class Item
-      class DisplayMask
-        attr_reader :value, :mask
+      class CirculationStatus
+        attr_reader :value
 
-        def initialize(value, mask)
+        def initialize(value)
           @value = value
-          @mask = mask
         end
 
         def ==(other_object)

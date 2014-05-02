@@ -1,6 +1,6 @@
 module Exlibris
   module Aleph
-    module Item
+    class Item
       class DisplayMasks
         extend Forwardable
         def_delegators :all, :each, :[]

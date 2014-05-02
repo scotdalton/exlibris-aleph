@@ -1,14 +1,23 @@
 require 'spec_helper'
 module Exlibris
   module Aleph
-    module Item
+    class Item
       describe Status do
-        let(:code) { '##' }
-        subject(:status) { Status.new(code) }
+        let(:code) { '01' }
+        let(:display) { 'Regular loan' }
+        subject(:status) { Status.new(code, display) }
         it { should be_a Status }
         describe '#code' do
           subject { status.code }
           it { should eq code }
+        end
+        describe '#display' do
+          subject { status.display }
+          it { should eq display }
+          context 'when initialized without a display' do
+            let(:status) { Status.new(code) }
+            it { should be_nil }
+          end
         end
         describe '#==' do
           subject { status == other_object }
@@ -18,7 +27,7 @@ module Exlibris
               it { should be_true }
             end
             context 'but the code is different' do
-              let(:other_object) { Status.new('01') }
+              let(:other_object) { Status.new('02') }
               it { should be_false }
             end
           end
@@ -35,7 +44,7 @@ module Exlibris
               it { should be_true }
             end
             context 'but the code is different' do
-              let(:other_object) { Status.new('01') }
+              let(:other_object) { Status.new('02') }
               it { should be_false }
             end
           end
@@ -52,7 +61,7 @@ module Exlibris
               it { should be_true }
             end
             context 'but the code is different' do
-              let(:other_object) { Status.new('01') }
+              let(:other_object) { Status.new('02') }
               it { should be_false }
             end
           end

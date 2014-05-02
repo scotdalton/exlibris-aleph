@@ -1,7 +1,7 @@
 require 'spec_helper'
 module Exlibris
   module Aleph
-    module Item
+    class Item
       describe DisplayMasks do
         subject(:display_masks) { DisplayMasks.instance }
         describe '#all' do

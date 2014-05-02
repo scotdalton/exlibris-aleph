@@ -1,11 +1,12 @@
 module Exlibris
   module Aleph
-    module Item
+    class Item
       class ProcessingStatus
-        attr_reader :code
+        attr_reader :code, :display
 
-        def initialize(code)
+        def initialize(code, display=nil)
           @code = code
+          @display = display
         end
 
         def ==(other_object)

@@ -1,7 +1,7 @@
 require 'spec_helper'
 module Exlibris
   module Aleph
-    module Item
+    class Item
       describe ProcessingStatus do
         let(:code) { 'DP' }
         subject(:processing_status) { ProcessingStatus.new(code) }
@@ -9,6 +9,10 @@ module Exlibris
         describe '#code' do
           subject { processing_status.code }
           it { should eq code }
+        end
+        describe '#display' do
+          subject { processing_status.display }
+          it { should be_nil }
         end
         describe '#==' do
           subject { processing_status == other_object }

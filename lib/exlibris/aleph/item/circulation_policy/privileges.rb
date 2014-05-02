@@ -1,6 +1,6 @@
 module Exlibris
   module Aleph
-    module Item
+    class Item
       class CirculationPolicy
         class Privileges
           attr_reader :loanable, :renewable, :requestable, :photocopyable,

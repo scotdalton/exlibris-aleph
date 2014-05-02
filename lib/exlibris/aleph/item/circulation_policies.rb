@@ -1,6 +1,6 @@
 module Exlibris
   module Aleph
-    module Item
+    class Item
       class CirculationPolicies
         extend Forwardable
         def_delegators :all, :each
@@ -19,9 +19,54 @@ module Exlibris
           end
         end
 
+        def find_by_identifier(identifier)
+          unless identifier.is_a?(CirculationPolicy::Identifier)
+            raise ArgumentError.new("Expecting #{identifier} to be a CirculationPolicy::Identifier")
+          end
+          sub_library = identifier.sub_library
+          circulation_policy = _find_by_identifier(identifier)
+          # Try with a "generic" item status
+          if circulation_policy.nil?
+            processing_status = identifier.processing_status
+            generic_status_identifier =
+              CirculationPolicy::Identifier.new(generic_status, processing_status, sub_library)
+            circulation_policy = _find_by_identifier(generic_status_identifier)
+          end
+          # Try with a "generic" item processing status
+          if circulation_policy.nil?
+            status = identifier.status
+            generic_processing_status_identifier =
+              CirculationPolicy::Identifier.new(status, generic_processing_status, sub_library)
+            circulation_policy = _find_by_identifier(generic_processing_status_identifier)
+          end
+          # Try with both a "generic" item status AND a "generic" item processing status
+          if circulation_policy.nil?
+            generic_identifier =
+              CirculationPolicy::Identifier.new(generic_status, generic_processing_status, sub_library)
+            circulation_policy = _find_by_identifier(generic_identifier)
+          end
+          circulation_policy
+        end
+
         private
         def admin_libraries
           @admin_libraries ||= Config.admin_libraries
+        end
+
+        def generic_status
+          @generic_status ||= Status.new('##')
+        end
+
+        def generic_processing_status
+          @generic_processing_status ||= ProcessingStatus.new('##')
+        end
+
+        def _find_by_identifier(identifier)
+          sub_library = identifier.sub_library
+          admin_library = sub_library.admin_library
+          all[admin_library].find do |circulation_policy|
+            circulation_policy.identifier == identifier
+          end
         end
       end
     end
