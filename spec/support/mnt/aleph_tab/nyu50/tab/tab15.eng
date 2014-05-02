@@ -574,6 +574,7 @@ BOBST ## AC L AFC-Post cataloging            Y Y Y N Y Y N Y N 00 N A
 BOBST ## AO L NYU AFC Offsite mediated avail Y Y N N Y Y N N N 00 N A
 BOBST ## AP L NYU AFC Offsite mediated proce Y Y N N Y Y N N N 00 N A
 BOBST ## AR L Received                       N N N N Y Y N N N 00 N A
+BOBST 01 BD L At Bindery                     N N C N Y Y N N N 00 N A
 BOBST ## BD L At Bindery                     N N C N Y Y N N N 00 N A
 BOBST ## BL L Billed as lost                 N N N Y Y Y N N N 00 N A
 BOBST ## BO L Bound                          Y N N N Y Y N N N 00 N A
@@ -4740,3 +4741,4 @@ TNSGI ## ## L IS and IPS not used by TNSGI   N N N N N N N N N 00 N A
 TNSKE ## ## L IS and IPS not used by TNSKE   N N N N N N N N N 00 N A
 TNSSC ## ## L IS and IPS not used by TNSSC   N N N N N N N N N 00 N A
 TNSOS ## ## L IS and IPS not used by TNSOS   N N N N N N N N N 00 N A
+BOBST ## ## L IS and IPS not used by TNSOS   N N N N N N N N N 00 N A
