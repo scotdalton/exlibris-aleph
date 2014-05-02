@@ -11,6 +11,12 @@ module Exlibris
         @display = display
         @sub_library = sub_library
       end
+
+      def ==(other_object)
+        other_object.instance_of?(self.class) && code == other_object.code &&
+          sub_library == other_object.sub_library
+      end
+      alias_method :eql?, :==
     end
   end
 end

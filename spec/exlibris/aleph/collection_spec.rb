@@ -21,6 +21,57 @@ module Exlibris
         it { should be_a SubLibrary }
         it { should eq sub_library }
       end
+      describe '#==' do
+        subject { collection == other_object }
+        context 'when the other object is an Exlibris::Aleph::Collection' do
+          context 'and the code is the same' do
+            let(:other_object) { Collection.new(code, display, sub_library) }
+            it { should be_true }
+          end
+          context 'but the code is different' do
+            let(:other_object) { Collection.new('MOBI', 'Mobile', sub_library) }
+            it { should be_false }
+          end
+        end
+        context 'when the other object is not an Exlibris::Aleph::Collection' do
+          let(:other_object) { "string" }
+          it { should be_false }
+        end
+      end
+      describe '#===' do
+        subject { collection === other_object }
+        context 'when the other object is an Exlibris::Aleph::Collection' do
+          context 'and the code is the same' do
+            let(:other_object) { Collection.new(code, display, sub_library) }
+            it { should be_true }
+          end
+          context 'but the code is different' do
+            let(:other_object) { Collection.new('MOBI', 'Mobile', sub_library) }
+            it { should be_false }
+          end
+        end
+        context 'when the other object is not an Exlibris::Aleph::Collection' do
+          let(:other_object) { "string" }
+          it { should be_false }
+        end
+      end
+      describe '#eql?' do
+        subject { collection.eql?(other_object) }
+        context 'when the other object is an Exlibris::Aleph::Collection' do
+          context 'and the code is the same' do
+            let(:other_object) { Collection.new(code, display, sub_library) }
+            it { should be_true }
+          end
+          context 'but the code is different' do
+            let(:other_object) { Collection.new('MOBI', 'Mobile', sub_library) }
+            it { should be_false }
+          end
+        end
+        context 'when the other object is not an Exlibris::Aleph::Collection' do
+          let(:other_object) { "string" }
+          it { should be_false }
+        end
+      end
       context 'when initialized without a "sub_library" argument' do
         subject { Collection.new(code, display) }
         it 'should raise an ArgumentError' do
