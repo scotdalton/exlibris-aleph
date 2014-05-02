@@ -14,9 +14,9 @@ module Exlibris
               sub_library.code == row.sub_library_code
             end
             unless sub_library.nil?
-              status = Item::Status.new(row.status_code)
+              status = Item::Status.new(row.item_status_code)
               processing_status =
-                Item::ProcessingStatus.new(row.processing_status_code)
+                Item::ProcessingStatus.new(row.item_processing_status_code)
               identifier = 
                 Item::CirculationPolicy::Identifier.new(status, processing_status, sub_library)
               display_mask = item_display_masks[admin_library].find do |item_display_mask|
@@ -24,7 +24,6 @@ module Exlibris
               end
               mask = (display_mask.nil?) ? nil : display_mask.mask
               display = Item::CirculationPolicy::Display.new(row.display, mask)
-              display = Item::CirculationPolicy::Display.new(row.display)
               privileges = Item::CirculationPolicy::Privileges.new(row)
               Item::CirculationPolicy.new(identifier, display, privileges)
             end
