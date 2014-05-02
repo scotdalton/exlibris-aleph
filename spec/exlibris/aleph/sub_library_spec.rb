@@ -28,8 +28,14 @@ module Exlibris
             it { should be_true }
           end
           context 'but the code is different' do
-            let(:other_object) { SubLibrary.new('SUB1', 'Sub Library 1', admin_library) }
+            let(:other_object) { SubLibrary.new('SUB1', display, admin_library) }
             it { should be_false }
+          end
+          context 'and the code is the same' do
+            context 'but the admin library is different' do
+              let(:other_object) { SubLibrary.new(code, display, AdminLibrary.new('ADM51')) }
+              it { should be_false }
+            end
           end
         end
         context 'when the other object is not an Exlibris::Aleph::SubLibrary' do
@@ -45,8 +51,14 @@ module Exlibris
             it { should be_true }
           end
           context 'but the code is different' do
-            let(:other_object) { SubLibrary.new('SUB1', 'Sub Library 1', admin_library) }
+            let(:other_object) { SubLibrary.new('SUB1', display, admin_library) }
             it { should be_false }
+          end
+          context 'and the code is the same' do
+            context 'but the admin library is different' do
+              let(:other_object) { SubLibrary.new(code, display, AdminLibrary.new('ADM51')) }
+              it { should be_false }
+            end
           end
         end
         context 'when the other object is not an Exlibris::Aleph::SubLibrary' do
@@ -62,8 +74,14 @@ module Exlibris
             it { should be_true }
           end
           context 'but the code is different' do
-            let(:other_object) { SubLibrary.new('SUB1', 'Sub Library 1', admin_library) }
+            let(:other_object) { SubLibrary.new('SUB1', display, admin_library) }
             it { should be_false }
+          end
+          context 'and the code is the same' do
+            context 'but the admin library is different' do
+              let(:other_object) { SubLibrary.new(code, display, AdminLibrary.new('ADM51')) }
+              it { should be_false }
+            end
           end
         end
         context 'when the other object is not an Exlibris::Aleph::SubLibrary' do

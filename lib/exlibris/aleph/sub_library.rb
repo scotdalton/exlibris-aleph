@@ -13,7 +13,8 @@ module Exlibris
       end
 
       def ==(other_object)
-        other_object.instance_of?(self.class) && code == other_object.code
+        other_object.instance_of?(self.class) && code == other_object.code &&
+          admin_library == other_object.admin_library
       end
       alias_method :eql?, :==
 
