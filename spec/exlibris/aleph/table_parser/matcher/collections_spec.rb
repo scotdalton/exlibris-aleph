@@ -1,4 +1,3 @@
-# /^(.{5})\s(.{5})\s(L)\s(.+)/
 require 'spec_helper'
 module Exlibris
   module Aleph

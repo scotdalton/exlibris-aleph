@@ -1,4 +1,4 @@
-# /^(.{5})\s([1-6]{1})\s(.{5})\s([L,H,A,R,S]{1})\s(.{1,30})/
+require 'spec_helper'
 module Exlibris
   module Aleph
     module TableParser

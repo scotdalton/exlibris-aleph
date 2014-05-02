@@ -1,3 +1,4 @@
+require 'spec_helper'
 module Exlibris
   module Aleph
     module TableParser
