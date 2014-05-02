@@ -1,13 +1,11 @@
 module Exlibris
   module Aleph
-    
     #
-    # Specify global configuration settings for
+    # Global configuration settings for Exlibris::Aleph
     #
     module Config
-      
       class << self
-        attr_accessor :base_url, :rest_url, :adms, :table_path, 
+        attr_accessor :base_url, :rest_url, :adms, :table_path,
           :irrelevant_sub_libraries
 
         def rest_url
