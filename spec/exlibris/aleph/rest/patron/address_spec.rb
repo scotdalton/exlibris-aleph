@@ -15,8 +15,8 @@ module Exlibris
             subject { address.reply_code }
             it { should eq '0000' }
           end
-          describe '#reply_code' do
-            subject { address.reply_code }
+          describe '#reply_text' do
+            subject { address.reply_text }
             it { should eq 'ok' }
           end
         end
