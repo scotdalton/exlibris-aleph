@@ -44,11 +44,20 @@ There are several configuration options
   sub_library.admin_library
   # => Exlibris::Aleph::AdminLibrary
   ```
-
-admin_library.code
-# => 'ADM50'
-```
 - `Collection`
+  ```ruby
+  collection = Collection.new('MAIN', 'Main Collection', sub_library)
+  # => Exlibris::Aleph::Collection
+
+  collection.code
+  # => 'MAIN'
+
+  collection.display
+  # => 'Main Collection'
+
+  collection.sub_library
+  # => Exlibris::Aleph::SubLibrary
+  ```
 - `PickupLocation`
 - `Patron::Status`
 - `Item::Status`
