@@ -9,6 +9,10 @@ module Exlibris
         subject { holdings.record_id }
         it { should eq record_id }
       end
+      describe '#each' do
+        subject { holdings.each }
+        it { should be_an Enumerable }
+      end
       describe '#to_a' do
         subject { holdings.to_a }
         it { should be_an Array }

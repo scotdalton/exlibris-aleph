@@ -1,6 +1,12 @@
 module Exlibris
   module Aleph
     class Items
+
+      extend Forwardable
+      def_delegators :to_a, :each
+
+      include Enumerable
+
       attr_reader :record_id
 
       def initialize(record_id)
