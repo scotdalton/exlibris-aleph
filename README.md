@@ -20,6 +20,17 @@ There are several configuration options
 - `table_path`: the path to the Aleph tables on the system
 - `irrelevant_sub_libraries`: an Array or Sub Library codes to ignore
 
+An example:
+
+```ruby
+Exlibris::Aleph.configure do |config|
+  config.base_url = 'http://aleph.library.edu'
+  config.rest_url = 'http://aleph.library.edu:1891'
+  config.adms = ['ADM50', 'ADM51']
+  config.table_path = "/mnt/aleph_tab"
+end
+
+```
 
 ## Basic Concepts
 - `AdminLibrary`: an administrative library
