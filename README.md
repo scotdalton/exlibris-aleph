@@ -60,38 +60,38 @@ There are several configuration options
   ```
 - `PickupLocation`
 - `Patron::Status`
-```ruby
-patron_status = Exlibris::Aleph::Patron::Status.new('01', 'Regular patron')
-# => Exlibris::Aleph::Patron::Status
+  ```ruby
+  patron_status = Exlibris::Aleph::Patron::Status.new('01', 'Regular patron')
+  # => Exlibris::Aleph::Patron::Status
 
-patron_status.code
-# => '01'
+  patron_status.code
+  # => '01'
 
-patron_status.display
-# => 'Regular patron'
-```
+  patron_status.display
+  # => 'Regular patron'
+  ```
 - `Item::Status`
-```ruby
-item_status = Exlibris::Aleph::Item::Status.new('01', 'Regular loan')
-# => Exlibris::Aleph::Item::Status
+  ```ruby
+  item_status = Exlibris::Aleph::Item::Status.new('01', 'Regular loan')
+  # => Exlibris::Aleph::Item::Status
 
-item_status.code
-# => '01'
+  item_status.code
+  # => '01'
 
-item_status.display
-# => 'Regular loan'
-```
+  item_status.display
+  # => 'Regular loan'
+  ```
 - `Item::ProcessingStatus`
-```ruby
-processing_status = Exlibris::Aleph::Item::ProcessingStatus.new('DP', 'Depository')
-# => Exlibris::Aleph::Item::ProcessingStatus
+  ```ruby
+  processing_status = Exlibris::Aleph::Item::ProcessingStatus.new('DP', 'Depository')
+  # => Exlibris::Aleph::Item::ProcessingStatus
 
-processing_status.code
-# => 'DP'
+  processing_status.code
+  # => 'DP'
 
-processing_status.display
-# => 'Depository'
-```
+  processing_status.display
+  # => 'Depository'
+  ```
 - `Item::CirculationStatus`
 - `Item::CallNumber`
 
