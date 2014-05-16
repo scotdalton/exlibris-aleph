@@ -44,7 +44,7 @@ There are several configuration options
   sub_library.admin_library
   # => Exlibris::Aleph::AdminLibrary
   ```
-- `Collection`
+- `Collection`: a collection
   ```ruby
   collection = Collection.new('MAIN', 'Main Collection', sub_library)
   # => Exlibris::Aleph::Collection
@@ -58,8 +58,8 @@ There are several configuration options
   collection.sub_library
   # => Exlibris::Aleph::SubLibrary
   ```
-- `PickupLocation`
-- `Patron::Status`
+- `PickupLocation`: a pickup location
+- `Patron::Status`: a patron status
   ```ruby
   patron_status = Exlibris::Aleph::Patron::Status.new('01', 'Regular patron')
   # => Exlibris::Aleph::Patron::Status
@@ -70,7 +70,7 @@ There are several configuration options
   patron_status.display
   # => 'Regular patron'
   ```
-- `Item::Status`
+- `Item::Status`: an item status
   ```ruby
   item_status = Exlibris::Aleph::Item::Status.new('01', 'Regular loan')
   # => Exlibris::Aleph::Item::Status
@@ -81,7 +81,7 @@ There are several configuration options
   item_status.display
   # => 'Regular loan'
   ```
-- `Item::ProcessingStatus`
+- `Item::ProcessingStatus`: an item circulation status
   ```ruby
   processing_status = Exlibris::Aleph::Item::ProcessingStatus.new('DP', 'Depository')
   # => Exlibris::Aleph::Item::ProcessingStatus
