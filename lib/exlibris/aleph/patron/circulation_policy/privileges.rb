@@ -7,15 +7,15 @@ module Exlibris
           attr_reader :borrow, :photocopy, :request, :request_multiple,
             :request_on_shelf, :renew, :book, :rush_cataloging
 
-          def initialize(row)
-            @borrow = row.borrow
-            @photocopy = row.photocopy
-            @request = row.request
-            @request_multiple = row.request_multiple
-            @request_on_shelf = row.request_on_shelf
-            @renew = row.renew
-            @book = row.book
-            @rush_cataloging = row.rush_cataloging
+          def initialize(privileges)
+            @borrow = privileges.borrow
+            @photocopy = privileges.photocopy
+            @request = privileges.request
+            @request_multiple = privileges.request_multiple
+            @request_on_shelf = privileges.request_on_shelf
+            @renew = privileges.renew
+            @book = privileges.book
+            @rush_cataloging = privileges.rush_cataloging
           end
 
           def can_borrow?
