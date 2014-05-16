@@ -12,24 +12,26 @@ module Exlibris
 
       def collection
         @collection ||=
-          Collection.new(collection_code, collection_display, sub_library)
+          Collection.new(reader.collection_code, reader.collection_display, sub_library)
       end
 
       def call_number
-        @call_number ||= CallNumber.new(classification, description)
+        @call_number ||=
+          CallNumber.new(reader.classification, reader.description)
       end
 
       def circulation_status
-        @circulation_status ||= CirculationStatus.new(circulation_status_value)
+        @circulation_status ||=
+          CirculationStatus.new(reader.circulation_status_value)
       end
 
       def status
-        @status ||= Status.new(status_code, status_display)
+        @status ||= Status.new(status_code, reader.status_display)
       end
 
       def processing_status
         @processing_status ||=
-          ProcessingStatus.new(processing_status_code, processing_status_display)
+          ProcessingStatus.new(processing_status_code, reader.processing_status_display)
       end
 
       def on_shelf?
@@ -42,84 +44,41 @@ module Exlibris
       end
 
       private
-      def rest_record_item
-        @rest_record_item ||= Rest::Record::Item.new(record_id, id)
+      def client
+        @client ||= API::Client::Record::Item.new(record_id, id)
       end
 
-      def rest_record_item_hash
-        @rest_record_item_hash ||= rest_record_item.to_h['get_item']
+      def root
+        @root ||= client.root
       end
 
-      def item
-        @item ||= rest_record_item_hash['item']
-      end
-
-      def z30
-        @z30 ||= item['z30']
+      def reader
+        @reader ||= API::Reader::Record::Item.new(root)
       end
 
       def admin_library
-        @admin_library ||= AdminLibrary.new(admin_library_code)
+        @admin_library ||= AdminLibrary.new(reader.admin_library_code)
       end
 
       def sub_library
         @sub_library ||=
-          SubLibrary.new(sub_library_code, sub_library_display, admin_library)
-      end
-
-      # Codes
-      def admin_library_code
-        @admin_library_code ||= z30['translate_change_active_library']
-      end
-
-      def sub_library_code
-        @sub_library_code ||= item['z30_sub_library_code']
-      end
-
-      def collection_code
-        @collection_code ||= item['z30_collection_code']
+          SubLibrary.new(reader.sub_library_code, reader.sub_library_display, admin_library)
       end
 
       def status_code
-        @status_code ||= (item['z30_item_status_code'] || '##')
+        @status_code ||= (reader.status_code || '##')
       end
 
       def processing_status_code
-        @processing_status_code ||=
-          (item['z30_item_process_status_code'] || '##')
-      end
-
-      # Displays
-      def sub_library_display
-        @sub_library_code ||= z30['z30_sub_library']
-      end
-
-      def collection_display
-        @collection_code ||= z30['z30_collection']
-      end
-
-      def status_display
-        @status_display ||= z30['z30_item_status']
-      end
-
-      def processing_status_display
-        @processing_status_display ||= z30['z30_item_process_status']
-      end
-
-      def classification
-        @classification ||= z30['z30_call_no']
-      end
-
-      def description
-        @description ||= z30['z30_description']
-      end
-
-      def circulation_status_value
-        @circulation_status_value ||= item['status']
+        @processing_status_code ||= (reader.processing_status_code || '##')
       end
 
       def circulation_policies
-        CirculationPolicies.instance
+        tables_manager.item_circulation_policies
+      end
+
+      def tables_manager
+        @tables_manager ||= TablesManager.instance
       end
 
       def circulation_policy_identifier
