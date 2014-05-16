@@ -12,20 +12,20 @@ module Exlibris
       end
 
       private
-      def rest_record_items
-        @rest_record_items ||= Rest::Record::Items.new(record_id)
+      def client
+        @client ||= API::Client::Record::Items.new(record_id)
       end
 
-      def rest_record_items_hash
-        @rest_record_items_hash ||= rest_record_items.to_h['get_item_list']
+      def root
+        @root ||= client.to_h['get_item_list']
       end
 
-      def items_hash
-        @items_hash ||= rest_record_items_hash['items']
+      def items_root
+        @items_root ||= root['items']
       end
 
       def items
-        @items ||= items_hash['item']
+        @items ||= items_root['item']
       end
 
       def ids
