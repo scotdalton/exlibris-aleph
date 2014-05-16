@@ -12,20 +12,20 @@ module Exlibris
       end
 
       private
-      def rest_record_holdings
-        @rest_record_holdings ||= Rest::Record::Holdings.new(record_id)
+      def client
+        @client ||= API::Client::Record::Holdings.new(record_id)
       end
 
-      def rest_record_holdings_hash
-        @rest_record_holdings_hash ||= rest_record_holdings.to_h['get_hol_list']
+      def root
+        @root ||= client.to_h['get_hol_list']
       end
 
-      def holdings_hash
-        @holdings_hash ||= rest_record_holdings_hash['holdings']
+      def holdings_root
+        @holdings_root ||= root['holdings']
       end
 
       def holdings
-        @holdings ||= holdings_hash['holding']
+        @holdings ||= holdings_root['holding']
       end
 
       def ids
