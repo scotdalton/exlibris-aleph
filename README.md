@@ -7,11 +7,6 @@
 # Exlibris::Aleph
 Exlibris::Aleph offers a set of libraries for interacting with the ExLibris Aleph ILS.
 
-## API
-
-## Tables
-`Tables` are accessed through the `TablesManager`.
-
 ## Config
 There are several configuration options
 - `base_url`: a String representing the base url for Aleph, e.g. http://aleph.library.edu
@@ -203,3 +198,7 @@ patron_record_item_circulation_policy = patron_record_item.circulation_policy
 # => Exlibris::Aleph::Patron::Record::Item::CirculationPolicy
 
 ```
+
+## Tables
+`Tables` are accessed through the `TablesManager`.
+
