@@ -8,7 +8,7 @@ module Exlibris
       end
 
       def metadata
-        @metadata ||= Metadata.new(rest_record.to_xml)
+        @metadata ||= Metadata.new(record.to_xml)
       end
 
       def holdings
@@ -20,8 +20,8 @@ module Exlibris
       end
 
       private
-      def rest_record
-        @rest_record ||= Rest::Record.new(record_id, { view: 'full' })
+      def record
+        @record ||= API::Client::Record.new(record_id, { view: 'full' })
       end
 
       def record_id
