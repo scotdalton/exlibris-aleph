@@ -4,6 +4,7 @@ module Exlibris
     describe Holding, vcr: { cassette_name: 'record', record: :new_episodes } do
       let(:record_id) { 'NYU01000864162' }
       let(:id) { 'NYU60002367980' }
+      let(:tables_manager) { TablesManager.instance }
       subject(:holding) { Holding.new(record_id, id) }
       it { should be_a Holding }
       describe '#record_id' do
@@ -19,13 +20,13 @@ module Exlibris
         it { should be_a Holding::Metadata }
       end
       describe '#collection' do
-        let(:sub_libraries) { SubLibraries.instance }
+        let(:sub_libraries) { tables_manager.sub_libraries }
         let(:sub_library) do
           sub_libraries.find do |sub_library|
             sub_library.code == 'CU'
           end
         end
-        let(:collections) { Collections.instance }
+        let(:collections) { tables_manager.collections }
         let(:admin_library) { sub_library.admin_library }
         let(:collection) do
           collections[admin_library].find do |collection|

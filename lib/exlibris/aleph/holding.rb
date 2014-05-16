@@ -15,12 +15,12 @@ module Exlibris
       end
 
       def metadata
-        @metadata ||= Metadata.new(rest_record_holding.to_xml)
+        @metadata ||= Metadata.new(client.to_xml)
       end
 
       private
-      def rest_record_holding
-        @rest_record_holding ||= Rest::Record::Holding.new(record_id, id)
+      def client
+        @client ||= API::Client::Record::Holding.new(record_id, id)
       end
 
       def admin_library
@@ -34,11 +34,15 @@ module Exlibris
       end
 
       def sub_libraries
-        @sub_libraries ||= SubLibraries.instance
+        @sub_libraries ||= tables_manager.sub_libraries
       end
 
       def collections
-        @collections ||= Collections.instance
+        @collections ||= tables_manager.collections
+      end
+
+      def tables_manager
+        @tables_manager ||= TablesManager.instance
       end
 
       def sub_library_code
