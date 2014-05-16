@@ -37,58 +37,63 @@ The primary interface for an Aleph record
 
 An example:
 
-    record_id = '000000001'
+```ruby
+record_id = '000000001'
 
-    admin_library = Exlibris::Aleph::AdminLibrary.new('BIB01')
-    # => Exlibris::Aleph::AdminLibrary
+admin_library = Exlibris::Aleph::AdminLibrary.new('BIB01')
+# => Exlibris::Aleph::AdminLibrary
 
-    record = Exlibris::Aleph::Record.new(record_id, admin_library)
-    # => Exlibris::Aleph::Record
+record = Exlibris::Aleph::Record.new(record_id, admin_library)
+# => Exlibris::Aleph::Record
 
-    bibliographic_metadata = record.metadata
-    # => Exlibris::Aleph::Record::Metadata
+bibliographic_metadata = record.metadata
+# => Exlibris::Aleph::Record::Metadata
 
-    bibliographic_marc_record = bibliographic_metadata.marc_record
-    # => returns a MARC::Record
+bibliographic_marc_record = bibliographic_metadata.marc_record
+# => returns a MARC::Record
 
-    holdings = record.holdings
-    # => Exlibris::Aleph::Holdings
+holdings = record.holdings
+# => Exlibris::Aleph::Holdings
 
-    holdings.to_a.each do |holding|
+holdings.to_a.each do |holding|
 
-      holding.is_a?(Exlibris::Aleph::Holding)
-      # => true
-      
-      holding_metadata = holding.metadata
-      # => Exlibris::Aleph::Holding::Metadata
+  holding.is_a?(Exlibris::Aleph::Holding)
+  # => true
+  
+  holding_metadata = holding.metadata
+  # => Exlibris::Aleph::Holding::Metadata
 
-      holding_marc_record = holding_metadata.marc_record
-      # => returns a MARC::Record
-    end
+  holding_marc_record = holding_metadata.marc_record
+  # => returns a MARC::Record
+end
 
-    items = record.items
-    # => Exlibris::Aleph::Items
+items = record.items
+# => Exlibris::Aleph::Items
 
-    items.to_a.each do |item|
+items.to_a.each do |item|
 
-      item.is_a?(Exlibris::Aleph::Item)
-      # => true
+  item.is_a?(Exlibris::Aleph::Item)
+  # => true
 
-      item_collection = item.collection
-      # => Exlibris::Aleph::Collection
+  item_collection = item.collection
+  # => Exlibris::Aleph::Collection
 
-      item_status = item.status
-      # => Exlibris::Aleph::Item::Status
+  item_status = item.status
+  # => Exlibris::Aleph::Item::Status
 
-      item_processing_status = item.processing_status
-      # => Exlibris::Aleph::Item::ProcessingStatus
+  item_processing_status = item.processing_status
+  # => Exlibris::Aleph::Item::ProcessingStatus
 
-      item_circulation_status = item.circulation_status
-      # => Exlibris::Aleph::Item::CirculationStatus
+  item_circulation_status = item.circulation_status
+  # => Exlibris::Aleph::Item::CirculationStatus
 
-      item_call_number = item.call_number
-      # => Exlibris::Aleph::Item::CallNumber
+  item_call_number = item.call_number
+  # => Exlibris::Aleph::Item::CallNumber
 
-      item_on_shelf = item.on_shelf?
-      # => true
-    end
+  item_on_shelf = item.on_shelf?
+  # => true
+end
+```
+
+## Patron
+The primary interface to a patron
