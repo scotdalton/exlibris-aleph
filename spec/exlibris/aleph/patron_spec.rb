@@ -1,25 +1,27 @@
 require 'spec_helper'
 module Exlibris
   module Aleph
-    describe Patron do
+    describe Patron, vcr: { cassette_name: 'patron' } do
       let(:id) { 'BOR_ID' }
-      let(:verification) { 'VERIFICATION' }
-      let(:credentials) { Patron::Credentials.new('BOR_ID', 'VERIFICATION') }
-      subject(:patron) { Patron.new(credentials) }
+      subject(:patron) { Patron.new(id) }
       it { should be_a Patron }
-      describe '#credentials' do
-        subject { patron.credentials }
-        it { should eq credentials }
+      describe '#id' do
+        subject { patron.id }
+        it { should eq id }
       end
-      describe '#permissions' do
+      describe '#admin_library' do
+        subject { patron.admin_library }
+        it { should be_an AdminLibrary }
+        it { should eql AdminLibrary.new('NYU50')}
       end
-      context 'when initialized with "credentials" argument' do
-        context 'but the "credentials" argument is not a Patron::Credentials' do
-          let(:credentials) { "invalid" }
-          it 'should raise an ArgumentError' do
-            expect { subject }.to raise_error ArgumentError
-          end
-        end
+      describe '#address' do
+        subject { patron.address }
+        it { should be_an Patron::Address }
+      end
+      describe '#record' do
+        let(:record_id) { 'NYU01000980206' }
+        subject { patron.record(record_id) }
+        it { should be_a Patron::Record }
       end
     end
   end
