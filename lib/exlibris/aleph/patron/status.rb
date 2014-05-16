@@ -4,7 +4,7 @@ module Exlibris
       class Status
         attr_reader :code, :display
 
-        def initialize(code, display)
+        def initialize(code, display=nil)
           @code = code
           @display = display
         end
