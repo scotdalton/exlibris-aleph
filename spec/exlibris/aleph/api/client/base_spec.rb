@@ -13,6 +13,10 @@ module Exlibris
             it { should be_an Array }
             it { should eq ['full', 'brief'] }
           end
+          describe '.request_method' do
+            subject { Base.request_method }
+            it { should be :get }
+          end
           context 'when initialized without a "query" argument' do
             subject(:base) { Base.new }
             it { should be_a Base }

@@ -5,7 +5,18 @@ module Exlibris
         require 'faraday'
         require 'multi_xml'
         class Base
+
+          DEFAULT_REQUEST_METHOD = :get
+
           VALID_VIEWS = ['full', 'brief']
+
+          def self.request_method=(request_method)
+            @request_method = request_method
+          end
+
+          def self.request_method
+            @request_method ||= DEFAULT_REQUEST_METHOD
+          end
 
           attr_reader :query
 
@@ -59,7 +70,15 @@ module Exlibris
           end
 
           def response
-            @response ||= connection.get("#{path}?#{query}")
+            @response ||= send(request_method)
+          end
+
+          def get
+            connection.get("#{path}?#{query}")
+          end
+
+          def request_method
+            @request_method ||= self.class.request_method
           end
 
           def connection
