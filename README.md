@@ -22,8 +22,32 @@ There are several configuration options
 
 
 ## Basic Concepts
-- `AdminLibrary`
-- `SubLibrary`
+- `AdminLibrary`: an administrative library
+  ```ruby
+  admin_library = AdminLibrary.new('ADM50')
+  # => Exlibris::Aleph::AdminLibrary
+
+  admin_library.code
+  # => 'ADM50'
+  ```
+- `SubLibrary`: a sub library
+  ```ruby
+  sub_library = SubLibrary.new('SUB', 'Sub Library', admin_library)
+  # => Exlibris::Aleph::SubLibrary
+
+  sub_library.code
+  # => 'SUB'
+
+  sub_library.display
+  # => 'Sub Library'
+
+  sub_library.admin_library
+  # => Exlibris::Aleph::AdminLibrary
+  ```
+
+admin_library.code
+# => 'ADM50'
+```
 - `Collection`
 - `PickupLocation`
 - `Patron::Status`
@@ -55,7 +79,7 @@ bibliographic_marc_record = bibliographic_metadata.marc_record
 holdings = record.holdings
 # => Exlibris::Aleph::Holdings
 
-holdings.to_a.each do |holding|
+holdings.each do |holding|
 
   holding.is_a?(Exlibris::Aleph::Holding)
   # => true
@@ -70,7 +94,7 @@ end
 items = record.items
 # => Exlibris::Aleph::Items
 
-items.to_a.each do |item|
+items.each do |item|
 
   item.is_a?(Exlibris::Aleph::Item)
   # => true
@@ -96,4 +120,36 @@ end
 ```
 
 ## Patron
-The primary interface to a patron
+The primary interface for an Aleph patron
+
+An example:
+
+```ruby
+patron_id = 'N1234567890'
+
+patron = Exlibris::Aleph::Patron.new(patron_id)
+# => Exlibris::Aleph::Patron
+
+address = patron.address
+# => Exlibris::Aleph::Patron::Address
+
+record_id = 'BIB01000000001'
+
+patron_record = patron.record(record_id)
+# => Exlibris::Aleph::Patron::Record
+
+patron_record_circulation_policy = patron_record.circulation_policy
+# => Exlibris::Aleph::Patron::Record::CirculationPolicy
+
+item_id = 'ADM5000000000101'
+
+patron_record_item = patron_record.item(item_id)
+# => Exlibris::Aleph::Patron::Record::Item
+
+patron_record_item_item = patron_record_item.item
+# => Exlibris::Aleph::Item
+
+patron_record_item_circulation_policy = patron_record_item.circulation_policy
+# => Exlibris::Aleph::Patron::Record::Item::CirculationPolicy
+
+```
