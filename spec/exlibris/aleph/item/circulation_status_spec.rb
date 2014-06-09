@@ -3,12 +3,24 @@ module Exlibris
   module Aleph
     class Item
       describe CirculationStatus do
-        let(:value) { "On Shelf" }
+        let(:value) { 'On Shelf' }
         subject(:circulation_status) { CirculationStatus.new(value) }
         it { should be_a CirculationStatus }
         describe '#value' do
           subject { circulation_status.value }
           it { should eq value }
+        end
+        describe '#due_date' do
+          subject { circulation_status.due_date }
+          it { should be_nil }
+          context 'when the value is "05/31/14"' do
+            let(:value) { '05/31/14' }
+            it { should eq '05/31/14' }
+          end
+          context 'when the value is "Recalled due date: 05/31/14"' do
+            let(:value) { 'Recalled due date: 05/31/14' }
+            it { should eq '05/31/14' }
+          end
         end
         describe '#==' do
           subject { circulation_status == other_object }
