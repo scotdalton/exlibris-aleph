@@ -19,6 +19,10 @@ module Exlibris
             it { should be_nil }
           end
         end
+        describe '#to_s' do
+          subject { status.to_s }
+          it { should eq display }
+        end
         describe '#==' do
           subject { status == other_object }
           context 'when the other object is an Item::Status' do

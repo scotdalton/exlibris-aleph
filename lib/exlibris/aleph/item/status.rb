@@ -9,6 +9,10 @@ module Exlibris
           @display = display
         end
 
+        def to_s
+          (display || code)
+        end
+
         def ==(other_object)
           other_object.instance_of?(self.class) && code == other_object.code
         end
