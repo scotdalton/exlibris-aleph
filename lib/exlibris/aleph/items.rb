@@ -3,7 +3,7 @@ module Exlibris
     class Items
 
       extend Forwardable
-      def_delegators :to_a, :each
+      def_delegators :to_a, :each, :size
 
       include Enumerable
 
@@ -14,7 +14,7 @@ module Exlibris
       end
 
       def to_a
-        ids.map { |id| Item.new(record_id, id) }
+        @array ||= ids.map { |id| Item.new(record_id, id) }
       end
 
       private
@@ -36,7 +36,8 @@ module Exlibris
 
       def ids
         items.map do |item|
-          item['href'].split('/').pop
+          href = (items.size > 1) ? item['href'] : item[1]
+          href.split('/').pop
         end
       end
     end

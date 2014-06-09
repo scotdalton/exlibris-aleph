@@ -13,6 +13,10 @@ module Exlibris
         subject { items.each }
         it { should be_an Enumerable }
       end
+      describe '#size' do
+        subject { items.size }
+        it { should eq 2 }
+      end
       describe '#to_a' do
         subject { items.to_a }
         it { should be_an Array }
