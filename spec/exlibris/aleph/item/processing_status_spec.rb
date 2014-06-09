@@ -14,6 +14,10 @@ module Exlibris
           subject { processing_status.display }
           it { should be_nil }
         end
+        describe '#to_s' do
+          subject { processing_status.to_s }
+          it { should eq code }
+        end
         describe '#==' do
           subject { processing_status == other_object }
           context 'when the other object is an Item::ProcessingStatus' do
