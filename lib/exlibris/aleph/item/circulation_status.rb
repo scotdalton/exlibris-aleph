@@ -8,6 +8,10 @@ module Exlibris
           @value = value
         end
 
+        def to_s
+          value
+        end
+
         def due_date
           @due_date ||= due_date_match[0] unless due_date_match.nil?
         end

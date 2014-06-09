@@ -22,6 +22,10 @@ module Exlibris
             it { should eq '05/31/14' }
           end
         end
+        describe '#to_s' do
+          subject { circulation_status.to_s }
+          it { should eq value }
+        end
         describe '#==' do
           subject { circulation_status == other_object }
           context 'when the other object is an Exlibris::Aleph::Item::DisplayMask' do
