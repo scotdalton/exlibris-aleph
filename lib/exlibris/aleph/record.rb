@@ -1,10 +1,11 @@
 module Exlibris
   module Aleph
     class Record
-      attr_reader :id, :admin_library
-      def initialize(id, admin_library)
+
+      attr_reader :id
+
+      def initialize(id)
         @id = id
-        @admin_library = admin_library
       end
 
       def metadata
@@ -12,20 +13,16 @@ module Exlibris
       end
 
       def holdings
-        @holdings ||= Holdings.new(record_id).to_a
+        @holdings ||= Holdings.new(id).to_a
       end
 
       def items
-        @items ||= Items.new(record_id).to_a
+        @items ||= Items.new(id).to_a
       end
 
       private
       def record
-        @record ||= API::Client::Record.new(record_id, { view: 'full' })
-      end
-
-      def record_id
-        @record_id ||= admin_library.code + id
+        @record ||= API::Client::Record.new(id, { view: 'full' })
       end
     end
   end
