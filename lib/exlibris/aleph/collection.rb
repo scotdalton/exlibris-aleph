@@ -12,6 +12,10 @@ module Exlibris
         @sub_library = sub_library
       end
 
+      def to_s
+        display
+      end
+
       def ==(other_object)
         other_object.instance_of?(self.class) && code == other_object.code &&
           sub_library == other_object.sub_library

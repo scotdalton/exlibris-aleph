@@ -21,6 +21,10 @@ module Exlibris
         it { should be_a SubLibrary }
         it { should eq sub_library }
       end
+      describe '#to_s' do
+        subject { collection.to_s }
+        it { should eq display }
+      end
       describe '#==' do
         subject { collection == other_object }
         context 'when the other object is an Exlibris::Aleph::Collection' do
