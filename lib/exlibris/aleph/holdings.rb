@@ -3,7 +3,7 @@ module Exlibris
     class Holdings
 
       extend Forwardable
-      def_delegators :to_a, :each
+      def_delegators :to_a, :each, :size
 
       include Enumerable
 
@@ -14,7 +14,7 @@ module Exlibris
       end
 
       def to_a
-        ids.map { |id| Holding.new(record_id, id) }
+        @array ||= ids.map { |id| Holding.new(record_id, id) }
       end
 
       private
