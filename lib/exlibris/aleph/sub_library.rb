@@ -12,6 +12,10 @@ module Exlibris
         @admin_library = admin_library
       end
 
+      def to_s
+        display
+      end
+
       def ==(other_object)
         other_object.instance_of?(self.class) && code == other_object.code &&
           admin_library == other_object.admin_library

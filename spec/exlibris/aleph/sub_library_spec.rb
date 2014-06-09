@@ -20,6 +20,10 @@ module Exlibris
         it { should be_an AdminLibrary }
         it { should eq admin_library }
       end
+      describe '#to_s' do
+        subject { sub_library.to_s }
+        it { should eq display }
+      end
       describe '#==' do
         subject { sub_library == other_object }
         context 'when the other object is an Exlibris::Aleph::SubLibrary' do
