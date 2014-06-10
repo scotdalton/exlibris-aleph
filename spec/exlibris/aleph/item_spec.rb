@@ -45,6 +45,37 @@ module Exlibris
         subject { item.circulation_policy }
         it { should be_an Item::CirculationPolicy }
       end
+      context 'when the item does not exist' do
+        let(:id) { 'ADM50' }
+        describe '#collection' do
+          subject { item.collection }
+          it { should be_nil }
+        end
+        describe '#call_number' do
+          subject { item.call_number }
+          it { should be_nil }
+        end
+        describe '#status' do
+          subject { item.status }
+          it { should be_nil }
+        end
+        describe '#processing_status' do
+          subject { item.processing_status }
+          it { should be_nil }
+        end
+        describe '#circulation_status' do
+          subject { item.circulation_status }
+          it { should be_nil }
+        end
+        describe '#on_shelf?' do
+          subject { item.on_shelf? }
+          it { should be_false }
+        end
+        describe '#circulation_policy' do
+          subject { item.circulation_policy }
+          it { should be_nil }
+        end
+      end
     end
   end
 end

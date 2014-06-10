@@ -11,36 +11,48 @@ module Exlibris
       end
 
       def collection
-        @collection ||=
-          Collection.new(reader.collection_code, reader.collection_display, sub_library)
+        unless client.error?
+          @collection ||=
+            Collection.new(collection_code, collection_display, sub_library)
+        end
       end
 
       def call_number
-        @call_number ||=
-          CallNumber.new(reader.classification, reader.description)
+        unless client.error?
+          @call_number ||=
+            CallNumber.new(reader.classification, reader.description)
+        end
       end
 
       def circulation_status
-        @circulation_status ||=
-          CirculationStatus.new(reader.circulation_status_value)
+        unless client.error?
+          @circulation_status ||=
+            CirculationStatus.new(reader.circulation_status_value)
+        end
       end
 
       def status
-        @status ||= Status.new(status_code, reader.status_display)
+        unless client.error?
+          @status ||= Status.new(status_code, status_display)
+        end
       end
 
       def processing_status
-        @processing_status ||=
-          ProcessingStatus.new(processing_status_code, reader.processing_status_display)
+        unless client.error?
+          @processing_status ||=
+            ProcessingStatus.new(processing_status_code, processing_status_display)
+        end
       end
 
       def on_shelf?
-        ON_SHELF_VALUES.include?(circulation_status.value)
+        !client.error? && ON_SHELF_VALUES.include?(circulation_status.value)
       end
 
       def circulation_policy
-        @circulation_policy ||=
-          circulation_policies.find_by_identifier(circulation_policy_identifier)
+        unless client.error?
+          @circulation_policy ||=
+            circulation_policies.find_by_identifier(circulation_policy_identifier)
+        end
       end
 
       private
@@ -62,15 +74,39 @@ module Exlibris
 
       def sub_library
         @sub_library ||=
-          SubLibrary.new(reader.sub_library_code, reader.sub_library_display, admin_library)
+          SubLibrary.new(sub_library_code, sub_library_display, admin_library)
+      end
+
+      def sub_library_code
+        @sub_library_code ||= reader.sub_library_code
+      end
+
+      def sub_library_display
+        @sub_library_display ||= reader.sub_library_display
+      end
+
+      def collection_code
+        @collection_code ||= reader.collection_code
+      end
+
+      def collection_display
+        @collection_display ||= reader.collection_display
       end
 
       def status_code
         @status_code ||= (reader.status_code || '##')
       end
 
+      def status_display
+        @status_display ||= reader.status_display
+      end
+
       def processing_status_code
         @processing_status_code ||= (reader.processing_status_code || '##')
+      end
+
+      def processing_status_display
+        @processing_status_display ||= reader.processing_status_display
       end
 
       def circulation_policies
