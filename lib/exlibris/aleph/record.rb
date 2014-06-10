@@ -9,7 +9,7 @@ module Exlibris
       end
 
       def metadata
-        @metadata ||= Metadata.new(record.to_xml)
+        @metadata ||= Metadata.new(client.to_xml) unless client.error?
       end
 
       def holdings
@@ -21,8 +21,8 @@ module Exlibris
       end
 
       private
-      def record
-        @record ||= API::Client::Record.new(id, { view: 'full' })
+      def client
+        @client ||= API::Client::Record.new(id, {view: 'full'})
       end
     end
   end
