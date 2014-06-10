@@ -512,4 +512,252 @@ http_interactions:
         href="http://aleph.library.edu:1891/rest-dlf/record/NYU01000864162/holdings/NYU60002367979"></holding></holdings></get-hol-list> '
     http_version: 
   recorded_at: Thu, 01 May 2014 20:34:55 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01003415726/holdings
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 10 Jun 2014 16:40:09 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-hol-list><reply-text>ok</reply-text><reply-code>0000</reply-code><holdings><holding
+        href="http://aleph.library.edu:1891/rest-dlf/record/NYU01003415726/holdings/NYU60004070699"></holding></holdings></get-hol-list> '
+    http_version: 
+  recorded_at: Tue, 10 Jun 2014 16:40:10 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01000000000/holdings
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 10 Jun 2014 16:51:56 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-hol-list><reply-text>Record
+        does not exist</reply-text><reply-code>0019</reply-code></get-hol-list> '
+    http_version: 
+  recorded_at: Tue, 10 Jun 2014 16:51:56 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01003415726/items
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 10 Jun 2014 16:52:14 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-list><reply-text>ok</reply-text><reply-code>0000</reply-code><items><item
+        href="http://aleph.library.edu:1891/rest-dlf/record/NYU01003415726/items/NYU50003415726000010"></item></items></get-item-list> '
+    http_version: 
+  recorded_at: Tue, 10 Jun 2014 16:52:14 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01000000000/items
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 10 Jun 2014 16:52:14 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-list><reply-text>Record
+        does not exist</reply-text><reply-code>0019</reply-code></get-item-list> '
+    http_version: 
+  recorded_at: Tue, 10 Jun 2014 16:52:14 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01000000000?view=full
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 10 Jun 2014 17:33:43 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-record><reply-text>Record
+        does not exist</reply-text><reply-code>0019</reply-code></get-record> '
+    http_version: 
+  recorded_at: Tue, 10 Jun 2014 17:33:43 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01000864162/items/NYU50000864162000000
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 10 Jun 2014 17:42:07 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item><reply-text>ok</reply-text><reply-code>0000</reply-code><item><z30-sub-library-code>BOBST</z30-sub-library-code><z30-item-process-status-code></z30-item-process-status-code><z30-item-status-code>01</z30-item-status-code><z30-collection-code>MAIN</z30-collection-code><queue></queue><z30><translate-change-active-library>NYU50</translate-change-active-library><z30-doc-number>000864162</z30-doc-number><z30-item-sequence>    1.0</z30-item-sequence><z30-barcode>31142033188791</z30-barcode><z30-sub-library>NYU
+        Bobst</z30-sub-library><z30-material>Books</z30-material><z30-item-status>Regular
+        loan</z30-item-status><z30-open-date>20030313</z30-open-date><z30-update-date>20051017</z30-update-date><z30-cataloger>BOWMANA</z30-cataloger><z30-date-last-return>20120502</z30-date-last-return><z30-hour-last-return>0836</z30-hour-last-return><z30-ip-last-return>128.122.88.89</z30-ip-last-return><z30-no-loans>003</z30-no-loans><z30-alpha>L</z30-alpha><z30-collection>Main
+        Collection</z30-collection><z30-call-no-type>0</z30-call-no-type><z30-call-no>HN90.I56
+        K888 2003</z30-call-no><z30-call-no-key>0 hn!90 i56 k888 2003</z30-call-no-key><z30-call-no-2-type></z30-call-no-2-type><z30-call-no-2></z30-call-no-2><z30-call-no-2-key></z30-call-no-2-key><z30-description></z30-description><z30-note-opac></z30-note-opac><z30-note-circulation></z30-note-circulation><z30-note-internal></z30-note-internal><z30-order-number></z30-order-number><z30-inventory-number></z30-inventory-number><z30-inventory-number-date>00000000</z30-inventory-number-date><z30-last-shelf-report-date>00000000</z30-last-shelf-report-date><z30-price>40.96</z30-price><z30-shelf-report-number></z30-shelf-report-number><z30-on-shelf-date>00000000</z30-on-shelf-date><z30-on-shelf-seq>000000</z30-on-shelf-seq><z30-doc-number-2>000000000</z30-doc-number-2><z30-schedule-sequence-2>00000</z30-schedule-sequence-2><z30-copy-sequence-2>00000</z30-copy-sequence-2><z30-vendor-code></z30-vendor-code><z30-invoice-number></z30-invoice-number><z30-line-number>00000</z30-line-number><z30-pages></z30-pages><z30-issue-date>00000000</z30-issue-date><z30-expected-arrival-date>00000000</z30-expected-arrival-date><z30-arrival-date>00000000</z30-arrival-date><z30-item-statistic></z30-item-statistic><z30-item-process-status>Not
+        in Process</z30-item-process-status><z30-copy-id></z30-copy-id><z30-hol-doc-number>002367979</z30-hol-doc-number><z30-temp-location>No</z30-temp-location><z30-enumeration-a></z30-enumeration-a><z30-enumeration-b></z30-enumeration-b><z30-enumeration-c></z30-enumeration-c><z30-enumeration-d></z30-enumeration-d><z30-enumeration-e></z30-enumeration-e><z30-enumeration-f></z30-enumeration-f><z30-enumeration-g></z30-enumeration-g><z30-enumeration-h></z30-enumeration-h><z30-chronological-i></z30-chronological-i><z30-chronological-j></z30-chronological-j><z30-chronological-k></z30-chronological-k><z30-chronological-l></z30-chronological-l><z30-chronological-m></z30-chronological-m><z30-supp-index-o></z30-supp-index-o><z30-85x-type></z30-85x-type><z30-depository-id></z30-depository-id><z30-linking-number>000000000</z30-linking-number><z30-gap-indicator></z30-gap-indicator><z30-maintenance-count>001</z30-maintenance-count><z30-process-status-date>00000000</z30-process-status-date></z30><z13><translate-change-active-library>NYU50</translate-change-active-library><z13-doc-number>000864162</z13-doc-number><z13-year>2003</z13-year><z13-open-date>20080618</z13-open-date><z13-update-date>20080618</z13-update-date><z13-call-no-key></z13-call-no-key><z13-call-no-code>LOC0</z13-call-no-code><z13-call-no>HN90.I56</z13-call-no><z13-author-code>1001</z13-author-code><z13-author>Kuttan,
+        Appu, 1941-</z13-author><z13-title-code>24510</z13-title-code><z13-title>From
+        digital divide to digital opportunity /</z13-title><z13-imprint-code>260</z13-imprint-code><z13-imprint>Lanham,
+        Md. : Scarecrow Press, 2003.</z13-imprint><z13-isbn-issn-code>020</z13-isbn-issn-code><z13-isbn-issn>0810844915
+        (alk. paper)</z13-isbn-issn></z13><status>On Shelf</status></item></get-item> '
+    http_version: 
+  recorded_at: Tue, 10 Jun 2014 17:42:07 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01000864162/items/ADM50
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 10 Jun 2014 17:44:34 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item><reply-text>Item
+        does not exist</reply-text><reply-code>0027</reply-code></get-item> '
+    http_version: 
+  recorded_at: Tue, 10 Jun 2014 17:44:34 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01000864162/holdings/ADM60
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 10 Jun 2014 17:58:06 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-hol><reply-text>Holding
+        does not exist</reply-text><reply-code>0026</reply-code></get-hol> '
+    http_version: 
+  recorded_at: Tue, 10 Jun 2014 17:58:06 GMT
 recorded_with: VCR 2.9.0
