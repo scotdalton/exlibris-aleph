@@ -2,7 +2,7 @@ require 'spec_helper'
 module Exlibris
   module Aleph
     class Patron
-      describe Record, vcr: { cassette_name: 'patron', record: :new_episodes } do
+      describe Record, vcr: {cassette_name: 'patron', record: :new_episodes} do
         let(:patron_id) { 'BOR_ID' }
         let(:id) { 'NYU01000980206' }
         subject(:record) { Record.new(patron_id, id) }

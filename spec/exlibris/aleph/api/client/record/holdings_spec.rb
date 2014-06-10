@@ -4,7 +4,7 @@ module Exlibris
     module API
       module Client
         class Record
-          describe Holdings, vcr: { cassette_name: 'record', record: :new_episodes } do
+          describe Holdings, vcr: {cassette_name: 'record', record: :new_episodes} do
             let(:record_id) { 'NYU01000980206' }
             let(:view) { 'full' }
             let(:query) { { view: view } }

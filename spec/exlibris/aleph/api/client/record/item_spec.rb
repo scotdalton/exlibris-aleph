@@ -4,7 +4,7 @@ module Exlibris
     module API
       module Client
         class Record
-          describe Item, vcr: { cassette_name: 'record', record: :new_episodes } do
+          describe Item, vcr: {cassette_name: 'record', record: :new_episodes} do
             let(:record_id) { 'NYU01000980206' }
             let(:id) { 'NYU50001951476001220' }
             subject(:item) { Item.new(record_id, id) }

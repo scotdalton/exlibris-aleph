@@ -3,9 +3,9 @@ module Exlibris
   module Aleph
     module API
       module Client
-        describe Record, vcr: { cassette_name: 'record' } do
+        describe Record, vcr: {cassette_name: 'record'} do
           let(:id) { 'NYU01000980206' }
-          let(:query) { { view: 'full' } }
+          let(:query) { {view: 'full'} }
           subject(:record) { Record.new(id, query) }
           it { should be_a Record }
           describe '#id' do

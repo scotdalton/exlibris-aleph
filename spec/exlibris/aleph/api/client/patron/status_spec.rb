@@ -4,7 +4,7 @@ module Exlibris
     module API
       module Client
         class Patron
-          describe Status, vcr: { cassette_name: 'patron', record: :new_episodes } do
+          describe Status, vcr: {cassette_name: 'patron', record: :new_episodes} do
             let(:patron_id) { 'BOR_ID' }
             subject(:status) { Status.new(patron_id) }
             it { should be_a Status }

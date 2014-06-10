@@ -1,7 +1,7 @@
 require 'spec_helper'
 module Exlibris
   module Aleph
-    describe Item, vcr: { cassette_name: 'record', record: :new_episodes } do
+    describe Item, vcr: {cassette_name: 'record', record: :new_episodes} do
       let(:record_id) { 'NYU01000864162' }
       let(:id) { 'NYU50000864162000010' }
       subject(:item) { Item.new(record_id, id) }

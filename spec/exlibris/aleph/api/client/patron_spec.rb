@@ -3,7 +3,7 @@ module Exlibris
   module Aleph
     module API
       module Client
-        describe Patron, vcr: { cassette_name: 'patron' } do
+        describe Patron, vcr: {cassette_name: 'patron'} do
           let(:id) { 'BOR_ID' }
           subject(:patron) { Patron.new(id) }
           it { should be_a Patron }

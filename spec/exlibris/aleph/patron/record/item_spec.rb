@@ -3,7 +3,7 @@ module Exlibris
   module Aleph
     class Patron
       class Record
-        describe Item, vcr: { cassette_name: 'patron', record: :new_episodes } do
+        describe Item, vcr: {cassette_name: 'patron', record: :new_episodes} do
           let(:patron_id) { 'BOR_ID' }
           let(:record_id) { 'NYU01000980206' }
           let(:id) { 'NYU50001951476001220' }

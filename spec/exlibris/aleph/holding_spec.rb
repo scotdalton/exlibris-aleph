@@ -1,7 +1,7 @@
 require 'spec_helper'
 module Exlibris
   module Aleph
-    describe Holding, vcr: { cassette_name: 'record', record: :new_episodes } do
+    describe Holding, vcr: {cassette_name: 'record', record: :new_episodes} do
       let(:record_id) { 'NYU01000864162' }
       let(:id) { 'NYU60002367980' }
       let(:tables_manager) { TablesManager.instance }

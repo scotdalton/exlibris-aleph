@@ -4,7 +4,7 @@ module Exlibris
     module API
       module Client
         class Patron
-          describe Address, vcr: { cassette_name: 'patron', record: :new_episodes } do
+          describe Address, vcr: {cassette_name: 'patron', record: :new_episodes} do
             let(:patron_id) { 'BOR_ID' }
             subject(:address) { Address.new(patron_id) }
             it { should be_a Address }
