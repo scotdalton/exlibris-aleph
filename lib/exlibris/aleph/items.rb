@@ -23,7 +23,7 @@ module Exlibris
       end
 
       def root
-        @root ||= client.to_h['get_item_list']
+        @root ||= client.root
       end
 
       def items_root
@@ -31,13 +31,19 @@ module Exlibris
       end
 
       def items
-        @items ||= items_root['item']
+        @items ||= items_root['item'] unless items_root.nil?
       end
 
       def ids
-        items.map do |item|
-          href = (items.size > 1) ? item['href'] : item[1]
-          href.split('/').pop
+        @ids ||= begin
+          if items.nil?
+            []
+          else
+            items.map do |item|
+              href = (items.size > 1) ? item['href'] : item[1]
+              href.split('/').pop
+            end
+          end
         end
       end
     end
