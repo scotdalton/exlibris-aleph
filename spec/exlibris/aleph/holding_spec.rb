@@ -37,6 +37,17 @@ module Exlibris
         it { should be_a Collection }
         it { should eq collection }
       end
+      context 'when the holding does not exist' do
+        let(:id) { 'ADM60' }
+        describe '#metadata' do
+          subject { holding.metadata }
+          it { should be_nil }
+        end
+        describe '#collection' do
+          subject { holding.collection }
+          it { should be_nil }
+        end
+      end
     end
   end
 end

@@ -8,14 +8,16 @@ module Exlibris
       end
 
       def collection
-        @collection ||= collections[admin_library].find do |collection|
-          collection.code == collection_code &&
-            collection.sub_library == sub_library
+        unless client.error?
+          @collection ||= collections[admin_library].find do |collection|
+            collection.code == collection_code &&
+              collection.sub_library == sub_library
+          end
         end
       end
 
       def metadata
-        @metadata ||= Metadata.new(client.to_xml)
+        @metadata ||= Metadata.new(client.to_xml) unless client.error?
       end
 
       private
