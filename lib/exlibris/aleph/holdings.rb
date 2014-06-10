@@ -23,7 +23,7 @@ module Exlibris
       end
 
       def root
-        @root ||= client.to_h['get_hol_list']
+        @root ||= client.root
       end
 
       def holdings_root
@@ -31,12 +31,19 @@ module Exlibris
       end
 
       def holdings
-        @holdings ||= holdings_root['holding']
+        @holdings ||= holdings_root['holding'] unless holdings_root.nil?
       end
 
       def ids
-        holdings.map do |holding|
-          holding['href'].split('/').pop
+        @ids ||= begin
+          if holdings.nil?
+            []
+          else
+            holdings.map do |holding|
+              href = (holdings.size > 1) ? holding['href'] : holding[1]
+              href.split('/').pop
+            end
+          end
         end
       end
     end
