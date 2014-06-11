@@ -159,6 +159,12 @@ items.each do |item|
   item_call_number = item.call_number
   # => Exlibris::Aleph::Item::CallNumber
 
+  item_opac_note = item.opac_note
+  # => Exlibris::Aleph::Item::OpacNote
+
+  item_queue = item.queue
+  # => Exlibris::Aleph::Item::Queue
+
   item_on_shelf = item.on_shelf?
   # => true
 end
