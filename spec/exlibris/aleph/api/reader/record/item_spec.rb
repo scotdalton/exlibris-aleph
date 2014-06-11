@@ -162,6 +162,14 @@ module Exlibris
               subject { item.circulation_status_value }
               it { should eq 'On Hold' }
             end
+            describe '#opac_note' do
+              subject { item.opac_note }
+              it { should eq 'Spring' }
+            end
+            describe '#queue' do
+              subject { item.queue }
+              it { should eq '1 request(s) of 1 items.' }
+            end
           end
         end
       end

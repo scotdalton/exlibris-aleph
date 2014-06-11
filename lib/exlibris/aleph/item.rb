@@ -44,6 +44,18 @@ module Exlibris
         end
       end
 
+      def opac_note
+        unless client.error?
+          @opac_note ||= OpacNote.new(reader.opac_note)
+        end
+      end
+
+      def queue
+        unless client.error?
+          @queue ||= Queue.new(reader.queue)
+        end
+      end
+
       def on_shelf?
         !client.error? && ON_SHELF_VALUES.include?(circulation_status.value)
       end

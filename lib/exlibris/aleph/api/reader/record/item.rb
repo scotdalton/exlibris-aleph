@@ -7,7 +7,8 @@ module Exlibris
             attr_reader :admin_library_code, :sub_library_code, :collection_code,
               :status_code, :processing_status_code, :sub_library_display,
               :collection_display, :status_display, :processing_status_display,
-              :circulation_status_value, :classification, :description
+              :circulation_status_value, :classification, :description, :opac_note,
+              :queue
 
             def initialize(root)
               super(root)
@@ -23,6 +24,8 @@ module Exlibris
               @classification = z30['z30_call_no']
               @description = z30['z30_description']
               @circulation_status_value = item['status']
+              @opac_note = z30['z30_note_opac']
+              @queue = item['queue']
             end
 
 

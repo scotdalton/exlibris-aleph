@@ -33,6 +33,14 @@ module Exlibris
         subject { item.circulation_status }
         it { should be_a Item::CirculationStatus }
       end
+      describe '#opac_note' do
+        subject { item.opac_note }
+        it { should be_a Item::OpacNote }
+      end
+      describe '#queue' do
+        subject { item.queue }
+        it { should be_a Item::Queue }
+      end
       describe '#on_shelf?' do
         subject { item.on_shelf? }
         it { should be_true }
@@ -65,6 +73,14 @@ module Exlibris
         end
         describe '#circulation_status' do
           subject { item.circulation_status }
+          it { should be_nil }
+        end
+        describe '#opac_note' do
+          subject { item.opac_note }
+          it { should be_nil }
+        end
+        describe '#queue' do
+          subject { item.queue }
           it { should be_nil }
         end
         describe '#on_shelf?' do
