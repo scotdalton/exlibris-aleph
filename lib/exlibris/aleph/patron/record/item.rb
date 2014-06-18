@@ -27,6 +27,14 @@ module Exlibris
               CirculationPolicy.new(privileges, *pickup_locations)
           end
 
+          def hold
+            @hold ||= Hold.new(patron_id, record_id, id)
+          end
+
+          def create_hold(parameters)
+            CreateHold.new(patron_id, record_id, id, parameters)
+          end
+
           private
           def privileges
             @privileges ||= CirculationPolicy::Privileges.new(reader)

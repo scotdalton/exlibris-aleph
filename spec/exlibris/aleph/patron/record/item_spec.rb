@@ -3,7 +3,7 @@ module Exlibris
   module Aleph
     class Patron
       class Record
-        describe Item, vcr: {cassette_name: 'patron', record: :new_episodes} do
+        describe Item, vcr: {cassette_name: 'patron'} do
           let(:patron_id) { 'BOR_ID' }
           let(:record_id) { 'NYU01000980206' }
           let(:id) { 'NYU50001951476001220' }
@@ -40,6 +40,20 @@ module Exlibris
                 expect(subject.pickup_locations).not_to be_empty
               end
             end
+          end
+          describe '#hold' do
+            let(:record_id) { 'NYU01000864162' }
+            let(:id) { 'NYU50000864162000010' }
+            subject { item.hold }
+            it { should be_an Item::Hold }
+          end
+          describe '#create_hold' do
+            let(:record_id) { 'NYU01002296594' }
+            let(:id) { 'NYU50002296594000010' }
+            let(:pickup_location) { 'BOBST' }
+            let(:parameters) { {pickup_location: pickup_location} }
+            subject { item.create_hold(parameters) }
+            it { should be_an Item::CreateHold }
           end
         end
       end
