@@ -15,6 +15,9 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
   config.filter_sensitive_data("library.edu") { "library.nyu.edu" }
   config.filter_sensitive_data('BOR_ID') { ENV['BOR_ID'] }
+  config.filter_sensitive_data('BOR_ID_WITHOUT_HOLD_PERMISSION') do
+    ENV['BOR_ID_WITHOUT_HOLD_PERMISSION']
+  end
 end
 
 Exlibris::Aleph.configure do |config|
