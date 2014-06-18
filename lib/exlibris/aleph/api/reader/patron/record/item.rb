@@ -54,6 +54,10 @@ module Exlibris
                 @pickup_location ||= begin
                   if pickup_locations_root.nil?
                     []
+                  elsif pickup_locations_root['pickup_location'].nil?
+                    []
+                  elsif pickup_locations_root['pickup_location'].is_a?(Hash)
+                    [pickup_locations_root['pickup_location']]
                   else
                     pickup_locations_root['pickup_location']
                   end

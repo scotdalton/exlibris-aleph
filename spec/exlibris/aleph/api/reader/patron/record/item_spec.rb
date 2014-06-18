@@ -6,6 +6,7 @@ module Exlibris
         class Patron
           class Record
             describe Item do
+              let(:pickup_locations) { nil }
               let(:root) do
                 {
                   'reply_text' => 'ok',
@@ -150,7 +151,10 @@ module Exlibris
                   }
                 }
               end
-
+              let(:info) { root['item']['info'] }
+              before do
+                info.first['hold'] = { 'pickup_locations' => pickup_locations }
+              end
               subject(:item) { Item.new(root) }
               it { should be_a Item }
               describe '#root' do
@@ -160,61 +164,80 @@ module Exlibris
               describe '#pickup_locations' do
                 subject { item.pickup_locations }
                 it { should be_an Array }
-                it { should be_empty }
-                context 'when the item has pickup locations' do
+                context 'when pickup locations is nil' do
+                  let(:pickup_locations) { nil }
+                  it { should be_an Array }
+                  it { should be_empty }
+                end
+                context 'when there are no pickup locations' do
+                  let(:pickup_locations) { {'usage' => 'Mandatory'} }
+                  it { should be_an Array }
+                  it { should be_empty }
+                end
+                context 'when there is only one pickup location' do
                   let(:pickup_locations) do
                     {
-                      'pickup_locations' => {
-                        'pickup_location' => [
-                          {
-                            '__content__' => 'NYU Bobst',
-                            'code' => 'BOBST'
-                          },
-                          {
-                            '__content__' => 'NYU Courant',
-                            'code' => 'NCOUR'
-                          },
-                          {
-                            '__content__' => 'NYU Institute of Fine Arts',
-                            'code' => 'NIFA'
-                          },
-                          {
-                            '__content__' => 'NYU Inst Study Ancient World',
-                            'code' => 'NISAW'
-                          },
-                          {
-                            '__content__' => 'NYU Jack Brause',
-                            'code' => 'NREI'
-                          },
-                          {
-                            '__content__' => 'NYU Poly',
-                            'code' => 'NPOLY'
-                          },
-                          {
-                            '__content__' => 'NYU Abu Dhabi Library (UAE)',
-                            'code' => 'NYUAB'
-                          },
-                          {
-                            '__content__' => 'NYUAD Ctr for Sci & Eng (UAE)',
-                            'code' => 'NYUSE'
-                          },
-                          {
-                            '__content__' => 'NYUAD Sama Fac Offices (UAE)',
-                            'code' => 'NYUSS'
-                          },
-                          {
-                            '__content__' => 'NYU Shanghai Library (China)',
-                            'code' => 'NYUSX'
-                          }
-                        ],
-                        'default' => 'Y',
-                        'usage' => 'Mandatory'
-                      }
+                      'pickup_location' => {
+                        '__content__' => 'NYU Bobst',
+                        'code' => 'BOBST'
+                      },
+                      'default' => 'Y',
+                      'usage' => 'Mandatory'
                     }
                   end
-                  before do
-                    root['item']['info'].first['hold'] = pickup_locations
+                  it { should be_an Array }
+                  it { should_not be_empty }
+                end
+                context 'when the item has multiple pickup locations' do
+                  let(:pickup_locations) do
+                    {
+                      'pickup_location' => [
+                        {
+                          '__content__' => 'NYU Bobst',
+                          'code' => 'BOBST'
+                        },
+                        {
+                          '__content__' => 'NYU Courant',
+                          'code' => 'NCOUR'
+                        },
+                        {
+                          '__content__' => 'NYU Institute of Fine Arts',
+                          'code' => 'NIFA'
+                        },
+                        {
+                          '__content__' => 'NYU Inst Study Ancient World',
+                          'code' => 'NISAW'
+                        },
+                        {
+                          '__content__' => 'NYU Jack Brause',
+                          'code' => 'NREI'
+                        },
+                        {
+                          '__content__' => 'NYU Poly',
+                          'code' => 'NPOLY'
+                        },
+                        {
+                          '__content__' => 'NYU Abu Dhabi Library (UAE)',
+                          'code' => 'NYUAB'
+                        },
+                        {
+                          '__content__' => 'NYUAD Ctr for Sci & Eng (UAE)',
+                          'code' => 'NYUSE'
+                        },
+                        {
+                          '__content__' => 'NYUAD Sama Fac Offices (UAE)',
+                          'code' => 'NYUSS'
+                        },
+                        {
+                          '__content__' => 'NYU Shanghai Library (China)',
+                          'code' => 'NYUSX'
+                        }
+                      ],
+                      'default' => 'Y',
+                      'usage' => 'Mandatory'
+                    }
                   end
+                  it { should be_an Array }
                   it { should_not be_empty }
                 end
               end
