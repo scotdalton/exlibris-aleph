@@ -4,7 +4,7 @@ module Exlibris
       module Client
         class Patron
           class Record 
-            class Item< Base
+            class Item < Base
               attr_reader :patron_id, :record_id, :id
 
               def initialize(patron_id, record_id, id)
