@@ -50,7 +50,9 @@ module Exlibris
           describe '#create_hold' do
             let(:record_id) { 'NYU01002296594' }
             let(:id) { 'NYU50002296594000010' }
-            let(:pickup_location) { 'BOBST' }
+            let(:pickup_location) do
+              Exlibris::Aleph::PickupLocation.new('BOBST', 'NYU Bobst')
+            end
             let(:parameters) { {pickup_location: pickup_location} }
             subject { item.create_hold(parameters) }
             it { should be_an Item::CreateHold }

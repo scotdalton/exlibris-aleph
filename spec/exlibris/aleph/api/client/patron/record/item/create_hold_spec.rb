@@ -10,7 +10,9 @@ module Exlibris
                 let(:patron_id) { 'BOR_ID' }
                 let(:record_id) { 'NYU01002296594' }
                 let(:item_id) { 'NYU50002296594000010' }
-                let(:pickup_location) { 'BOBST' }
+                let(:pickup_location) do
+                  Exlibris::Aleph::PickupLocation.new('BOBST', 'NYU Bobst')
+                end
                 let(:parameters) do
                   CreateHold::Parameters.new({pickup_location: pickup_location})
                 end

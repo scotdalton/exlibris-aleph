@@ -8,7 +8,9 @@ module Exlibris
             class Item
               class CreateHold
                 describe Parameters do
-                  let(:pickup_location) { 'BOBST' }
+                  let(:pickup_location) do
+                    Exlibris::Aleph::PickupLocation.new('BOBST', 'NYU Bobst')
+                  end
                   let(:last_interest_date) { '20140915' }
                   let(:start_interest_date) { '20140915' }
                   let(:sub_author) { 'Sub Author' }
@@ -68,10 +70,24 @@ module Exlibris
                     subject { parameters.rush }
                     it { should eq rush }
                   end
-                  context 'when the input parameters are not a Hash' do
+                  context 'when the input parameters is not a Hash' do
                     let(:input_parameters) { 'invalid' }
                     it 'should raise an ArgumentError' do
                       expect { subject }.to raise_error ArgumentError
+                    end
+                  end
+                  context 'when the input parameters is a Hash' do
+                    context 'but the pickup location is not a PickupLocation' do
+                      let(:pickup_location) { 'invalid' }
+                      it 'should raise an ArgumentError' do
+                        expect { subject }.to raise_error ArgumentError
+                      end
+                    end
+                    context 'and the pickup location is nil' do
+                      let(:pickup_location) { nil }
+                      it 'should not raise an ArgumentError' do
+                        expect { subject }.not_to raise_error
+                      end
                     end
                   end
                 end

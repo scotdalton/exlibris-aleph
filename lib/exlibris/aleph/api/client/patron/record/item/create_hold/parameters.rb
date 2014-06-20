@@ -18,6 +18,9 @@ module Exlibris
                       raise ArgumentError.new("Expecting #{parameters} to be a Hash")
                     end
                     @pickup_location = parameters[:pickup_location]
+                    unless pickup_location.nil? || pickup_location.is_a?(Exlibris::Aleph::PickupLocation)
+                      raise ArgumentError.new("Expecting #{pickup_location} to be an Exlibris::Aleph::PickupLocation")
+                    end
                     @last_interest_date = parameters[:last_interest_date]
                     @start_interest_date = parameters[:start_interest_date]
                     @sub_author = parameters[:sub_author]
@@ -30,7 +33,7 @@ module Exlibris
 
                   def to_xml
                     @xml ||= "<#{ROOT}>" +
-                    "<pickup-location>#{pickup_location}</pickup-location>" +
+                    "<pickup-location>#{pickup_location.code}</pickup-location>" +
                     "<last-interest-date>#{last_interest_date}</last-interest-date>" +
                     "<start-interest-date>#{start_interest_date}</start-interest-date>" +
                     "<sub-author>#{sub_author}</sub-author>" +
