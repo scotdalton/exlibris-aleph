@@ -5,7 +5,7 @@ module Exlibris
         class Patron < Base
 
           def admin_library_code
-            @admin_library_code ||= patron['translate_change_active_library']
+            @admin_library_code ||= patron['translate_change_active_library'] unless patron.nil?
           end
 
           private
