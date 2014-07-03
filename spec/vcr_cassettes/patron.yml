@@ -1,0 +1,1443 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Fri, 18 Apr 2014 02:29:51 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-patron><reply-text>ok</reply-text><reply-code>0000</reply-code><patron><info
+        type="Circulation Actions" href="http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/circulationActions"></info><info
+        type="Patron Information" href="http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/patronInformation"></info><info
+        type="Patron Status" href="http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/patronStatus"></info><info
+        type="Records" href="http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/record"></info><translate-change-active-library>NYU50</translate-change-active-library><institution
+        code="NYU50">NYU50</institution></patron></get-patron> '
+    http_version: 
+  recorded_at: Fri, 18 Apr 2014 02:29:51 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/patronInformation/address
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Fri, 02 May 2014 02:53:59 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-pat-adrs><reply-text>ok</reply-text><reply-code>0000</reply-code><address-information
+        updateable="Y"><z304-address-1 usage="Mandatory" max_len="50">SURNAME,GIVEN
+        NAME</z304-address-1><z304-address-2 usage="Optional" max_len="50">123 ADDRESS,
+        #APT</z304-address-2><z304-address-3 usage="Optional" max_len="50">BROOKLYN</z304-address-3><z304-address-4
+        usage="Optional" max_len="50">NY</z304-address-4><z304-address-5 usage="Optional"
+        max_len="50">NY</z304-address-5><z304-date-from usage="Mandatory">20140211</z304-date-from><z304-date-to
+        usage="Mandatory">20200101</z304-date-to><z304-zip usage="Optional" max_len="9">11215</z304-zip><z304-telephone-1
+        usage="Optional" max_len="30"></z304-telephone-1><z304-telephone-2 usage="Optional"
+        max_len="30"></z304-telephone-2><z304-telephone-3 usage="Optional" max_len="30"></z304-telephone-3><z304-telephone-4
+        usage="Optional" max_len="30"></z304-telephone-4><z304-sms-number usage="Optional"
+        max_len="30"></z304-sms-number><z303-want-sms usage="Optional">N</z303-want-sms><z303-plain-html
+        usage="Optional" code="P">Email Body Only</z303-plain-html><z304-email-address
+        usage="Optional" max_len="60">bor_id@library.edu</z304-email-address><mail-options
+        usage="Read-Only"><mail-option code="P">Email Body Only</mail-option><mail-option
+        code="H">Attachment Only</mail-option><mail-option code="B">Attachment and
+        Email Body</mail-option></mail-options></address-information></get-pat-adrs> '
+    http_version: 
+  recorded_at: Fri, 02 May 2014 02:53:59 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/record/NYU01000980206
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Fri, 02 May 2014 16:41:29 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><rec-services><reply-text>ok</reply-text><reply-code>0000</reply-code><record><info
+        type="Items" href="http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/record/NYU01000980206/items"></info><info
+        type="HoldRequest" href="http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/record/NYU01000980206/holds"
+        allowed="N"><note type="error">Unable to create title level request. No available
+        items associated with record.</note></info><info type="ShortLoan" href="http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/record/NYU01000980206/shortLoan"
+        allowed="N"><note type="error">This record does not have holdings which can
+        be booked</note></info><info type="ILL" href="http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/record/NYU01000980206/ill"
+        allowed="N"><note type="error">Patron does not have a valid ILL Unit</note></info><info
+        type="BookingRequest" allowed="N"><bib-library>NYU01</bib-library><bib-doc-number>000980206</bib-doc-number><note
+        type="error">This record does not have holdings which can be booked</note></info><info
+        type="AcquisitionRequest" allowed="N"><bib-library>NYU01</bib-library><bib-doc-number>000980206</bib-doc-number><note
+        type="error">You are not permitted to use this function.</note></info></record></rec-services> '
+    http_version: 
+  recorded_at: Fri, 02 May 2014 16:41:29 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/record/NYU01000980206/items/NYU50001951476001220
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Fri, 02 May 2014 16:44:47 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><item-serv><reply-text>ok</reply-text><reply-code>0000</reply-code><item><z30-sub-library-code>TNSGI</z30-sub-library-code><z30-item-process-status-code>DM</z30-item-process-status-code><z30-item-status-code>04</z30-item-status-code><z30-collection-code>SPCLP</z30-collection-code><queue>1
+        request(s) of 1 items.</queue><z30><translate-change-active-library>NYU50</translate-change-active-library><z30-doc-number>001951476</z30-doc-number><z30-item-sequence>  122.0</z30-item-sequence><z30-barcode>31207026692263</z30-barcode><z30-sub-library>New
+        School University Center</z30-sub-library><z30-material>Issue (bound)</z30-material><z30-item-status>Ask
+        at Reference</z30-item-status><z30-open-date>20110510</z30-open-date><z30-update-date>20140317</z30-update-date><z30-cataloger>LOORC</z30-cataloger><z30-date-last-return>20140206</z30-date-last-return><z30-hour-last-return>1151</z30-hour-last-return><z30-ip-last-return>149.31.214.133</z30-ip-last-return><z30-no-loans>001</z30-no-loans><z30-alpha>L</z30-alpha><z30-collection>SpecCol
+        Periodicals</z30-collection><z30-call-no-type></z30-call-no-type><z30-call-no>Non-circulating</z30-call-no><z30-call-no-key>$$mnon-circulating</z30-call-no-key><z30-call-no-2-type></z30-call-no-2-type><z30-call-no-2></z30-call-no-2><z30-call-no-2-key></z30-call-no-2-key><z30-description>no.1(1991:spring)</z30-description><z30-note-opac>Spring</z30-note-opac><z30-note-circulation></z30-note-circulation><z30-note-internal>Numbered
+        limited edition /1000.</z30-note-internal><z30-order-number></z30-order-number><z30-inventory-number></z30-inventory-number><z30-inventory-number-date>00000000</z30-inventory-number-date><z30-last-shelf-report-date>00000000</z30-last-shelf-report-date><z30-price></z30-price><z30-shelf-report-number></z30-shelf-report-number><z30-on-shelf-date>00000000</z30-on-shelf-date><z30-on-shelf-seq>000000</z30-on-shelf-seq><z30-doc-number-2>000000000</z30-doc-number-2><z30-schedule-sequence-2>00000</z30-schedule-sequence-2><z30-copy-sequence-2>00000</z30-copy-sequence-2><z30-vendor-code></z30-vendor-code><z30-invoice-number></z30-invoice-number><z30-line-number>00000</z30-line-number><z30-pages></z30-pages><z30-issue-date>20110510</z30-issue-date><z30-expected-arrival-date>20110510</z30-expected-arrival-date><z30-arrival-date>20110510</z30-arrival-date><z30-item-statistic></z30-item-statistic><z30-item-process-status>Depository
+        mediated</z30-item-process-status><z30-copy-id></z30-copy-id><z30-hol-doc-number>000036718</z30-hol-doc-number><z30-temp-location>No</z30-temp-location><z30-enumeration-a>1</z30-enumeration-a><z30-enumeration-b></z30-enumeration-b><z30-enumeration-c></z30-enumeration-c><z30-enumeration-d></z30-enumeration-d><z30-enumeration-e></z30-enumeration-e><z30-enumeration-f></z30-enumeration-f><z30-enumeration-g></z30-enumeration-g><z30-enumeration-h></z30-enumeration-h><z30-chronological-i>1991</z30-chronological-i><z30-chronological-j>21</z30-chronological-j><z30-chronological-k></z30-chronological-k><z30-chronological-l></z30-chronological-l><z30-chronological-m></z30-chronological-m><z30-supp-index-o></z30-supp-index-o><z30-85x-type>3</z30-85x-type><z30-depository-id>TNSRS</z30-depository-id><z30-linking-number>000000001</z30-linking-number><z30-gap-indicator></z30-gap-indicator><z30-maintenance-count>000</z30-maintenance-count><z30-process-status-date>20140317</z30-process-status-date></z30><z13><translate-change-active-library>NYU50</translate-change-active-library><z13-doc-number>001951476</z13-doc-number><z13-year>1991</z13-year><z13-open-date>20080618</z13-open-date><z13-update-date>20140328</z13-update-date><z13-call-no-key></z13-call-no-key><z13-call-no-code>LOC</z13-call-no-code><z13-call-no></z13-call-no><z13-author-code></z13-author-code><z13-author></z13-author><z13-title-code>24500</z13-title-code><z13-title>Visionaire.</z13-title><z13-imprint-code>260</z13-imprint-code><z13-imprint>[New
+        York] : Visionaire Publishing, c1991-</z13-imprint><z13-isbn-issn-code></z13-isbn-issn-code><z13-isbn-issn></z13-isbn-issn></z13><status>On
+        Hold</status><info type="HoldRequest" href="http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/record/NYU01000980206/items/NYU50001951476001220/hold"
+        allowed="N"><note type="error">Item cannot be requested (tab15).</note></info><info
+        type="ShortLoan" href="http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/record/NYU01000980206/items/NYU50001951476001220/shortLoan"
+        allowed="N"><note type="error">The item has no short loan schedule</note></info><info
+        type="PhotocopyRequest" allowed="N"><note type="error">Item cannot be photocopied
+        (tab15).</note><adm-library>NYU50</adm-library><adm-doc-number>001951476</adm-doc-number><item-sequence>001220</item-sequence></info><info
+        type="BookingRequest" allowed="N"><note type="error">Item cannot be booked
+        (tab15).</note><adm-library>NYU50</adm-library><adm-doc-number>001951476</adm-doc-number><item-sequence>001220</item-sequence><exact-item>Y</exact-item></info></item></item-serv> '
+    http_version: 
+  recorded_at: Fri, 02 May 2014 16:44:47 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/patronStatus/registration
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Fri, 02 May 2014 17:13:43 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><pat-register><reply-text>ok</reply-text><reply-code>0000</reply-code><registration><translate-change-active-library>NYU50</translate-change-active-library><institution
+        code="NYU50"><inst-name>NYU50</inst-name><z305-bor-status-code>55</z305-bor-status-code><z305-bor-status>NYU
+        Master.s Student</z305-bor-status><z305-bor-type></z305-bor-type><z305-expiry-date>20141031</z305-expiry-date></institution></registration></pat-register> '
+    http_version: 
+  recorded_at: Fri, 02 May 2014 17:13:43 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/record/NYU01000864162/items/NYU50000864162000010
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Thu, 15 May 2014 13:53:36 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><item-serv><reply-text>ok</reply-text><reply-code>0000</reply-code><item><z30-sub-library-code>BOBST</z30-sub-library-code><z30-item-process-status-code></z30-item-process-status-code><z30-item-status-code>01</z30-item-status-code><z30-collection-code>MAIN</z30-collection-code><queue></queue><z30><translate-change-active-library>NYU50</translate-change-active-library><z30-doc-number>000864162</z30-doc-number><z30-item-sequence>    1.0</z30-item-sequence><z30-barcode>31142033188791</z30-barcode><z30-sub-library>NYU
+        Bobst</z30-sub-library><z30-material>Books</z30-material><z30-item-status>Regular
+        loan</z30-item-status><z30-open-date>20030313</z30-open-date><z30-update-date>20051017</z30-update-date><z30-cataloger>BOWMANA</z30-cataloger><z30-date-last-return>20120502</z30-date-last-return><z30-hour-last-return>0836</z30-hour-last-return><z30-ip-last-return>128.122.88.89</z30-ip-last-return><z30-no-loans>003</z30-no-loans><z30-alpha>L</z30-alpha><z30-collection>Main
+        Collection</z30-collection><z30-call-no-type>0</z30-call-no-type><z30-call-no>HN90.I56
+        K888 2003</z30-call-no><z30-call-no-key>0 hn!90 i56 k888 2003</z30-call-no-key><z30-call-no-2-type></z30-call-no-2-type><z30-call-no-2></z30-call-no-2><z30-call-no-2-key></z30-call-no-2-key><z30-description></z30-description><z30-note-opac></z30-note-opac><z30-note-circulation></z30-note-circulation><z30-note-internal></z30-note-internal><z30-order-number></z30-order-number><z30-inventory-number></z30-inventory-number><z30-inventory-number-date>00000000</z30-inventory-number-date><z30-last-shelf-report-date>00000000</z30-last-shelf-report-date><z30-price>40.96</z30-price><z30-shelf-report-number></z30-shelf-report-number><z30-on-shelf-date>00000000</z30-on-shelf-date><z30-on-shelf-seq>000000</z30-on-shelf-seq><z30-doc-number-2>000000000</z30-doc-number-2><z30-schedule-sequence-2>00000</z30-schedule-sequence-2><z30-copy-sequence-2>00000</z30-copy-sequence-2><z30-vendor-code></z30-vendor-code><z30-invoice-number></z30-invoice-number><z30-line-number>00000</z30-line-number><z30-pages></z30-pages><z30-issue-date>00000000</z30-issue-date><z30-expected-arrival-date>00000000</z30-expected-arrival-date><z30-arrival-date>00000000</z30-arrival-date><z30-item-statistic></z30-item-statistic><z30-item-process-status>Not
+        in Process</z30-item-process-status><z30-copy-id></z30-copy-id><z30-hol-doc-number>002367979</z30-hol-doc-number><z30-temp-location>No</z30-temp-location><z30-enumeration-a></z30-enumeration-a><z30-enumeration-b></z30-enumeration-b><z30-enumeration-c></z30-enumeration-c><z30-enumeration-d></z30-enumeration-d><z30-enumeration-e></z30-enumeration-e><z30-enumeration-f></z30-enumeration-f><z30-enumeration-g></z30-enumeration-g><z30-enumeration-h></z30-enumeration-h><z30-chronological-i></z30-chronological-i><z30-chronological-j></z30-chronological-j><z30-chronological-k></z30-chronological-k><z30-chronological-l></z30-chronological-l><z30-chronological-m></z30-chronological-m><z30-supp-index-o></z30-supp-index-o><z30-85x-type></z30-85x-type><z30-depository-id></z30-depository-id><z30-linking-number>000000000</z30-linking-number><z30-gap-indicator></z30-gap-indicator><z30-maintenance-count>001</z30-maintenance-count><z30-process-status-date>00000000</z30-process-status-date></z30><z13><translate-change-active-library>NYU50</translate-change-active-library><z13-doc-number>000864162</z13-doc-number><z13-year>2003</z13-year><z13-open-date>20080618</z13-open-date><z13-update-date>20080618</z13-update-date><z13-call-no-key></z13-call-no-key><z13-call-no-code>LOC0</z13-call-no-code><z13-call-no>HN90.I56</z13-call-no><z13-author-code>1001</z13-author-code><z13-author>Kuttan,
+        Appu, 1941-</z13-author><z13-title-code>24510</z13-title-code><z13-title>From
+        digital divide to digital opportunity /</z13-title><z13-imprint-code>260</z13-imprint-code><z13-imprint>Lanham,
+        Md. : Scarecrow Press, 2003.</z13-imprint><z13-isbn-issn-code>020</z13-isbn-issn-code><z13-isbn-issn>0810844915
+        (alk. paper)</z13-isbn-issn></z13><status>On Shelf</status><info type="HoldRequest"
+        href="http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/record/NYU01000864162/items/NYU50000864162000010/hold"
+        allowed="Y"><hold allowed="Y"><pickup-locations default="Y" usage="Mandatory"><pickup-location
+        code="BOBST">NYU Bobst</pickup-location><pickup-location code="NCOUR">NYU
+        Courant</pickup-location><pickup-location code="NIFA">NYU Institute of Fine
+        Arts</pickup-location><pickup-location code="NISAW">NYU Inst Study Ancient
+        World</pickup-location><pickup-location code="NREI">NYU Jack Brause</pickup-location><pickup-location
+        code="NPOLY">NYU Poly</pickup-location><pickup-location code="NYUAB">NYU Abu
+        Dhabi Library (UAE)</pickup-location><pickup-location code="NYUSE">NYUAD Ctr
+        for Sci &amp; Eng (UAE)</pickup-location><pickup-location code="NYUSS">NYUAD
+        Sama Fac Offices (UAE)</pickup-location><pickup-location code="NYUSX">NYU
+        Shanghai Library (China)</pickup-location></pickup-locations><note type="info"></note><note
+        type="info">Item status: Regular loan&lt;br /&gt; Call number: HN90.I56 K888
+        2003&lt;br /&gt;</note><last-interest-date usage="Optional">20140813</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></info><info type="ShortLoan" href="http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/record/NYU01000864162/items/NYU50000864162000010/shortLoan"
+        allowed="N"><note type="error">The item has no short loan schedule</note></info><info
+        type="PhotocopyRequest" allowed="N"><note type="error">Item cannot be photocopied
+        (tab15).</note><adm-library>NYU50</adm-library><adm-doc-number>000864162</adm-doc-number><item-sequence>000010</item-sequence></info><info
+        type="BookingRequest" allowed="N"><note type="error">Item cannot be booked
+        (tab15).</note><adm-library>NYU50</adm-library><adm-doc-number>000864162</adm-doc-number><item-sequence>000010</item-sequence><exact-item>N</exact-item></info></item></item-serv> '
+    http_version: 
+  recorded_at: Thu, 15 May 2014 13:53:36 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/record/NYU01000980206/items/NYU50001951476001220
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Thu, 15 May 2014 13:54:16 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><item-serv><reply-text>The
+        patron ID is invalid</reply-text><reply-code>0002</reply-code></item-serv> '
+    http_version: 
+  recorded_at: Thu, 15 May 2014 13:54:16 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/record/NYU01000980206/items/NYU50001951476001220
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Thu, 15 May 2014 13:54:16 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><item-serv><reply-text>The
+        patron ID is invalid</reply-text><reply-code>0002</reply-code></item-serv> '
+    http_version: 
+  recorded_at: Thu, 15 May 2014 13:54:16 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/record/NYU01000980206/items/NYU50001951476001220
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Thu, 15 May 2014 13:54:16 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><item-serv><reply-text>The
+        patron ID is invalid</reply-text><reply-code>0002</reply-code></item-serv> '
+    http_version: 
+  recorded_at: Thu, 15 May 2014 13:54:17 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/record/NYU01000980206/items/NYU50001951476001220
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Thu, 15 May 2014 13:54:16 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><item-serv><reply-text>The
+        patron ID is invalid</reply-text><reply-code>0002</reply-code></item-serv> '
+    http_version: 
+  recorded_at: Thu, 15 May 2014 13:54:17 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/record/NYU01000980206/items/NYU50001951476001220
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Thu, 15 May 2014 17:19:45 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item><reply-text>ok</reply-text><reply-code>0000</reply-code><item><z30-sub-library-code>TNSGI</z30-sub-library-code><z30-item-process-status-code>DM</z30-item-process-status-code><z30-item-status-code>04</z30-item-status-code><z30-collection-code>SPCLP</z30-collection-code><queue></queue><z30><translate-change-active-library>NYU50</translate-change-active-library><z30-doc-number>001951476</z30-doc-number><z30-item-sequence>  122.0</z30-item-sequence><z30-barcode>31207026692263</z30-barcode><z30-sub-library>New
+        School University Center</z30-sub-library><z30-material>Issue (bound)</z30-material><z30-item-status>Ask
+        at Reference</z30-item-status><z30-open-date>20110510</z30-open-date><z30-update-date>20140507</z30-update-date><z30-cataloger>JONESA</z30-cataloger><z30-date-last-return>20140206</z30-date-last-return><z30-hour-last-return>1151</z30-hour-last-return><z30-ip-last-return>149.31.214.133</z30-ip-last-return><z30-no-loans>001</z30-no-loans><z30-alpha>L</z30-alpha><z30-collection>SpecCol
+        Periodicals</z30-collection><z30-call-no-type></z30-call-no-type><z30-call-no>Non-circulating</z30-call-no><z30-call-no-key>$$mnon-circulating</z30-call-no-key><z30-call-no-2-type></z30-call-no-2-type><z30-call-no-2></z30-call-no-2><z30-call-no-2-key></z30-call-no-2-key><z30-description>no.1(1991:spring)</z30-description><z30-note-opac>Spring</z30-note-opac><z30-note-circulation>for
+        access, please email speccoll@newschool.edu</z30-note-circulation><z30-note-internal>Numbered
+        limited edition /1000.</z30-note-internal><z30-order-number></z30-order-number><z30-inventory-number></z30-inventory-number><z30-inventory-number-date>00000000</z30-inventory-number-date><z30-last-shelf-report-date>00000000</z30-last-shelf-report-date><z30-price></z30-price><z30-shelf-report-number></z30-shelf-report-number><z30-on-shelf-date>00000000</z30-on-shelf-date><z30-on-shelf-seq>000000</z30-on-shelf-seq><z30-doc-number-2>000000000</z30-doc-number-2><z30-schedule-sequence-2>00000</z30-schedule-sequence-2><z30-copy-sequence-2>00000</z30-copy-sequence-2><z30-vendor-code></z30-vendor-code><z30-invoice-number></z30-invoice-number><z30-line-number>00000</z30-line-number><z30-pages></z30-pages><z30-issue-date>20110510</z30-issue-date><z30-expected-arrival-date>20110510</z30-expected-arrival-date><z30-arrival-date>20110510</z30-arrival-date><z30-item-statistic></z30-item-statistic><z30-item-process-status>Depository
+        mediated</z30-item-process-status><z30-copy-id></z30-copy-id><z30-hol-doc-number>000036718</z30-hol-doc-number><z30-temp-location>No</z30-temp-location><z30-enumeration-a>1</z30-enumeration-a><z30-enumeration-b></z30-enumeration-b><z30-enumeration-c></z30-enumeration-c><z30-enumeration-d></z30-enumeration-d><z30-enumeration-e></z30-enumeration-e><z30-enumeration-f></z30-enumeration-f><z30-enumeration-g></z30-enumeration-g><z30-enumeration-h></z30-enumeration-h><z30-chronological-i>1991</z30-chronological-i><z30-chronological-j>21</z30-chronological-j><z30-chronological-k></z30-chronological-k><z30-chronological-l></z30-chronological-l><z30-chronological-m></z30-chronological-m><z30-supp-index-o></z30-supp-index-o><z30-85x-type>3</z30-85x-type><z30-depository-id>TNSRS</z30-depository-id><z30-linking-number>000000001</z30-linking-number><z30-gap-indicator></z30-gap-indicator><z30-maintenance-count>000</z30-maintenance-count><z30-process-status-date>20140317</z30-process-status-date></z30><z13><translate-change-active-library>NYU50</translate-change-active-library><z13-doc-number>001951476</z13-doc-number><z13-year>1991</z13-year><z13-open-date>20080618</z13-open-date><z13-update-date>20140328</z13-update-date><z13-call-no-key></z13-call-no-key><z13-call-no-code>LOC</z13-call-no-code><z13-call-no></z13-call-no><z13-author-code></z13-author-code><z13-author></z13-author><z13-title-code>24500</z13-title-code><z13-title>Visionaire.</z13-title><z13-imprint-code>260</z13-imprint-code><z13-imprint>[New
+        York] : Visionaire Publishing, c1991-</z13-imprint><z13-isbn-issn-code></z13-isbn-issn-code><z13-isbn-issn></z13-isbn-issn></z13><status>Ask
+        at Reference</status></item></get-item> '
+    http_version: 
+  recorded_at: Thu, 15 May 2014 17:19:44 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 18:14:00 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="Y"><pickup-locations default="Y" usage="Mandatory"><pickup-location
+        code="BOBST">NYU Bobst</pickup-location><pickup-location code="NCOUR">NYU
+        Courant</pickup-location><pickup-location code="NIFA">NYU Institute of Fine
+        Arts</pickup-location><pickup-location code="NISAW">NYU Inst Study Ancient
+        World</pickup-location><pickup-location code="NREI">NYU Jack Brause</pickup-location><pickup-location
+        code="NPOLY">NYU Poly</pickup-location><pickup-location code="NYUAB">NYU Abu
+        Dhabi Library (UAE)</pickup-location><pickup-location code="NYUSE">NYUAD Ctr
+        for Sci &amp; Eng (UAE)</pickup-location><pickup-location code="NYUSS">NYUAD
+        Sama Fac Offices (UAE)</pickup-location><pickup-location code="NYUSX">NYU
+        Shanghai Library (China)</pickup-location></pickup-locations><note type="info"></note><note
+        type="info">Item status: Regular loan&lt;br /&gt; Call number: HN90.I56 K888
+        2003&lt;br /&gt;</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 18:14:00 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 18:14:00 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="N"><note type="error">Patron does not have permission to place a
+        hold request for this item.</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 18:14:00 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 18:14:00 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="N"><note type="error">Patron does not have permission to place a
+        hold request for this item.</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 18:14:00 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 18:14:00 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="N"><note type="error">Patron does not have permission to place a
+        hold request for this item.</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 18:14:00 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 18:14:00 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="N"><note type="error">Patron does not have permission to place a
+        hold request for this item.</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 18:14:00 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 18:14:00 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="N"><note type="error">Patron does not have permission to place a
+        hold request for this item.</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 18:14:00 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 19:47:24 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="N"><note type="error">Patron does not have permission to place a
+        hold request for this item.</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 19:47:24 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 19:47:24 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="N"><note type="error">Patron does not have permission to place a
+        hold request for this item.</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 19:47:25 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 19:47:24 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="N"><note type="error">Patron does not have permission to place a
+        hold request for this item.</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 19:47:25 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 19:47:24 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="N"><note type="error">Patron does not have permission to place a
+        hold request for this item.</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 19:47:25 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 19:47:24 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="N"><note type="error">Patron does not have permission to place a
+        hold request for this item.</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 19:47:25 GMT
+- request:
+    method: put
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID/record/NYU01002296594/items/NYU50002296594000010/hold
+    body:
+      encoding: US-ASCII
+      string: post_xml=<hold-request-parameters><pickup-location>BOBST</pickup-location><last-interest-date></last-interest-date><start-interest-date></start-interest-date><sub-author></sub-author><sub-title></sub-title><pages></pages><note-1></note-1><note-2></note-2><rush></rush></hold-request-parameters>
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 19:47:50 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><put-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><create-hold><note
+        type="info">Action Succeeded</note></create-hold></put-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 19:47:50 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 19:47:50 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="Y"><pickup-locations default="Y" usage="Mandatory"><pickup-location
+        code="BOBST">NYU Bobst</pickup-location></pickup-locations><note type="info">This
+        item is requested.</note><note type="info"></note><note type="info"></note><note
+        type="info">Item status: Regular loan&lt;br /&gt; Call number: HN90.I56 K888
+        2003&lt;br /&gt;</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 19:47:51 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 19:47:50 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="Y"><pickup-locations default="Y" usage="Mandatory"><pickup-location
+        code="BOBST">NYU Bobst</pickup-location></pickup-locations><note type="info">This
+        item is requested.</note><note type="info"></note><note type="info"></note><note
+        type="info">Item status: Regular loan&lt;br /&gt; Call number: HN90.I56 K888
+        2003&lt;br /&gt;</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 19:47:51 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 19:47:50 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="Y"><pickup-locations default="Y" usage="Mandatory"><pickup-location
+        code="BOBST">NYU Bobst</pickup-location></pickup-locations><note type="info">This
+        item is requested.</note><note type="info"></note><note type="info"></note><note
+        type="info">Item status: Regular loan&lt;br /&gt; Call number: HN90.I56 K888
+        2003&lt;br /&gt;</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 19:47:51 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 19:47:50 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="Y"><pickup-locations default="Y" usage="Mandatory"><pickup-location
+        code="BOBST">NYU Bobst</pickup-location></pickup-locations><note type="info">This
+        item is requested.</note><note type="info"></note><note type="info"></note><note
+        type="info">Item status: Regular loan&lt;br /&gt; Call number: HN90.I56 K888
+        2003&lt;br /&gt;</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 19:47:51 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 19:47:50 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="Y"><pickup-locations default="Y" usage="Mandatory"><pickup-location
+        code="BOBST">NYU Bobst</pickup-location></pickup-locations><note type="info">This
+        item is requested.</note><note type="info"></note><note type="info"></note><note
+        type="info">Item status: Regular loan&lt;br /&gt; Call number: HN90.I56 K888
+        2003&lt;br /&gt;</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 19:47:51 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 19:48:24 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="Y"><pickup-locations default="Y" usage="Mandatory"><pickup-location
+        code="BOBST">NYU Bobst</pickup-location></pickup-locations><note type="info">This
+        item is requested.</note><note type="info"></note><note type="info"></note><note
+        type="info">Item status: Regular loan&lt;br /&gt; Call number: HN90.I56 K888
+        2003&lt;br /&gt;</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 19:48:24 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 19:48:24 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="Y"><pickup-locations default="Y" usage="Mandatory"><pickup-location
+        code="BOBST">NYU Bobst</pickup-location></pickup-locations><note type="info">This
+        item is requested.</note><note type="info"></note><note type="info"></note><note
+        type="info">Item status: Regular loan&lt;br /&gt; Call number: HN90.I56 K888
+        2003&lt;br /&gt;</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 19:48:24 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 19:48:24 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="Y"><pickup-locations default="Y" usage="Mandatory"><pickup-location
+        code="BOBST">NYU Bobst</pickup-location></pickup-locations><note type="info">This
+        item is requested.</note><note type="info"></note><note type="info"></note><note
+        type="info">Item status: Regular loan&lt;br /&gt; Call number: HN90.I56 K888
+        2003&lt;br /&gt;</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 19:48:24 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 19:48:24 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="Y"><pickup-locations default="Y" usage="Mandatory"><pickup-location
+        code="BOBST">NYU Bobst</pickup-location></pickup-locations><note type="info">This
+        item is requested.</note><note type="info"></note><note type="info"></note><note
+        type="info">Item status: Regular loan&lt;br /&gt; Call number: HN90.I56 K888
+        2003&lt;br /&gt;</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 19:48:24 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 19:48:24 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="Y"><pickup-locations default="Y" usage="Mandatory"><pickup-location
+        code="BOBST">NYU Bobst</pickup-location></pickup-locations><note type="info">This
+        item is requested.</note><note type="info"></note><note type="info"></note><note
+        type="info">Item status: Regular loan&lt;br /&gt; Call number: HN90.I56 K888
+        2003&lt;br /&gt;</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 19:48:24 GMT
+- request:
+    method: put
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01002296594/items/NYU50002296594000010/hold
+    body:
+      encoding: US-ASCII
+      string: post_xml=<hold-request-parameters><pickup-location>BOBST</pickup-location><last-interest-date></last-interest-date><start-interest-date></start-interest-date><sub-author></sub-author><sub-title></sub-title><pages></pages><note-1></note-1><note-2></note-2><rush></rush></hold-request-parameters>
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 19:47:50 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><put-item-hold><reply-text>Failed
+        to create request</reply-text><reply-code>0025</reply-code><create-hold><note
+        type="error">Item or like copy is on shelf. Cannot place hold request.</note></create-hold></put-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 19:47:50 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 21:00:43 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="Y"><pickup-locations default="Y" usage="Mandatory"><pickup-location
+        code="BOBST">NYU Bobst</pickup-location></pickup-locations><note type="info">This
+        item is requested.</note><note type="info"></note><note type="info"></note><note
+        type="info">Item status: Regular loan&lt;br /&gt; Call number: HN90.I56 K888
+        2003&lt;br /&gt;</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 21:00:43 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 21:00:43 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="Y"><pickup-locations default="Y" usage="Mandatory"><pickup-location
+        code="BOBST">NYU Bobst</pickup-location></pickup-locations><note type="info">This
+        item is requested.</note><note type="info"></note><note type="info"></note><note
+        type="info">Item status: Regular loan&lt;br /&gt; Call number: HN90.I56 K888
+        2003&lt;br /&gt;</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 21:00:43 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 21:00:43 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="Y"><pickup-locations default="Y" usage="Mandatory"><pickup-location
+        code="BOBST">NYU Bobst</pickup-location></pickup-locations><note type="info">This
+        item is requested.</note><note type="info"></note><note type="info"></note><note
+        type="info">Item status: Regular loan&lt;br /&gt; Call number: HN90.I56 K888
+        2003&lt;br /&gt;</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 21:00:43 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 21:00:43 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="Y"><pickup-locations default="Y" usage="Mandatory"><pickup-location
+        code="BOBST">NYU Bobst</pickup-location></pickup-locations><note type="info">This
+        item is requested.</note><note type="info"></note><note type="info"></note><note
+        type="info">Item status: Regular loan&lt;br /&gt; Call number: HN90.I56 K888
+        2003&lt;br /&gt;</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 21:00:44 GMT
+- request:
+    method: get
+    uri: http://aleph.library.edu:1891/rest-dlf/patron/BOR_ID_WITHOUT_HOLD_PERMISSION/record/NYU01000864162/items/NYU50000864162000010/hold
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - Apache-Coyote/1.1
+      x-powered-by:
+      - Servlet 2.5; JBoss-5.0/JBossWeb-2.1
+      content-type:
+      - application/xml
+      date:
+      - Tue, 17 Jun 2014 21:00:43 GMT
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! '<?xml version = "1.0" encoding = "UTF-8"?><get-item-hold><reply-text>ok</reply-text><reply-code>0000</reply-code><hold
+        allowed="Y"><pickup-locations default="Y" usage="Mandatory"><pickup-location
+        code="BOBST">NYU Bobst</pickup-location></pickup-locations><note type="info">This
+        item is requested.</note><note type="info"></note><note type="info"></note><note
+        type="info">Item status: Regular loan&lt;br /&gt; Call number: HN90.I56 K888
+        2003&lt;br /&gt;</note><last-interest-date usage="Optional">20140915</last-interest-date><start-interest-date
+        usage="Optional"></start-interest-date><sub-author usage="Optional" max_len="50"></sub-author><sub-title
+        usage="Optional" max_len="100"></sub-title><pages usage="Optional" max_len="30"></pages><note-1
+        usage="Optional" max_len="50"></note-1><note-2 usage="Optional" max_len="50"></note-2><rush
+        usage="Optional"></rush></hold></get-item-hold> '
+    http_version: 
+  recorded_at: Tue, 17 Jun 2014 21:00:44 GMT
+recorded_with: VCR 2.9.0

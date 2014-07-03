@@ -7,87 +7,204 @@
 # Exlibris::Aleph
 Exlibris::Aleph offers a set of libraries for interacting with the ExLibris Aleph ILS.
 
-## Exlibris::Aleph::Patron
-Exlibris::Aleph::Patron provides access to the Aleph Patron REST API.
+## Config
+There are several configuration options
+- `base_url`: a String representing the base url for Aleph, e.g. http://aleph.library.edu
+- `rest_url`: a String representing rest url for the Aleph REST API, e.g. http://aleph.library.edu:1891
+- `adms`: an Array of administrative library codes, e.g. ['ADM50', 'ADM51']
+- `table_path`: the path to the Aleph tables on the system
+- `irrelevant_sub_libraries`: an Array or Sub Library codes to ignore
 
-### Example of Exlibris::Aleph::Patron in action
-    patron = 
-      Exlibris::Aleph::Patron.
-        new(patron_id: "S0M31D", rest_url: "http://aleph.institution.edu")
-    patron.address # Returns a Hash of the of patron's address
-    patron.loans # Returns an Array of institution Hashes, each containing an Array of the patron's loans for that institution
-    patron.renew_loans # Renews all loans
-    patron.renew_loans("ADM5000000001") # Renews loan of item 00000001 in ADM50
-    patron.place_hold("ADM50", "SBLIB", "00000001", "00000001", {:pickup_location => "SBLIB"}) # Places hold on the specified item for pickup at SBLIB
+An example:
+
+```ruby
+Exlibris::Aleph.configure do |config|
+  config.base_url = 'http://aleph.library.edu'
+  config.rest_url = 'http://aleph.library.edu:1891'
+  config.adms = ['ADM50', 'ADM51']
+  config.table_path = "/mnt/aleph_tab"
+end
+
+```
+
+## Basic Concepts
+- `AdminLibrary`: an administrative library
+  ```ruby
+  admin_library = AdminLibrary.new('ADM50')
+  # => Exlibris::Aleph::AdminLibrary
+
+  admin_library.code
+  # => 'ADM50'
+  ```
+- `SubLibrary`: a sub library
+  ```ruby
+  sub_library = SubLibrary.new('SUB', 'Sub Library', admin_library)
+  # => Exlibris::Aleph::SubLibrary
+
+  sub_library.code
+  # => 'SUB'
+
+  sub_library.display
+  # => 'Sub Library'
+
+  sub_library.admin_library
+  # => Exlibris::Aleph::AdminLibrary
+  ```
+- `Collection`: a collection
+  ```ruby
+  collection = Collection.new('MAIN', 'Main Collection', sub_library)
+  # => Exlibris::Aleph::Collection
+
+  collection.code
+  # => 'MAIN'
+
+  collection.display
+  # => 'Main Collection'
+
+  collection.sub_library
+  # => Exlibris::Aleph::SubLibrary
+  ```
+- `PickupLocation`: a pickup location
+- `Patron::Status`: a patron status
+  ```ruby
+  patron_status = Exlibris::Aleph::Patron::Status.new('01', 'Regular patron')
+  # => Exlibris::Aleph::Patron::Status
+
+  patron_status.code
+  # => '01'
+
+  patron_status.display
+  # => 'Regular patron'
+  ```
+- `Item::Status`: an item status
+  ```ruby
+  item_status = Exlibris::Aleph::Item::Status.new('01', 'Regular loan')
+  # => Exlibris::Aleph::Item::Status
+
+  item_status.code
+  # => '01'
+
+  item_status.display
+  # => 'Regular loan'
+  ```
+- `Item::ProcessingStatus`: an item circulation status
+  ```ruby
+  processing_status = Exlibris::Aleph::Item::ProcessingStatus.new('DP', 'Depository')
+  # => Exlibris::Aleph::Item::ProcessingStatus
+
+  processing_status.code
+  # => 'DP'
+
+  processing_status.display
+  # => 'Depository'
+  ```
+- `Item::CirculationStatus`
+- `Item::CallNumber`
+
+## Record
+The primary interface for an Aleph record
+
+An example:
+
+```ruby
+record_id = '000000001'
+
+admin_library = Exlibris::Aleph::AdminLibrary.new('BIB01')
+# => Exlibris::Aleph::AdminLibrary
+
+record = Exlibris::Aleph::Record.new(record_id, admin_library)
+# => Exlibris::Aleph::Record
+
+bibliographic_metadata = record.metadata
+# => Exlibris::Aleph::Record::Metadata
+
+bibliographic_marc_record = bibliographic_metadata.marc_record
+# => returns a MARC::Record
+
+holdings = record.holdings
+# => Exlibris::Aleph::Holdings
+
+holdings.each do |holding|
+
+  holding.is_a?(Exlibris::Aleph::Holding)
+  # => true
   
-## Exlibris::Aleph::Record
-Provides access to the Aleph Record REST API.
+  holding_metadata = holding.metadata
+  # => Exlibris::Aleph::Holding::Metadata
 
-### Example of Exlibris::Aleph::Record in action
-    record = 
-      Exlibris::Aleph::Record.
-        new(bib_library: "ADM50", record_id: "00000001", rest_url: "http://aleph.institution.edu")
-    record.bib # Returns a MARC::Record with bibliographic metadata
-    record.holdings # Returns and Array of MARC::Records respresenting the record's holdings
-    record.items # Returns and Array of Hashes representing the record's items
+  holding_marc_record = holding_metadata.marc_record
+  # => returns a MARC::Record
+end
 
-## Exlibris::Aleph.configure
-Exlibris::Aleph can be configured at startup in an initializer.
+items = record.items
+# => Exlibris::Aleph::Items
 
-    # Placed this in an initializer.
-    Exlibris::Aleph.configure { |c|
-      c.base_url = "http://aleph.institution.edu"
-      c.tab_path = "/mnt/aleph_tab"
-      c.adms = ["ADM50", "ADM51"]
-    }
+items.each do |item|
 
-It can also read from a yaml file.
+  item.is_a?(Exlibris::Aleph::Item)
+  # => true
 
-    # Placed this in an initializer.
-    Exlibris::Aleph.configure { |c|
-      config.load_yaml File.expand_path("#{File.dirname(__FILE__)}/../config/aleph.yml",  __FILE__)
-    }
+  item_collection = item.collection
+  # => Exlibris::Aleph::Collection
 
-## Exlibris::Aleph::TabHelper
-Exlibris::Aleph::TabHelper provides a way to access the various tab settings for patrons, patron\_permissions, items, item_permission (both by item status and by item processing status), collections and pickup locations. It also provides convenience methods for common tasks like getting the pickup location for a given combination of item status, item process status and borrower status or getting an item's web text.  Support a 
+  item_status = item.status
+  # => Exlibris::Aleph::Item::Status
 
-### Example of Exlibris::Aleph::TabHelper in action
-    # Placed this in an initializer.
-    Exlibris::Aleph.configure { |c|
-      c.tab_path = "/mnt/aleph_tab"
-      c.adms = ["ADM50", "ADM51"]
-    }
+  item_processing_status = item.processing_status
+  # => Exlibris::Aleph::Item::ProcessingStatus
 
-    # Rake task to refresh the config yml files
-    rake exlibris:aleph:refresh
+  item_circulation_status = item.circulation_status
+  # => Exlibris::Aleph::Item::CirculationStatus
 
-    # Get an instance of TabHelper
-    helper = Exlibris::Aleph::TabHelper.instance
-    helper.sub_library_text("SBLIB") # Returns display text for the give code
-    helper.sub_library_adm("SBLIB") # Returns ADM for the give code
-    helper.item_pickup_locations({:adm_library_code => "ADM50", :sub_library_code => "SBLIB", :bor_status => "51"}) # Returns the pickup locations for the given parameters
-    helper.collection_text({:adm_library_code => "ADM50", :sub_library_code => "SBLIB", :collection_code => "MAIN"}) # Returns the collection display text for the give parameters
-    helper.item_web_text({:adm_library_code => "ADM50", :item_process_status => "Item Process Status"}) # Returns the web text for the given parameters
-    helper.item_web_text({:adm_library_code => "ADM50", :sub_library_code => "SBLIB", :item_process_status_code => "DP"}) # Returns the web text for the given parameters
+  item_call_number = item.call_number
+  # => Exlibris::Aleph::Item::CallNumber
 
-### Configure irrelevant sub libraries for TabHelper
-To configure the gem to ignore sub libraries pulled from Aleph but not relevant to working with permissions call the following setter with an array of sub library Aleph codes.
+  item_opac_note = item.opac_note
+  # => Exlibris::Aleph::Item::OpacNote
 
-    # Place this in an initializer to replace the current irrelevant sub libraries.
-    Exlibris::Aleph.configure { |c|
-      c.irrelevant_sub_libraries = ["IRRLIB1", "IRRLIB2"]
-    }
+  item_queue = item.queue
+  # => Exlibris::Aleph::Item::Queue
 
-## Rake task
-Exlibris::Aleph has a rake task that refreshes the mounted tables.  Outside of Rails add `require 'exlibris-aleph'` to your Rakefile.
-Inside of Rails it should just work.
+  item_on_shelf = item.on_shelf?
+  # => true
+end
+```
 
-## Exlibris::Aleph::BorAuth
-Exlibris::Aleph::BorAuth provides access to the BorAuth Aleph XService.
+## Patron
+The primary interface for an Aleph patron
 
-### Example of Exlibris::Aleph::BorAuth in action
-    bor_auth = 
-      Exlibris::Aleph::BorAuth.
-        new("http://aleph.institution.edu", "ADM50", "SBLIB", "N", "S0M31D", "V3R1F1C@T10N")
-    permissions = bor_auth.permissions # Return a Hash of permissions based on the Exlibris::Aleph::BorAuth instance
+An example:
+
+```ruby
+patron_id = 'N1234567890'
+
+patron = Exlibris::Aleph::Patron.new(patron_id)
+# => Exlibris::Aleph::Patron
+
+address = patron.address
+# => Exlibris::Aleph::Patron::Address
+
+record_id = 'BIB01000000001'
+
+patron_record = patron.record(record_id)
+# => Exlibris::Aleph::Patron::Record
+
+patron_record_circulation_policy = patron_record.circulation_policy
+# => Exlibris::Aleph::Patron::Record::CirculationPolicy
+
+item_id = 'ADM5000000000101'
+
+patron_record_item = patron_record.item(item_id)
+# => Exlibris::Aleph::Patron::Record::Item
+
+patron_record_item_item = patron_record_item.item
+# => Exlibris::Aleph::Item
+
+patron_record_item_circulation_policy = patron_record_item.circulation_policy
+# => Exlibris::Aleph::Patron::Record::Item::CirculationPolicy
+
+```
+
+## Tables
+`Tables` are accessed through the `TablesManager`.
 

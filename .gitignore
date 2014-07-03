@@ -5,3 +5,4 @@ Gemfile.lock
 exlibris-aleph-*.gem
 config/aleph
 coverage
+.ruby-version
