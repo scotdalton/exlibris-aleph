@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'require_all', '~> 1.3.0'
   s.add_dependency 'multi_xml', '~> 0.5.0'
-  s.add_dependency 'faraday', '~> 0.8.0'
+  s.add_dependency 'faraday', '~> 0.9.0'
   s.add_dependency 'marc', '~> 0.8.0'
 
   s.add_development_dependency 'rake', '~> 10.3.0'
