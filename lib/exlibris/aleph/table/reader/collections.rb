@@ -17,7 +17,7 @@ module Exlibris
               unless sub_library.nil?
                 Collection.new(row.code, row.display, sub_library)
               end
-            end
+            end.compact
           end
 
           private
