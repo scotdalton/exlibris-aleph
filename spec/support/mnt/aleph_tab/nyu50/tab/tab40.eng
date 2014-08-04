@@ -72,7 +72,6 @@ ETC   BOBST L Electronic Text Center
 MAIN  BOBST L Main Collection
 MFORM BOBST L Microform
 MREF  BOBST L Music Reference
-MUSIC BOBST L Music
 PARL7 BOBST L NE Wing 7 - Parm papers
 PARL8 BOBST L 8th floor lounge
 PERIO BOBST L Periodicals
@@ -83,7 +82,7 @@ REF1  BOBST L 1st Floor Reference
 REF1B BOBST L 1st Floor Reference - Books in Print
 REF1C BOBST L 1st Floor Reference - Career section
 REF1D BOBST L 1st Floor Reference - Desk Reference
-REF1E BOBST L 1st Floor Reference - Etext (Studio)
+REF1E BOBST L 1st Floor Reference - CD-ROMs
 REF1I BOBST L 1st Floor Reference - Index
 REF1N BOBST L 1st Floor Reference - International Documents
 REF1S BOBST L 1st Floor Reference - Study
@@ -181,6 +180,56 @@ STOR  NCOUR L Storage
 TABLE NCOUR L Tables
 TECHR NCOUR L Technical Reports
 VIDEO NCOUR L Video
+PERIO NHDEN L Bound Periodicals
+DICT  NHDEN L Dictionaries
+MAIN  NHDEN L Main Collection
+SPCOL NHDEN L SpecCol
+REF   NHDEN L Reference
+DNRES NHDEN L Reserve collection
+STAFF NHDEN L Staff Offices
+PERIO NHENV L Bound Periodicals
+CPERI NHENV L Current Periodicals
+MAIN  NHENV L Main Collection
+REF   NHENV L Reference
+ENRES NHENV L Reserve collection
+AV    NHHJD L Audio Visual
+AVREF NHHJD L Audio Visual Reserves
+PERIO NHHJD L Bound Periodicals
+CPERI NHHJD L Current Periodicals
+MAIN  NHHJD L Main Collection
+REF   NHHJD L Reference
+STAFF NHHJD L Staff Offices
+AVREF NHHSP L Audio Visual Reference 
+PERIO NHHSP L Bound Periodicals
+DICT  NHHSP L Dictionaries
+MAIN  NHHSP L Main Collection
+OVERZ NHHSP L Oversize Collection
+REF   NHHSP L Reference
+STAFF NHHSP L Staff Offices
+AULL  NHMED L Felice Aull Collection
+ARCH  NHMED L Archives
+AV    NHMED L Audio Visual
+AVR   NHMED L Audio Visual Reserves
+AVREF NHMED L Audio Visual Reference
+PERIO NHMED L Bound Periodicals
+BRY   NHMED L Bryant Collection
+CAR   NHMED L Carlisle Collection
+CAROS NHMED L Carlisle Collection Oversized
+CARR  NHMED L Carlisle Collection Reference
+CLOSS NHMED L Closed Stack
+CPERI NHMED L Current Periodicals
+DICT  NHMED L Dictionaries
+HEAT  NHMED L Heaton Collection
+HEATP NHMED L Heaton Collection Pamphlets
+JAMES NHMED L James Collection
+JOUR  NHMED L Journals/Bound Periodicals??
+LOCK  NHMED L Locked Cases
+MAIN  NHMED L Main Collection
+SPCOL NHMED L Rare
+REF   NHMED L Reference
+MDRES NHMED L Reserve collection
+STAFF NHMED L Staff Offices
+NHSLI HWEB  L Restricted Internet Resources
 ASIAN NIFA  L Asian
 ASIAP NIFA  L Asian Periodicals
 ASIAR NIFA  L Asian Reference
@@ -205,6 +254,7 @@ SPCL  NIFAC L SpecCol
 AWRES NISAW L Reserves
 FOLIO NISAW L Folio Collection
 LARGE NISAW L Large Collection
+LIB6  NISAW L Library 6
 MAIN  NISAW L Main Collection
 OAK   NISAW L Oak Collection
 OVERZ NISAW L Oversize Collection
@@ -233,6 +283,7 @@ OSTS  NOFFS L Technical Services
 MAIN  NREI  L Main Collection
 PERIO NREI  L Periodicals
 REF   NREI  L Reference
+RLEIS NREI  L REI Leisure
 VIDEO NREI  L Video
 ADMIN NYHS  L AdminOffice
 ALMA  NYHS  L Almanacs
@@ -243,6 +294,7 @@ BLAB  NYHS  L Book Lab
 BROAD NYHS  L Broadsides
 CIRCU NYHS  L Circus
 DIR   NYHS  L Directories
+GIFTA NYHS  L Gift Annuals
 GREEN NYHS  L Greenwood Collection
 HAWKS NYHS  L Hawks-Niblo Collection
 INDEX NYHS  L Index
@@ -265,10 +317,13 @@ PERIO NYHS  L Periodicals
 PRARE NYHS  L Print Room Rare
 PREF  NYHS  L Print Room Reference
 PRNTS NYHS  L Print Room
+RAIL  NYHS  L Railroads
 REF   NYHS  L Reference
 REFA  NYHS  L Art Reference
 SPCL  NYHS  L SpecCol
 TECH  NYHS  L Technical Services
+ATEL1 NYSID L Atelier 1
+ATEL2 NYSID L Atelier 2
 AUCT  NYSID L Auction Catalogs
 AV    NYSID L Audiovisual
 CLOSS NYSID L Closed Stacks
@@ -293,6 +348,7 @@ MAIN  TNSFO L Main Collection
 MICRO TNSFO L Microform
 MIG   TNSFO L Migration Center
 NRES  TNSFO L Newschool Reserve
+OVERZ TNSFO L Oversize Collection
 PERIO TNSFO L Periodicals
 REF   TNSFO L Reference
 REFD  TNSFO L Reference - Desk
@@ -305,6 +361,7 @@ THES  TNSFO L Thesis
 !ANNSC TNSGI L Annex - Special Collections
 AV    TNSGI L Audio Visual
 MAIN  TNSGI L Main Collection
+OVERZ TNSGI L Oversize Collection
 PERIO TNSGI L Periodicals
 PRES  TNSGI L Reserve Collection
 REF   TNSGI L Reference
@@ -322,8 +379,10 @@ MINI  TNSSC L Miniature Scores
 MUREF TNSSC L Music Reference
 MUSIC TNSSC L Music
 OFFIC TNSSC L Office
+OVERZ TNSSC L Oversize Collection
 PERIO TNSSC L Periodicals
 REF   TNSSC L Reference
+SCORE TNSFO L Score Collection
 SCORE TNSSC L Full Score
 SPCL  TNSSC L SpecCol
 SRES  TNSSC L Reserve Collection
